@@ -82,7 +82,7 @@
 //================================================================
 
 import React from 'react';
-import NormalButton from '../src/reusableComponents/NormalButton/NormalButton';
+import NormalButton from '../src/reusableComponents/NormalButton/normalButton';
 
 function App() {
   const handleClick = () => {
@@ -93,10 +93,8 @@ function App() {
     <div>
       <h1>Hello World!</h1>
       <NormalButton
-        width="100px"
+        width="200px"
         height="40px"
-        backgroundColor="#0077FF"
-        color="#FFFFFF"
         label="Click me"
         onClick={handleClick}
       />

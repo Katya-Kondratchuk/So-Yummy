@@ -91,12 +91,12 @@ function App() {
 
   return (
     <div>
-      <h1>Hello World!</h1>
       <NormalButton
         width="200px"
         height="40px"
         label="Click me"
         onClick={handleClick}
+        FunButton
       />
     </div>
   );

@@ -1,25 +1,30 @@
 import React from 'react';
 import './normalButton.css';
 
-function NormalButton({
-  width,
-  height,
-  backgroundColor,
-  color,
+function Button({
   label,
   onClick,
   disabled,
+  backgroundColor,
+  color,
+  FunButton,
 }) {
+  const className = FunButton ? 'NormalButton FunButton' : 'NormalButton';
+  const style = {
+    backgroundColor,
+    color,
+  };
+
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className="NormalButton"
-      style={{ width, height, backgroundColor, color }}
+      className={className}
+      style={style}
     >
       {label}
     </button>
   );
 }
 
-export default NormalButton;
+export default Button;

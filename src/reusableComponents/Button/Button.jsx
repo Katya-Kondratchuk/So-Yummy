@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import styles from './Button.module.css';
 
 function Button({
   label,
@@ -10,8 +10,11 @@ function Button({
   FunButton,
   width,
   height,
+  type,
 }) {
-  const className = FunButton ? 'normalButton funButton' : 'normalButton';
+  const className = FunButton
+    ? `${styles.normalButton} ${styles.funButton}`
+    : styles.normalButton;
   const style = {
     backgroundColor,
     color,
@@ -24,6 +27,7 @@ function Button({
         disabled={disabled}
         className={className}
         style={style}
+        type={type}
       >
         {label}
       </button>

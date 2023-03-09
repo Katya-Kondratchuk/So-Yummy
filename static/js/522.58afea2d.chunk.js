@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkso_yummy=self.webpackChunkso_yummy||[]).push([[522],{522:function(e,u,n){n.r(u),n.d(u,{default:function(){return s}});n(791);var r=n(184),s=function(){return(0,r.jsx)("div",{children:"FavoriteRecipesPage"})}}}]);
+//# sourceMappingURL=522.58afea2d.chunk.js.map

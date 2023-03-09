@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/407.6e80b637.chunk.js","mappings":"yKAMA,EAJmB,WACjB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,cACd,C","sources":["pages/SearchPage/SearchPage.jsx"],"sourcesContent":["import React from \"react\";\n\nconst SearchPage = () => {\n  return <div>SearchPage</div>;\n};\n\nexport default SearchPage;\n"],"names":["_jsx","children"],"sourceRoot":""}

@@ -21,3 +21,11 @@
 .dark:hover * {
   fill: var(--whiteColor);
 }
+
+.green * {
+  fill: var(--whiteColor);
+}
+
+.green:hover * {
+  fill: var(--linksHoverColor);
+}

@@ -1,26 +1,26 @@
-import { Route, Routes } from "react-router-dom";
-import { lazy } from "react";
-import PublicRoute from "routes/PublicRoute/PublicRoute";
-import WelcomePage from "pages/WelcomePage";
-import PrivateRoute from "routes/PrivateRoute/PrivateRoute";
-import SharedLayout from "components/SharedLayout";
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+import PublicRoute from 'routes/PublicRoute/PublicRoute';
+import WelcomePage from 'pages/WelcomePage';
+import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
+import SharedLayout from 'components/SharedLayout';
 
-const CategoriesPage = lazy(() => import("./pages/CategoriesPage"));
-const LoginPage = lazy(() => import("pages/SigninPage"));
-const RegistrationPage = lazy(() => import("pages/RegisterPage"));
-const SearchPage = lazy(() => import("pages/SearchPage"));
-const AddRecipesPage = lazy(() => import("pages/AddRecipesPage"));
-const MyRecipesPage = lazy(() => import("pages/MyRecipesPage"));
-const FavoriteRecipesPage = lazy(() => import("pages/FavoriteRecipesPage"));
-const ShoppingListPage = lazy(() => import("pages/ShoppingListPage"));
-const MainPage = lazy(() => import("pages/MainPage"));
-const RecipiesPage = lazy(() => import("pages/RecipiesPage"));
+const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
+const LoginPage = lazy(() => import('pages/SigninPage'));
+const RegistrationPage = lazy(() => import('pages/RegisterPage'));
+const SearchPage = lazy(() => import('pages/SearchPage'));
+const AddRecipesPage = lazy(() => import('pages/AddRecipesPage'));
+const MyRecipesPage = lazy(() => import('pages/MyRecipesPage'));
+const FavoriteRecipesPage = lazy(() => import('pages/FavoriteRecipesPage'));
+const ShoppingListPage = lazy(() => import('pages/ShoppingListPage'));
+const MainPage = lazy(() => import('pages/MainPage'));
+const RecipiesPage = lazy(() => import('pages/RecipiesPage'));
 
-const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
   return (
-    <div className="container">
+    <div>
       <Routes>
         <Route
           path="/welcome"

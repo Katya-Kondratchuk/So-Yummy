@@ -1,5 +1,5 @@
 import React from 'react';
-import './normalButton.css';
+import './Button.css';
 
 function Button({
   label,
@@ -8,6 +8,8 @@ function Button({
   backgroundColor,
   color,
   FunButton,
+  width,
+  height,
 }) {
   const className = FunButton ? 'NormalButton FunButton' : 'NormalButton';
   const style = {
@@ -16,14 +18,16 @@ function Button({
   };
 
   return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={className}
-      style={style}
-    >
-      {label}
-    </button>
+    <div style={{ width: `${width}px`, height: `${height}px` }}>
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className={className}
+        style={style}
+      >
+        {label}
+      </button>
+    </div>
   );
 }
 

@@ -102,6 +102,9 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 0;
+}
 /* Make images and embedded objects responsive */
 img,
 embed,

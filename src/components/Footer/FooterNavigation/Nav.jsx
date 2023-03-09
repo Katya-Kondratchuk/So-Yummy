@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import TreshIcon from 'reusableComponents/TreshIcon/TreshIcon';
 
 const Nav = () => {
   return (
@@ -9,6 +10,7 @@ const Nav = () => {
       <NavLink to="/my"> MyRecipesPage</NavLink>
       <NavLink to="/favorite"> FavoriteRecipesPage</NavLink>
       <NavLink to="/shopping-list"> ShoppingListPage</NavLink>
+      <TreshIcon />
     </nav>
   );
 };

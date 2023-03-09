@@ -146,6 +146,7 @@ table {
   --countColor: #333333;
   --countBorder: rgba(51, 51, 51, 0.3);
   --recipeText: rgba(0, 0, 0, 0.8);
+  --linksHoverColor: #1E1F28;
 }
 
 :root.themeBlack {

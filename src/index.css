@@ -1,13 +1,175 @@
+@import-normalize;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bgColor);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* Reset list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Reset anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Make images and embedded objects responsive */
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reset table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root.themeLight {
+  --bgColor: #ececec;
+  --whiteColor: #ffffff;
+  --greyBgColor: #efefef;
+  --blackColor: #000000;
+  --secondaryBlackColor: #22252a;
+  --greenColor: #8baa36;
+  --secondaryGreenColor: #8aa936;
+  --errorColor: #e74a3b;
+  --warningColor: #f6c23e;
+  --successColor: #3cbc81;
+  --titleColor: #001833;
+  --mainTextColor: #3e4462;
+  --secondaryTextColor: #23262a;
+  --greyTextColor: #bdbdbd;
+  --secondaryGreyTextColor: #7e7e7e;
+  --secondaryGreyTextColorTransparent: rgba(126, 126, 126, 0.5);
+  --crossColor: #333333;
+  --buttonTextColor: #fafafa;
+  --inputBg: #d9d9d9;
+  --borderColor: #f0f0f0;
+  --ingridientsBcg: #ebf3d4;
+  --modalBg: #2a2c36;
+  --lineColor: #e0e0e0;
+  --secondaryLineColor: #707070;
+  --countColor: #333333;
+  --countBorder: rgba(51, 51, 51, 0.3);
+  --recipeText: rgba(0, 0, 0, 0.8);
+}
+
+:root.themeBlack {
+  --bgColor: #ffffff;
+}
+
+.container {
+  max-width: 375px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }

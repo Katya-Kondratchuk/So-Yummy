@@ -1,0 +1,37 @@
+.cardContainer {
+  position: relative;
+  width: 300px;
+  height: 323px;
+  text-align: center;
+}
+
+.image {
+  width: 300px;
+  height: 323px;
+  border-radius: 8px;
+}
+
+.textContainer {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  padding: 0px 16px 0px 16px;
+  background-color: #ffff;
+  width: 268px;
+  height: 52px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3e4462;
+  margin: 0;
+}

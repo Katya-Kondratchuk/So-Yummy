@@ -1,6 +1,5 @@
-import React from "react";
-import { Nav } from "./FooterNavigation";
-// import Nav from "./FooterNavigation/Nav";
+import React from 'react';
+import { Nav } from './FooterNavigation';
 
 const Footer = () => {
   return (

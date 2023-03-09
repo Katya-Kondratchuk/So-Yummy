@@ -4,7 +4,6 @@ import PublicRoute from 'routes/PublicRoute/PublicRoute';
 import WelcomePage from 'pages/WelcomePage';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
-import RegisterForm from 'components/RegisterForm';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
 const LoginPage = lazy(() => import('pages/SigninPage'));
@@ -21,7 +20,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
   return (
-    <div className="container">
+    <div>
       <Routes>
         <Route
           path="/welcome"
@@ -74,7 +73,6 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-      <RegisterForm />
     </div>
   );
 };

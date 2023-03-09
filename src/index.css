@@ -2,15 +2,16 @@
 
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bgColor);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -145,6 +146,7 @@ table {
   --countColor: #333333;
   --countBorder: rgba(51, 51, 51, 0.3);
   --recipeText: rgba(0, 0, 0, 0.8);
+  --linksHoverColor: #1e1f28;
 }
 
 :root.themeBlack {

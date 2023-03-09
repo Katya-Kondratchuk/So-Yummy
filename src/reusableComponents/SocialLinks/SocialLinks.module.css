@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 140px;
+  margin: 0;
+  padding: 0;
+}
+.light * {
+  fill: var(--greenColor);
+}
+
+.light:hover * {
+  fill: var(--linksHoverColor);
+}
+
+.dark * {
+  fill: var(--greenColor);
+}
+
+.dark:hover * {
+  fill: var(--whiteColor);
+}
+
+.green * {
+  fill: var(--whiteColor);
+}
+
+.green:hover * {
+  fill: var(--linksHoverColor);
+}

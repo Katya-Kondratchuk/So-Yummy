@@ -1,0 +1,19 @@
+.NormalButton {
+  padding: 10px 20px;
+  background-color: var(--greenColor);
+  color: var(--buttonTextColor);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.NormalButton:hover {
+  color: var(--secondaryBlackColor);
+}
+
+.NormalButton:focus {
+  outline: none;
+  color: var(--secondaryBlackColor);
+}

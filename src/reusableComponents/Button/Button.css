@@ -1,4 +1,4 @@
-.NormalButton {
+.normalButton {
   width: 100%;
   height: 100%;
   padding: 10px 20px;
@@ -11,15 +11,15 @@
   transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-.NormalButton:hover {
+.normalButton:hover {
   color: var(--secondaryBlackColor);
 }
 
-.NormalButton:focus {
+.normalButton:focus {
   outline: none;
   color: var(--secondaryBlackColor);
 }
 
-.FunButton {
+.funButton {
   clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
 }

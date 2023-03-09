@@ -11,7 +11,7 @@ function Button({
   width,
   height,
 }) {
-  const className = FunButton ? 'NormalButton FunButton' : 'NormalButton';
+  const className = FunButton ? 'normalButton funButton' : 'normalButton';
   const style = {
     backgroundColor,
     color,

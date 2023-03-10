@@ -1,14 +1,14 @@
 .cardContainer {
   position: relative;
-  width: 300px;
+  width: 343px;
   height: 323px;
   text-align: center;
 }
 
 .image {
-  width: 300px;
-  height: 323px;
+  height: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .textContainer {
@@ -19,7 +19,7 @@
 
   padding: 0px 16px 0px 16px;
   background-color: #ffff;
-  width: 268px;
+  width: 307px;
   height: 52px;
   border-radius: 8px;
 
@@ -34,4 +34,22 @@
   line-height: 20px;
   color: #3e4462;
   margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .cardContainer {
+    width: 336px;
+  }
+  .textContainer {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cardContainer {
+    width: 300px;
+  }
+  .textContainer {
+    width: 268px;
+  }
 }

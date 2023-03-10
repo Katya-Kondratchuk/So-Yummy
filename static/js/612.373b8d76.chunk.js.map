@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/612.373b8d76.chunk.js","mappings":"yKAMA,EAJqB,WACnB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,gBACd,C","sources":["pages/RecipiesPage/RecipiesPage.jsx"],"sourcesContent":["import React from 'react'\n\nconst RecipiesPage = () => {\n  return <div>RecipiesPage</div>;\n}\n\nexport default RecipiesPage\n"],"names":["_jsx","children"],"sourceRoot":""}

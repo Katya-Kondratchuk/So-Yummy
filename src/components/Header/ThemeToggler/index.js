@@ -1,1 +1,1 @@
-export { UserLogo } from "./ThemeToggler";
+export { ThemeToggler } from './ThemeToggler';

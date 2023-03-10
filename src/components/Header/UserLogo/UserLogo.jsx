@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const UserLogo = () => {
-  return <div></div>;
+  return <div>UserLogo</div>;
 };
 
 export default UserLogo;

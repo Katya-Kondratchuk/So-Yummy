@@ -13,7 +13,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container greensImg">
       <Title text={'Categories'} />
       <ul className={s.categoryList}>
         {arr.map(item => (

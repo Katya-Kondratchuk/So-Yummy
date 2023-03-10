@@ -1,0 +1,15 @@
+.navigationItem:not(:last-child) {
+  margin-right: 30px;
+}
+
+.navigationItem:hover,
+.navigationItem:focus {
+  color: var(--greenColor);
+}
+
+.navigationItem {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondaryTextColor);
+}

@@ -1,7 +1,7 @@
 import css from './FormInput.module.css';
 import { ReactComponent as SucsessIcon } from './sucsess.svg';
 import { ReactComponent as ErorrIcon } from './erorr.svg';
-const FormInput = ({ placeholder, type, switchImages }) => {
+const FormInput = ({ placeholder, type, switchImages, width, height }) => {
   return (
     <div className={css.form__area}>
       <input

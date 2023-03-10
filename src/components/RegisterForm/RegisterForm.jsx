@@ -23,21 +23,27 @@ const RegisterForm = () => {
   };
   return (
     <div>
-      <FormInput
-        switchImages={switchImages}
-        placeholder={'name'}
-        type={'name'}
-      />
-      <FormInput
-        switchImages={switchImages}
-        placeholder={'email'}
-        type={'email'}
-      />
-      <FormInput
-        switchImages={switchImages}
-        placeholder={'password'}
-        type={'password'}
-      />
+      <div className={css.form__input_format}>
+        <FormInput
+          switchImages={switchImages}
+          placeholder={'name'}
+          type={'name'}
+        />
+      </div>
+      <div className={css.form__input_format}>
+        <FormInput
+          switchImages={switchImages}
+          placeholder={'email'}
+          type={'email'}
+        />
+      </div>
+      <div className={css.form__input_format}>
+        <FormInput
+          switchImages={switchImages}
+          placeholder={'password'}
+          type={'password'}
+        />
+      </div>
     </div>
   );
 };

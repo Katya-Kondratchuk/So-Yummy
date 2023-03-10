@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({ className }) => {
   return (
-    <nav>
+    <nav className={className}>
       <NavLink to="/search">SearchPage</NavLink>
       <NavLink to="/add">Add recipes</NavLink>
       <NavLink to="/my"> MyRecipesPage</NavLink>

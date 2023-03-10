@@ -1,8 +1,9 @@
 import React from 'react';
 // import Logo from './Logo';
-import Navigation from './Navigation/Navigation';
 // import { UserLogo } from './UserLogo';
 import s from './Header.module.css';
+import Navigation from './Navigation/Navigation';
+
 
 const Header = () => {
   return (

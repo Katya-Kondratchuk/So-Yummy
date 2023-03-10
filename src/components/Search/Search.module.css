@@ -1,0 +1,20 @@
+.searchList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 200px;
+}
+
+.searchItem {
+  margin-bottom: 100px;
+  margin-right: 12px;
+  flex-basis: calc((100% - 42px) / 4);
+}
+
+.searchItem:nth-child(4n + 4) {
+  margin-right: 0;
+}
+
+.searchItem:nth-last-child(-n + 4) {
+  margin-bottom: 0;
+}

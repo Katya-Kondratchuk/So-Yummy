@@ -122,7 +122,8 @@ table {
 }
 
 :root.themeLight {
-  --bgColor: #ececec;
+  --bgColor: #fafafa;
+  --greyColor: #ececec;
   --whiteColor: #ffffff;
   --greyBgColor: #efefef;
   --blackColor: #000000;
@@ -139,7 +140,7 @@ table {
   --secondaryGreyTextColor: #7e7e7e;
   --secondaryGreyTextColorTransparent: rgba(126, 126, 126, 0.5);
   --crossColor: #333333;
-  --buttonTextColor: #fafafa;
+  /* --buttonTextColor: #fafafa; */
   --inputBg: #d9d9d9;
   --borderColor: #f0f0f0;
   --ingridientsBcg: #ebf3d4;

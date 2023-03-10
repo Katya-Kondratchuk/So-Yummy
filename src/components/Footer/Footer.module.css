@@ -1,21 +1,24 @@
 .footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
   height: 414px;
   background-color: var(--secondaryBlackColor);
   color: white;
 }
 
-.nav {
-  display: flex;
-  flex-direction: column;
-}
-
 .logoText {
   display: inline-block;
+  margin-left: 100px;
+  margin-top: 64px;
 }
 
 .navLeft {
+  margin-top: 40px;
+  margin-bottom: 110px;
+  margin-left: 100px;
+
   list-style-type: disc;
   height: 156px;
   width: 418px;
@@ -23,4 +26,33 @@
   flex-direction: column;
 
   gap: 12px;
+
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.navCentre {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.navRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 28px;
+
+  max-width: 338px;
+}
+
+.button {
+  width: 339px;
+  height: 60px;
 }

@@ -1,0 +1,23 @@
+.wrapper {
+  display: block;
+  width: 65px;
+  height: 65px;
+  background-size: cover;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 144px;
+    height: 146px;
+    margin-right: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 180px;
+    height: 180px;
+    margin-right: 40px;
+  }
+}

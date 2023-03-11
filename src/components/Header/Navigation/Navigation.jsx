@@ -1,15 +1,28 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import s from './Navigation.module.css';
 
 const Navigation = () => {
   return (
     <nav>
-      <NavLink to="/categories">Categories</NavLink>
-      <NavLink to="/add">Add recipes</NavLink>
-      <NavLink to="/my"> MyRecipesPage</NavLink>
-      <NavLink to="/favorite"> FavoriteRecipesPage</NavLink>
-      <NavLink to="/shopping-list"> ShoppingListPage</NavLink>
-      <NavLink to="/search">SearchPage</NavLink>
+      <NavLink className={s.navigationItem} to="/categories">
+        Categories
+      </NavLink>
+      <NavLink className={s.navigationItem} to="/add">
+        Add recipes
+      </NavLink>
+      <NavLink className={s.navigationItem} to="/my">
+        My recipes
+      </NavLink>
+      <NavLink className={s.navigationItem} to="/favorite">
+        Favorites
+      </NavLink>
+      <NavLink className={s.navigationItem} to="/shopping-list">
+        Shopping List
+      </NavLink>
+      <NavLink className={s.navigationItem} to="/search">
+        Search
+      </NavLink>
     </nav>
   );
 };

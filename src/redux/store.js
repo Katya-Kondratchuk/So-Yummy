@@ -12,12 +12,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/authSlice';
 
-// const DAILY = 'daily/dailyRateId/fulfilled';
-
 const persistConfig = {
   key: 'refresh-user-token',
   storage,
-  whitelist: ['refreshToken', 'sid'],
+  whitelist: ['refreshToken'],
 };
 
 export const store = configureStore({

@@ -23,7 +23,7 @@ const App = () => {
     <div>
       <Routes>
         <Route
-          path="/welcome"
+          path="/"
           element={<PublicRoute component={<WelcomePage />} redirectTo="/" />}
         />
         <Route
@@ -40,6 +40,7 @@ const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/main"
+            index
             element={<PrivateRoute component={<MainPage />} />}
           />
           <Route

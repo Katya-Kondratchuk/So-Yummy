@@ -6,3 +6,15 @@
   height: 100vh;
   gap: 32px;
 }
+
+@media screen and (min-width: 1440px) {
+  .navMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding-top: 14px;
+    gap: 30px;
+  }
+}

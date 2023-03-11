@@ -121,6 +121,10 @@ table {
   border-spacing: 0;
 }
 
+.navLink.active {
+  color: var(--greenColor);
+}
+
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;

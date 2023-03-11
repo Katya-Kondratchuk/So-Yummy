@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/So-Yummy/static/css/main.0cd99074.css",
-    "main.js": "/So-Yummy/static/js/main.798ceb02.js",
+    "main.js": "/So-Yummy/static/js/main.6605c1c6.js",
     "static/css/892.088a0666.chunk.css": "/So-Yummy/static/css/892.088a0666.chunk.css",
     "static/js/892.443c9a07.chunk.js": "/So-Yummy/static/js/892.443c9a07.chunk.js",
     "static/js/890.f6800352.chunk.js": "/So-Yummy/static/js/890.f6800352.chunk.js",
@@ -11,7 +11,8 @@
     "static/js/264.eb771890.chunk.js": "/So-Yummy/static/js/264.eb771890.chunk.js",
     "static/js/406.ad953d0d.chunk.js": "/So-Yummy/static/js/406.ad953d0d.chunk.js",
     "static/js/139.77bce1a2.chunk.js": "/So-Yummy/static/js/139.77bce1a2.chunk.js",
-    "static/js/522.c9f7eacf.chunk.js": "/So-Yummy/static/js/522.c9f7eacf.chunk.js",
+    "static/css/556.8d7853a9.chunk.css": "/So-Yummy/static/css/556.8d7853a9.chunk.css",
+    "static/js/556.53e38dfb.chunk.js": "/So-Yummy/static/js/556.53e38dfb.chunk.js",
     "static/js/284.7b4048e5.chunk.js": "/So-Yummy/static/js/284.7b4048e5.chunk.js",
     "static/css/106.7c36c43b.chunk.css": "/So-Yummy/static/css/106.7c36c43b.chunk.css",
     "static/js/106.be1b07b5.chunk.js": "/So-Yummy/static/js/106.be1b07b5.chunk.js",
@@ -20,6 +21,7 @@
     "static/js/93.eb762c09.chunk.js": "/So-Yummy/static/js/93.eb762c09.chunk.js",
     "static/js/568.026cf0f8.chunk.js": "/So-Yummy/static/js/568.026cf0f8.chunk.js",
     "static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.png": "/So-Yummy/static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.75540e9062e67b9cf779.png",
+    "static/media/image.png": "/So-Yummy/static/media/image.8170410ff0413433ebb2.png",
     "static/media/authImage_desktop2x_min.png": "/So-Yummy/static/media/authImage_desktop2x_min.acb282892e663d4ed6c7.png",
     "static/media/authImg_tablet2x_min.png": "/So-Yummy/static/media/authImg_tablet2x_min.8cb88dc0ad3aaae618ad.png",
     "static/media/authImg_mobile2x_min.png": "/So-Yummy/static/media/authImg_mobile2x_min.50caac1922366fbb54a6.png",
@@ -28,10 +30,11 @@
     "static/media/mail.svg": "/So-Yummy/static/media/mail.a8cf9a3b7a126af0700ce58ed96424b2.svg",
     "static/media/lock.svg": "/So-Yummy/static/media/lock.ca34679cdda5b26ec4f5fedbc1fee377.svg",
     "static/media/erorr.svg": "/So-Yummy/static/media/erorr.9dffa3c548a425b2581fb25922c3c0aa.svg",
+    "static/media/Icon.svg": "/So-Yummy/static/media/Icon.43dd7c1c5f66c7a23d7e6323e9fc024d.svg",
     "static/media/user.svg": "/So-Yummy/static/media/user.eb56b1983391579506fd04ebb840f34c.svg",
     "static/media/sucsess.svg": "/So-Yummy/static/media/sucsess.2c20cfce5010676dc2acf065541b3183.svg",
     "main.0cd99074.css.map": "/So-Yummy/static/css/main.0cd99074.css.map",
-    "main.798ceb02.js.map": "/So-Yummy/static/js/main.798ceb02.js.map",
+    "main.6605c1c6.js.map": "/So-Yummy/static/js/main.6605c1c6.js.map",
     "892.088a0666.chunk.css.map": "/So-Yummy/static/css/892.088a0666.chunk.css.map",
     "892.443c9a07.chunk.js.map": "/So-Yummy/static/js/892.443c9a07.chunk.js.map",
     "890.f6800352.chunk.js.map": "/So-Yummy/static/js/890.f6800352.chunk.js.map",
@@ -41,7 +44,8 @@
     "264.eb771890.chunk.js.map": "/So-Yummy/static/js/264.eb771890.chunk.js.map",
     "406.ad953d0d.chunk.js.map": "/So-Yummy/static/js/406.ad953d0d.chunk.js.map",
     "139.77bce1a2.chunk.js.map": "/So-Yummy/static/js/139.77bce1a2.chunk.js.map",
-    "522.c9f7eacf.chunk.js.map": "/So-Yummy/static/js/522.c9f7eacf.chunk.js.map",
+    "556.8d7853a9.chunk.css.map": "/So-Yummy/static/css/556.8d7853a9.chunk.css.map",
+    "556.53e38dfb.chunk.js.map": "/So-Yummy/static/js/556.53e38dfb.chunk.js.map",
     "284.7b4048e5.chunk.js.map": "/So-Yummy/static/js/284.7b4048e5.chunk.js.map",
     "106.7c36c43b.chunk.css.map": "/So-Yummy/static/css/106.7c36c43b.chunk.css.map",
     "106.be1b07b5.chunk.js.map": "/So-Yummy/static/js/106.be1b07b5.chunk.js.map",
@@ -52,6 +56,6 @@
   },
   "entrypoints": [
     "static/css/main.0cd99074.css",
-    "static/js/main.798ceb02.js"
+    "static/js/main.6605c1c6.js"
   ]
 }

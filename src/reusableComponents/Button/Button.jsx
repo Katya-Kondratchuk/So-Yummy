@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
 function Button({
@@ -24,8 +25,8 @@ function Button({
   if (isLink) {
     return (
       <div className={divClassName}>
-        <a
-          href={href}
+        <Link
+          to={href}
           onClick={onClick}
           role="button"
           disabled={disabled}
@@ -34,7 +35,7 @@ function Button({
           type={type}
         >
           {label}
-        </a>
+        </Link>
       </div>
     );
   } else {

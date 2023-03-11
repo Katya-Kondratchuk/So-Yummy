@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Button from 'reusableComponents/Button/Button';
 import css from './WelcomePage.module.css';
 
+
 const WelcomePage = () => {
   return (
     <>

@@ -1,40 +1,53 @@
-.tresh_button {
+.trashButton {
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: #8baa36;
   border: none;
+  outline: none;
 }
 
 @media screen and (min-width: 768px) {
-  .tresh_button {
+  .trashButton {
     width: 38px;
     height: 38px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .tresh_button {
+  .trashButton {
     width: 44px;
     height: 44px;
   }
 }
 
-.tresh_icon {
+.trashIcon {
   width: 14px;
   height: 14px;
+  display: block;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
-  .tresh_icon {
+  .trashIcon {
     width: 22px;
     height: 22px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .tresh_icon {
+  .trashIcon {
     width: 24px;
     height: 24px;
+    padding: 12px 13px;
   }
+}
+
+.trashButton.lightBcg {
+  background-color: var(--ingridientsBcg);
+  stroke: var(--secondaryBlackColor);
+}
+
+.trashButton.darkBcg {
+  background-color: var(--greenColor);
+  stroke: var(--whiteColor);
 }

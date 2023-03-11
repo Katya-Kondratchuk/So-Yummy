@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './TreshIcon.module.css';
 // import { ReactComponent as TreshIconSvg } from '../../assets/images/TreshIcon/Icon.svg';
-import { ReactComponent as TreshIconSvg } from '../../../assets/images/TreshIcon/Icon.svg';
+import { ReactComponent as TreshIconSvg } from '../../../../assets/images/TrashIcon/Icon.svg';
 
 const TreshIcon = ({ onDelete }) => {
   return (

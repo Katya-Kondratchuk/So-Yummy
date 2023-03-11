@@ -1,6 +1,7 @@
 import React from 'react';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
-import s from './Recipe.module.css';
+import TopContainer from './topContainer/TopContainer';
+import css from './Recipe.module.css';
 
 const dish = {
   idMeal: '52960',
@@ -30,14 +31,17 @@ const dish = {
 
 const Recipe = () => {
   return (
-    <div className={s.wrapper}>
-      <IngredientsContainer
-        image={dish.image}
-        text={dish.strMeasure1}
-        id="1"
-        description={dish.strIngredient1}
-      />
-    </div>
+    <>
+      <TopContainer />
+      <div className={css.wrapper}>
+        <IngredientsContainer
+          image={dish.image}
+          text={dish.strMeasure1}
+          id="1"
+          description={dish.strIngredient1}
+        />
+      </div>
+    </>
   );
 };
 

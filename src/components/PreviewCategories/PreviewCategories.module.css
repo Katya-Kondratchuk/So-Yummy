@@ -24,6 +24,16 @@
   padding-top: 24px;
 }
 
+.buttonClass {
+  width: 94px;
+  height: 36px;
+}
+.buttonClass:focus,
+.buttonClass:hover {
+  outline: none;
+  color: var(--bgColor);
+}
+
 @media screen and (min-width: 768px) {
   .buttonContainer {
     padding-top: 40px;

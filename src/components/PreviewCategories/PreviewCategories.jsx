@@ -24,7 +24,12 @@ const PreviewCategories = () => {
         </ul>
       </div>
       <div className={css.buttonContainer}>
-        <Button width={94} height={38} label={'See all'} />
+        <Button
+          isLink
+          href="/categories"
+          divClassName={css.buttonClass}
+          label={'See all'}
+        />
       </div>
     </div>
   );

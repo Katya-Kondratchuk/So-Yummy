@@ -152,9 +152,9 @@ table {
   --linksHoverColor: #1e1f28;
 }
 
-:root.themeBlack {
+/* :root.themeBlack {
   --bgColor: #ffffff;
-}
+} */
 
 .container {
   max-width: 375px;

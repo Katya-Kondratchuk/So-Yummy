@@ -93,14 +93,6 @@
   flex-direction: row;
   align-items: center;
 }
-@media screen and (min-width: 768px) {
-  .dishTime {
-  }
-}
-@media screen and (min-width: 1440px) {
-  .dishTime {
-  }
-}
 
 .time {
   margin-left: 4px;

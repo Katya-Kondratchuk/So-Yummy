@@ -1,7 +1,8 @@
 import React from 'react';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
-import TopContainer from './topContainer/TopContainer';
+
 import css from './Recipe.module.css';
+import TopContainer from './topContainer/TopContainer';
 
 const dish = {
   idMeal: '52960',

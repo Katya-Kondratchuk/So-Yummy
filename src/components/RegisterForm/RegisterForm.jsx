@@ -6,7 +6,7 @@ import { ReactComponent as LockIcon } from '../../assets/images/formInputIcons/l
 import css from './RegisterForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
@@ -73,7 +73,7 @@ const RegisterForm = () => {
     },
     validationSchema: registrationSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      const { name, email, password } = values;
+      // const { name, email, password } = values;
       // dispatch(register({ name, email, password }));
       console.log(formik.values);
       setSubmitting(false);
@@ -82,12 +82,12 @@ const RegisterForm = () => {
   const isValid = registrationSchema.isValidSync(formik.values);
   const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = event => {
-    setInputValue(event.target.value);
-  };
+  // const handleInputChange = event => {
+  //   setInputValue(event.target.value);
+  // };
 
   const handleClearClick = () => {
-    setInputValue('');
+    setInputValue(inputValue);
   };
   return (
     <div className={css.registrComponent}>

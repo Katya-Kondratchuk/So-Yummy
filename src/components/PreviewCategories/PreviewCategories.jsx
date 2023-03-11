@@ -6,35 +6,22 @@ import Button from 'reusableComponents/Button/Button';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import { Link } from 'react-router-dom';
 
+axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1';
+
 const PreviewCategories = ({ categorie = 'Breakfast' }) => {
   const [mainMeals, setMeals] = useState([]);
 
-  axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1';
-
-  async function getMeals() {
-    try {
-      const response = await axios.get('/filter.php?', {
-        params: {
-          //c: `${categorie}`,
-          c: 'Breakfast',
-        },
-      });
-      return response.data.meals;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
-    (async function getingMeals() {
-      const res = await getMeals();
-      const meals = res;
-      if (meals) {
-        setMeals(meals);
-      }
-    })();
-    return () => {};
-  }, []);
+    axios
+      .get('/filter.php?', {
+        params: {
+          c: `${categorie}`,
+        },
+      })
+      .then(response => {
+        setMeals(response.data.meals);
+      });
+  }, [categorie]);
 
   const selectedmainMeals = mainMeals.slice(0, 4);
 
@@ -52,7 +39,6 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
                   text={strMeal}
                 />
               </Link>
-              {/* <img src={imageUrl} alt={`${index + 1}`} className={css.image} /> */}
             </li>
           ))}
         </ul>
@@ -72,4 +58,4 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
 export default PreviewCategories;
 
 //вызов:
-//<PreviewCategories />
+//<PreviewCategories categorie = {'Breakfast'}/>

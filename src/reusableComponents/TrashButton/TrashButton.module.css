@@ -4,12 +4,14 @@
   border-radius: 4px;
   border: none;
   outline: none;
+  padding: 5px;
 }
 
 @media screen and (min-width: 768px) {
   .trashButton {
     width: 38px;
     height: 38px;
+    padding: 8px;
   }
 }
 
@@ -17,6 +19,7 @@
   .trashButton {
     width: 44px;
     height: 44px;
+    padding: 10px;
   }
 }
 
@@ -38,7 +41,6 @@
   .trashIcon {
     width: 24px;
     height: 24px;
-    padding: 12px 13px;
   }
 }
 

@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/So-Yummy/static/css/main.52446c7f.css",
-    "main.js": "/So-Yummy/static/js/main.4eb4c509.js",
+    "main.css": "/So-Yummy/static/css/main.a092cdb4.css",
+    "main.js": "/So-Yummy/static/js/main.55c9fb22.js",
     "static/css/892.88d8bcb2.chunk.css": "/So-Yummy/static/css/892.88d8bcb2.chunk.css",
     "static/js/892.443c9a07.chunk.js": "/So-Yummy/static/js/892.443c9a07.chunk.js",
     "static/js/890.f6800352.chunk.js": "/So-Yummy/static/js/890.f6800352.chunk.js",
     "static/css/706.c828aa27.chunk.css": "/So-Yummy/static/css/706.c828aa27.chunk.css",
     "static/js/706.6541a75b.chunk.js": "/So-Yummy/static/js/706.6541a75b.chunk.js",
-    "static/css/264.7b81d8ee.chunk.css": "/So-Yummy/static/css/264.7b81d8ee.chunk.css",
-    "static/js/264.eb771890.chunk.js": "/So-Yummy/static/js/264.eb771890.chunk.js",
+    "static/css/289.73387f5e.chunk.css": "/So-Yummy/static/css/289.73387f5e.chunk.css",
+    "static/js/289.9f59cb1b.chunk.js": "/So-Yummy/static/js/289.9f59cb1b.chunk.js",
     "static/js/406.ad953d0d.chunk.js": "/So-Yummy/static/js/406.ad953d0d.chunk.js",
     "static/js/139.77bce1a2.chunk.js": "/So-Yummy/static/js/139.77bce1a2.chunk.js",
     "static/css/556.d219a401.chunk.css": "/So-Yummy/static/css/556.d219a401.chunk.css",
@@ -30,21 +30,25 @@
     "static/media/authImg_mobile2x_min.png": "/So-Yummy/static/media/authImg_mobile2x_min.50caac1922366fbb54a6.png",
     "static/media/authImg_tablet1x_min.png": "/So-Yummy/static/media/authImg_tablet1x_min.4c958208a760156364a0.png",
     "index.html": "/So-Yummy/index.html",
+    "static/media/logoHeader.svg": "/So-Yummy/static/media/logoHeader.3a6003aab9d5748d5e757f5a183c97e1.svg",
     "static/media/mail.svg": "/So-Yummy/static/media/mail.a8cf9a3b7a126af0700ce58ed96424b2.svg",
     "static/media/lock.svg": "/So-Yummy/static/media/lock.ca34679cdda5b26ec4f5fedbc1fee377.svg",
     "static/media/erorr.svg": "/So-Yummy/static/media/erorr.9dffa3c548a425b2581fb25922c3c0aa.svg",
     "static/media/Icon.svg": "/So-Yummy/static/media/Icon.43dd7c1c5f66c7a23d7e6323e9fc024d.svg",
     "static/media/user.svg": "/So-Yummy/static/media/user.eb56b1983391579506fd04ebb840f34c.svg",
     "static/media/sucsess.svg": "/So-Yummy/static/media/sucsess.2c20cfce5010676dc2acf065541b3183.svg",
-    "main.52446c7f.css.map": "/So-Yummy/static/css/main.52446c7f.css.map",
-    "main.4eb4c509.js.map": "/So-Yummy/static/js/main.4eb4c509.js.map",
+    "static/media/magnifyingGlass.svg": "/So-Yummy/static/media/magnifyingGlass.2d6c8eb4d03192b8ece8dd107cf5062e.svg",
+    "static/media/navClose.svg": "/So-Yummy/static/media/navClose.d16084c67ed542c79123c1067eed2a20.svg",
+    "static/media/headerMenu.svg": "/So-Yummy/static/media/headerMenu.6f96af463fe26f9275a8bb1719d744e3.svg",
+    "main.a092cdb4.css.map": "/So-Yummy/static/css/main.a092cdb4.css.map",
+    "main.55c9fb22.js.map": "/So-Yummy/static/js/main.55c9fb22.js.map",
     "892.88d8bcb2.chunk.css.map": "/So-Yummy/static/css/892.88d8bcb2.chunk.css.map",
     "892.443c9a07.chunk.js.map": "/So-Yummy/static/js/892.443c9a07.chunk.js.map",
     "890.f6800352.chunk.js.map": "/So-Yummy/static/js/890.f6800352.chunk.js.map",
     "706.c828aa27.chunk.css.map": "/So-Yummy/static/css/706.c828aa27.chunk.css.map",
     "706.6541a75b.chunk.js.map": "/So-Yummy/static/js/706.6541a75b.chunk.js.map",
-    "264.7b81d8ee.chunk.css.map": "/So-Yummy/static/css/264.7b81d8ee.chunk.css.map",
-    "264.eb771890.chunk.js.map": "/So-Yummy/static/js/264.eb771890.chunk.js.map",
+    "289.73387f5e.chunk.css.map": "/So-Yummy/static/css/289.73387f5e.chunk.css.map",
+    "289.9f59cb1b.chunk.js.map": "/So-Yummy/static/js/289.9f59cb1b.chunk.js.map",
     "406.ad953d0d.chunk.js.map": "/So-Yummy/static/js/406.ad953d0d.chunk.js.map",
     "139.77bce1a2.chunk.js.map": "/So-Yummy/static/js/139.77bce1a2.chunk.js.map",
     "556.d219a401.chunk.css.map": "/So-Yummy/static/css/556.d219a401.chunk.css.map",
@@ -58,7 +62,7 @@
     "568.026cf0f8.chunk.js.map": "/So-Yummy/static/js/568.026cf0f8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52446c7f.css",
-    "static/js/main.4eb4c509.js"
+    "static/css/main.a092cdb4.css",
+    "static/js/main.55c9fb22.js"
   ]
 }

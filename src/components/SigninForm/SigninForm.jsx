@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import FormInput from '../../reusableComponents/FormInput/FormInput';
 import { ReactComponent as UserIcon } from '../../assets/images/formInputIcons/user.svg';
 import { ReactComponent as MailIcon } from '../../assets/images/formInputIcons/mail.svg';
@@ -76,16 +76,16 @@ const SigninForm = () => {
       console.log(values);
     },
   });
-  const isValid = registrationSchema.isValidSync(formik.values);
-  const [inputValue, setInputValue] = useState('');
+  // const isValid = registrationSchema.isValidSync(formik.values);
+  // const [inputValue, setInputValue] = useState('');
 
   // const handleInputChange = event => {
   //   setInputValue(event.target.value);
   // };
 
-  const handleClearClick = () => {
-    setInputValue(inputValue);
-  };
+  // const handleClearClick = () => {
+  //   setInputValue(inputValue);
+  // };
   return (
     <div className={css.registrComponent}>
       <div className={css.authBackgroundImg}></div>

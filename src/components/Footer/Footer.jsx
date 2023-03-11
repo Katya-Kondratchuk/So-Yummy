@@ -1,10 +1,13 @@
 import React from 'react';
-import { Nav } from './FooterNavigation';
+import SocialLinks from 'reusableComponents/SocialLinks/SocialLinks';
+import FooterNavigation from './FooterNavigation';
 
 const Footer = () => {
   return (
     <div>
-      <Nav />
+      <FooterNavigation />
+      <SocialLinks />
+      <div>авпвапвап</div>
     </div>
   );
 };

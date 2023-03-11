@@ -158,7 +158,7 @@ const RegisterForm = () => {
                 </div>
               </div>
             </UserDataForm>
-            <AuthLinkTo route={'./signin'} routeText={'sign in'} />
+            <AuthLinkTo route="/signin" routeText="sign in" />
           </div>
         </div>
       </div>

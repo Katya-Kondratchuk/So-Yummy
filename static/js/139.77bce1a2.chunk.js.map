@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/139.77bce1a2.chunk.js","mappings":"2KAMA,EAJsB,WACpB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,iBACd,C","sources":["pages/MyRecipesPage/MyRecipesPage.jsx"],"sourcesContent":["import React from \"react\";\n\nconst MyRecipesPage = () => {\n  return <div>MyRecipesPage</div>;\n};\n\nexport default MyRecipesPage;\n"],"names":["_jsx","children"],"sourceRoot":""}

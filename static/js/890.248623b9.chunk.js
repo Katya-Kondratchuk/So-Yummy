@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkso_yummy=self.webpackChunkso_yummy||[]).push([[890],{890:function(n,u,r){r.r(u),r.d(u,{default:function(){return s}});r(791);var e=r(184),i=function(){return(0,e.jsx)("div",{children:"SigninForm "})},s=function(){return(0,e.jsx)("div",{children:(0,e.jsx)(i,{})})}}}]);
-//# sourceMappingURL=890.248623b9.chunk.js.map

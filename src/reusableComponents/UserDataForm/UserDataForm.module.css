@@ -3,9 +3,17 @@
   height: 45px;
   margin: 0 auto;
 }
+.divButtonClass {
+  width: 279px;
+  height: 45px;
+}
 @media screen and (min-width: 768px) {
   .confirmButton {
     max-width: 400px;
     height: 56px;
+  }
+  .divButtonClass {
+    width: 400px;
+    height: 59px;
   }
 }

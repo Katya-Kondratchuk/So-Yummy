@@ -1,0 +1,47 @@
+.footer {
+  background-color: var(--secondaryBlackColor);
+}
+
+.navCentre {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.navRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 28px;
+
+  max-width: 338px;
+}
+
+.button {
+  width: 339px;
+  height: 60px;
+}
+
+.SocialLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.SocialLinks > *:not(:last-child) {
+  margin-right: 14px;
+}
+
+.downText {
+  height: 114px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downText > span:first-of-type {
+  margin-right: 40px;
+}

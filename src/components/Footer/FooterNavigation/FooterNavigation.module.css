@@ -1,0 +1,8 @@
+.footerNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 414px;
+  color: white;
+}

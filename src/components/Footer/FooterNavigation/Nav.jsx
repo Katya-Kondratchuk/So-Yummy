@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import s from '../Footer.module.css';
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className={s.navCentre}>
       <NavLink to="/search">SearchPage</NavLink>
       <NavLink to="/add">Add recipes</NavLink>
       <NavLink to="/my"> MyRecipesPage</NavLink>

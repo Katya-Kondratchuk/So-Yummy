@@ -1,16 +1,13 @@
-import React from 'react';
 import SocialLinks from 'reusableComponents/SocialLinks/SocialLinks';
-import s from './FollowUs.module.css';
+import css from './FollowUs.module.css';
 
-const FollowUs = props => {
+const FollowUs = () => {
   return (
-    <div className={s.wrapper}>
-      <h3 className={s.title}>Follow us</h3>
+    <div className={css.wrapper}>
+      <h3 className={css.title}>Follow us</h3>
       <SocialLinks />
     </div>
   );
 };
-
-FollowUs.propTypes = {};
 
 export default FollowUs;

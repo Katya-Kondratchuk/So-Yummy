@@ -2,50 +2,10 @@
   margin-bottom: 104px;
 }
 
-.wrapperImg {
-  position: relative;
-  background: #8baa36;
-  border: transparent;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.wrapperImg,
-.imgInput {
-  width: 279px;
-  height: 268px;
-}
-
-.imgInput {
-  opacity: 0;
-}
-
-.icon {
-  position: absolute;
-  display: block;
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.showImg {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-}
-
 .nameRecipe,
 .description,
 .category,
 .cookingTime {
-  font-family: inherit;
   display: block;
   width: 100%;
   height: 40px;
@@ -54,6 +14,13 @@
   border-bottom: 1px solid var(--lineColor);
   padding-bottom: 18px;
   outline: transparent;
+
+  font-family: inherit;
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--blackColor);
 }
 
 .nameRecipe::placeholder,
@@ -74,18 +41,6 @@
   margin-bottom: 24px;
 }
 
-/* .wrapperCategory,
-.wrapperCookingTime {
-} */
-
-@media screen and (max-width: 767px) {
-  .wrapperImg {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 32px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .wrapperInfo {
     display: flex;
@@ -98,6 +53,7 @@
   .description,
   .category,
   .cookingTime {
+    font-size: 16px;
     width: 393px;
     height: 43px;
   }
@@ -117,12 +73,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .wrapperImg,
-  .imgInput {
-    width: 357px;
-    height: 344px;
-  }
-
   .wrapperInfo {
     gap: 50px;
     margin-bottom: 104px;
@@ -135,14 +85,14 @@
   }
 }
 
-/*-----select category------*/
 .wrapperCategory,
 .wrapperCookingTime {
   position: relative;
   cursor: pointer;
 }
 
-.selectCategory {
+.selectCategory,
+.selectTime {
   position: absolute;
   display: flex;
   top: 0;
@@ -152,20 +102,20 @@
   height: 100%;
   justify-content: right;
   gap: 13px;
-
   font-size: 12px;
   line-height: 1;
 }
+
 .category {
   cursor: pointer;
 }
 
-.selectContentCategory {
+.selectContentCategory,
+.selectContentTime {
   position: absolute;
   top: 27px;
   right: 0;
   z-index: 5;
-  width: 123px;
   height: 144px;
   padding: 8px 14px;
   overflow-y: auto;
@@ -177,6 +127,14 @@
   color: rgba(0, 0, 0, 0.5);
   background: var(--whiteColor);
   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+}
+
+.selectContentCategory {
+  width: 123px;
+}
+
+.selectContentTime {
+  width: 90px;
 }
 
 .selectItem:not(:last-child) {
@@ -199,5 +157,3 @@
   background-clip: content-box;
   background-color: #e7e5e5;
 }
-
-/*-----select time------*/

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ReactComponent as Arrow } from 'assets/images/AddRecipe/arrow-down.svg';
-// import PropTypes from 'prop-types';
-import s from './SelectList.module.css';
+import PropTypes from 'prop-types';
+import css from './SelectList.module.css';
 
 const SelectList = ({
   list = [],
@@ -9,18 +9,33 @@ const SelectList = ({
   selectedOption = '',
   selectContent = '',
   scrollbar = '',
-  setValue,
+  setOption,
 }) => {
   const [isActive, setIsActive] = useState(false);
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    const onClick = e => {
+      inputEl.current.contains(e.target) || setIsActive(!isActive);
+    };
+
+    if (isActive) {
+      document.addEventListener('click', onClick);
+    }
+    return () => {
+      document.removeEventListener('click', onClick);
+    };
+  }, [isActive]);
 
   return (
     <>
       <div
+        ref={inputEl}
         className={`${selectedOption}`}
         onClick={e => setIsActive(!isActive)}
       >
         <span>{option}</span>
-        <span className={s.arrow}>
+        <span className={css.arrow}>
           <Arrow width="12px" height="7px" />
         </span>
       </div>
@@ -30,10 +45,10 @@ const SelectList = ({
             <li
               key={value}
               onClick={e => {
-                setValue(value);
+                setOption(value);
                 setIsActive(false);
               }}
-              className={s.selectItem}
+              className={css.selectItem}
             >
               {value}
             </li>
@@ -44,6 +59,13 @@ const SelectList = ({
   );
 };
 
-SelectList.propTypes = {};
+SelectList.propTypes = {
+  list: PropTypes.array,
+  option: PropTypes.string,
+  selectedOption: PropTypes.string,
+  selectContent: PropTypes.string,
+  scrollbar: PropTypes.string,
+  setOption: PropTypes.func,
+};
 
 export default SelectList;

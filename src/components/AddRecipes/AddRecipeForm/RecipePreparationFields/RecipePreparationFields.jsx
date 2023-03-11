@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import s from './RecipePreparationFields.module.css';
+import css from './RecipePreparationFields.module.css';
 
 const RecipePreparationFields = ({ value, onChange }) => {
   return (
-    <div className={s.wrapperTextarea}>
-      <h3 className={s.title}>Recipe Preparation</h3>
+    <div className={css.wrapperTextarea}>
+      <h3 className={css.title}>Recipe Preparation</h3>
       <textarea
         name="recipe"
         placeholder="Enter recipe"
-        className={s.recipe}
+        className={`${css.recipe} ${css.scrollbar}`}
         value={value}
         onChange={e => onChange(e.target.value)}
       />

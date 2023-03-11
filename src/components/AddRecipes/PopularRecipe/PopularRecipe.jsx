@@ -1,7 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import s from './PopularRecipe.module.css';
+import css from './PopularRecipe.module.css';
 
 const recipeMokk = [
   {
@@ -26,24 +25,24 @@ const recipeMokk = [
   },
 ];
 
-const PopularRecipe = props => {
-  const [recipe, setRecipe] = useState(recipeMokk);
+const PopularRecipe = () => {
+  // const [recipe, setRecipe] = useState(recipeMokk);
 
   //TODO: обработать длину title (itemTitle) на разных брекпоинтах и добавить ...
 
   return (
-    <div className={s.wrapper}>
-      <h3 className={s.title}>Popular recipe</h3>
-      <ul className={s.list}>
-        {recipe.slice(0, 4).map(({ img, title, text }) => (
-          <li key={text} className={s.item}>
-            <Link to="/recipe" className={s.itemLink}>
-              <div className={s.imgWrapper}>
+    <div className={css.wrapper}>
+      <h3 className={css.title}>Popular recipe</h3>
+      <ul className={css.list}>
+        {recipeMokk.slice(0, 4).map(({ img, title, text }) => (
+          <li key={text} className={css.item}>
+            <Link to="/recipe" className={css.itemLink}>
+              <div className={css.imgWrapper}>
                 <img src={img} alt={title} />
               </div>
-              <div className={s.textWrapper}>
-                <h4 className={s.itemTitle}>{title}</h4>
-                <p className={s.description}>{text}</p>
+              <div className={css.textWrapper}>
+                <h4 className={css.itemTitle}>{title}</h4>
+                <p className={css.description}>{text}</p>
               </div>
             </Link>
           </li>
@@ -52,7 +51,5 @@ const PopularRecipe = props => {
     </div>
   );
 };
-
-PopularRecipe.propTypes = {};
 
 export default PopularRecipe;

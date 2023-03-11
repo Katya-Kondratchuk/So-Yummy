@@ -15,8 +15,8 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
     try {
       const response = await axios.get('/filter.php?', {
         params: {
-          c: `${categorie}`,
-          //c: 'Breakfast'
+          //c: `${categorie}`,
+          c: 'Breakfast',
         },
       });
       return response.data.meals;

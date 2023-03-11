@@ -1,0 +1,43 @@
+.authImg {
+  height: 250px;
+  width: 285px;
+  background-size: contain;
+  background-image: url('../../assets/images/authImages/authImg_mobile1x_min.png');
+}
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .authImg {
+    background-image: url('../../assets/images/authImages/authImg_mobile2x_min.png');
+  }
+}
+@media screen and (min-width: 768px) {
+  .authImg {
+    height: 359px;
+    width: 409px;
+    background-image: url('../../assets/images/authImages/authImg_tablet1x_min.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .authImg {
+      background-image: url('../../assets/images/authImages/authImg_tablet2x_min.png');
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .authImg {
+    height: 468px;
+    width: 532px;
+    background-image: url('../../assets/images/authImages/authImage_desktop2x_min.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .authImg {
+      background-image: url('../../assets/images/authImages/authImage_desktop2x_min.png');
+    }
+  }
+}

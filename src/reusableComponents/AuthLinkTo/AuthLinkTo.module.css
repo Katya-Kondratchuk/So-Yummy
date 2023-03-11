@@ -1,0 +1,11 @@
+.authLinkTo {
+  text-transform: capitalize;
+  color: var(--buttonTextColor);
+  font-size: 16px;
+  line-height: 1.5;
+  position: absolute;
+  bottom: -42px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-decoration: underline;
+}

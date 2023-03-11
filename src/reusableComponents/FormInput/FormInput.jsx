@@ -1,18 +1,36 @@
 import css from './FormInput.module.css';
-import { ReactComponent as SucsessIcon } from './sucsess.svg';
-import { ReactComponent as ErorrIcon } from './erorr.svg';
-const FormInput = ({ placeholder, type, switchImages, width, height }) => {
+import { ReactComponent as SucsessIcon } from '../../assets/images/formInputIcons/sucsess.svg';
+import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
+const FormInput = ({
+  placeholder,
+  type,
+  switchImages,
+  handleClearClick,
+  isValid,
+  onBlur,
+  onChange,
+}) => {
   return (
-    <div className={css.form__area}>
+    <div className={css.formArea}>
       <input
-        className={css.form__input}
+        className={css.formInput}
         type={type}
+        onChange={onChange}
+        onBlur={onBlur}
         name="formImput"
         placeholder={placeholder}
       />
-      <span className={css.form__icon}>{switchImages(type)} </span>
-      <SucsessIcon className={css.form__stateIcon} />
-      <ErorrIcon className={css.form__stateIcon} />
+      <span className={css.formIcon}>{switchImages(type)} </span>
+      {isValid && <SucsessIcon className={css.formStateIcon} />}
+      {isValid && (
+        <button
+          className={css.clearButton}
+          onClick={handleClearClick}
+          type="button"
+        >
+          <ErorrIcon className={css.formStateIcon} />
+        </button>
+      )}
     </div>
   );
 };

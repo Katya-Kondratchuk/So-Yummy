@@ -121,6 +121,10 @@ table {
   border-spacing: 0;
 }
 
+.navLink.active {
+  color: var(--greenColor);
+}
+
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;
@@ -153,9 +157,9 @@ table {
   --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
 }
 
-:root.themeBlack {
+/* :root.themeBlack {
   --bgColor: #ffffff;
-}
+} */
 
 .container {
   max-width: 375px;
@@ -181,7 +185,7 @@ table {
 }
 
 .greensImg {
-  background-image: url(./assets/images/GreensBcg/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473\ 1.jpg);
+  background-image: url(./assets/images/GreensBcg/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473\ 1.png);
   background-repeat: no-repeat;
   background-position: left 0 bottom -413px;
   background-size: 558px 852px;

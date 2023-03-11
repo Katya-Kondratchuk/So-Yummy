@@ -9,10 +9,3 @@
 .navLink:hover {
   color: var(--greenColor);
 }
-
-.glassWrapper {
-  display: inline-block;
-  position: relative;
-  top: 3px;
-  left: -5px;
-}

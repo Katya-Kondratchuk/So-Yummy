@@ -2,12 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
 import WelcomePage from 'pages/WelcomePage';
+import RegisterPage from 'pages/RegisterPage';
+import SigninPage from 'pages/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
-const LoginPage = lazy(() => import('pages/SigninPage'));
-const RegistrationPage = lazy(() => import('pages/RegisterPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
 const AddRecipesPage = lazy(() => import('pages/AddRecipesPage'));
 const MyRecipesPage = lazy(() => import('pages/MyRecipesPage'));
@@ -23,23 +23,26 @@ const App = () => {
     <div>
       <Routes>
         <Route
-          path="/welcome"
+          path="/"
           element={<PublicRoute component={<WelcomePage />} redirectTo="/" />}
         />
         <Route
           path="/register"
           element={
-            <PublicRoute component={<RegistrationPage />} redirectTo="/main" />
+            <PublicRoute component={<RegisterPage />} redirectTo="/main" />
           }
         />
         <Route
           path="/signin"
-          element={<PublicRoute component={<LoginPage />} redirectTo="/main" />}
+          element={
+            <PublicRoute component={<SigninPage />} redirectTo="/main" />
+          }
         />
 
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/main"
+            index
             element={<PrivateRoute component={<MainPage />} />}
           />
           <Route

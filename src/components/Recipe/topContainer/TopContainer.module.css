@@ -1,0 +1,111 @@
+.topContainer {
+  background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundMobile.png');
+  position: relative;
+  width: 100%;
+  height: calc((100vw / 0.82));
+
+  background-size: cover;
+  z-index: -1;
+  background-position: 50% 0;
+  top: -46px;
+  left: 0;
+  padding-top: 144px;
+  padding-bottom: 90px;
+  /* transform: translate(0, 50%); */
+}
+@media screen and (min-width: 768px) {
+  .topContainer {
+    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundTablet.png');
+    height: calc((100vw / 1.55));
+    padding-top: 136px;
+    padding-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .topContainer {
+    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundDisplay.png');
+    height: calc((100vw / 2.92));
+    padding-top: 164px;
+    padding-bottom: 32px;
+  }
+}
+
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dishName {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'liga' off;
+  color: var(--greenColor);
+  margin-bottom: 18px;
+}
+@media screen and (min-width: 768px) {
+  .dishName {
+    font-size: 44px;
+    line-height: 44px;
+    margin-bottom: 24px;
+  }
+}
+
+.dishDescription {
+  width: 299px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--secondaryTextColor);
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 768px) {
+  .dishDescription {
+    width: 506px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dishDescription {
+    padding: 0px 14px;
+    margin-bottom: 30px;
+  }
+}
+
+.btn {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--orange);
+  border: 2px solid var(--greenColor);
+}
+
+.dishTime {
+  margin-top: 48px;
+  width: 75px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.time {
+  margin-left: 4px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+  color: var(--secondaryTextColor);
+}
+@media screen and (min-width: 768px) {
+  .time {
+    margin-left: 8px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

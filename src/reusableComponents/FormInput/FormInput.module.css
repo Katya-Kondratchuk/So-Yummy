@@ -1,24 +1,23 @@
-.form__area {
+.formArea {
   width: 100%;
   height: 100%;
   position: relative;
   display: inline-block;
-  width: 280px;
   background-color: var(--modalBg);
 }
-.form__icon {
+.formIcon {
   position: absolute;
   top: 16px;
   left: 18px;
   stroke: var(--whiteColor);
   opacity: 0.8;
 }
-.form__stateIcon {
+.formStateIcon {
   position: absolute;
   top: 20px;
   right: 18px;
 }
-.form__input {
+.formInput {
   color: var(--whiteColor);
   width: 100%;
   height: 100%;
@@ -31,48 +30,55 @@
   font-size: 14px;
   line-height: 1.5;
 }
-.form__input:hover,
-.form__input:focus {
+.formInput:hover,
+.formInput:focus {
   border: 1px solid var(--whiteColor);
   opacity: 1;
 }
-.form__input:hover + .form__icon,
-.form__input:focus + .form__icon {
+.formInput:hover + .formIcon,
+.formInput:focus + .formIcon {
   opacity: 1;
   color: var(--whiteColor);
 }
 
-/* .form__input:valid + .form__icon * {
+/* .formInput:valid + .formIcon * {
   stroke: var(--successColor);
 } */
-.form__input:invalid + .form__icon * {
+.formInput:invalid + .formIcon * {
   stroke: var(--errorColor);
 }
-.form__input::placeholder {
+.formInput::placeholder {
   color: var(--whiteColor);
   text-transform: capitalize;
   opacity: 0.8;
 }
-/* .form__input:valid {
+/* .formInput:valid {
   color: var(--successColor);
   border: 1px solid var(--successColor);
 } */
-.form__input:invalid {
+.formInput:invalid {
   border: 1px solid var(--errorColor);
 }
 @media screen and (min-width: 768px) {
-  .form__area {
+  .formArea {
     width: 400px;
   }
-  .form__input {
+  .formInput {
     font-size: 18px;
   }
 }
-@media screen and (min-width: 1440px) {
-  .form__area {
-    width: 500px;
-  }
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
+
+/* @media screen and (min-width: 1440px) {
+
+} */
 
 input[type='password']::-webkit-outer-spin-button,
 input[type='password']::-webkit-inner-spin-button {

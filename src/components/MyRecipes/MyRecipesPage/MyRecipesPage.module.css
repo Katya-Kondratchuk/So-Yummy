@@ -1,0 +1,81 @@
+.container {
+    max-width: 375px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.cardContainer {
+    display: flex;
+}
+
+.cardContainer2 {
+    width: 209px;
+    height: 152px;
+    padding: 40px;
+    position: relative;
+   
+}
+
+.cardContainer3 {
+   top: 40px;
+   right: 40px;
+    position: absolute;
+
+}
+.cardContainer4 {
+    bottom: 15px;
+    right: 40px;
+    position: absolute;
+
+}
+
+ .cardList {
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-between;
+    padding-bottom: 25px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+        .cardContainer2 {
+            width: 446px;
+            height: 288px;
+        }
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+        .cardContainer2 {
+            width: 886px;
+            height: 372px;
+        }
+}
+
+
+.pageNumbers {
+    list-style: none;
+    display: flex;
+}
+
+.pageNumbers li {
+    padding: 10px;
+    border: 1px solid blue;
+    cursor: pointer;
+}
+
+
+
+

@@ -1,0 +1,109 @@
+.button {
+  width: 239px;
+  height: 61px;
+  margin: 50px auto;
+  position: relative;
+}
+.welcomeTitle {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--bgColor);
+  margin-bottom: 14px;
+}
+.welcomeTitleFormat {
+  margin: auto;
+  text-align: center;
+  max-width: 460px;
+}
+.welcomeText {
+  color: var(--bgColor);
+  font-size: 18px;
+  line-height: 1.33;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+.backgroundImg {
+  margin: 0 auto;
+  width: 375px;
+  height: 812px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: 50% 50%; */
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 58.58%,
+      rgba(0, 0, 0, 0.345172) 78.98%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('../../assets/images/welcomePageImg/wellcomeImg_mobile_1x_min.jpg');
+}
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .backgroundImg {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('../../assets/images/welcomePageImg/wellcomeImg_mobile_2x_min.jpg');
+  }
+}
+@media screen and (min-width: 768px) {
+  .backgroundImg {
+    width: 768px;
+    height: 1024px;
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('../../assets/images/welcomePageImg/wellcomeImg_tablet_1x_min.jpg');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .backgroundImg {
+      background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url('../../assets/images/welcomePageImg/wellcomeImg_tablet_2x_min.jpg');
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .backgroundImg {
+    width: 1440px;
+    height: 770px;
+    padding-top: 214px;
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('../../assets/images/welcomePageImg/wellcomeImg_1x_min.jpg');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .backgroundImg {
+      background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.6) 58.58%,
+          rgba(0, 0, 0, 0.345172) 78.98%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        url('../../assets/images/welcomePageImg//wellcomeImg_2x_min.jpg');
+    }
+  }
+}

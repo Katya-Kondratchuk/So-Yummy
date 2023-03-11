@@ -1,0 +1,11 @@
+@media screen and (max-width: 767px) {
+  .form {
+    margin-bottom: 72px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .form {
+    margin-bottom: 100px;
+  }
+}

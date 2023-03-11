@@ -1,7 +1,23 @@
-import React from "react";
+import AddRecipeForm from 'components/AddRecipes/AddRecipeForm';
+import FollowUs from 'components/AddRecipes/FollowUs';
+import PopularRecipe from 'components/AddRecipes/PopularRecipe';
+import React from 'react';
+import Title from 'reusableComponents/Title/Title';
+import s from './AddRecipesPage.module.css';
 
 const AddRecipesPage = () => {
-  return <div>AddRecipesPage</div>;
+  return (
+    <div className="container">
+      <Title text="Add recipe" />
+      <div className={s.flexContainer}>
+        <AddRecipeForm />
+        <div>
+          <FollowUs />
+          <PopularRecipe />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AddRecipesPage;

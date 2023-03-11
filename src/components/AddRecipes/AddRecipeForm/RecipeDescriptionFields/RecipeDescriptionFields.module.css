@@ -1,0 +1,24 @@
+.wrapperImg {
+  position: relative;
+  width: 279px;
+  height: 268px;
+  background: #8baa36;
+  border: transparent;
+  border-radius: 8px;
+}
+
+.imgInput {
+  width: 279px;
+  height: 268px;
+  opacity: 0;
+}
+
+.icon {
+  position: absolute;
+  display: block;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}

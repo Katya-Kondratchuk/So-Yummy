@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/So-Yummy/static/css/main.52446c7f.css",
-    "main.js": "/So-Yummy/static/js/main.564f3521.js",
+    "main.js": "/So-Yummy/static/js/main.f6ce57d6.js",
     "static/css/892.088a0666.chunk.css": "/So-Yummy/static/css/892.088a0666.chunk.css",
     "static/js/892.443c9a07.chunk.js": "/So-Yummy/static/js/892.443c9a07.chunk.js",
     "static/js/890.f6800352.chunk.js": "/So-Yummy/static/js/890.f6800352.chunk.js",
@@ -16,11 +16,14 @@
     "static/js/284.7b4048e5.chunk.js": "/So-Yummy/static/js/284.7b4048e5.chunk.js",
     "static/css/106.1c92f05a.chunk.css": "/So-Yummy/static/css/106.1c92f05a.chunk.css",
     "static/js/106.bc9d3bb9.chunk.js": "/So-Yummy/static/js/106.bc9d3bb9.chunk.js",
-    "static/css/360.069c1f52.chunk.css": "/So-Yummy/static/css/360.069c1f52.chunk.css",
-    "static/js/360.d5a44411.chunk.js": "/So-Yummy/static/js/360.d5a44411.chunk.js",
+    "static/css/850.42877359.chunk.css": "/So-Yummy/static/css/850.42877359.chunk.css",
+    "static/js/850.0b00e8d0.chunk.js": "/So-Yummy/static/js/850.0b00e8d0.chunk.js",
     "static/js/93.eb762c09.chunk.js": "/So-Yummy/static/js/93.eb762c09.chunk.js",
     "static/js/568.026cf0f8.chunk.js": "/So-Yummy/static/js/568.026cf0f8.chunk.js",
+    "static/media/recipeBackgroundDisplay.png": "/So-Yummy/static/media/recipeBackgroundDisplay.dd18011f8833f7891425.png",
+    "static/media/recipeBackgroundTablet.png": "/So-Yummy/static/media/recipeBackgroundTablet.f0503269735f0dc79929.png",
     "static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.png": "/So-Yummy/static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.75540e9062e67b9cf779.png",
+    "static/media/recipeBackgroundMobile.png": "/So-Yummy/static/media/recipeBackgroundMobile.fd70f8a076e162de97e0.png",
     "static/media/image.png": "/So-Yummy/static/media/image.8170410ff0413433ebb2.png",
     "static/media/authImage_desktop2x_min.png": "/So-Yummy/static/media/authImage_desktop2x_min.acb282892e663d4ed6c7.png",
     "static/media/authImg_tablet2x_min.png": "/So-Yummy/static/media/authImg_tablet2x_min.8cb88dc0ad3aaae618ad.png",
@@ -34,7 +37,7 @@
     "static/media/user.svg": "/So-Yummy/static/media/user.eb56b1983391579506fd04ebb840f34c.svg",
     "static/media/sucsess.svg": "/So-Yummy/static/media/sucsess.2c20cfce5010676dc2acf065541b3183.svg",
     "main.52446c7f.css.map": "/So-Yummy/static/css/main.52446c7f.css.map",
-    "main.564f3521.js.map": "/So-Yummy/static/js/main.564f3521.js.map",
+    "main.f6ce57d6.js.map": "/So-Yummy/static/js/main.f6ce57d6.js.map",
     "892.088a0666.chunk.css.map": "/So-Yummy/static/css/892.088a0666.chunk.css.map",
     "892.443c9a07.chunk.js.map": "/So-Yummy/static/js/892.443c9a07.chunk.js.map",
     "890.f6800352.chunk.js.map": "/So-Yummy/static/js/890.f6800352.chunk.js.map",
@@ -49,13 +52,13 @@
     "284.7b4048e5.chunk.js.map": "/So-Yummy/static/js/284.7b4048e5.chunk.js.map",
     "106.1c92f05a.chunk.css.map": "/So-Yummy/static/css/106.1c92f05a.chunk.css.map",
     "106.bc9d3bb9.chunk.js.map": "/So-Yummy/static/js/106.bc9d3bb9.chunk.js.map",
-    "360.069c1f52.chunk.css.map": "/So-Yummy/static/css/360.069c1f52.chunk.css.map",
-    "360.d5a44411.chunk.js.map": "/So-Yummy/static/js/360.d5a44411.chunk.js.map",
+    "850.42877359.chunk.css.map": "/So-Yummy/static/css/850.42877359.chunk.css.map",
+    "850.0b00e8d0.chunk.js.map": "/So-Yummy/static/js/850.0b00e8d0.chunk.js.map",
     "93.eb762c09.chunk.js.map": "/So-Yummy/static/js/93.eb762c09.chunk.js.map",
     "568.026cf0f8.chunk.js.map": "/So-Yummy/static/js/568.026cf0f8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.52446c7f.css",
-    "static/js/main.564f3521.js"
+    "static/js/main.f6ce57d6.js"
   ]
 }

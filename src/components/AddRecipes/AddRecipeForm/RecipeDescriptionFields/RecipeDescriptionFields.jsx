@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { ReactComponent as Icon } from 'assets/images/AddRecipe/input-img.svg';
-import PropTypes from 'prop-types';
 import s from './RecipeDescriptionFields.module.css';
+import SelectList from 'components/AddRecipes/SelectList';
+// import PropTypes from 'prop-types';
 
 function previewFile(inputEl) {
   const preview = inputEl.current;
@@ -21,15 +22,59 @@ function previewFile(inputEl) {
   }
 }
 
-const RecipeDescriptionFields = ({}) => {
+const allCategory = [
+  'Beef',
+  'Breakfast',
+  'Chicken',
+  'Dessert',
+  'Goat',
+  'Lamb',
+  'Miscellaneous',
+  'Pasta',
+  'Pork',
+  'Seafood',
+  'Side',
+  'Starter',
+  'Vegan',
+  'Vegetarian',
+];
+
+const time = [
+  '5 min',
+  '10 min',
+  '15 min',
+  '20 min',
+  '25 min',
+  '30 min',
+  '35 min',
+  '40 min',
+  '45 min',
+  '50 min',
+  '55 min',
+  '60 min',
+  '65 min',
+  '70 min',
+  '75 min',
+  '80 min',
+  '85 min',
+  '90 min',
+  '95 min',
+  '100 min',
+  '105 min',
+  '110 min',
+  '115 min',
+  '120 min',
+];
+
+const RecipeDescriptionFields = () => {
   const inputEl = useRef(null);
 
-  const [allCategory, setAllCategory] = useState([]);
+  // const [allCategory, setAllCategory] = useState();
 
   const [imgAdd, setImgAdd] = useState('');
   const [nameRecipe, setNameRecipe] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Beef');
   const [cookingTime, setCookingTime] = useState('');
 
   return (
@@ -55,27 +100,83 @@ const RecipeDescriptionFields = ({}) => {
         />
       </div>
       <div className={s.descriptions}>
-        <label htmlFor="">Enter item title</label>
         <input
           type="text"
           name="name"
           value={nameRecipe}
+          placeholder="Enter item title"
           onChange={e => setNameRecipe(e.target.value)}
+          className={s.nameRecipe}
         />
-        <br />
-        <label htmlFor="">Enter about recipe</label>
+
         <input
           type="text"
           name="description"
+          placeholder="Enter about recipe"
           value={description}
           onChange={e => setDescription(e.target.value)}
+          className={s.description}
         />
-        <br />
-        <label htmlFor="">Category</label>
-        <input type="text" />
-        <br />
-        <label htmlFor="">Cooking time</label>
-        <input type="text" />
+
+        <div className={s.wrapperCategory}>
+          <input
+            type="text"
+            readOnly="readonly"
+            placeholder="Category"
+            className={s.category}
+          />
+          {/* <div
+            className={s.selectCategory}
+            onClick={e => setIsActive(!isActive)}
+          >
+            <span>{category} </span>
+            <span className={s.arrow}>
+              <Arrow width="12px" height="7px" />
+            </span>
+          </div>
+          {isActive && (
+            <ul className={`${s.selectContentCategory} ${s.scrollbarCategory}`}>
+              {allCategory.map(value => (
+                <li
+                  key={value}
+                  onClick={e => {
+                    setCategory(value);
+                    setIsActive(false);
+                  }}
+                  className={s.selectItem}
+                >
+                  {value}
+                </li>
+              ))}
+            </ul>
+          )} */}
+
+          <SelectList
+            list={allCategory}
+            option={category}
+            selectedOption={s.selectCategory}
+            selectContent={s.selectContentCategory}
+            scrollbar={s.scrollbar}
+            setValue={setCategory}
+          />
+        </div>
+
+        <div className={s.wrapperCookingTime}>
+          <input
+            type="text"
+            placeholder="Cooking time"
+            className={s.cookingTime}
+          />
+
+          <SelectList
+            list={time}
+            option={cookingTime}
+            selectedOption={s.selectCategory}
+            selectContent={s.selectContentCategory}
+            scrollbar={s.scrollbar}
+            setValue={setCookingTime}
+          />
+        </div>
       </div>
     </div>
   );

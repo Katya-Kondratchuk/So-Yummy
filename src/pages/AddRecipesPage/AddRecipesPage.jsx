@@ -7,7 +7,7 @@ import s from './AddRecipesPage.module.css';
 
 const AddRecipesPage = () => {
   return (
-    <div className="container">
+    <div className={`container ${s.wrapperAddPage}`}>
       <Title text="Add recipe" />
       <div className={s.flexContainer}>
         <AddRecipeForm />

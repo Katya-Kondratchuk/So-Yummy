@@ -41,6 +41,43 @@
   height: 100%;
 }
 
+.nameRecipe,
+.description,
+.category,
+.cookingTime {
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: transparent;
+  background-color: inherit;
+  border-bottom: 1px solid var(--lineColor);
+  padding-bottom: 18px;
+  outline: transparent;
+}
+
+.nameRecipe::placeholder,
+.description::placeholder,
+.category::placeholder,
+.cookingTime::placeholder {
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--blackColor);
+  opacity: 0.5;
+}
+
+.nameRecipe,
+.description,
+.wrapperCategory {
+  margin-bottom: 24px;
+}
+
+/* .wrapperCategory,
+.wrapperCookingTime {
+} */
+
 @media screen and (max-width: 767px) {
   .wrapperImg {
     margin-left: auto;
@@ -56,6 +93,27 @@
     justify-content: center;
     margin-bottom: 104px;
   }
+
+  .nameRecipe,
+  .description,
+  .category,
+  .cookingTime {
+    width: 393px;
+    height: 43px;
+  }
+
+  .nameRecipe::placeholder,
+  .description::placeholder,
+  .category::placeholder,
+  .cookingTime::placeholder {
+    font-size: 16px;
+  }
+
+  .nameRecipe,
+  .description,
+  .wrapperCategory {
+    margin-bottom: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -69,4 +127,77 @@
     gap: 50px;
     margin-bottom: 104px;
   }
+
+  .nameRecipe,
+  .description,
+  .wrapperCategory {
+    margin-bottom: 40px;
+  }
 }
+
+/*-----select category------*/
+.wrapperCategory,
+.wrapperCookingTime {
+  position: relative;
+  cursor: pointer;
+}
+
+.selectCategory {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  padding-top: 7px;
+  width: 100%;
+  height: 100%;
+  justify-content: right;
+  gap: 13px;
+
+  font-size: 12px;
+  line-height: 1;
+}
+.category {
+  cursor: pointer;
+}
+
+.selectContentCategory {
+  position: absolute;
+  top: 27px;
+  right: 0;
+  z-index: 5;
+  width: 123px;
+  height: 144px;
+  padding: 8px 14px;
+  overflow-y: auto;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.5);
+  background: var(--whiteColor);
+  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+}
+
+.selectItem:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  height: 93px;
+  border-radius: 12px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #e7e5e5;
+}
+
+/*-----select time------*/

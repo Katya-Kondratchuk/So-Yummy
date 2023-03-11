@@ -9,3 +9,17 @@
 .navLink:hover {
   color: var(--greenColor);
 }
+
+.glassWrapper {
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  left: -5px;
+}
+
+@media screen and (min-width: 1440px) {
+  .glassWrapper {
+    top: 0;
+    left: -5px;
+  }
+}

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DishCard from 'reusableComponents/DishCard/DishCard';
+import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
-import s from './Search.module.css';
+import css from './Search.module.css';
+import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 
 const Search = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -15,14 +18,18 @@ const Search = () => {
   return (
     <div className="container">
       <Title text={'Search'} />
-      <ul className={s.searchList}>
+      <SearchInput />
+      <SearchTypeSelector />
+      <ul className={css.searchList}>
         {arr.map(item => (
-          <li key={id()} className={s.searchItem}>
-            <DishCard
-              image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-              altText="someDish"
-              text="Delicious dishes"
-            />
+          <li key={id()} className={css.searchItem}>
+            <Link to="/recipe">
+              <DishCard
+                image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
+                altText="someDish"
+                text="Delicious dishes"
+              />
+            </Link>
           </li>
         ))}
       </ul>

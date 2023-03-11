@@ -10,7 +10,7 @@ const AddRecipeForm = props => {
   const [preparation, setPreparation] = useState('');
 
   const onSubmitHandler = e => {
-    // e.preventDefault();
+    e.preventDefault();
   };
 
   // TODO: разбивка по enter на массив при сабмите обработать

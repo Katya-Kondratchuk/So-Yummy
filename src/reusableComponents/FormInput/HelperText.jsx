@@ -1,7 +1,7 @@
 import css from './HelperText.module.css';
 
 const HelperText = ({ errorText, text = ' ' }) => {
-  console.log(errorText);
+  // console.log(errorText);
   return (
     <>
       {errorText ? (

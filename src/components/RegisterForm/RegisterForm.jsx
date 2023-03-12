@@ -3,20 +3,21 @@ import FormInput from '../../reusableComponents/FormInput/FormInput';
 import css from './RegisterForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 import switchImages from '../../services/switchImages';
 import HelperText from 'reusableComponents/FormInput/HelperText';
+import { registerUser } from 'redux/auth/authOperation';
 
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
 
 // const loading = useSelector(selectAuthLoading);
-// const dispatch = useDispatch();
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
@@ -34,7 +35,7 @@ const RegisterForm = () => {
     email: yup
       .string()
       .min(5, 'Your password its too short')
-      // .email('your email must be valid')
+      .email('your email must be valid')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
@@ -66,14 +67,13 @@ const RegisterForm = () => {
     },
     validationSchema: registrationSchema,
 
-    onSubmit: values => {
-      console.log(values);
-      //   const { name, email, password } = values;
-      //   dispatch(register({ name, email, password }));
-      //   setSubmitting(false);
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      const { name, email, password } = values;
+      dispatch(registerUser({ name, email, password }));
+      setSubmitting(false);
     },
   });
-  console.log(formik.errors.name);
+  // console.log(formik.errors.name);
   // const isValid = registrationSchema.isValidSync(formik.values);
   const [inputValue, setInputValue] = useState('');
 

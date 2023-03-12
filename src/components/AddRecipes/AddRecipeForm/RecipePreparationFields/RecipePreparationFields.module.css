@@ -6,9 +6,9 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 1;
-  letter-spacing: -0.24px;
+  letter-spacing: -0.02em;
   color: var(--mainTextColor);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .recipe {

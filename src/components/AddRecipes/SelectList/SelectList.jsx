@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ReactComponent as Arrow } from 'assets/images/AddRecipe/arrow-down.svg';
+import { ReactComponent as Arrow } from 'assets/images/AddRecipe/chevron-down.svg';
 import PropTypes from 'prop-types';
 import css from './SelectList.module.css';
 
@@ -36,7 +36,7 @@ const SelectList = ({
       >
         <span>{option}</span>
         <span className={css.arrow}>
-          <Arrow width="12px" height="7px" />
+          <Arrow width="20px" height="20px" />
         </span>
       </div>
       {isActive && (

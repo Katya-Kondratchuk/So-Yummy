@@ -4,10 +4,10 @@ import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 
 const MainHero = () => {
   return (
-    <div className={css.topContainer}>
-      <div className={css.containerWrapper}>
-        <span className={css.dishName}>SoYummy</span>
-        <span className={css.dishDescription}>
+    <div className={css.heroContainer}>
+      <div className={css.heroWrapper}>
+        <span className={css.heroName}>SoYummy</span>
+        <span className={css.heroDescription}>
           "What to cook?" is not only a recipe app, it is, in fact, your
           cookbook. You can add your own recipes to save them for the future.
         </span>

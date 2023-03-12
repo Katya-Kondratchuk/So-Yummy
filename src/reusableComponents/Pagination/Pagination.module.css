@@ -1,0 +1,33 @@
+.paginationWrapper {
+  margin: 0 auto;
+  height: 51px;
+  width: 275;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 26px;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(135, 135, 135, 0.2);
+  margin-bottom: 100px;
+}
+@media screen and (min-width: 768px) {
+  .paginationWrapper {
+    height: 55px;
+    width: 436px;
+    margin-bottom: 200px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .paginationWrapper {
+    margin-bottom: 100px;
+  }
+}
+
+.mui button[aria-current] {
+  background-color: #ebf3d4;
+  color: #22252a;
+}
+.mui button[aria-current]:hover,
+.mui button:hover {
+  background-color: #cce681;
+}

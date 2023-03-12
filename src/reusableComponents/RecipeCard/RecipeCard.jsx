@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import TrashButton from 'reusableComponents/TrashButton/TrashButton';
 import css from './RecipeCard.module.css';
@@ -19,7 +20,9 @@ const RecipeCard = ({ title, time, text, text2, imgComponent, trashClass }) => {
         <div className={css.bottomWrapper}>
           <p className={css.dishTime}>{time}</p>
           <div className={css.dishButton}>
-            <SuperBtn title={'See recipe'} dark />
+            <Link to={`/recipe/${title}`}>
+              <SuperBtn title={'See recipe'} dark />
+            </Link>
           </div>
         </div>
       </div>

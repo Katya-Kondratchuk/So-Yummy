@@ -1,4 +1,5 @@
 import React from 'react';
+import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
 import Title from 'reusableComponents/Title/Title';
 import dish from '../../assets/images/Recipe/image.png';
@@ -32,6 +33,7 @@ const Favorite = dishes => {
             );
           })}
         </ul>
+        <BasicPagination count={8} />
       </section>
     </div>
   );

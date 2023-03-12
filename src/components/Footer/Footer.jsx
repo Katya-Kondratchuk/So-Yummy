@@ -12,7 +12,7 @@ const Footer = () => {
           <SocialLinks />
         </div>
       </div>
-      <div className={s.downText}>
+      <div className={`${s.downText} container`}>
         <span>© 2023 All Rights Reserved.</span>
         <span> Terms of Service</span>
       </div>

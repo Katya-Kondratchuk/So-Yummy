@@ -1,7 +1,7 @@
 .footerNavigation {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding-top: 64px;
 
   height: 414px;
   color: white;

@@ -1,5 +1,6 @@
 .footer {
   background-color: var(--secondaryBlackColor);
+  position: relative;
 }
 
 .navCentre {
@@ -7,6 +8,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  margin-right: 235px;
 }
 
 .navRight {
@@ -35,11 +37,17 @@
 }
 
 .downText {
+  position: relative;
   height: 114px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../../assets/images/Footer/footer\ bgi.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 438px 474px;
 }
 
 .downText > span:first-of-type {

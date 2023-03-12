@@ -1,7 +1,7 @@
 .navLeft {
   margin-top: 40px;
   margin-bottom: 110px;
-  margin-left: 100px;
+  margin-right: 159px;
 
   list-style-type: disc;
   height: 156px;
@@ -21,6 +21,5 @@
 
 .logoText {
   display: inline-block;
-  margin-left: 100px;
   margin-top: 64px;
 }

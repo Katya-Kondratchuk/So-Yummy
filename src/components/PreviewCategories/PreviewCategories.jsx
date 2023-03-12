@@ -6,13 +6,9 @@ import Button from 'reusableComponents/Button/Button';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import { Link } from 'react-router-dom';
 
-//************** */
-
 const instance = axios.create({
   baseURL: 'https://www.themealdb.com/api/json/v1/1',
 });
-
-//axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1';
 
 const PreviewCategories = ({ categorie = 'Breakfast' }) => {
   const [mainMeals, setMeals] = useState([]);
@@ -25,7 +21,6 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
         },
       })
       .then(response => {
-        // console.log(response);
         setMeals(response.data.meals);
       });
   }, [categorie]);
@@ -44,7 +39,7 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
                   image={strMealThumb}
                   altText={strMeal}
                   text={strMeal}
-                  favorite={true}
+                  favorite={false}
                   like={false}
                 />
               </Link>

@@ -1,17 +1,20 @@
 import React from 'react';
 import css from './DishCard.module.css';
-import favImg from './fav.png';
+import { ReactComponent as FavoriteIco } from './fav.svg';
+import { ReactComponent as LikeIco } from './fav.svg';
 
-const DishCard = ({ image, altText, text, favorite }) => {
+const DishCard = ({ image, altText, text, favorite, like }) => {
+  const favFeel = favorite ? 'white' : 'none';
+  const likeFeel = like ? 'white' : 'none';
+
   return (
     <div className={css.cardContainer}>
       <img src={image} alt={altText} className={css.image} />
       <div className={css.textContainer}>
         <p className={css.text}>{text}</p>
       </div>
-      {favorite && (
-        <img src={favImg} className={css.favIco} alt="FavoriteDish" />
-      )}
+      <FavoriteIco className={css.favIco} fill={favFeel} />
+      <LikeIco className={css.likeIco} fill={likeFeel} />
     </div>
   );
 };
@@ -24,5 +27,5 @@ export default DishCard;
       altText="someDish"
       text="Delicious dishes"
       favorite={false}
-
+      like={false}
 /> */

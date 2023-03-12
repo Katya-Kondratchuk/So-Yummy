@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/So-Yummy/static/css/main.118b0af4.css",
-    "main.js": "/So-Yummy/static/js/main.623f9cea.js",
+    "main.js": "/So-Yummy/static/js/main.afbaa706.js",
     "static/css/892.88d8bcb2.chunk.css": "/So-Yummy/static/css/892.88d8bcb2.chunk.css",
     "static/js/892.bf5f5cb4.chunk.js": "/So-Yummy/static/js/892.bf5f5cb4.chunk.js",
     "static/css/931.3b264a95.chunk.css": "/So-Yummy/static/css/931.3b264a95.chunk.css",
-    "static/js/931.51703933.chunk.js": "/So-Yummy/static/js/931.51703933.chunk.js",
+    "static/js/931.0a9d6008.chunk.js": "/So-Yummy/static/js/931.0a9d6008.chunk.js",
     "static/js/406.ad953d0d.chunk.js": "/So-Yummy/static/js/406.ad953d0d.chunk.js",
     "static/css/172.b9cecd23.chunk.css": "/So-Yummy/static/css/172.b9cecd23.chunk.css",
     "static/js/172.ad020e45.chunk.js": "/So-Yummy/static/js/172.ad020e45.chunk.js",
@@ -13,9 +13,9 @@
     "static/js/682.ca690d5c.chunk.js": "/So-Yummy/static/js/682.ca690d5c.chunk.js",
     "static/js/284.7b4048e5.chunk.js": "/So-Yummy/static/js/284.7b4048e5.chunk.js",
     "static/css/760.6b3a5c2f.chunk.css": "/So-Yummy/static/css/760.6b3a5c2f.chunk.css",
-    "static/js/760.6115665e.chunk.js": "/So-Yummy/static/js/760.6115665e.chunk.js",
-    "static/css/383.ae561b9e.chunk.css": "/So-Yummy/static/css/383.ae561b9e.chunk.css",
-    "static/js/383.cda64b69.chunk.js": "/So-Yummy/static/js/383.cda64b69.chunk.js",
+    "static/js/760.c3916af6.chunk.js": "/So-Yummy/static/js/760.c3916af6.chunk.js",
+    "static/css/200.bdeafbcf.chunk.css": "/So-Yummy/static/css/200.bdeafbcf.chunk.css",
+    "static/js/200.75fac7b9.chunk.js": "/So-Yummy/static/js/200.75fac7b9.chunk.js",
     "static/css/404.89d65442.chunk.css": "/So-Yummy/static/css/404.89d65442.chunk.css",
     "static/js/404.4b27fb8e.chunk.js": "/So-Yummy/static/js/404.4b27fb8e.chunk.js",
     "static/media/wellcomeImg_2x_min.jpg": "/So-Yummy/static/media/wellcomeImg_2x_min.fe0a2f6fc0029425b34e.jpg",
@@ -46,11 +46,11 @@
     "static/media/navClose.svg": "/So-Yummy/static/media/navClose.d16084c67ed542c79123c1067eed2a20.svg",
     "static/media/headerMenu.svg": "/So-Yummy/static/media/headerMenu.6f96af463fe26f9275a8bb1719d744e3.svg",
     "main.118b0af4.css.map": "/So-Yummy/static/css/main.118b0af4.css.map",
-    "main.623f9cea.js.map": "/So-Yummy/static/js/main.623f9cea.js.map",
+    "main.afbaa706.js.map": "/So-Yummy/static/js/main.afbaa706.js.map",
     "892.88d8bcb2.chunk.css.map": "/So-Yummy/static/css/892.88d8bcb2.chunk.css.map",
     "892.bf5f5cb4.chunk.js.map": "/So-Yummy/static/js/892.bf5f5cb4.chunk.js.map",
     "931.3b264a95.chunk.css.map": "/So-Yummy/static/css/931.3b264a95.chunk.css.map",
-    "931.51703933.chunk.js.map": "/So-Yummy/static/js/931.51703933.chunk.js.map",
+    "931.0a9d6008.chunk.js.map": "/So-Yummy/static/js/931.0a9d6008.chunk.js.map",
     "406.ad953d0d.chunk.js.map": "/So-Yummy/static/js/406.ad953d0d.chunk.js.map",
     "172.b9cecd23.chunk.css.map": "/So-Yummy/static/css/172.b9cecd23.chunk.css.map",
     "172.ad020e45.chunk.js.map": "/So-Yummy/static/js/172.ad020e45.chunk.js.map",
@@ -58,14 +58,14 @@
     "682.ca690d5c.chunk.js.map": "/So-Yummy/static/js/682.ca690d5c.chunk.js.map",
     "284.7b4048e5.chunk.js.map": "/So-Yummy/static/js/284.7b4048e5.chunk.js.map",
     "760.6b3a5c2f.chunk.css.map": "/So-Yummy/static/css/760.6b3a5c2f.chunk.css.map",
-    "760.6115665e.chunk.js.map": "/So-Yummy/static/js/760.6115665e.chunk.js.map",
-    "383.ae561b9e.chunk.css.map": "/So-Yummy/static/css/383.ae561b9e.chunk.css.map",
-    "383.cda64b69.chunk.js.map": "/So-Yummy/static/js/383.cda64b69.chunk.js.map",
+    "760.c3916af6.chunk.js.map": "/So-Yummy/static/js/760.c3916af6.chunk.js.map",
+    "200.bdeafbcf.chunk.css.map": "/So-Yummy/static/css/200.bdeafbcf.chunk.css.map",
+    "200.75fac7b9.chunk.js.map": "/So-Yummy/static/js/200.75fac7b9.chunk.js.map",
     "404.89d65442.chunk.css.map": "/So-Yummy/static/css/404.89d65442.chunk.css.map",
     "404.4b27fb8e.chunk.js.map": "/So-Yummy/static/js/404.4b27fb8e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.118b0af4.css",
-    "static/js/main.623f9cea.js"
+    "static/js/main.afbaa706.js"
   ]
 }

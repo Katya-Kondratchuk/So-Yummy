@@ -20,7 +20,7 @@ import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 const RegisterForm = () => {
   const switchImages = name => {
     switch (name) {
-      case 'name':
+      case 'text':
         return <UserIcon />;
 
       case 'email':
@@ -35,48 +35,52 @@ const RegisterForm = () => {
   };
 
   let registrationSchema = yup.object().shape({
-    username: yup
+    name: yup
       .string()
-      .required('Type your name please')
+      .trim()
+      .matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/)
       .min(1, 'your name must be 1 character at least')
       .max(16, '16 characters max')
-      .matches(/^[a-zа-яA-ZА-Яіє'ї ]+$/, 'Only letters allowed'),
+      .required('Type your name please'),
     email: yup
       .string()
-      .min(1, 'your email must be 1 character at least')
-      .max(16, '16 characters max')
+      .min(5, 'Your password its too short')
       .email('your email must be valid')
       .required('Type your email please'),
     password: yup
       .string()
-      .min(6, 'its too short')
-      .max(16, 'email must be 16 characters max')
       .trim()
+      .min(6, 'Your password its too short')
+      .max(16, 'Your password must be 16 characters max')
+      .matches(/[A-Z]/, 'Your password is little secure.')
       .required('Type your password please'),
   });
-  const myEmailRegex =
-    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  // const myEmailRegex =
+  //   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-  yup.addMethod(yup.string, 'email', function validateEmail(message) {
-    return this.matches(myEmailRegex, {
-      message,
-      name: 'email',
-      excludeEmptyString: true,
-    });
-  });
+  // yup.addMethod(yup.string, 'email', function validateEmail(message) {
+  //   return this.matches(myEmailRegex, {
+  //     message: 'Your email is not valid',
+  //     name: 'email',
+  //     excludeEmptyString: true,
+  //   });
+  // });
   const formik = useFormik({
     initialValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
       confirm: '',
     },
     validationSchema: registrationSchema,
-    onSubmit: (values, { setSubmitting, resetForm }) => {
-      // const { name, email, password } = values;
-      // dispatch(register({ name, email, password }));
-      console.log(formik.values);
-      setSubmitting(false);
+    // onSubmit: (values, { setSubmitting, resetForm }) => {
+    //   const { name, email, password } = values;
+    //   dispatch(register({ name, email, password }));
+    //   console.log(values);
+    //   setSubmitting(false);
+    // },
+    onSubmit: values => {
+      console.log(values);
     },
   });
   const isValid = registrationSchema.isValidSync(formik.values);
@@ -113,15 +117,19 @@ const RegisterForm = () => {
                     isValid={isValid}
                     switchImages={switchImages}
                     placeholder={'name'}
-                    id="standard-required-register-pass"
-                    type={'name'}
+                    id="standard-required-register-name"
+                    type="text"
                     name="name"
+                    formik={formik}
+                    erorr={formik.errors.name}
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.name && formik.errors.name && (
-                    <small>{formik.errors.name}</small>
+                    <small className={css.smallErorr}>
+                      {formik.errors.name}
+                    </small>
                   )}
                 </div>
 
@@ -129,15 +137,18 @@ const RegisterForm = () => {
                   <FormInput
                     switchImages={switchImages}
                     placeholder={'email'}
-                    id="standard-required-register-pass"
-                    type={'email'}
+                    id="standard-required-register-email"
+                    type="email"
                     name="email"
-                    value={formik.values.password}
+                    erorr={formik.errors.email}
+                    value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.email && formik.errors.email && (
-                    <small>{formik.errors.email}</small>
+                    <small className={css.smallErorr}>
+                      {formik.errors.email}
+                    </small>
                   )}
                 </div>
 
@@ -146,19 +157,26 @@ const RegisterForm = () => {
                     switchImages={switchImages}
                     placeholder={'password'}
                     id="standard-required-register-pass"
-                    type={'password'}
+                    type="password"
                     name="password"
+                    erorr={formik.errors.password}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.password && formik.errors.password && (
-                    <small>{formik.errors.password}</small>
+                  {formik.touched.password && formik.errors.password ? (
+                    <small className={css.smallErorr}>
+                      {formik.errors.password}
+                    </small>
+                  ) : (
+                    <small className={css.smallSucsess}>
+                      Password is secure
+                    </small>
                   )}
                 </div>
               </div>
             </UserDataForm>
-            <AuthLinkTo route={'./signin'} routeText={'sign in'} />
+            <AuthLinkTo route="/signin" routeText="sign in" />
           </div>
         </div>
       </div>

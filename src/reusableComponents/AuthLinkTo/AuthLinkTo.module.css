@@ -1,6 +1,6 @@
 .authLinkTo {
   text-transform: capitalize;
-  color: var(--buttonTextColor);
+  color: var(--bgColor);
   font-size: 16px;
   line-height: 1.5;
   position: absolute;

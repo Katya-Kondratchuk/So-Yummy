@@ -9,3 +9,16 @@
 .navLink:hover {
   color: var(--greenColor);
 }
+@media screen and (min-width: 768px) {
+  .navLink {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navLink {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

@@ -19,6 +19,7 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
         },
       })
       .then(response => {
+        console.log(response);
         setMeals(response.data.meals);
       });
   }, [categorie]);
@@ -37,6 +38,7 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
                   image={strMealThumb}
                   altText={strMeal}
                   text={strMeal}
+                  favorite={true}
                 />
               </Link>
             </li>

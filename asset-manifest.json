@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/So-Yummy/static/css/main.9f500115.css",
-    "main.js": "/So-Yummy/static/js/main.7932afe4.js",
+    "main.js": "/So-Yummy/static/js/main.620ad5db.js",
     "static/css/843.7d27a19c.chunk.css": "/So-Yummy/static/css/843.7d27a19c.chunk.css",
     "static/js/843.b59f8735.chunk.js": "/So-Yummy/static/js/843.b59f8735.chunk.js",
     "static/css/899.5180fd93.chunk.css": "/So-Yummy/static/css/899.5180fd93.chunk.css",
@@ -9,8 +9,8 @@
     "static/js/406.ad953d0d.chunk.js": "/So-Yummy/static/js/406.ad953d0d.chunk.js",
     "static/css/878.2dcbde47.chunk.css": "/So-Yummy/static/css/878.2dcbde47.chunk.css",
     "static/js/878.b0ac37eb.chunk.js": "/So-Yummy/static/js/878.b0ac37eb.chunk.js",
-    "static/css/457.186dc26e.chunk.css": "/So-Yummy/static/css/457.186dc26e.chunk.css",
-    "static/js/457.d78ee2b5.chunk.js": "/So-Yummy/static/js/457.d78ee2b5.chunk.js",
+    "static/css/687.4be8d6fe.chunk.css": "/So-Yummy/static/css/687.4be8d6fe.chunk.css",
+    "static/js/687.a3539cba.chunk.js": "/So-Yummy/static/js/687.a3539cba.chunk.js",
     "static/js/284.7b4048e5.chunk.js": "/So-Yummy/static/js/284.7b4048e5.chunk.js",
     "static/css/680.2f280482.chunk.css": "/So-Yummy/static/css/680.2f280482.chunk.css",
     "static/js/680.5f4227cf.chunk.js": "/So-Yummy/static/js/680.5f4227cf.chunk.js",
@@ -18,13 +18,16 @@
     "static/js/200.75fac7b9.chunk.js": "/So-Yummy/static/js/200.75fac7b9.chunk.js",
     "static/css/404.89d65442.chunk.css": "/So-Yummy/static/css/404.89d65442.chunk.css",
     "static/js/404.4b27fb8e.chunk.js": "/So-Yummy/static/js/404.4b27fb8e.chunk.js",
+    "static/media/image2.png": "/So-Yummy/static/media/image2.96239c2e539c8d86422a.png",
     "static/media/wellcomeImg_2x_min.jpg": "/So-Yummy/static/media/wellcomeImg_2x_min.fe0a2f6fc0029425b34e.jpg",
     "static/media/recipeBackgroundDisplay.png": "/So-Yummy/static/media/recipeBackgroundDisplay.dd18011f8833f7891425.png",
     "static/media/wellcomeImg_tablet_2x_min.jpg": "/So-Yummy/static/media/wellcomeImg_tablet_2x_min.d3853ec4c66027b1a58b.jpg",
+    "static/media/image3.png": "/So-Yummy/static/media/image3.ff80c4e2d7b5447cd1d1.png",
     "static/media/recipeBackgroundTablet.png": "/So-Yummy/static/media/recipeBackgroundTablet.f0503269735f0dc79929.png",
     "static/media/wellcomeImg_mobile_2x_min.jpg": "/So-Yummy/static/media/wellcomeImg_mobile_2x_min.354ae3b03cb8fff81a74.jpg",
     "static/media/wellcomeImg_1x_min.jpg": "/So-Yummy/static/media/wellcomeImg_1x_min.d9633fe18061a16e129f.jpg",
     "static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.png": "/So-Yummy/static/media/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473 1.75540e9062e67b9cf779.png",
+    "static/media/image4.png": "/So-Yummy/static/media/image4.a404e2970b86d321441d.png",
     "static/media/wellcomeImg_tablet_1x_min.jpg": "/So-Yummy/static/media/wellcomeImg_tablet_1x_min.6799cf6e0146c992f432.jpg",
     "static/media/recipeBackgroundMobile.png": "/So-Yummy/static/media/recipeBackgroundMobile.fd70f8a076e162de97e0.png",
     "static/media/image.png": "/So-Yummy/static/media/image.8170410ff0413433ebb2.png",
@@ -52,7 +55,7 @@
     "static/media/navClose.svg": "/So-Yummy/static/media/navClose.d16084c67ed542c79123c1067eed2a20.svg",
     "static/media/headerMenu.svg": "/So-Yummy/static/media/headerMenu.6f96af463fe26f9275a8bb1719d744e3.svg",
     "main.9f500115.css.map": "/So-Yummy/static/css/main.9f500115.css.map",
-    "main.7932afe4.js.map": "/So-Yummy/static/js/main.7932afe4.js.map",
+    "main.620ad5db.js.map": "/So-Yummy/static/js/main.620ad5db.js.map",
     "843.7d27a19c.chunk.css.map": "/So-Yummy/static/css/843.7d27a19c.chunk.css.map",
     "843.b59f8735.chunk.js.map": "/So-Yummy/static/js/843.b59f8735.chunk.js.map",
     "899.5180fd93.chunk.css.map": "/So-Yummy/static/css/899.5180fd93.chunk.css.map",
@@ -60,8 +63,8 @@
     "406.ad953d0d.chunk.js.map": "/So-Yummy/static/js/406.ad953d0d.chunk.js.map",
     "878.2dcbde47.chunk.css.map": "/So-Yummy/static/css/878.2dcbde47.chunk.css.map",
     "878.b0ac37eb.chunk.js.map": "/So-Yummy/static/js/878.b0ac37eb.chunk.js.map",
-    "457.186dc26e.chunk.css.map": "/So-Yummy/static/css/457.186dc26e.chunk.css.map",
-    "457.d78ee2b5.chunk.js.map": "/So-Yummy/static/js/457.d78ee2b5.chunk.js.map",
+    "687.4be8d6fe.chunk.css.map": "/So-Yummy/static/css/687.4be8d6fe.chunk.css.map",
+    "687.a3539cba.chunk.js.map": "/So-Yummy/static/js/687.a3539cba.chunk.js.map",
     "284.7b4048e5.chunk.js.map": "/So-Yummy/static/js/284.7b4048e5.chunk.js.map",
     "680.2f280482.chunk.css.map": "/So-Yummy/static/css/680.2f280482.chunk.css.map",
     "680.5f4227cf.chunk.js.map": "/So-Yummy/static/js/680.5f4227cf.chunk.js.map",
@@ -72,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.9f500115.css",
-    "static/js/main.7932afe4.js"
+    "static/js/main.620ad5db.js"
   ]
 }

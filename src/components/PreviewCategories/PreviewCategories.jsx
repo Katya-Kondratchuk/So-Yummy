@@ -6,20 +6,26 @@ import Button from 'reusableComponents/Button/Button';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import { Link } from 'react-router-dom';
 
-axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1';
+//************** */
+
+const instance = axios.create({
+  baseURL: 'https://www.themealdb.com/api/json/v1/1',
+});
+
+//axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1';
 
 const PreviewCategories = ({ categorie = 'Breakfast' }) => {
   const [mainMeals, setMeals] = useState([]);
 
   useEffect(() => {
-    axios
+    instance
       .get('/filter.php?', {
         params: {
           c: `${categorie}`,
         },
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         setMeals(response.data.meals);
       });
   }, [categorie]);
@@ -39,6 +45,7 @@ const PreviewCategories = ({ categorie = 'Breakfast' }) => {
                   altText={strMeal}
                   text={strMeal}
                   favorite={true}
+                  like={false}
                 />
               </Link>
             </li>

@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './DishCard.module.css';
 import { ReactComponent as FavoriteIco } from './fav.svg';
-import { ReactComponent as LikeIco } from './fav.svg';
+import { ReactComponent as LikeIco } from './like.svg';
 
 const DishCard = ({ image, altText, text, favorite, like }) => {
   const favFeel = favorite ? 'white' : 'none';

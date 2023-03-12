@@ -121,6 +121,10 @@ table {
   border-spacing: 0;
 }
 
+.navLink.active {
+  color: var(--greenColor);
+}
+
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;
@@ -150,6 +154,7 @@ table {
   --countBorder: rgba(51, 51, 51, 0.3);
   --recipeText: rgba(0, 0, 0, 0.8);
   --linksHoverColor: #1e1f28;
+  --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
 }
 
 /* :root.themeBlack {

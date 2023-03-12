@@ -75,10 +75,25 @@
   }
   .registrComponent {
     padding-top: 115px;
+    /* padding-top: 31vh; */
     padding-bottom: 95px;
   }
 }
 
+.smallErorr {
+  color: var(--errorColor);
+  font-size: 7px;
+  line-height: 1.7;
+  position: relative;
+  top: -6px;
+}
+.smallSucsess {
+  color: var(--successColor);
+  font-size: 7px;
+  line-height: 1.7;
+  position: relative;
+  top: -6px;
+}
 .authBackgroundImg {
   margin: 0 auto;
   display: inline-block;
@@ -100,6 +115,15 @@
   }
 }
 @media screen and (min-width: 768px) {
+  .smallSucsess {
+    font-size: 14px;
+  }
+  .smallErorr {
+    color: var(--successColor);
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+  }
   .authBackgroundImg {
     height: 606px;
     background-image: url('../../assets/images/authImages/backgroundTablet_1x_min.png');

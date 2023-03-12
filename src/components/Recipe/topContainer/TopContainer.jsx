@@ -1,6 +1,8 @@
 import React from 'react';
 import css from './TopContainer.module.css';
 import Timer from '../../../assets/images/CheckBoxRecipe/Timer.png';
+import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
+import clsx from 'clsx';
 
 const TopContainer = () => {
   return (
@@ -12,7 +14,9 @@ const TopContainer = () => {
           pan seared salmon is layered on top of spinach, avocado, tomatoes, and
           red onions. Then drizzled with a homemade lemon vinaigrette.
         </span>
-        <button className={css.btn}>Add to favorite recipes</button>
+        <div className={clsx(css.btnTxt, css.btn)}>
+          <SuperBtn title="Add to favorite recipes" otln typeBtn="button" />
+        </div>
         <div className={css.dishTime}>
           <img src={Timer} alt="Timer" width="20" height="20" />
           <span className={css.time}>20 min</span>

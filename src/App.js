@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
-import WelcomePage from 'pages/WelcomePage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';

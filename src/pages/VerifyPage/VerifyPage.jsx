@@ -14,7 +14,7 @@ const VerifyPage = () => {
         navigate('/signin', `{ replace }`);
       });
     }
-  }, [dispatch, verificationToken]);
+  }, [dispatch, verificationToken, navigate]);
 
   return (
     <div>Checking the correctness of the verification code! Wait, please!</div>

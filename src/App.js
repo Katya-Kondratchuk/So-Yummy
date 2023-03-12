@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
 import WelcomePage from 'pages/WelcomePage';
 import RegisterPage from 'pages/RegisterPage';
@@ -24,11 +24,11 @@ const RecipiesPage = lazy(() => import('pages/RecipiesPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <div>

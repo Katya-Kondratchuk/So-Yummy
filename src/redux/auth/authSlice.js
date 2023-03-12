@@ -6,6 +6,7 @@ import {
   refreshUser,
   registerUser,
   verificationUser,
+  verifyResendEmail,
 } from './authOperation';
 
 const initialState = {
@@ -47,6 +48,12 @@ export const authSlice = createSlice({
       })
       .addCase(verificationUser.rejected, handlerRejected)
 
+      .addCase(verifyResendEmail.pending, handlerPending)
+      .addCase(verifyResendEmail.fulfilled, (state, _) => {
+        state.loadind = false;
+      })
+      .addCase(verifyResendEmail.rejected, handlerRejected)
+
       .addCase(loginUser.pending, handlerPending)
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.user.name = payload.user.name;
@@ -64,15 +71,13 @@ export const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.isLoggedIn = true;
-        state.refreshToken = payload.newRefreshToken;
-        state.sid = payload.sid;
         state.isRefreshUser = false;
+        state.refreshToken = payload;
       })
       .addCase(refreshUser.rejected, (state, { payload }) => {
         state.refreshToken = '';
-        state.sid = '';
-        state.error = payload;
         state.isRefreshUser = false;
+        state.error = payload;
       })
 
       .addCase(logoutUser.pending, handlerPending)
@@ -98,8 +103,7 @@ export const authSlice = createSlice({
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.name = payload.name;
-        state.user.userData = payload.userData;
-        state.user.id = payload.id;
+        state.user.avatarURL = payload.avatarURL;
         state.loadind = false;
       })
       .addCase(getUserInfo.rejected, handlerRejected);

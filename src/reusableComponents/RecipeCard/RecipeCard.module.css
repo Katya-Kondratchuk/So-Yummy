@@ -1,5 +1,5 @@
 .dish {
-  width: calc(343px - 32px);
+  width: calc(375px - 32px);
   min-width: 343px;
   padding: 14px;
   text-align: center;
@@ -96,7 +96,7 @@
 
 @media screen and (min-width: 768px) {
   .dish {
-    width: calc(704px - 64px);
+    width: calc(768px - 64px);
     padding: 28px 24px;
   }
   .dish:not(:last-child) {

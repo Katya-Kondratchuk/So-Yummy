@@ -1,33 +1,16 @@
 // import React, { useState } from 'react';
 import FormInput from '../../reusableComponents/FormInput/FormInput';
-import { ReactComponent as UserIcon } from '../../assets/images/formInputIcons/user.svg';
-import { ReactComponent as MailIcon } from '../../assets/images/formInputIcons/mail.svg';
-import { ReactComponent as LockIcon } from '../../assets/images/formInputIcons/lock.svg';
 import css from './SigninForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import switchImages from '../../services/switchImages';
+
 // import { useDispatch, useSelector } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 const SigninForm = () => {
-  const switchImages = name => {
-    switch (name) {
-      case 'text':
-        return <UserIcon />;
-
-      case 'email':
-        return <MailIcon />;
-
-      case 'password':
-        return <LockIcon />;
-
-      default:
-        return <UserIcon className={css.img} />;
-    }
-  };
-
   let registrationSchema = yup.object().shape({
     name: yup
       .string()
@@ -107,10 +90,12 @@ const SigninForm = () => {
                 <div className={css.formIinputFormat}>
                   <FormInput
                     switchImages={switchImages}
+                    erorr={formik.errors.email}
                     placeholder={'email'}
                     id="standard-required-register-email"
                     type="email"
                     name="email"
+                    formInputArea={css.formInputArea}
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -122,7 +107,9 @@ const SigninForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    erorr={formik.errors.password}
                     switchImages={switchImages}
+                    formInputArea={css.formInputArea}
                     placeholder={'password'}
                     id="standard-required-register-pass"
                     type="password"

@@ -1,10 +1,3 @@
-.formArea {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: inline-block;
-  background-color: var(--modalBg);
-}
 .formIcon {
   position: absolute;
   top: 13.5px;
@@ -76,6 +69,11 @@
 .formInputInsecure:focus {
   border: 1px solid var(--warningColor);
 }
+
+.formInputUsername {
+  border: 1px solid var(--secondaryTextColor);
+}
+
 @media screen and (min-width: 768px) {
   .formArea {
     width: 400px;

@@ -6,6 +6,11 @@ import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import SharedLayout from 'components/SharedLayout';
+import { ToastContainer } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/authOperation';
+import VerifyPage from 'pages/VerifyPage';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
@@ -19,9 +24,23 @@ const RecipiesPage = lazy(() => import('pages/RecipiesPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
+
   return (
     <div>
+      <ToastContainer position="top-right" autoClose={3000} theme="light" />
+
       <Routes>
+        <Route
+          path="/verification-token/:verificationToken"
+          element={
+            <PublicRoute component={<VerifyPage />} redirectTo="/main" />
+          }
+        />
         <Route
           path="/"
           element={<PublicRoute component={<WelcomePage />} redirectTo="/" />}

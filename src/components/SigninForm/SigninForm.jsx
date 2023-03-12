@@ -1,27 +1,21 @@
-// import React, { useState } from 'react';
 import FormInput from '../../reusableComponents/FormInput/FormInput';
 import css from './SigninForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
+import { loginUser } from 'redux/auth/authOperation';
+
 const SigninForm = () => {
-  let registrationSchema = yup.object().shape({
-    name: yup
-      .string()
-      .required('Type your name please')
-      .min(1, 'your name must be 1 character at least')
-      .max(16, '16 characters max')
-      .matches(/^[a-zа-яA-ZА-Яіє'ї ]+$/, 'Only letters allowed'),
+  const dispatch = useDispatch();
+  let signinSchema = yup.object().shape({
     email: yup
       .string()
       .min(1, 'your email must be 1 character at least')
-      .max(16, '16 characters max')
       .email('your email must be valid')
       .required('Type your email please'),
     password: yup
@@ -48,18 +42,14 @@ const SigninForm = () => {
       password: '',
       confirm: '',
     },
-    validationSchema: registrationSchema,
-    // onSubmit: (values, { setSubmitting, resetForm }) => {
-    //   const { name, email, password } = values;
-    //   dispatch(register({ name, email, password }));
-    //   console.log(values);
-    //   setSubmitting(false);
-    // },
-    onSubmit: values => {
-      console.log(values);
+    validationSchema: signinSchema,
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      const { email, password } = values;
+      dispatch(loginUser({ email, password }));
+      setSubmitting(false);
     },
   });
-  // const isValid = registrationSchema.isValidSync(formik.values);
+  // const isValid = signinSchema.isValidSync(formik.values);
   // const [inputValue, setInputValue] = useState('');
 
   // const handleInputChange = event => {
@@ -82,7 +72,7 @@ const SigninForm = () => {
             </div>
             <UserDataForm
               initialValues={formik.initialValues}
-              schema={registrationSchema}
+              schema={signinSchema}
               buttonLabel={'Sign Up'}
               formik={formik}
             >

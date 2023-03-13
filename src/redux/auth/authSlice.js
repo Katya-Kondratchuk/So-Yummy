@@ -13,7 +13,7 @@ const initialState = {
   user: { name: '', email: '', avatarURL: '' },
   refreshToken: '',
   loadind: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshUser: false,
   error: null,
 };

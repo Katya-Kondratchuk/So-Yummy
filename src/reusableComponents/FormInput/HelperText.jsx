@@ -1,16 +1,11 @@
 import css from './HelperText.module.css';
 
-const HelperText = ({ errorText, text = ' ' }) => {
-  // console.log(errorText);
-  return (
-    <>
-      {errorText ? (
-        <small className={css.smallEror}> {errorText} </small>
-      ) : (
-        <small className={css.smallSucsess}>{text}</small>
-      )}
-    </>
-  );
+const HelperText = ({ value = '', errorText = '', textSucsess = '' }) => {
+  if (value && errorText) {
+    return <small className={css.smallEror}> {errorText} </small>;
+  } else if (value && !errorText) {
+    return <small className={css.smallSucsess}>{textSucsess}</small>;
+  } else return <small></small>;
 };
 
 export default HelperText;

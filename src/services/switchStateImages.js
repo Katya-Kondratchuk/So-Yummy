@@ -3,27 +3,8 @@ import { ReactComponent as WarningIcon } from '../assets/images/formInputIcons/w
 import { ReactComponent as ErorrIcon } from '../assets/images/formInputIcons/erorr.svg';
 import { ReactComponent as EditIcon } from '../assets/images/formInputIcons/erorr.svg';
 
-//   const switchStateImages = name => {
-//     switch (name) {
-//       case 'sucsess':
-//         return <SucsessIcon />;
-
-//       case 'warning':
-//         return <WarningIcon />;
-
-//       case 'erorr':
-//         return <ErorrIcon />;
-
-//       case 'edit':
-//         return <ErorrIcon />;
-
-//       default:
-//         return <EditIcon />;
-//     }
-//   };
-
 const switchStateImages = (erorr, value, edit) => {
-  if (erorr === 'Your password is little secure.') {
+  if (erorr === 'Your password is little secure. Add a capital letter.') {
     return <WarningIcon />;
   } else if (erorr) {
     return <ErorrIcon />;

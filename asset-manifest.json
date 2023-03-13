@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/So-Yummy/static/css/main.82072120.css",
-    "main.js": "/So-Yummy/static/js/main.cf29a03a.js",
+    "main.css": "/So-Yummy/static/css/main.820fc846.css",
+    "main.js": "/So-Yummy/static/js/main.41bd04ec.js",
     "static/css/892.10e483a6.chunk.css": "/So-Yummy/static/css/892.10e483a6.chunk.css",
     "static/js/892.acd4edc8.chunk.js": "/So-Yummy/static/js/892.acd4edc8.chunk.js",
-    "static/css/931.76b33420.chunk.css": "/So-Yummy/static/css/931.76b33420.chunk.css",
+    "static/css/931.6ce1c59d.chunk.css": "/So-Yummy/static/css/931.6ce1c59d.chunk.css",
     "static/js/931.3b8ee1ed.chunk.js": "/So-Yummy/static/js/931.3b8ee1ed.chunk.js",
     "static/css/991.95eac4d2.chunk.css": "/So-Yummy/static/css/991.95eac4d2.chunk.css",
     "static/js/991.5c952dc4.chunk.js": "/So-Yummy/static/js/991.5c952dc4.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/120.b289a20c.chunk.js": "/So-Yummy/static/js/120.b289a20c.chunk.js",
     "static/css/284.acfe473a.chunk.css": "/So-Yummy/static/css/284.acfe473a.chunk.css",
     "static/js/284.fdb48353.chunk.js": "/So-Yummy/static/js/284.fdb48353.chunk.js",
-    "static/css/433.e4bb85b5.chunk.css": "/So-Yummy/static/css/433.e4bb85b5.chunk.css",
+    "static/css/433.d7b1df75.chunk.css": "/So-Yummy/static/css/433.d7b1df75.chunk.css",
     "static/js/433.fdba6741.chunk.js": "/So-Yummy/static/js/433.fdba6741.chunk.js",
     "static/css/200.0526093b.chunk.css": "/So-Yummy/static/css/200.0526093b.chunk.css",
     "static/js/200.7bb911c0.chunk.js": "/So-Yummy/static/js/200.7bb911c0.chunk.js",
@@ -67,15 +67,15 @@
     "static/media/magnifyingGlass.svg": "/So-Yummy/static/media/magnifyingGlass.2d6c8eb4d03192b8ece8dd107cf5062e.svg",
     "static/media/navClose.svg": "/So-Yummy/static/media/navClose.d16084c67ed542c79123c1067eed2a20.svg",
     "static/media/close.svg": "/So-Yummy/static/media/close.a4fa4b781ec8efd974608a11c930d19c.svg",
-    "static/media/headerMenu.svg": "/So-Yummy/static/media/headerMenu.6f96af463fe26f9275a8bb1719d744e3.svg",
     "static/media/decrease.svg": "/So-Yummy/static/media/decrease.fc2439265e0e7f523ec586d3ebb41865.svg",
+    "static/media/headerMenu.svg": "/So-Yummy/static/media/headerMenu.03946b1d0051aebc6abfeb3aeac74e41.svg",
     "static/media/increase.svg": "/So-Yummy/static/media/increase.41c21a02084792062685394d4d64f5c1.svg",
     "static/media/chevron-down.svg": "/So-Yummy/static/media/chevron-down.e960312ea6d2d0e9d93589eb95b17eea.svg",
-    "main.82072120.css.map": "/So-Yummy/static/css/main.82072120.css.map",
-    "main.cf29a03a.js.map": "/So-Yummy/static/js/main.cf29a03a.js.map",
+    "main.820fc846.css.map": "/So-Yummy/static/css/main.820fc846.css.map",
+    "main.41bd04ec.js.map": "/So-Yummy/static/js/main.41bd04ec.js.map",
     "892.10e483a6.chunk.css.map": "/So-Yummy/static/css/892.10e483a6.chunk.css.map",
     "892.acd4edc8.chunk.js.map": "/So-Yummy/static/js/892.acd4edc8.chunk.js.map",
-    "931.76b33420.chunk.css.map": "/So-Yummy/static/css/931.76b33420.chunk.css.map",
+    "931.6ce1c59d.chunk.css.map": "/So-Yummy/static/css/931.6ce1c59d.chunk.css.map",
     "931.3b8ee1ed.chunk.js.map": "/So-Yummy/static/js/931.3b8ee1ed.chunk.js.map",
     "991.95eac4d2.chunk.css.map": "/So-Yummy/static/css/991.95eac4d2.chunk.css.map",
     "991.5c952dc4.chunk.js.map": "/So-Yummy/static/js/991.5c952dc4.chunk.js.map",
@@ -85,7 +85,7 @@
     "120.b289a20c.chunk.js.map": "/So-Yummy/static/js/120.b289a20c.chunk.js.map",
     "284.acfe473a.chunk.css.map": "/So-Yummy/static/css/284.acfe473a.chunk.css.map",
     "284.fdb48353.chunk.js.map": "/So-Yummy/static/js/284.fdb48353.chunk.js.map",
-    "433.e4bb85b5.chunk.css.map": "/So-Yummy/static/css/433.e4bb85b5.chunk.css.map",
+    "433.d7b1df75.chunk.css.map": "/So-Yummy/static/css/433.d7b1df75.chunk.css.map",
     "433.fdba6741.chunk.js.map": "/So-Yummy/static/js/433.fdba6741.chunk.js.map",
     "200.0526093b.chunk.css.map": "/So-Yummy/static/css/200.0526093b.chunk.css.map",
     "200.7bb911c0.chunk.js.map": "/So-Yummy/static/js/200.7bb911c0.chunk.js.map",
@@ -95,7 +95,7 @@
     "362.0e06c07c.chunk.js.map": "/So-Yummy/static/js/362.0e06c07c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.82072120.css",
-    "static/js/main.cf29a03a.js"
+    "static/css/main.820fc846.css",
+    "static/js/main.41bd04ec.js"
   ]
 }

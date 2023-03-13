@@ -5,9 +5,9 @@ const DishCard = ({ image, altText, text }) => {
   return (
     <div className={css.cardContainer}>
       <img src={image} alt={altText} className={css.image} />
-      {/* <div className={css.textContainer}>
+      <div className={css.textContainer}>
         <p className={css.text}>{text}</p>
-      </div> */}
+      </div>
     </div>
   );
 };

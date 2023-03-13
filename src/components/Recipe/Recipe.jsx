@@ -1,4 +1,5 @@
-import React from 'react';
+// import React, { useState } from 'react';
+import { useParams } from 'react-router';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
 
 import css from './Recipe.module.css';
@@ -31,6 +32,9 @@ const dish = {
 };
 
 const Recipe = () => {
+  const { recipeId } = useParams();
+  // const [recipe, setRecipe] = useState();
+  console.log(recipeId);
   return (
     <>
       <TopContainer />

@@ -43,6 +43,14 @@
   width: 279px;
   height: 45px;
 }
+.smallWarning {
+  color: var(--warningColor);
+  font-size: 10px;
+  line-height: 1.7;
+  position: relative;
+  top: -3px;
+  left: 5px;
+}
 @media screen and (min-width: 768px) {
   .registrComponent {
     padding-top: 96px;
@@ -70,6 +78,11 @@
   .formFromat {
     margin-bottom: 50px;
   }
+  .smallWarning {
+    font-size: 14px;
+    top: 0;
+    left: 5px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .registrFormatting {
@@ -78,59 +91,10 @@
     justify-content: center;
   }
   .registrComponent {
-    padding-top: 115px;
+    padding-top: 31vh;
     padding-bottom: 95px;
   }
   .registrForm {
     top: 40px;
-  }
-}
-
-.authBackgroundImg {
-  margin: 0 auto;
-  display: inline-block;
-  width: 100%;
-  height: 490px;
-  position: absolute;
-  bottom: 0;
-
-  background-size: cover;
-  z-index: -1;
-  background-position: 50% 0;
-  background-image: url('../../assets/images/authImages/backgroundMobile_1x_min.png');
-}
-@media screen and (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .authBackgroundImg {
-    background-image: url('../../assets/images/authImages/backgroundMobile_2x_min.png');
-  }
-}
-@media screen and (min-width: 768px) {
-  .authBackgroundImg {
-    height: 606px;
-    background-image: url('../../assets/images/authImages/backgroundTablet_1x_min.png');
-  }
-
-  @media screen and (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .authBackgroundImg {
-      background-image: url('../../assets/images/authImages/backgroundTablet_2x_min.png');
-    }
-  }
-}
-@media screen and (min-width: 1440px) {
-  .authBackgroundImg {
-    height: 325px;
-    background-image: url('../../assets/images/authImages/backgroundDesktop_1x_min.png');
-  }
-
-  @media screen and (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .authBackgroundImg {
-      background-image: url('../../assets/images/authImages/backgroundDesktop_2x_min.png');
-    }
   }
 }

@@ -13,6 +13,11 @@
   transition: color 0.5s ease, background-color 0.5s ease;
 }
 
+.normalButton:disabled {
+  background-color: var(--secondaryGreyTextColorTransparent);
+  color: var(--bgColor);
+  cursor: not-allowed;
+}
 .normalButton:focus,
 .normalButton:hover {
   outline: none;

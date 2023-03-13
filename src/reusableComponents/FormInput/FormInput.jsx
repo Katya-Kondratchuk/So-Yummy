@@ -14,17 +14,13 @@ const FormInput = ({
   formInputArea,
   userName,
 }) => {
-  // const inputClassState = !isValid
-  //   ? `${css.formInput} ${css.formInputValid}`
-  //   : `${css.formInput} ${css.formInputInsecure}`;
-
   const getColor = (
     erorr,
     value,
     userName,
     defaultColor = `${css.formInputUser}`,
   ) => {
-    if (erorr === 'Your password is little secure.') {
+    if (erorr === 'Your password is little secure. Add a capital letter.') {
       return `${css.formInput} ${css.formInputInsecure}`;
     } else if (erorr) {
       return `${css.formInput} ${css.formInputInvalid}`;
@@ -51,17 +47,6 @@ const FormInput = ({
       <span className={css.formStateIcon}>
         {switchStateImages(erorr, value, edit)}{' '}
       </span>
-
-      {/* {!erorr && value && <SucsessIcon className={css.formStateIcon} />}
-      {erorr && value && (
-        <button
-          className={css.clearButton}
-          onClick={handleClearClick}
-          type="button"
-        >
-          <ErorrIcon className={css.formStateIcon} />
-        </button>
-      )} */}
     </div>
   );
 };

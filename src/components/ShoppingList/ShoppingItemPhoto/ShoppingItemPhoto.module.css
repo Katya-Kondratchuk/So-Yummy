@@ -9,14 +9,11 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    width: 144px;
-    height: 146px;
+    min-width: 93px;
+    height: 97px;
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .wrapper {
-    width: 180px;
-    height: 180px;
-  }
+.image {
+  border-radius: 6px;
 }

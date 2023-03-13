@@ -30,7 +30,7 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINT.REGISTER,
         credentials,
       );
-      toast(
+      toast.success(
         `You successfully registered, ${normalizeName(
           data.user.name,
         )}!Check email for verification!`,

@@ -1,7 +1,7 @@
 import React from 'react';
 import ShoppingItem from './ShoppingItem/ShoppingItem';
 
-// import css from './ShoppingList.module.css';
+import css from './ShoppingList.module.css';
 import TitleShoppingList from './TitleShoppingList/TitleShoppingList';
 
 const dish = {
@@ -32,24 +32,26 @@ const dish = {
 
 const ShoppingList = () => {
   return (
-    <div>
-      <span>Shopping list</span>
+    <div className="container">
+      <div className={css.title}>Shopping list</div>
       <TitleShoppingList />
-      <ShoppingItem
-        image={dish.image}
-        name={dish.strIngredient1}
-        text={dish.strMeasure1}
-      />
-      <ShoppingItem
-        image={dish.image}
-        name={dish.strIngredient1}
-        text={dish.strMeasure1}
-      />
-      <ShoppingItem
-        image={dish.image}
-        name={dish.strIngredient1}
-        text={dish.strMeasure1}
-      />
+      <div className={css.shoppingItemList}>
+        <ShoppingItem
+          image={dish.image}
+          name={dish.strIngredient1}
+          text={dish.strMeasure1}
+        />
+        <ShoppingItem
+          image={dish.image}
+          name={dish.strIngredient1}
+          text={dish.strMeasure1}
+        />
+        <ShoppingItem
+          image={dish.image}
+          name={dish.strIngredient1}
+          text={dish.strMeasure1}
+        />
+      </div>
     </div>
   );
 };

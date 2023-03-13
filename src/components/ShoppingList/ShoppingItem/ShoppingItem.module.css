@@ -12,9 +12,8 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     width: 704px;
-    height: 178px;
-    padding: 16px;
-    padding-left: 24px;
+    height: 140px;
+    padding-right: 45px;
     margin-top: 24px;
   }
 }
@@ -23,7 +22,8 @@
     width: 1240px;
     height: 182px;
     padding: 0;
-    padding-left: 32px;
+    padding-right: 68px;
+    padding-left: 40px;
   }
 }
 
@@ -32,6 +32,16 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 227px;
+}
+@media screen and (min-width: 768px) {
+  .leftWrapper {
+    width: 461px;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .leftWrapper {
+    width: 870px;
+  }
 }
 
 .button {

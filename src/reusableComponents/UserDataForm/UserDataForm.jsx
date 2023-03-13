@@ -1,5 +1,6 @@
 import React from 'react';
-import ConfirmButton from '../Button/Button';
+import Button from '../Button/Button';
+import css from './UserDataForm.module.css';
 
 const UserDataForm = ({
   children,
@@ -12,23 +13,23 @@ const UserDataForm = ({
     <div className={yourClassName}>
       <form onSubmit={formik.handleSubmit}>
         {children}
-        <ConfirmButton
-          // yourClassName={css.confirmButton}
-          label={buttonLabel}
-          // onClick = {}
-          // disabled
-          backgroundColor={'var(--greenColor)'}
-          color={'var(--buttonTextColor)'}
-          type={'submit'}
 
-          // disabled={loading || !isValid}
-        >
-          {/* {loading ? <LoadingSpiner /> : t('auth.title.register')} */}
-        </ConfirmButton>
         {/* <LinkyStyled
         to="/login"
       >
       </LinkyStyled> */}
+        <Button
+          // yourClassName={css.confirmButton}
+          label={buttonLabel}
+          // onClick = {}
+          // disabled
+          divClassName={css.divButtonClass}
+          backgroundColor={'var(--greenColor)'}
+          color={'var(--bgColor)'}
+          type={'submit'}
+
+          // disabled={loading || !isValid}
+        />
       </form>
     </div>
   );

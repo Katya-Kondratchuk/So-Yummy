@@ -5,19 +5,18 @@
   line-height: 14px;
   letter-spacing: -0.02em;
   color: var(--mainTextColor);
-  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 768px) {
   .TitleRecip {
     font-size: 24px;
-      line-height: 24px;
+    line-height: 24px;
   }
 }
 
-/* @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .TitleRecip {
     font-size: 24px;
-      line-height: 24px;
+    line-height: 24px;
   }
-} */
+}

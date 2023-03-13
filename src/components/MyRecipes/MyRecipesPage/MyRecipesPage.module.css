@@ -1,81 +1,122 @@
-.container {
-    max-width: 375px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin: 0 auto;
+.myRecipe {
+  padding-bottom: 100px;
+}
+
+.wrapperFirst {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.wrapperSecond {
+  display: flex;
+  flex-grow: 2;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .cardContainer {
-    display: flex;
+  display: flex;
 }
 
 .cardContainer2 {
-    width: 209px;
-    height: 152px;
-    padding: 40px;
-    position: relative;
-   
+  width: 209px;
+  height: 152px;
+  padding: 14px;
+  padding-right: 8px;
+  position: relative;
+  background-color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
 }
 
-.cardContainer3 {
-   top: 40px;
-   right: 40px;
-    position: absolute;
-
-}
 .cardContainer4 {
-    bottom: 15px;
-    right: 40px;
-    position: absolute;
-
+  bottom: 15px;
+  right: 40px;
+  position: absolute;
 }
 
- .cardList {
-    display: flex;
-    margin-top: 25px;
-    justify-content: space-between;
-    padding-bottom: 25px;
+.cardList {
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
-
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
-        .cardContainer2 {
-            width: 446px;
-            height: 288px;
-        }
+.cardItem {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media screen and (min-width: 1440px) {
-    .container {
-        max-width: 1440px;
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-        .cardContainer2 {
-            width: 886px;
-            height: 372px;
-        }
+.cardItem:not(:last-child) {
+  margin-bottom: 18px;
 }
-
 
 .pageNumbers {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pageNumbers li {
-    padding: 10px;
-    border: 1px solid blue;
-    cursor: pointer;
+  padding: 10px;
+  border: 1px solid blue;
+  cursor: pointer;
 }
 
+.btnWrapper {
+  width: 87px;
+  height: 27px;
+}
 
+@media screen and (min-width: 768px) {
+  .myRecipe {
+    padding-bottom: 200px;
+  }
 
+  .btnWrapper {
+    width: 138px;
+    height: 45px;
+  }
 
+  .cardContainer2 {
+    width: 446px;
+    height: 288px;
+    padding: 28px;
+  }
+
+  .cardItem:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .cardList {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .btnWrapper {
+    width: 172px;
+    height: 59px;
+  }
+
+  .myRecipe {
+    padding-bottom: 100px;
+  }
+
+  .cardContainer2 {
+    width: 886px;
+    height: 372px;
+    padding: 40px;
+  }
+
+  .cardItem:not(:last-child) {
+    margin-bottom: 50px;
+  }
+
+  .wrapperFirst {
+    margin-bottom: 30px;
+  }
+}

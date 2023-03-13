@@ -18,8 +18,11 @@ const Search = () => {
   return (
     <div className="container">
       <Title text={'Search'} />
-      <SearchInput />
-      <SearchTypeSelector />
+      <div className={css.searchContainer}>
+        <SearchInput />
+        <SearchTypeSelector />
+      </div>
+
       <ul className={css.searchList}>
         {arr.map(item => (
           <li key={id()} className={css.searchItem}>

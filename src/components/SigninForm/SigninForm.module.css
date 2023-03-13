@@ -1,0 +1,136 @@
+.registrComponent {
+  padding-top: 87px;
+  padding-bottom: 153px;
+}
+.formInputArea {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: var(--modalBg);
+}
+.registrForm {
+  max-width: 335px;
+  background: var(--modalBg);
+  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 32px 28px 40px 28px;
+  position: relative;
+  top: -28px;
+}
+.registrFormatting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.registrationTitleFormat {
+  margin-bottom: 18px;
+  position: relative;
+}
+.formIinputFormat:not(:last-child) {
+  margin-bottom: 15px;
+}
+.formFromat {
+  margin-bottom: 20px;
+}
+.formIinputFormat {
+  width: 285px;
+  height: 45px;
+}
+
+.confirmButton {
+  width: 279px;
+  height: 45px;
+}
+@media screen and (min-width: 768px) {
+  .registrComponent {
+    padding-top: 96px;
+    padding-bottom: 47px;
+  }
+  .formIinputFormat {
+    width: 400px;
+    height: 59px;
+  }
+  .confirmButton {
+    width: 400px;
+    height: 59px;
+  }
+  .registrForm {
+    max-width: 500px;
+    padding: 44px 50px;
+    top: -12px;
+  }
+  .registrationTitleFormat {
+    margin-bottom: 32px;
+  }
+  .formIinputFormat:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  .formFromat {
+    margin-bottom: 50px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .registrFormatting {
+    gap: 115px;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .registrComponent {
+    padding-top: 115px;
+    padding-bottom: 95px;
+  }
+  .registrForm {
+    top: 40px;
+  }
+}
+
+.authBackgroundImg {
+  margin: 0 auto;
+  display: inline-block;
+  width: 100%;
+  height: 490px;
+  position: absolute;
+  bottom: 0;
+
+  background-size: cover;
+  z-index: -1;
+  background-position: 50% 0;
+  background-image: url('../../assets/images/authImages/backgroundMobile_1x_min.png');
+}
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .authBackgroundImg {
+    background-image: url('../../assets/images/authImages/backgroundMobile_2x_min.png');
+  }
+}
+@media screen and (min-width: 768px) {
+  .authBackgroundImg {
+    height: 606px;
+    background-image: url('../../assets/images/authImages/backgroundTablet_1x_min.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .authBackgroundImg {
+      background-image: url('../../assets/images/authImages/backgroundTablet_2x_min.png');
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .authBackgroundImg {
+    height: 325px;
+    background-image: url('../../assets/images/authImages/backgroundDesktop_1x_min.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .authBackgroundImg {
+      background-image: url('../../assets/images/authImages/backgroundDesktop_2x_min.png');
+    }
+  }
+}

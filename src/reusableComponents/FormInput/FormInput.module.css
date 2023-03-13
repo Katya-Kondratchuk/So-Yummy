@@ -1,20 +1,15 @@
-.formArea {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: inline-block;
-  background-color: var(--modalBg);
-}
 .formIcon {
   position: absolute;
-  top: 16px;
-  left: 18px;
+  top: 13.5px;
+  left: 14px;
   stroke: var(--whiteColor);
   opacity: 0.8;
+  width: 18px;
+  height: 18px;
 }
 .formStateIcon {
   position: absolute;
-  top: 20px;
+  top: 12.5px;
   right: 18px;
 }
 .formInput {
@@ -26,7 +21,7 @@
   border-radius: 6px;
   outline: none;
   background-color: transparent;
-  padding-left: 50px;
+  padding-left: 40px;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -41,10 +36,10 @@
   color: var(--whiteColor);
 }
 
-/* .formInput:valid + .formIcon * {
+.formInputValid + .formIcon * {
   stroke: var(--successColor);
-} */
-.formInput:invalid + .formIcon * {
+}
+.formInputInvalid + .formIcon * {
   stroke: var(--errorColor);
 }
 .formInput::placeholder {
@@ -52,19 +47,49 @@
   text-transform: capitalize;
   opacity: 0.8;
 }
-/* .formInput:valid {
+.formInputValid {
   color: var(--successColor);
   border: 1px solid var(--successColor);
-} */
-.formInput:invalid {
+}
+.formInputInvalid {
   border: 1px solid var(--errorColor);
 }
+.formInputInvalid:hover,
+.formInputInvalid:focus {
+  border: 1px solid var(--errorColor);
+}
+.formInputValid:hover,
+.formInputValid:focus {
+  border: 1px solid var(--successColor);
+}
+.formInputInsecure {
+  border: 1px solid var(--warningColor);
+}
+.formInputInsecure:hover,
+.formInputInsecure:focus {
+  border: 1px solid var(--warningColor);
+}
+
+.formInputUsername {
+  border: 1px solid var(--secondaryTextColor);
+}
+
 @media screen and (min-width: 768px) {
   .formArea {
     width: 400px;
   }
   .formInput {
     font-size: 18px;
+    padding-left: 50px;
+  }
+  .formIcon {
+    top: 16px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  }
+  .formStateIcon {
+    top: 20px;
   }
 }
 .clearButton {

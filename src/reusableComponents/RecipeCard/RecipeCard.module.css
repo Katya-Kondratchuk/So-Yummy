@@ -1,38 +1,68 @@
 .dish {
+  width: calc(375px - 32px);
+  min-width: 343px;
+  padding: 14px;
   text-align: center;
   display: flex;
   justify-content: space-between;
-  background-color: #dbf59d;
   border-radius: 8px;
+  background-color: var(--whiteColor);
+}
+
+.dish:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+.dish:first-child {
+  margin-top: 50px;
+}
+
+.dish:last-child {
+  margin-bottom: 40px;
 }
 
 .dishImg {
-  height: 324px;
-  width: 318px;
+  height: 124px;
+  width: 124px;
   border-radius: 8px;
 }
 
 .trashLogo {
   display: block;
-  background-color: #61dafb;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .dishTitle {
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
   margin: 0;
   vertical-align: top;
+  text-align: left;
 }
 
 .dishDiscriptionFirst,
 .dishDiscriptionSecond {
   margin: 0;
-
   text-align: left;
   line-height: 1.3;
 }
 
+.dishDiscriptionFirst {
+  width: 173px;
+  height: 57px;
+  font-size: 8px;
+  line-height: 1.25;
+}
+.dishDiscriptionSecond {
+  display: none;
+}
+
 .dishTime {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 500;
   line-height: 1.4;
   display: flex;
   align-items: flex-end;
@@ -41,18 +71,20 @@
 
 .dishButton {
   display: none;
-  background-color: blue;
 }
 
 .titleWrapper {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 14px;
 }
 
 .cardWrapper {
+  width: 179px;
   display: flex;
   flex-direction: column;
-  background-color: #8eb87d75;
+  margin-left: 14px;
+  position: relative;
 }
 
 .bottomWrapper {
@@ -64,12 +96,17 @@
 
 @media screen and (min-width: 768px) {
   .dish {
-    width: calc(100% - 48px);
-    min-width: 704px;
+    width: calc(768px - 64px);
     padding: 28px 24px;
   }
   .dish:not(:last-child) {
     margin-bottom: 40px;
+  }
+  .dish:first-child {
+    margin-top: 100px;
+  }
+  .dish:last-child {
+    margin-bottom: 50px;
   }
   .dishImg {
     height: 232px;
@@ -79,6 +116,7 @@
     margin-bottom: 18px;
     height: 38px;
     width: 38px;
+    position: unset;
   }
   .dishTitle {
     font-size: 24px;
@@ -101,19 +139,24 @@
     height: 45px;
     display: block;
   }
+  .dishTime {
+    font-size: 14px;
+    line-height: 1.42;
+  }
   .cardWrapper {
     width: 656px;
     margin-left: 24px;
+    position: unset;
+  }
+  .titleWrapper {
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .dish {
-    min-width: 1240px;
-    width: calc(100% - 80px);
+    width: calc(1440px - 200px);
     padding: 40px;
-  }
-  .dish:not(:last-child) {
     margin-bottom: 50px;
   }
   .dishImg {

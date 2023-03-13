@@ -1,28 +1,59 @@
 import css from './FormInput.module.css';
-import { ReactComponent as SucsessIcon } from '../../assets/images/formInputIcons/sucsess.svg';
-import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
+import switchStateImages from 'services/switchStateImages';
 const FormInput = ({
   placeholder,
   type,
   switchImages,
   handleClearClick,
-  isValid,
   onBlur,
   onChange,
+  name,
+  erorr,
+  value,
+  edit,
+  formInputArea,
+  userName,
 }) => {
+  // const inputClassState = !isValid
+  //   ? `${css.formInput} ${css.formInputValid}`
+  //   : `${css.formInput} ${css.formInputInsecure}`;
+
+  const getColor = (
+    erorr,
+    value,
+    userName,
+    defaultColor = `${css.formInputUser}`,
+  ) => {
+    if (erorr === 'Your password is little secure.') {
+      return `${css.formInput} ${css.formInputInsecure}`;
+    } else if (erorr) {
+      return `${css.formInput} ${css.formInputInvalid}`;
+    } else if (!erorr && value) {
+      return `${css.formInput} ${css.formInputValid}`;
+    } else if (userName) {
+      return `${css.formInput} ${css.formInputUsername}`;
+    } else {
+      return `${css.formInput}`;
+    }
+  };
+
   return (
-    <div className={css.formArea}>
+    <div className={formInputArea}>
       <input
-        className={css.formInput}
+        className={getColor(erorr, value)}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
-        name="formImput"
+        name={name}
         placeholder={placeholder}
       />
       <span className={css.formIcon}>{switchImages(type)} </span>
-      {isValid && <SucsessIcon className={css.formStateIcon} />}
-      {isValid && (
+      <span className={css.formStateIcon}>
+        {switchStateImages(erorr, value, edit)}{' '}
+      </span>
+
+      {/* {!erorr && value && <SucsessIcon className={css.formStateIcon} />}
+      {erorr && value && (
         <button
           className={css.clearButton}
           onClick={handleClearClick}
@@ -30,7 +61,7 @@ const FormInput = ({
         >
           <ErorrIcon className={css.formStateIcon} />
         </button>
-      )}
+      )} */}
     </div>
   );
 };

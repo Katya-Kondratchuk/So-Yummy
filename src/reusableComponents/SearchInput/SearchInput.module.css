@@ -1,7 +1,6 @@
 .wrapper {
   position: relative;
-  margin-top: 50px;
-  margin-left: 25px;
+
   border: 1px solid var(--borderColor);
   width: 295px;
   height: 53px;

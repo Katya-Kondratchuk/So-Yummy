@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 114px;
+  height: 54px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 208px;
+    height: 114px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 547px;
+    height: 82px;
+  }
+}
+
+.name {
+  color: var(--mainTextColor);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+  width: 157px;
+}
+@media screen and (min-width: 768px) {
+  .name {
+    font-size: 24px;
+    line-height: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .name {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

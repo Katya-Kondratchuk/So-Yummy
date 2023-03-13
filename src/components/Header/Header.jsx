@@ -2,7 +2,6 @@ import { useMediaQuery } from '@mui/material';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from 'reusableComponents/Logo/Logo';
-// import Logo from './Logo';
 // import { UserLogo } from './UserLogo';
 import css from './Header.module.css';
 import HeaderNavigation from './HeaderNavigation/HeaderNavigation';

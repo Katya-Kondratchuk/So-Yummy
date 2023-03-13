@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './MainNavLink.module.css';
 
-const MainNavLink = ({ to, title, closeMenu }) => {
+const MainNavLink = ({ to, title, closeMenu = () => {} }) => {
   return (
     <NavLink
       className={clsx(css.navLink, 'navLink')}

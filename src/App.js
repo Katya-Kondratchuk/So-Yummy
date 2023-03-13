@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useRef } from 'react';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import RegisterPage from 'pages/RegisterPage';
@@ -11,7 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperation';
 import VerifyPage from 'pages/VerifyPage';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
-import { selectAuthIsRefreshUser } from 'redux/auth/authSelectors';
+import {
+  selectAuthIsLoggedIn,
+  selectAuthIsRefreshUser,
+} from 'redux/auth/authSelectors';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
@@ -27,9 +30,13 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshUser = useSelector(selectAuthIsRefreshUser);
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    if (!isFirstLoad.current) {
+      dispatch(refreshUser());
+      isFirstLoad.current = false;
+    }
   }, [dispatch]);
 
   return (

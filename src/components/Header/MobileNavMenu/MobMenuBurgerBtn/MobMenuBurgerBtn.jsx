@@ -10,7 +10,7 @@ const MobMenuBurgerBtn = ({ openMenu }) => {
         openMenu();
       }}
     >
-      <MobMenuBtn />
+      <MobMenuBtn className={css.svg} />
     </button>
   );
 };

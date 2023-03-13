@@ -1,5 +1,6 @@
-.topContainer {
-  background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundMobile.png');
+/* 
+.heroContainer {
+  background-image: url('../../../assets/images/HeroMain/heroMob1x.png');
   position: relative;
   width: 100%;
   height: calc((100vw / 0.82));
@@ -11,101 +12,139 @@
   left: 0;
   padding-top: 144px;
   padding-bottom: 90px;
+  
+} */
+
+.heroContainer {
+  background-image: url('../../../assets/images/HeroMain/heroMob.png');
+  position: relative;
+  width: 100%;
+  height: calc((100vw / 0.5));
+
+  background-size: cover;
+  z-index: -1;
+  background-position: 50% 0;
+  top: -46px;
+  left: 0;
+
   /* transform: translate(0, 50%); */
 }
 @media screen and (min-width: 768px) {
-  .topContainer {
-    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundTablet.png');
-    height: calc((100vw / 1.55));
-    padding-top: 136px;
-    padding-bottom: 32px;
+  .heroContainer {
+    background-image: url('../../../assets/images/HeroMain/heroTab.png');
+    height: calc((100vw / 1.2));
   }
 }
 @media screen and (min-width: 1440px) {
-  .topContainer {
-    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundDisplay.png');
-    height: calc((100vw / 2.92));
-    padding-top: 164px;
+  .heroContainer {
+    background-image: url('../../../assets/images/HeroMain/heroDesc.png');
+    height: calc((100vw / 1.8));
+    padding-top: 162px;
     padding-bottom: 32px;
   }
 }
 
-.containerWrapper {
+.heroWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.dishName {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 24px;
-  letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
-  color: var(--greenColor);
-  margin-bottom: 18px;
+  margin-top: 68px;
+  padding-top: 105px;
 }
 @media screen and (min-width: 768px) {
-  .dishName {
-    font-size: 44px;
-    line-height: 44px;
+  .heroWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 32px;
+    margin-top: 45px;
+    padding-top: 230px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .heroWrapper {
+    margin-left: 100px;
+    padding-top: 20px;
+  }
+}
+
+.nameWrapper {
+  margin-bottom: 14px;
+}
+@media screen and (min-width: 768px) {
+  .nameWrapper {
     margin-bottom: 24px;
   }
 }
 
-.dishDescription {
-  width: 299px;
-  font-size: 12px;
-  line-height: 16px;
+.heroNameCurrent {
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -0.005em;
+  color: var(--greenColor);
+}
+@media screen and (min-width: 768px) {
+  .heroNameCurrent {
+    font-size: 72px;
+    line-height: 72px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .heroNameCurrent {
+    font-size: 100px;
+    line-height: 100px;
+    margin-bottom: 24px;
+  }
+}
+
+.heroName {
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -0.005em;
+
+  color: var(--secondaryTextColor);
+}
+@media screen and (min-width: 768px) {
+  .heroName {
+    font-size: 72px;
+    line-height: 72px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .heroName {
+    font-size: 100px;
+    line-height: 100px;
+    margin-bottom: 24px;
+  }
+}
+
+.heroDescription {
+  width: 248px;
+  height: 72px;
+  font-size: 14px;
+  line-height: 18px;
   text-align: center;
   letter-spacing: -0.02em;
   color: var(--secondaryTextColor);
   margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
-  .dishDescription {
-    width: 506px;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 24px;
+  .heroDescription {
+    width: 362px;
+    height: 54px;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 32px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .dishDescription {
-    padding: 0px 14px;
-    margin-bottom: 30px;
+  .heroDescription {
+    width: 465px;
+    height: 72px;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 50px;
   }
 }
-
-.btn {
-  width: 250px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: var(--orange);
-  border: 2px solid var(--greenColor);
-}
-
-.dishTime {
-  margin-top: 48px;
-  width: 75px;
-  height: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.time {
-  margin-left: 4px;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 14px;
-  letter-spacing: -0.24px;
-  color: var(--secondaryTextColor);
-}
-@media screen and (min-width: 768px) {
-  .time {
-    margin-left: 8px;
-    font-size: 14px;
-    line-height: 20px;
-  }
+.heroInput {
 }

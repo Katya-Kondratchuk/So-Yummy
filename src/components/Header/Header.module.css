@@ -2,8 +2,18 @@
   display: flex;
   height: auto;
 }
+@media screen and (min-width: 1440px) {
+  .header {
+    margin-left: 187px;
+  }
+}
 .wrapperLogo {
   position: absolute;
   top: 15px;
   left: 15px;
+}
+@media screen and (min-width: 1440px) {
+  .wrapperLogo {
+    left: 100px;
+  }
 }

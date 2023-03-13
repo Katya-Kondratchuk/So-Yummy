@@ -5,15 +5,16 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
+  verificationUser,
+  verifyResendEmail,
 } from './authOperation';
 
 const initialState = {
-  user: { userData: null, username: '', email: '', id: '' },
-  sid: '',
+  user: { name: '', email: '', avatarURL: '' },
   refreshToken: '',
   loadind: false,
   isLoggedIn: false,
-  isLoadCurrentUser: false,
+  isRefreshUser: false,
   error: null,
 };
 
@@ -34,73 +35,75 @@ export const authSlice = createSlice({
     builder
       .addCase(registerUser.pending, handlerPending)
       .addCase(registerUser.fulfilled, (state, { payload }) => {
-        state.user.username = payload.username;
+        state.user.name = payload.name;
         state.user.email = payload.email;
-        state.user.id = payload.id;
+        state.user.avatarURL = payload.avatarURL;
         state.loadind = false;
-        // console.log({ ...state });
       })
       .addCase(registerUser.rejected, handlerRejected)
 
+      .addCase(verificationUser.pending, handlerPending)
+      .addCase(verificationUser.fulfilled, (state, _) => {
+        state.loadind = false;
+      })
+      .addCase(verificationUser.rejected, handlerRejected)
+
+      .addCase(verifyResendEmail.pending, handlerPending)
+      .addCase(verifyResendEmail.fulfilled, (state, _) => {
+        state.loadind = false;
+      })
+      .addCase(verifyResendEmail.rejected, handlerRejected)
+
       .addCase(loginUser.pending, handlerPending)
       .addCase(loginUser.fulfilled, (state, { payload }) => {
-        state.isLoggedIn = true;
-        state.refreshToken = payload.refreshToken;
-        state.sid = payload.sid;
+        state.user.name = payload.user.name;
         state.user.email = payload.user.email;
-        state.user.username = payload.user.username;
-        state.user.userData = payload.user.userData;
-        state.user.id = payload.user.id;
+        state.user.avatarURL = payload.user.avatarURL;
+        state.refreshToken = payload.refreshToken;
         state.loadind = false;
+        state.isLoggedIn = true;
       })
       .addCase(loginUser.rejected, handlerRejected)
 
       .addCase(refreshUser.pending, (state, _) => {
         state.error = null;
-        state.isLoadCurrentUser = true;
+        state.isRefreshUser = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.isLoggedIn = true;
-        state.refreshToken = payload.newRefreshToken;
-        state.sid = payload.sid;
-        state.isLoadCurrentUser = false;
+        state.isRefreshUser = false;
+        state.refreshToken = payload;
       })
       .addCase(refreshUser.rejected, (state, { payload }) => {
         state.refreshToken = '';
-        state.sid = '';
+        state.isRefreshUser = false;
         state.error = payload;
-        state.isLoadCurrentUser = false;
       })
 
       .addCase(logoutUser.pending, handlerPending)
       .addCase(logoutUser.fulfilled, (state, _) => {
-        state.refreshToken = '';
-        state.sid = '';
         state.user.email = '';
-        state.user.username = '';
-        state.user.userData = null;
-        state.user.id = '';
-        state.isLoggedIn = false;
+        state.user.name = '';
+        state.user.avatarURL = '';
+        state.refreshToken = '';
         state.loadind = false;
+        state.isLoggedIn = false;
       })
       .addCase(logoutUser.rejected, (state, { payload }) => {
-        state.refreshToken = '';
-        state.sid = '';
         state.user.email = '';
-        state.user.username = '';
-        state.user.userData = null;
-        state.user.id = '';
+        state.user.name = '';
+        state.user.avatarURL = '';
+        state.refreshToken = '';
+        state.loadind = false;
         state.isLoggedIn = false;
         state.error = payload;
-        state.loadind = false;
       })
 
       .addCase(getUserInfo.pending, handlerPending)
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
-        state.user.username = payload.username;
-        state.user.userData = payload.userData;
-        state.user.id = payload.id;
+        state.user.name = payload.name;
+        state.user.avatarURL = payload.avatarURL;
         state.loadind = false;
       })
       .addCase(getUserInfo.rejected, handlerRejected);

@@ -1,0 +1,21 @@
+.avatar {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-right: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+}

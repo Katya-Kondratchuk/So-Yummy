@@ -1,19 +1,17 @@
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './Welcome.module.css';
-import { ReactComponent as WelcomeIcon } from '../../assets/images/LogoHeader/logoHeader.svg';
-// import UserMenuModalForm from 'components/UserMenuModalForm/UserMenuModalForm';
-// import FooterForm from 'components/FooterForm/FooterForm';
+import Logo from 'reusableComponents/Logo/Logo';
 
 const Welcome = () => {
   return (
     <>
       <div className={css.backgroundImg}>
         <div className={css.welcomeIcon}>
-          <WelcomeIcon />
+          <Logo width={'100%'} height={'100%'} />
         </div>
 
         <div className={css.welcomeTextFormat}>
-          <h1 className={css.welcomeTitle}>Whelcome to the app!</h1>
+          <h1 className={css.welcomeTitle}>Welcome to the app!</h1>
           <p className={css.welcomeText}>
             Is not only a recipe app, it is, in fact, your cookbook. You can add
             your own recipes to save them for the future.

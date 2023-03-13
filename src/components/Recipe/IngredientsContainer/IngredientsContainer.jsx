@@ -37,7 +37,6 @@ const IngredientsContainer = ({ image, text, id, name, description }) => {
         description={description}
       />
       <RecipeRpeparation />
-      <ShoppingList />
     </div>
   );
 };

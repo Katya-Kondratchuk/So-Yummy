@@ -13,7 +13,7 @@ const MobileNavMenu = ({ closeMenu }) => {
           <Logo />
         </Link>
       </div>
-      <MobMenuCloseBtn closeMenu={closeMenu} />
+      <MobMenuCloseBtn className={css.mobNavBtn} closeMenu={closeMenu} />
       <HeaderNavigation closeMenu={closeMenu} />
     </div>
   );

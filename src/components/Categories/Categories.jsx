@@ -6,6 +6,9 @@ import Box from '@mui/material/Box';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import s from './Categories.module.css';
+import { getCategorieRecipes } from 'services/api/recipesAPI';
+
+getCategorieRecipes('Breakfast');
 
 const Categories = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

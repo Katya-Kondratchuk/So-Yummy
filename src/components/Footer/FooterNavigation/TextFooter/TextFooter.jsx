@@ -6,7 +6,7 @@ const TextFooter = () => {
   return (
     <div>
       <div className={s.logoText}>
-        <Logo width={'44px'} height={'44px'} /> <span>So Yummy</span>
+        <Logo inv width={'44px'} height={'44px'} /> <span>So Yummy</span>
       </div>
       <ul className={s.navLeft}>
         <li>Database of recipes that can be replenished </li>

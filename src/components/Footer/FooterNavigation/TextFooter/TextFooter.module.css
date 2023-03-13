@@ -29,6 +29,7 @@
     margin-right: 173px;
     margin-bottom: 40px;
     width: 100%;
+    margin-bottom: 32px;
   }
 }
 
@@ -38,11 +39,19 @@
   align-items: center;
   padding: 0px;
   gap: 8px;
+  margin-bottom: 32px;
 
   font-family: Poppins;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 18px;
   letter-spacing: 0.015em;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .logoText Logo {
+    width: 44px;
+    height: 44px;
+  }
 }

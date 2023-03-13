@@ -1,14 +1,26 @@
 .footer {
   background-color: var(--secondaryBlackColor);
   position: relative;
-  height: 414px;
+  height: 435px;
+}
+
+@media screen and(min-width:768) {
+  .footer {
+    height: 423px;
+  }
+}
+
+@media screen and(min-width:768) {
+  .footer {
+    height: 414px;
+  }
 }
 
 .SocialLinks {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -75px;
+  margin-top: -100px;
 }
 
 .downText {

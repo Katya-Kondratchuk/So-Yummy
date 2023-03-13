@@ -18,8 +18,14 @@
   letter-spacing: -0.02em;
   text-align: left;
 }
+@media screen and (max-width: 1439px) {
+  .navLeft {
+    margin-right: 173px;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}
 
 .logoText {
   display: inline-block;
-  margin-top: 64px;
 }

@@ -5,7 +5,7 @@ import s from '../Footer.module.css';
 const SubscribeForm = () => {
   return (
     <div className={s.navRight}>
-      <h4>Subscribe to our Newsletter</h4>
+      <h3>Subscribe to our Newsletter</h3>
       <p>
         Subscribe up to our newsletter. Be in touch with latest news and special
         offers, etc.

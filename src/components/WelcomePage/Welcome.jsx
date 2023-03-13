@@ -23,11 +23,18 @@ const Welcome = () => {
               lnk
               to="/register"
               otlnInv
+              welcome
               title="Registration"
             ></SuperBtn>
           </div>
           <div className={css.signinBtn}>
-            <SuperBtn lnk to="/signin" otlnInv title="Sign in"></SuperBtn>
+            <SuperBtn
+              lnk
+              to="/signin"
+              otlnInv
+              welcome
+              title="Sign in"
+            ></SuperBtn>
           </div>
         </div>
 

@@ -3,7 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './SuperBtn.module.css';
 
-const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
+const SuperBtn = ({
+  typeBtn,
+  lnk,
+  to,
+  otln,
+  otlnInv,
+  title,
+  dark,
+  welcome,
+}) => {
   if (lnk) {
     return (
       <Link
@@ -12,6 +21,7 @@ const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
           [css.outlined]: otln,
           [css.outlinedInverted]: otlnInv,
           [css.dark]: dark,
+          [css.welcome]: welcome,
         })}
         to={to}
       >
@@ -25,6 +35,7 @@ const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
           [css.outlined]: otln,
           [css.outlinedInverted]: otlnInv,
           [css.dark]: dark,
+          [css.welcome]: welcome,
         })}
         type={typeBtn}
       >

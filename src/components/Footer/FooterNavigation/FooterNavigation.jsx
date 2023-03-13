@@ -1,7 +1,8 @@
 import React from 'react';
-import { Nav, SubscribeForm } from '.';
-import TextFooter from '../TextFooter/TextFooter';
 import s from './FooterNavigation.module.css';
+import Nav from './Nav/Nav';
+import SubscribeForm from './SubscribeForm/SubscribeForm';
+import TextFooter from './TextFooter/TextFooter';
 
 const FooterNavigation = () => {
   return (

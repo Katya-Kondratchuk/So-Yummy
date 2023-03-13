@@ -1,0 +1,21 @@
+.navCentre {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-right: 235px;
+  padding-top: -100px;
+
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+@media screen and (max-width: 1439px) {
+  .navCentre {
+    margin-right: 0px;
+  }
+}

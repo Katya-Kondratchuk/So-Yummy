@@ -1,0 +1,48 @@
+.navLeft {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navLeft {
+    margin-top: 40px;
+    margin-bottom: 110px;
+    margin-right: 159px;
+    padding-left: 20px;
+    list-style-type: disc;
+    height: 156px;
+    width: 418px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navLeft {
+    margin-right: 173px;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  font-family: Poppins;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.015em;
+  text-align: left;
+}

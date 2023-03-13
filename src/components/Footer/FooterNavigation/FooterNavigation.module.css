@@ -1,13 +1,19 @@
 .footerNavigation {
   display: flex;
-  padding-top: 64px;
+  flex-direction: column;
+  padding-top: 50px;
   color: white;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (min-width: 768px) {
+  .footerNavigation {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .footerNavigation {
     flex-wrap: wrap;
-    padding-top: 50px;
     margin-left: 32px;
   }
 

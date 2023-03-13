@@ -57,3 +57,8 @@
 .dark:hover {
   background-color: var(--greenColor);
 }
+
+.welcome:hover {
+  color: var(--whiteColor);
+  background-color: var(--greenColor);
+}

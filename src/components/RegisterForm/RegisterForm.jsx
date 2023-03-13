@@ -54,6 +54,8 @@ const RegisterForm = () => {
       )
       .required('Type your password please'),
   });
+  console.log('test');
+
   const formik = useFormik({
     initialValues: {
       name: '',

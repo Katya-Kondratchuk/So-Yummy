@@ -49,7 +49,7 @@ const RegisterForm = () => {
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
       .matches(
-        /[A-Z-ЩЬЮЯЇІЄҐ]/,
+        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ]/,
         'Your password is little secure. Add a capital letter.',
       )
       .required('Type your password please'),

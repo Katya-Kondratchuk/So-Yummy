@@ -1,0 +1,7 @@
+.selectItem:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.arrow {
+  display: inline-flex;
+}

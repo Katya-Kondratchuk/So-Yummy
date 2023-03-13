@@ -4,6 +4,7 @@
   line-height: 1.7;
   position: relative;
   top: -3px;
+  left: 5px;
 }
 .smallSucsess {
   color: var(--successColor);
@@ -13,16 +14,16 @@
   top: -3px;
   left: 5px;
 }
-
 @media screen and (min-width: 768px) {
-  .smallSucsess {
-    font-size: 14px;
-    top: 5px;
-  }
-  .smallErorr {
-    color: var(--successColor);
+  .smallEror {
+    color: var(--errorColor);
     font-size: 14px;
     position: relative;
-    top: 5px;
+    top: 0;
+  }
+  .smallSucsess {
+    font-size: 14px;
+    top: 0;
+    left: 5px;
   }
 }

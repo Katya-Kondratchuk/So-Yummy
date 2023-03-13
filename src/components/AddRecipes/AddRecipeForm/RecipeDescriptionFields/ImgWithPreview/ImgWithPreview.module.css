@@ -1,0 +1,54 @@
+.wrapperImg {
+  position: relative;
+  background: #8baa36;
+  border: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.wrapperImg,
+.imgInput {
+  width: 279px;
+  height: 268px;
+}
+
+.imgInput {
+  opacity: 0;
+}
+
+.icon {
+  position: absolute;
+  display: block;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.showImg {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapperImg {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapperImg,
+  .imgInput {
+    width: 357px;
+    height: 344px;
+  }
+}

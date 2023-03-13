@@ -30,14 +30,13 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINT.REGISTER,
         credentials,
       );
-      toast(
+      toast.success(
         `You successfully registered, ${normalizeName(
           data.user.name,
         )}!Check email for verification!`,
       );
       return data.user;
     } catch (error) {
-      console.log('🚀 ~ error:', error);
       if (error.response.status === 409 || error.response.status === 400) {
         toast.error(`${error.response?.data?.message}!`);
       }
@@ -119,7 +118,6 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, ThunkAPI) => {
     try {
-      console.log(instanceAxios.defaults.headers.common.Authorization);
       await instanceAxios.post(AUTH_ENDPOINT.LOGOUT);
       toast('You successfully logged out!');
       token.unset();

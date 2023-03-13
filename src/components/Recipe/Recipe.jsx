@@ -39,7 +39,8 @@ const Recipe = () => {
           image={dish.image}
           text={dish.strMeasure1}
           id="1"
-          description={dish.strIngredient1}
+          name={dish.strIngredient1}
+          description={dish.strIngredient2}
         />
       </div>
     </>

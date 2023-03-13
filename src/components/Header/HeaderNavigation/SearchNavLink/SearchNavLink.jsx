@@ -5,7 +5,7 @@ import css from './SearchNavLink.module.css';
 import МagnifyinGlass from '../МagnifyinGlass/МagnifyinGlass';
 import { useMediaQuery } from '@mui/material';
 
-const SearchNavLink = ({ to, title, closeMenu }) => {
+const SearchNavLink = ({ to, title, closeMenu = () => {} }) => {
   const isMobile = useMediaQuery('(max-width: 1439px)');
   return (
     <NavLink

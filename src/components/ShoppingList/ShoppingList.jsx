@@ -1,8 +1,8 @@
 import React from 'react';
-import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
+import ShoppingItem from './ShoppingItem/ShoppingItem';
 
-import css from './Recipe.module.css';
-import TopContainer from './topContainer/TopContainer';
+// import css from './ShoppingList.module.css';
+import TitleShoppingList from './TitleShoppingList/TitleShoppingList';
 
 const dish = {
   idMeal: '52960',
@@ -30,21 +30,28 @@ const dish = {
   description: 'description',
 };
 
-const Recipe = () => {
+const ShoppingList = () => {
   return (
-    <>
-      <TopContainer />
-      <div className={css.wrapper}>
-        <IngredientsContainer
-          image={dish.image}
-          text={dish.strMeasure1}
-          id="1"
-          name={dish.strIngredient1}
-          description={dish.strIngredient2}
-        />
-      </div>
-    </>
+    <div>
+      <span>Shopping list</span>
+      <TitleShoppingList />
+      <ShoppingItem
+        image={dish.image}
+        name={dish.strIngredient1}
+        text={dish.strMeasure1}
+      />
+      <ShoppingItem
+        image={dish.image}
+        name={dish.strIngredient1}
+        text={dish.strMeasure1}
+      />
+      <ShoppingItem
+        image={dish.image}
+        name={dish.strIngredient1}
+        text={dish.strMeasure1}
+      />
+    </div>
   );
 };
 
-export default Recipe;
+export default ShoppingList;

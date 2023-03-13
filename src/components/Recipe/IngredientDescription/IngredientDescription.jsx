@@ -1,11 +1,11 @@
 import React from 'react';
 import css from './IngredientDescription.module.css';
 
-const IngredientDescription = ({ description }) => {
+const IngredientDescription = ({ name, description = '' }) => {
   return (
     <div className={css.wrapper}>
-      <span className={css.name}>Name: {description}</span>
-      <span className={css.description}>Description:{description}</span>
+      <span className={css.name}>{name}</span>
+      {description && <span className={css.description}>{description}</span>}
     </div>
   );
 };

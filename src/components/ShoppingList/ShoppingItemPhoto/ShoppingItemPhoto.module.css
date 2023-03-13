@@ -1,0 +1,22 @@
+.wrapper {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  border-radius: 6px;
+  background-color: var(--ingridientsBcg);
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 144px;
+    height: 146px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 180px;
+    height: 180px;
+  }
+}

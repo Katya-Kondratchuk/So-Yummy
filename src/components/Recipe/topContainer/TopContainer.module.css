@@ -78,11 +78,31 @@
 }
 
 .btn {
-  width: 250px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: var(--orange);
-  border: 2px solid var(--greenColor);
+  width: 150px;
+  height: 35px;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    width: 278px;
+    height: 59px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .btn {
+    width: 270px;
+    height: 59px;
+  }
+}
+
+.btnTxt {
+  font-size: 10px;
+  line-height: 15px;
+}
+@media screen and (min-width: 768px) {
+  .btnTxt {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .dishTime {

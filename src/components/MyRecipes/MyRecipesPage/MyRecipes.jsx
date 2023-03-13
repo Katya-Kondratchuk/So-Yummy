@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Button from './Button/Button';
+import SuperBtn from '../../../reusableComponents/SuperBtn/SuperBtn';
 import DishCard from './DishCard/DishCard';
 import Title from '../../../reusableComponents/Title/Title';
 import Textt from './Text/text';
 import TitleRecip from './TitleRecip/TitleRecip';
 import Time from './Time/Time';
-import TreshIcon from './TreshIcon/TreshIcon';
 import css from './MyRecipesPage.module.css';
+import TrashButton from 'reusableComponents/TrashButton/TrashButton';
 
 const MyRecipes = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -42,40 +42,39 @@ const MyRecipes = () => {
   });
 
   return (
-    <div className={css.container}>
-      <Title text="My recipes" />
-      <ul>
-        {currentItems.map(item => (
-          <li key={it()} className={css.cardList}>
-            <div className={css.cardContainer}>
-              <DishCard image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg" />
-            </div>
-            <div className={css.cardContainer2}>
-              <TitleRecip text="Apple Frangipan Tart" />
-              <Textt text="Apple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is filled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves." />
-              <Textt text="We threw a ladies Melbourne Cup lunch and this was our dessert. Super quick to prepare using store bought pastry." />
-              <div className={css.cardContainer5}>
-                <Time text="30 m" />
+    <div className="container">
+      <section className={css.myRecipe}>
+        <Title text="My recipes" />
+        <ul className={css.cardList}>
+          {currentItems.map(item => (
+            <li key={it()} className={css.cardItem}>
+              <div className={css.cardContainer}>
+                <DishCard image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg" />
               </div>
-              <div className={css.cardContainer3}>
-                <TreshIcon />
+              <div className={css.cardContainer2}>
+                <div className={css.wrapperFirst}>
+                  <TitleRecip text="Apple Frangipan Tart" />
+                  <div>
+                    <TrashButton bgColorClass={'darkBcg'} />
+                  </div>
+                </div>
+                <Textt text="Apple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is filled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves." />
+                <Textt text="We threw a ladies Melbourne Cup lunch and this was our dessert. Super quick to prepare using store bought pastry." />
+                <div className={css.wrapperSecond}>
+                  <div className={css.cardContainer5}>
+                    <Time text="30 m" />
+                  </div>
+
+                  <div className={css.btnWrapper}>
+                    <SuperBtn title="See recipe" lnk to="/recipe" />
+                  </div>
+                </div>
               </div>
-              <div className={css.cardContainer4}>
-                <Button
-                  backgroundColor="#8BAA36"
-                  color="#FAFAFA"
-                  label="Search"
-                  FunButton="funButton"
-                  width="161"
-                  height="120"
-                  isLink
-                />
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <ul className={css.pageNumbers}>{renderPageNumbers}</ul>
+            </li>
+          ))}
+        </ul>
+        <ul className={css.pageNumbers}>{renderPageNumbers}</ul>
+      </section>
     </div>
   );
 };

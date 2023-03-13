@@ -1,0 +1,94 @@
+.wrapperIngredientsFields {
+  margin-bottom: 44px;
+}
+.wrapperTitle {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.btnDecrease,
+.btnIncrease {
+  display: flex;
+  align-items: center;
+  border: transparent;
+  background-color: inherit;
+}
+
+.btnDecrease {
+  padding: 7px 10px 7px 14px;
+}
+
+.btnIncrease {
+  padding: 7px 14px 7px 10px;
+}
+
+.amountIngredientrs {
+  min-width: 16px;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.textNotify {
+  text-align: center;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+}
+
+.itemIngridient:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapperIngredientsFields {
+    margin-bottom: 100px;
+  }
+
+  .wrapperTitle {
+    margin-bottom: 36px;
+  }
+
+  .wrapperButtons {
+    height: 32px;
+  }
+
+  .amountIngredientrs {
+    min-width: 20px;
+    padding: 4px 0;
+    text-align: center;
+  }
+
+  .btnDecrease {
+    padding: 8px 10px 8px 15px;
+  }
+
+  .btnIncrease {
+    padding: 8px 15px 8px 10px;
+  }
+
+  .itemIngridient:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapperIngredientsFields {
+    width: 609px;
+  }
+}

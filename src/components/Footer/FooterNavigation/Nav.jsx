@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import s from '../Footer.module.css';
 
 const Nav = () => {
   return (
-    <nav>
-      <NavLink to="/search">SearchPage</NavLink>
-      <NavLink to="/add">Add recipes</NavLink>
-      <NavLink to="/my"> MyRecipesPage</NavLink>
-      <NavLink to="/favorite"> FavoriteRecipesPage</NavLink>
-      <NavLink to="/shopping-list"> ShoppingListPage</NavLink>
+    <nav className={s.navCentre}>
+      <NavLink to="/search">Ingredients</NavLink>
+      <NavLink to="/add">My recipes</NavLink>
+      <NavLink to="/my"> My recipes</NavLink>
+      <NavLink to="/favorite"> Favorite</NavLink>
+      <NavLink to="/shopping-list"> Shopping list</NavLink>
     </nav>
   );
 };

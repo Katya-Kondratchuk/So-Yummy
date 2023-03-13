@@ -1,0 +1,22 @@
+.footerNavigation {
+  display: flex;
+  padding-top: 64px;
+  color: white;
+}
+
+@media screen and (max-width: 1439px) {
+  .footerNavigation {
+    flex-wrap: wrap;
+    padding-top: 50px;
+    margin-left: 32px;
+  }
+
+  .footerNavigation > div:nth-child(1),
+  .footerNavigation > div:nth-child(2) {
+    flex-basis: 50%;
+  }
+
+  .footerNavigation > div:nth-child(3) {
+    flex-grow: 1;
+  }
+}

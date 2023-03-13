@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import RecipeDescriptionFields from './RecipeDescriptionFields';
 import RecipeIngredientsFields from './RecipeIngredientsFields';
 import RecipePreparationFields from './RecipePreparationFields';
-import Button from 'reusableComponents/Button/Button';
 import css from './AddRecipeForm.module.css';
+import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 
 const allCategory = [
   'Beef',
@@ -58,7 +58,46 @@ const AddRecipeForm = () => {
   const [category, setCategory] = useState('Beef');
   const [cookingTime, setCookingTime] = useState('15 min');
 
+  const [ingredients, setIngredients] = useState([
+    {
+      id: '663713a4-4cd7-43a7-b691-8e012b1873cb',
+      name: 'Avocado',
+      amount: '3',
+      unit: 'tbs',
+    },
+    {
+      id: '663713a4-eged7-43a7-b691-8e012b1873cb',
+      name: 'Kivi',
+      amount: '1',
+      unit: 'g',
+    },
+    {
+      id: '663713agegd7-43a7-b691-8e012b1873cb',
+      name: 'Data',
+      amount: '2',
+      unit: 'kg',
+    },
+  ]);
+
   const [preparation, setPreparation] = useState('');
+
+  const onDelIngredient = id => {
+    const filteredData = ingredients.filter(el => el.id !== id);
+    setIngredients(filteredData);
+  };
+
+  const onUpdateData = useCallback(
+    (id, data) => {
+      const changedData = ingredients.map(el => {
+        if (el.id === id) {
+          return { ...el, ...data };
+        }
+        return el;
+      });
+      setIngredients(changedData);
+    },
+    [ingredients],
+  );
 
   const onSubmitHandler = e => {
     e.preventDefault();
@@ -68,6 +107,7 @@ const AddRecipeForm = () => {
       description,
       category,
       cookingTime,
+      ingredients,
       preparation: preparation.split('\n'),
     };
     console.log(obj);
@@ -87,15 +127,17 @@ const AddRecipeForm = () => {
         categoryData={{ category, setCategory }}
         time={{ cookingTime, setCookingTime }}
       />
-      <RecipeIngredientsFields />
+      <RecipeIngredientsFields
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+        onUpdate={onUpdateData}
+        onRemove={onDelIngredient}
+      />
       <RecipePreparationFields value={preparation} onChange={setPreparation} />
 
-      <Button
-        type="submit"
-        label="Add"
-        backgroundColor="#22252A"
-        color="#FAFAFA"
-      />
+      <div className={css.wrapperBtn}>
+        <SuperBtn dark typeBtn="submit" title="Add" />
+      </div>
     </form>
   );
 };

@@ -1,3 +1,17 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.activeItem {
+  color: var(--greenColor);
+}
+
 .item {
   display: flex;
   align-items: center;
@@ -16,9 +30,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: baseline;
   min-width: 84px;
   height: 53px;
+  margin-right: 10px;
 }
 
 .closeBtn {
@@ -38,6 +53,12 @@
   border: transparent;
   outline: transparent;
   height: 53px;
+
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--blackColor);
 }
 
 .amount {
@@ -48,12 +69,33 @@
 .ingredient {
   width: 198px;
   border-radius: 6px;
-  padding: 16px;
+  padding: 16px 32px 16px 16px;
 }
 
 .amount {
   min-width: 26px;
-  padding: 16px 2px 16px 16px;
+  padding: 16px 2px 16px 2px;
+  text-align: end;
+}
+
+.ingredient::placeholder,
+.amount::placeholder {
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--blackColor);
+  opacity: 0.5;
+}
+
+.arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  right: 0;
+  height: 53px;
+  width: 32px;
 }
 
 .wrapperUnit {
@@ -75,17 +117,13 @@
   padding-right: 12px;
 }
 
-.selectContentUnits {
+.selectContentUnits,
+.selectContentIngredients {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 100%;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 5;
-  height: 122px;
-  padding: 16px 10px 12px;
   overflow-y: auto;
   border-radius: 6px;
   font-weight: 400;
@@ -98,58 +136,19 @@
 }
 
 .selectContentUnits {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 122px;
+  padding: 16px 10px 12px;
 }
 
-@media screen and (min-width: 768px) {
-  .wrapperIngredient {
-    width: 398px;
-    height: 59px;
-    margin-right: 32px;
-  }
-
-  .wrapperAmount {
-    min-width: 97px;
-    height: 59px;
-  }
-
-  .ingredient,
-  .amount {
-    height: 59px;
-  }
-
-  .ingredient {
-    width: 398px;
-  }
-
-  .amount {
-    min-width: 26px;
-  }
-
-  .selectContentUnits {
-    height: 128px;
-    padding: 20px 10px 12px;
-  }
-
-  .selectUnit {
-    gap: 6px;
-  }
-
-  .wrapperUnit {
-    width: 65px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .wrapperAmount {
-    min-width: 99px;
-  }
-  .selectUnit {
-    gap: 12px;
-  }
-  .wrapperUnit {
-    width: 70px;
-  }
+.selectContentIngredients {
+  max-height: 154px;
+  padding: 8px 18px;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .wrapperCategory,
@@ -177,25 +176,6 @@
   cursor: pointer;
 }
 
-.selectContentCategory,
-.selectContentTime {
-  position: absolute;
-  top: 27px;
-  right: 0;
-  z-index: 5;
-  height: 144px;
-  padding: 8px 14px;
-  overflow-y: auto;
-  border-radius: 6px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  color: rgba(0, 0, 0, 0.5);
-  background: var(--whiteColor);
-  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-}
-
 .selectContentCategory {
   width: 123px;
 }
@@ -205,7 +185,7 @@
 }
 
 .selectItem:not(:last-child) {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -223,4 +203,95 @@
   border: 4px solid transparent;
   background-clip: content-box;
   background-color: #e7e5e5;
+}
+
+.scrollbarIngredient::-webkit-scrollbar {
+  width: 16px;
+}
+
+.scrollbarIngredient::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.scrollbarIngredient::-webkit-scrollbar-thumb {
+  height: 93px;
+  border-radius: 12px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #e7e5e5;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapperIngredient {
+    width: 398px;
+    height: 59px;
+    margin-right: 32px;
+  }
+
+  .wrapperAmount {
+    min-width: 97px;
+    height: 59px;
+  }
+
+  .ingredient,
+  .amount {
+    height: 59px;
+    font-size: 16px;
+  }
+
+  .ingredient::placeholder,
+  .amount::placeholder {
+    font-size: 16px;
+  }
+
+  .ingredient {
+    width: 398px;
+    padding: 16px 38px 16px 16px;
+  }
+
+  .amount {
+    min-width: 26px;
+  }
+
+  .selectContentUnits {
+    height: 128px;
+    padding: 20px 10px 12px;
+  }
+
+  .selectContentIngredients {
+    max-height: 172px;
+  }
+
+  .selectContentUnits,
+  .selectContentIngredients {
+    font-size: 14px;
+  }
+
+  .selectUnit {
+    gap: 6px;
+  }
+
+  .wrapperUnit {
+    width: 65px;
+  }
+
+  .arrow {
+    height: 59px;
+    width: 38px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapperAmount {
+    min-width: 99px;
+  }
+
+  .selectUnit {
+    gap: 12px;
+  }
+
+  .wrapperUnit {
+    width: 70px;
+  }
 }

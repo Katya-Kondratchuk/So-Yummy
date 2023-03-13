@@ -1,4 +1,4 @@
-import SelectList from 'components/AddRecipes/SelectList';
+import SelectList from 'reusableComponents/SelectList';
 import PropTypes from 'prop-types';
 import css from './RecipeDescriptionFields.module.css';
 import ImgWithPreview from './ImgWithPreview';
@@ -20,6 +20,7 @@ const RecipeDescriptionFields = ({
         <input
           type="text"
           name="name"
+          autoComplete="off"
           value={nameRecipe}
           placeholder="Enter item title"
           onChange={e => setNameRecipe(e.target.value)}
@@ -29,6 +30,7 @@ const RecipeDescriptionFields = ({
         <input
           type="text"
           name="description"
+          autoComplete="off"
           placeholder="Enter about recipe"
           value={description}
           onChange={e => setDescription(e.target.value)}
@@ -50,6 +52,7 @@ const RecipeDescriptionFields = ({
             selectedOption={css.selectCategory}
             selectContent={css.selectContentCategory}
             scrollbar={css.scrollbar}
+            activeItemClass={css.activeItem}
           />
         </div>
 
@@ -67,6 +70,7 @@ const RecipeDescriptionFields = ({
             selectedOption={css.selectTime}
             selectContent={css.selectContentTime}
             scrollbar={css.scrollbar}
+            activeItemClass={css.activeItem}
           />
         </div>
       </div>

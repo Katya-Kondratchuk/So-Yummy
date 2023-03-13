@@ -33,21 +33,24 @@ const PopularRecipe = () => {
   return (
     <div className={css.wrapper}>
       <h3 className={css.title}>Popular recipe</h3>
-      <ul className={css.list}>
-        {recipeMokk.slice(0, 4).map(({ img, title, text }) => (
-          <li key={text} className={css.item}>
-            <Link to="/recipe" className={css.itemLink}>
-              <div className={css.imgWrapper}>
-                <img src={img} alt={title} />
-              </div>
-              <div className={css.textWrapper}>
-                <h4 className={css.itemTitle}>{title}</h4>
-                <p className={css.description}>{text}</p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {recipeMokk && (
+        <ul className={css.list}>
+          {recipeMokk.slice(0, 4).map(({ img, title, text }) => (
+            <li key={text} className={css.item}>
+              <Link to="/recipe" className={css.itemLink}>
+                <div className={css.imgWrapper}>
+                  <img src={img} alt={title} />
+                </div>
+                <div className={css.textWrapper}>
+                  <h4 className={css.itemTitle}>{title}</h4>
+                  <p className={css.description}>{text}</p>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      {recipeMokk.length === 0 && <p>No popular recipes</p>}
     </div>
   );
 };

@@ -1,6 +1,15 @@
+.wrapperBtn {
+  width: 129px;
+  height: 46px;
+}
+
 @media screen and (max-width: 767px) {
   .form {
     margin-bottom: 72px;
+  }
+  .wrapperBtn {
+    width: 161px;
+    height: 52px;
   }
 }
 

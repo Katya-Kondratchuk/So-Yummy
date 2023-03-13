@@ -10,6 +10,7 @@ const SelectList = ({
   selectContent = '',
   scrollbar = '',
   setOption,
+  activeItemClass = '',
 }) => {
   const [isActive, setIsActive] = useState(false);
   const inputEl = useRef(null);
@@ -41,14 +42,16 @@ const SelectList = ({
       </div>
       {isActive && (
         <ul className={`${selectContent} ${scrollbar}`}>
-          {list.map(value => (
+          {list.map((value, index) => (
             <li
-              key={value}
+              key={value + '' + index}
               onClick={e => {
                 setOption(value);
                 setIsActive(false);
               }}
-              className={css.selectItem}
+              className={`${css.selectItem} ${
+                value === option ? activeItemClass : ''
+              }`}
             >
               {value}
             </li>
@@ -65,6 +68,7 @@ SelectList.propTypes = {
   selectedOption: PropTypes.string,
   selectContent: PropTypes.string,
   scrollbar: PropTypes.string,
+  activeItemClass: PropTypes.string,
   setOption: PropTypes.func,
 };
 

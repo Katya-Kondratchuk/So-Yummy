@@ -37,12 +37,7 @@ const ImgWithPreview = ({ imgAdd, setImgAdd }) => {
 
       <Icon width="64" height="64" className={css.icon} />
 
-      <img
-        src=""
-        alt="prew show img for add recipe"
-        className={`${css.showImg}`}
-        ref={inputEl}
-      />
+      <img src="" alt="" className={`${css.showImg}`} ref={inputEl} />
     </div>
   );
 };

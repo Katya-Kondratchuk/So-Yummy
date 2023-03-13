@@ -16,8 +16,6 @@ const UserDataForm = ({
 }) => {
   const loading = useSelector(selectAuthLoading);
   const erorMessage = useSelector(selectAuthErrorMessage);
-  console.log(erorMessage);
-  console.log(useSelector(state => state.auth));
   return (
     <div className={yourClassName}>
       <form onSubmit={formik.handleSubmit}>

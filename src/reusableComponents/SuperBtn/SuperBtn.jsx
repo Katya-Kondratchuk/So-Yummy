@@ -3,7 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './SuperBtn.module.css';
 
-const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
+const SuperBtn = ({
+  typeBtn,
+  lnk,
+  to,
+  otln,
+  otlnInv,
+  title,
+  dark,
+  welcome,
+}) => {
   if (lnk) {
     return (
       <Link
@@ -12,6 +21,7 @@ const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
           [css.outlined]: otln,
           [css.outlinedInverted]: otlnInv,
           [css.dark]: dark,
+          [css.welcome]: welcome,
         })}
         to={to}
       >
@@ -25,6 +35,7 @@ const SuperBtn = ({ typeBtn, lnk, to, otln, otlnInv, title, dark }) => {
           [css.outlined]: otln,
           [css.outlinedInverted]: otlnInv,
           [css.dark]: dark,
+          [css.welcome]: welcome,
         })}
         type={typeBtn}
       >
@@ -39,31 +50,31 @@ export default SuperBtn;
 // Example of usage
 
 // Green button
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Search" typeBtn="submit"/>
 // </div>
 
 // Green link
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Home" lnk to="/home"/>
 // </div>
 
 // Dark button
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Search" dark typeBtn="submit"/>
 // </div>
 
 // Green link
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Home" dark lnk to="/home"/>
 // </div>
 
 // Outlined button
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Search" otln typeBtn="submit"/>
 // </div>
 
 // Outlined inverted button
-// <div style={{width: '100px', height: '50px'}}>
+// <div style={{width: '100px', height: '50px', fontSize: '14px', lineHeight: '24px'}}>
 //  <SuperBtn title="Search" otlnInv typeBtn="submit"/>
 // </div>

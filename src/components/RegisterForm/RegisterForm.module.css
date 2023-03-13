@@ -55,7 +55,6 @@
 @media screen and (min-width: 768px) {
   .registrComponent {
     padding-top: 96px;
-    padding-bottom: 47px;
   }
   .formIinputFormat {
     width: 400px;
@@ -91,9 +90,7 @@
     gap: 115px;
     flex-direction: row;
     justify-content: center;
-  }
-  .registrComponent {
-    padding-top: 31vh;
-    padding-bottom: 95px;
+    position: absolute;
+    bottom: 21vh;
   }
 }

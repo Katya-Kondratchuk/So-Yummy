@@ -12,7 +12,7 @@ const MainPage = () => {
       <div>
         <button
           type="button"
-          style={{ marginLeft: '100px' }}
+          style={{ marginLeft: '300px' }}
           onClick={() => dispatch(logoutUser())}
         >
           Log out

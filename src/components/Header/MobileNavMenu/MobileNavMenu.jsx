@@ -9,7 +9,7 @@ const MobileNavMenu = ({ closeMenu }) => {
   return (
     <div className={css.container}>
       <div onClick={() => closeMenu()}>
-        <Link to="/home" className={css.logoWrapper}>
+        <Link to="/main" className={css.logoWrapper}>
           <Logo />
         </Link>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import DishCard from 'reusableComponents/DishCard/DishCard';
+import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
 import css from './Search.module.css';
@@ -17,10 +18,9 @@ const Search = () => {
   return (
     <div className="container">
       <Title text={'Search'} />
-      <div className={css.searchContainer}>
-        <SearchInput />
-        <SearchTypeSelector />
-      </div>
+      <div className={css.searchContainer}></div>
+      <SearchInput />
+      <SearchTypeSelector />
 
       <ul className={css.searchList}>
         {arr.map(item => (
@@ -33,6 +33,7 @@ const Search = () => {
           </li>
         ))}
       </ul>
+      <BasicPagination />
     </div>
   );
 };

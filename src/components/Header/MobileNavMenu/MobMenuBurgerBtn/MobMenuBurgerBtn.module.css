@@ -1,7 +1,7 @@
 .button {
-  position: absolute;
-  top: 20px;
-  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: transparent;
 }

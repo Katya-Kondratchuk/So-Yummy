@@ -11,7 +11,6 @@ import { ReactComponent as Instagram } from './images/Instagram.svg';
 import clsx from 'clsx';
 
 const SocialLinks = ({ text }) => {
-  console.log(`s.${text}`);
   return (
     <div className={css.wrapper}>
       <a href="https://www.facebook.com/">

@@ -63,10 +63,10 @@ const Categories = () => {
         </Box>
         {recepiesCategory.length !== 0 && (
           <ul className={css.categoryList}>
-            {recepiesCategory.map(({ _id, title, thumb }) => (
+            {recepiesCategory.map(({ _id, title, preview }) => (
               <li key={_id} className={css.categoryItem}>
                 <Link to={`/recipe/${_id}`}>
-                  <DishCard image={thumb} altText={title} text={title} />
+                  <DishCard image={preview} altText={title} text={title} />
                 </Link>
               </li>
             ))}

@@ -3,5 +3,6 @@
 }
 
 .arrow {
+  height: auto;
   display: inline-flex;
 }

@@ -62,19 +62,19 @@ const AddRecipeForm = () => {
     {
       id: '663713a4-4cd7-43a7-b691-8e012b1873cb',
       name: 'Avocado',
-      amount: '3',
+      amount: '999',
       unit: 'tbs',
     },
     {
       id: '663713a4-eged7-43a7-b691-8e012b1873cb',
-      name: 'Kivi',
-      amount: '1',
+      name: 'Pork',
+      amount: '999',
       unit: 'g',
     },
     {
       id: '663713agegd7-43a7-b691-8e012b1873cb',
-      name: 'Data',
-      amount: '2',
+      name: 'Ca',
+      amount: '999',
       unit: 'kg',
     },
   ]);
@@ -108,7 +108,7 @@ const AddRecipeForm = () => {
       category,
       cookingTime,
       ingredients,
-      preparation: preparation.split('\n'),
+      preparation: preparation.split('\n').filter(el => el.trim().length > 0),
     };
     console.log(obj);
   };

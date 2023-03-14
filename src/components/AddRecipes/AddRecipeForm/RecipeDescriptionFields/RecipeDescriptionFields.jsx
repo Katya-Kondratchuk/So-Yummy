@@ -53,6 +53,7 @@ const RecipeDescriptionFields = ({
             selectContent={css.selectContentCategory}
             scrollbar={css.scrollbar}
             activeItemClass={css.activeItem}
+            wrapperOption={css.wrapperOption}
           />
         </div>
 
@@ -71,6 +72,7 @@ const RecipeDescriptionFields = ({
             selectContent={css.selectContentTime}
             scrollbar={css.scrollbar}
             activeItemClass={css.activeItem}
+            wrapperOption={css.wrapperOption}
           />
         </div>
       </div>

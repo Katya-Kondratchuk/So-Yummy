@@ -5,7 +5,7 @@ import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
 
 const MainHero = () => {
   return (
-    <div>
+    <div className="container">
       <div className={css.heroContainer}>
         <div className={css.heroWrapper}>
           <div className={css.nameWrapper}>

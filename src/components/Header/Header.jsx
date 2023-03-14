@@ -22,17 +22,19 @@ const Header = () => {
     setMobMenu(true);
   };
   return (
-    <header className={css.header}>
-      <div className={css.wrapperLogo}>
-        <Link to="/main" className={css.logoWrapper}>
-          <Logo width={'44px'} height={'44px'} />
-        </Link>
-      </div>
-      {isMobile && mobMenu && <MobileNavMenu closeMenu={closeMenu} />}
-      {!isMobile && <HeaderNavigation />}
-      {isMobile && <MobMenuBurgerBtn openMenu={openMenu} />}
-      <UserMenu />
-    </header>
+    <div className="container">
+      <header className={css.header}>
+        <div className={css.wrapperLogo}>
+          <Link to="/main" className={css.logoWrapper}>
+            <Logo width={'44px'} height={'44px'} />
+          </Link>
+        </div>
+        {isMobile && mobMenu && <MobileNavMenu closeMenu={closeMenu} />}
+        {!isMobile && <HeaderNavigation />}
+        {isMobile && <MobMenuBurgerBtn openMenu={openMenu} />}
+        <UserMenu />
+      </header>
+    </div>
   );
 };
 

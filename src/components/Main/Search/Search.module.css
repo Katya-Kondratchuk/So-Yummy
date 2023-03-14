@@ -9,11 +9,22 @@
   background-position: 50% 0;
   top: -46px;
   left: 0;
+  /* margin: 0px auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 315px 487px, 179px 155px;
+  background-position: left bottom 270px, right bottom; */
 }
+
 @media screen and (min-width: 768px) {
   .heroContainer {
     background-image: url('../../../assets/images/HeroMain/heroTab.png');
-    height: calc((100vw / 1.2));
+    height: calc((100vw / 1.3));
+    top: -85px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -29,8 +40,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 68px;
-  padding-top: 105px;
+  padding-top: 110px;
 }
 @media screen and (min-width: 768px) {
   .heroWrapper {
@@ -38,8 +48,7 @@
     align-items: flex-start;
     flex-direction: column;
     margin-left: 32px;
-    margin-top: 45px;
-    padding-top: 230px;
+    padding-top: 180px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -107,7 +116,6 @@
   text-align: center;
   letter-spacing: -0.02em;
   color: var(--secondaryTextColor);
-  margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
   .heroDescription {

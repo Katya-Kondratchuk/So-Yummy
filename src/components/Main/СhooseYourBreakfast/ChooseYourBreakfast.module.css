@@ -1,12 +1,11 @@
 .textWrapper {
-  z-index: 1000;
-  padding: 8px;
   width: 225px;
   height: 92px;
-  margin-top: 157px;
-  margin-left: 88px;
-  margin-bottom: 126px;
   border-radius: 8px;
+  padding: 8px;
+  margin-left: 88px;
+  margin-bottom: 95px;
+  margin-top: 120px;
   background-color: var(--whiteColor);
 }
 @media screen and (min-width: 768px) {
@@ -15,9 +14,9 @@
     padding: 8px;
     width: 260px;
     height: 100px;
-    margin-top: 145px;
-    margin-left: 445px;
     margin-bottom: 0;
+    right: 15px;
+    top: 195px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -60,14 +59,14 @@
     letter-spacing: -0.24px;
   }
 }
-.link {
+.linkWrapper {
   font-size: 10px;
   line-height: 12px;
   letter-spacing: -0.24px;
   color: var(--mainTextColor);
 }
 @media screen and (min-width: 1440px) {
-  .link {
+  .linkWrapper {
     padding-left: 190px;
   }
 }

@@ -31,8 +31,13 @@ const Header = () => {
         </div>
         {isMobile && mobMenu && <MobileNavMenu closeMenu={closeMenu} />}
         {!isMobile && <HeaderNavigation />}
-        {isMobile && <MobMenuBurgerBtn openMenu={openMenu} />}
+        <div className={css.wrapperMenBur}>
+          {isMobile && <MobMenuBurgerBtn openMenu={openMenu} />}
+        </div>
+
         <UserMenu />
+        {/* <div className={css.imageWrapper}>{}</div>
+        <div /> */}
       </header>
     </div>
   );

@@ -1,20 +1,62 @@
 .header {
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   height: auto;
   padding-top: 18px;
 }
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 19px;
+  }
+}
 @media screen and (min-width: 1440px) {
   .header {
-    padding-top: 0;
+    padding-top: 18px;
   }
 }
 .wrapperLogo {
   top: 15px;
-  left: 15px;
+  margin-left: 15px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperLogo {
+    margin: 0;
+  }
 }
 @media screen and (min-width: 1440px) {
   .wrapperLogo {
     margin-right: 187px;
+  }
+}
+.imageWrapper {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 192px;
+  background-image: url('../../assets/images/SearchBackground/image1green.png'),
+    url('../../assets/images/SearchBackground/image1black.png'),
+    url('../../assets/images/SearchBackground/image2green.png');
+  background-repeat: no-repeat;
+  background-size: 10px 10px, 7px 7px, 10px 10px;
+  background-position: left 124px top 65px, left 220px top 130px,
+    left 328px top 90px;
+}
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    background-image: url('../../assets/images/SearchBackground/image3green.png'),
+      url('../../assets/images/SearchBackground/image2black.png'),
+      url('../../assets/images/SearchBackground/image4green.png');
+    height: 240px;
+    background-size: 18px 18px, 15px 15px, 18px 18px;
+    background-position: left 180px top 70px, left 390px top 150px,
+      left 675px top 97px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .imageWrapper {
+    height: 308px;
+    background-position: left 290px top 110px, left 820px top 180px,
+      left 1205px top 125px;
   }
 }

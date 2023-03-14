@@ -1,9 +1,15 @@
 .button {
   position: absolute;
-  top: 20px;
-  right: 15px;
+  z-index: 1;
+  top: 25px;
+  right: 25px;
   border: none;
   background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    margin-right: 8px;
+  }
 }
 
 .svg {

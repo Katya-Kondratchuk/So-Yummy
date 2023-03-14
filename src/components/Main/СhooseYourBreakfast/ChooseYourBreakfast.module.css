@@ -4,8 +4,8 @@
   border-radius: 8px;
   padding: 8px;
   margin-left: 88px;
-  margin-bottom: 95px;
-  margin-top: 120px;
+  margin-bottom: 115px;
+  margin-top: 183px;
   background-color: var(--whiteColor);
 }
 @media screen and (min-width: 768px) {
@@ -14,9 +14,9 @@
     padding: 8px;
     width: 260px;
     height: 100px;
-    margin-bottom: 0;
-    right: 15px;
-    top: 195px;
+    margin: 0;
+    right: 27px;
+    top: 370px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -25,8 +25,8 @@
     padding: 16px;
     width: 298px;
     height: 114px;
-    margin-top: 235px;
-    margin-left: 920px;
+    right: 140px;
+    top: 470px;
   }
 }
 .textCurrent {

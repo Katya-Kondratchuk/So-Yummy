@@ -4,14 +4,16 @@ import css from './MobMenuBurgerBtn.module.css';
 
 const MobMenuBurgerBtn = ({ openMenu }) => {
   return (
-    <button
-      className={css.button}
-      onClick={() => {
-        openMenu();
-      }}
-    >
-      <MobMenuBtn className={css.svg} />
-    </button>
+    <div>
+      <button
+        className={css.button}
+        onClick={() => {
+          openMenu();
+        }}
+      >
+        <MobMenuBtn className={css.svg} />
+      </button>
+    </div>
   );
 };
 

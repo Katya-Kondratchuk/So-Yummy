@@ -2,19 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: 14px;
 
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.02em;
-  text-align: left;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 768px) {
   .navCentre {
-    margin-left: 159 px;
-    margin-right: 235 px;
+    gap: 24px;
   }
 }

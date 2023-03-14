@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  patchRecipeFavoriteById,
+  patchRecipeLikeById,
+} from 'services/api/recipesAPI';
 import css from './DishCard.module.css';
 import { ReactComponent as FavoriteIco } from './fav.svg';
 import { ReactComponent as LikeIco } from './like.svg';
@@ -14,8 +18,23 @@ const DishCard = ({
   isShow,
   id,
 }) => {
-  const favFeel = favorite ? 'var(--secondaryGreenColor)' : 'none';
-  const likeFeel = like ? 'var(--secondaryGreenColor)' : 'none';
+  const [isLike, setIsLike] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const addToFavorite = () => {
+    patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
+  };
+  useEffect(() => {}, []);
+
+  // useEffect(() => {
+  const addLike = () => {
+    patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+  };
+  // }, []);
+
+  const favFeel =
+    favorite && isFavorite ? 'var(--secondaryGreenColor)' : 'none';
+  const likeFeel = like && isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
     text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
   return (
@@ -36,8 +55,12 @@ const DishCard = ({
           {isShow ? text : shortText}
         </p>
       </div> */}
-      <FavoriteIco className={css.favIco} fill={favFeel} />
-      <LikeIco className={css.likeIco} fill={likeFeel} />
+      <button type="button" onClick={addToFavorite}>
+        <FavoriteIco className={css.favIco} fill={favFeel} />
+      </button>
+      <button type="button" onClick={addLike}>
+        <LikeIco className={css.likeIco} fill={likeFeel} />
+      </button>
     </div>
   );
 };

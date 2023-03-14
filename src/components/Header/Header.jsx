@@ -36,8 +36,8 @@ const Header = () => {
         </div>
 
         <UserMenu />
-        {/* <div className={css.imageWrapper}>{}</div>
-        <div /> */}
+        <div className={css.imageWrapper}>{}</div>
+        <div />
       </header>
     </div>
   );

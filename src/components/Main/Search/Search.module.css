@@ -3,13 +3,22 @@
   position: relative;
   width: 100%;
   height: calc((100vw / 0.5));
-
+  /* background-repeat: no-repeat;
+  background-position: center center; */
   background-size: cover;
   z-index: -1;
   background-position: 50% 0;
   top: -46px;
   left: 0;
 }
+/* position: relative;
+    width: 100%;
+    height: calc((100vw / 0.5));
+    background-repeat: no-repeat;
+    background-position: center center;
+       z-index: -1;
+        top: -46px;
+    left: 0; */
 
 @media screen and (min-width: 768px) {
   .heroContainer {
@@ -30,7 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 110px;
+  padding-top: 120px;
 }
 @media screen and (min-width: 768px) {
   .heroWrapper {
@@ -43,8 +52,7 @@
 }
 @media screen and (min-width: 1440px) {
   .heroWrapper {
-    margin-left: 80px;
-    padding-top: 25px;
+    padding-top: 45px;
   }
 }
 
@@ -54,6 +62,11 @@
 @media screen and (min-width: 768px) {
   .nameWrapper {
     margin-bottom: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .nameWrapper {
+    margin-bottom: 14px;
   }
 }
 

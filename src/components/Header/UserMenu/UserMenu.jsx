@@ -1,32 +1,67 @@
 import { useState } from 'react';
 import Modal from 'reusableComponents/Modal/Modal';
+import ConfirmModal from './ConfirmModal/ConfirmModal';
+import EditUserForm from './EditUserForm/EditUserForm';
 import UserAvatar from './UserAvatar/UserAvatar';
 import css from './UserMenu.module.css';
+import UserMenuModalForm from './UserMenuModalForm/UserMenuModalForm';
 import UserName from './UserName/UserName';
 
 const UserMenu = () => {
-  const [modal, setModal] = useState(false);
+  const [modalSmall, setModalSmall] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [modalConfirm, setModalConfirm] = useState(false);
 
   const openModal = () => {
-    setModal(true);
+    setModalSmall(true);
   };
 
   const closeModal = () => {
-    setModal(false);
+    setModalSmall(false);
+  };
+
+  const openModalEdit = () => {
+    setModalEdit(true);
+  };
+
+  const closeModalEdit = () => {
+    setModalEdit(false);
+  };
+
+  const openModalConfirm = () => {
+    setModalConfirm(true);
+  };
+
+  const closeModalConfirm = () => {
+    setModalConfirm(false);
   };
 
   return (
-    <>
+    <div className={css.wrapper}>
       <div className={css.container} onClick={openModal}>
         <UserAvatar />
         <UserName />
       </div>
-      {modal && (
+      {modalSmall && (
         <Modal onClose={closeModal}>
-          <div>MODAL</div>
+          <EditUserForm
+            closeModal={closeModal}
+            openEdit={openModalEdit}
+            openConfirm={openModalConfirm}
+          />
         </Modal>
       )}
-    </>
+      {modalEdit && (
+        <Modal onClose={closeModalEdit}>
+          <UserMenuModalForm />
+        </Modal>
+      )}
+      {modalConfirm && (
+        <Modal onClose={closeModalConfirm}>
+          <ConfirmModal onClose={closeModalConfirm} />
+        </Modal>
+      )}
+    </div>
   );
 };
 

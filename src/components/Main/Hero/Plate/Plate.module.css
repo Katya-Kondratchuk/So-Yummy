@@ -1,0 +1,31 @@
+.container {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  width: 320px;
+  height: 296px;
+  background-image: url('../../../../assets/images/HeroMain/V2/plate.png');
+  background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 378px;
+    height: 351px;
+    top: 95px;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 578px;
+    height: 539px;
+    top: 62px;
+    left: 87%;
+    transform: translateX(-100%);
+  }
+}

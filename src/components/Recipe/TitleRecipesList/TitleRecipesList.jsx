@@ -4,10 +4,10 @@ import css from './TitleRecipesList.module.css';
 const TitleRecipesList = () => {
   return (
     <div className={css.title}>
-      <span>Ingredients</span>
+      <span className={css.ingredients}>Ingredients</span>
       <div className={css.rightPartText}>
-        <span>Number</span>
-        <span>Add to list</span>
+        <span className={css.ingredients}>Number</span>
+        <span className={css.ingredients}>Add to list</span>
       </div>
     </div>
   );

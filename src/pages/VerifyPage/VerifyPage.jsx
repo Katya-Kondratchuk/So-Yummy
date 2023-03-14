@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { verificationUser } from 'redux/auth/authOperation';
@@ -8,14 +8,18 @@ const VerifyPage = () => {
   const { verificationToken } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isOneVerify = useRef(true);
 
   useEffect(() => {
     if (verificationToken) {
-      dispatch(verificationUser(verificationToken)).then(() => {
-        navigate('/signin', `{ replace }`);
-      });
+      if (isOneVerify.current) {
+        dispatch(verificationUser(verificationToken)).then(() => {
+          navigate('/signin', `{ replace }`);
+        });
+        isOneVerify.current = false;
+      }
     }
-  }, [dispatch, verificationToken, navigate]);
+  }, [dispatch, verificationToken, navigate, isOneVerify]);
 
   return (
     <div>

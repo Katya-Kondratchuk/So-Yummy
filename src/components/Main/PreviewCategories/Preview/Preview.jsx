@@ -7,7 +7,7 @@ import DishCard from 'reusableComponents/DishCard/DishCard';
 import { getCategorieRecipes } from 'services/api/recipesAPI';
 
 const Preview = ({ category }) => {
-  const [mainMeals, setMeals] = useState([]);
+  const [mainMeals, setMainMeals] = useState([]);
 
   const [isShow, setIsShow] = useState(false);
 
@@ -17,7 +17,7 @@ const Preview = ({ category }) => {
 
   useEffect(() => {
     getCategorieRecipes(category).then(response => {
-      setMeals(response.slice(0, 4));
+      setMainMeals(response.slice(0, 4));
     });
   }, [category]);
 
@@ -49,6 +49,8 @@ const Preview = ({ category }) => {
                   text={title}
                   favorite={favorite}
                   like={like}
+                  allData={mainMeals}
+                  setAllData={setMainMeals}
                 />
                 {/* </Link> */}
               </li>

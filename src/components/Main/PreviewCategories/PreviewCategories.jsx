@@ -1,11 +1,11 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-// import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
-// import Preview from './Preview/Preview';
-// import css from './PreviewCategories.module.css';
+import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
+import Preview from './Preview/Preview';
+import css from './PreviewCategories.module.css';
 // import { useDispatch } from 'react-redux';
 // import { logoutUser } from 'redux/auth/authOperation';
-import { getAllCategories } from '../../../services/';
+import { getAllCategories } from '../../../services/api/recipesAPI';
 
 const PreviewCategories = () => {
   // const dispatch = useDispatch();
@@ -17,11 +17,18 @@ const PreviewCategories = () => {
     });
   }, []);
   return (
-    <>
+    <div className={`${css.sectionWrapper} ${'container'} ${'greensImg'}`}>
       {allCategories.map(({ title, _id }) => (
-        <PreviewCategories key={_id} category={title} />
+        <Preview key={_id} category={title} />
       ))}
-    </>
+      <div className={`${css.buttonContainer} ${'container'}`}>
+        <div className={css.buttonWrapper}>
+          <Link to="/categories">
+            <SuperBtn title="Other catagories" otln typeBtn="submit" />
+          </Link>
+        </div>
+      </div>
+    </div>
 
     // <div className={`${css.sectionWrapper} ${'container'} ${'greensImg'}`}>
     //   <Preview categorie="Breakfast" />

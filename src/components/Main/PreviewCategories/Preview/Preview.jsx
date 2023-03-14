@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import css from './PreviewCategories.module.css';
+import css from './Preview.module.css';
 import Button from 'reusableComponents/Button/Button';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Preview = ({ category }) => {
   }, [category]);
 
   return (
-    <div className="container">
+    <div>
       <div className={css.previewContainer}>
         <h2 className={css.title}>{category}</h2>
         <ul className={css.list}>
@@ -27,7 +27,7 @@ const Preview = ({ category }) => {
               favorite,
               like,
               popularity,
-              thumb,
+              preview,
               time,
               title,
               _id,
@@ -35,7 +35,7 @@ const Preview = ({ category }) => {
               <li key={_id} className={css.item}>
                 <Link to={`/recipe/${_id}`}>
                   <DishCard
-                    image={thumb}
+                    image={preview}
                     altText={description}
                     text={title}
                     favorite={favorite}

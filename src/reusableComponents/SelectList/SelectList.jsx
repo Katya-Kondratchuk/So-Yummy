@@ -11,6 +11,7 @@ const SelectList = ({
   scrollbar = '',
   setOption,
   activeItemClass = '',
+  wrapperOption = '',
 }) => {
   const [isActive, setIsActive] = useState(false);
   const inputEl = useRef(null);
@@ -35,7 +36,7 @@ const SelectList = ({
         className={`${selectedOption}`}
         onClick={e => setIsActive(!isActive)}
       >
-        <span>{option}</span>
+        <span className={wrapperOption}>{option}</span>
         <span className={css.arrow}>
           <Arrow width="20px" height="20px" />
         </span>
@@ -69,6 +70,7 @@ SelectList.propTypes = {
   selectContent: PropTypes.string,
   scrollbar: PropTypes.string,
   activeItemClass: PropTypes.string,
+  wrapperOption: PropTypes.string,
   setOption: PropTypes.func,
 };
 

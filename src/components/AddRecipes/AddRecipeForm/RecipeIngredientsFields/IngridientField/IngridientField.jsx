@@ -27,6 +27,18 @@ const IngridientField = ({
     );
   }, [meals, name]);
 
+  const justThreeDigits = v => {
+    if (v.length > 3) {
+      // setAmount(v.slice(0, 3));
+      return;
+    }
+    if (v === '0') {
+      setAmount('');
+      return;
+    }
+    setAmount(v);
+  };
+
   useEffect(() => {
     if (data.name === name && data.unit === unit && data.amount === amount)
       return;
@@ -96,7 +108,7 @@ const IngridientField = ({
           min="1"
           className={css.amount}
           value={amount}
-          onChange={e => setAmount(e.target.value)}
+          onChange={e => justThreeDigits(e.target.value)}
         />
         <div className={css.wrapperUnit}>
           <SelectList
@@ -106,6 +118,7 @@ const IngridientField = ({
             selectedOption={css.selectUnit}
             selectContent={css.selectContentUnits}
             activeItemClass={css.activeItem}
+            wrapperOption={css.wrapperOptionUnit}
           />
         </div>
       </div>

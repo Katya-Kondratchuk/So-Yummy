@@ -5,10 +5,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
-import s from './Categories.module.css';
+import css from './Categories.module.css';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
-
-// getCategorieRecipes('Breakfast');
 
 const Categories = () => {
   const [allCategories, setAllCategories] = useState([]);
@@ -23,11 +21,7 @@ const Categories = () => {
     if (!category) {
       return;
     }
-    const getRecepies = async category => {
-      const recepies = (await getCategorieRecipes(category)) || [];
-      return recepies;
-    };
-    getRecepies(category).then(data => setRecepiesCategory(data));
+    getCategorieRecipes(category || []).then(data => setRecepiesCategory(data));
   }, [category]);
 
   useEffect(() => {
@@ -68,17 +62,14 @@ const Categories = () => {
           </Tabs>
         </Box>
         {recepiesCategory.length !== 0 && (
-          <ul className={s.categoryList}>
-            {recepiesCategory.map(({ _id, title, thumb }) => {
-              // console.log(previewImg);
-              return (
-                <li key={_id} className={s.categoryItem}>
-                  <Link to={`/recipe/${_id}`}>
-                    <DishCard image={thumb} altText={title} text={title} />
-                  </Link>
-                </li>
-              );
-            })}
+          <ul className={css.categoryList}>
+            {recepiesCategory.map(({ _id, title, thumb }) => (
+              <li key={_id} className={css.categoryItem}>
+                <Link to={`/recipe/${_id}`}>
+                  <DishCard image={thumb} altText={title} text={title} />
+                </Link>
+              </li>
+            ))}
           </ul>
         )}
       </div>

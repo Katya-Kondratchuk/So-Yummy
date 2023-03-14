@@ -14,13 +14,11 @@ const FormInput = ({
   formInputArea,
   userName,
 }) => {
-  const getColor = (
-    erorr,
-    value,
-    userName,
-    defaultColor = `${css.formInputUser}`,
-  ) => {
-    if (erorr === 'Your password is little secure. Add a capital letter.') {
+  const switchColor = (erorr, value, userName) => {
+    if (
+      erorr ===
+      'Your password is little secure. Add a number or a capital letter.'
+    ) {
       return `${css.formInput} ${css.formInputInsecure}`;
     } else if (erorr) {
       return `${css.formInput} ${css.formInputInvalid}`;
@@ -36,7 +34,7 @@ const FormInput = ({
   return (
     <div className={formInputArea}>
       <input
-        className={getColor(erorr, value)}
+        className={switchColor(erorr, value)}
         type={type}
         onChange={onChange}
         onBlur={onBlur}

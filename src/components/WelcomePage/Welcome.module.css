@@ -1,3 +1,9 @@
+.welcomeContent {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
 .registrationBtn {
   width: 132px;
   height: 45px;
@@ -41,15 +47,11 @@
   letter-spacing: -0.02em;
 }
 .backgroundImg {
-  margin: 0 auto;
-  width: 375px;
-  height: 812px;
+  position: relative;
   width: 100vw;
   height: 100vh;
-  padding-top: 274px;
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-position: 50% 50%; */
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.6) 58.58%,
@@ -115,11 +117,6 @@
     letter-spacing: -0.02em;
   }
   .backgroundImg {
-    width: 768px;
-    height: 1024px;
-    width: 100vw;
-    height: 100vh;
-    padding-top: 274px;
     background-image: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.6) 58.58%,
@@ -145,9 +142,6 @@
 }
 @media screen and (min-width: 1440px) {
   .backgroundImg {
-    width: 100vw;
-    height: 100vh;
-    padding-top: 214px;
     background-image: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.6) 58.58%,

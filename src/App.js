@@ -87,6 +87,15 @@ const App = () => {
               }
             />
             <Route
+              path="/categories/:categoryName"
+              element={
+                <PrivateRoute
+                  component={<CategoriesPage />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
               path="/search"
               element={
                 <PrivateRoute component={<SearchPage />} redirectTo="/signin" />

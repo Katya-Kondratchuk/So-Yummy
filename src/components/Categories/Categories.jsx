@@ -6,11 +6,18 @@ import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import css from './Categories.module.css';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
+import { useParams } from 'react-router';
+
+// <Link to={`/categories/${category}`} className={css.title}>
+//   {category}
+// </Link>;
 
 const Categories = () => {
   const [allCategories, setAllCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [recepiesCategory, setRecepiesCategory] = useState([]);
+
+  const { categoryName } = useParams();
 
   const handleChange = (event, newValue) => {
     setCategory(newValue);
@@ -20,8 +27,13 @@ const Categories = () => {
     if (!category) {
       return;
     }
+
+    if (categoryName) {
+      setCategory(categoryName);
+    }
+
     getCategorieRecipes(category || []).then(data => setRecepiesCategory(data));
-  }, [category]);
+  }, [category, categoryName]);
 
   useEffect(() => {
     const getAll = async () => {

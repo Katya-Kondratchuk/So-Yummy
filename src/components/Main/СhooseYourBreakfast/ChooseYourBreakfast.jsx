@@ -9,7 +9,9 @@ const ChooseYourBreakfast = () => {
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </span>
       <div>
-        <Link className={css.link}>See recipes &#8594;</Link>
+        <Link to="/categories" className={css.link}>
+          See recipes &#8594;
+        </Link>
       </div>
     </div>
   );

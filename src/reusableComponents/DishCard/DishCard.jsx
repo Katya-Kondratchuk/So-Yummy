@@ -4,8 +4,8 @@ import { ReactComponent as FavoriteIco } from './fav.svg';
 import { ReactComponent as LikeIco } from './like.svg';
 
 const DishCard = ({ image, altText, text, favorite, like }) => {
-  const favFeel = favorite ? 'white' : 'none';
-  const likeFeel = like ? 'white' : 'none';
+  const favFeel = favorite ? 'var(--secondaryGreenColor)' : 'none';
+  const likeFeel = like ? 'var(--secondaryGreenColor)' : 'none';
 
   return (
     <div className={css.cardContainer}>

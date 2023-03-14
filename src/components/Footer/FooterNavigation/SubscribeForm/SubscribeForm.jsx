@@ -1,6 +1,6 @@
 import React from 'react';
 // import FormInput from "reusableComponents/FormInput/FormInput";
-import s from '../Footer.module.css';
+import s from './SubscribeForm.module.css';
 
 const SubscribeForm = () => {
   return (

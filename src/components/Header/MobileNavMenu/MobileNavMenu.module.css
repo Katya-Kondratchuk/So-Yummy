@@ -22,3 +22,11 @@
   top: 15px;
   left: 15px;
 }
+
+.mobNavBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background-color: transparent;
+}

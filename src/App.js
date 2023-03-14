@@ -30,11 +30,11 @@ const App = () => {
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    if (!isFirstLoad.current) {
+    if (isFirstLoad.current) {
       dispatch(refreshUser());
       isFirstLoad.current = false;
     }
-  }, [dispatch]);
+  }, [dispatch, isFirstLoad]);
 
   return (
     <div>
@@ -129,7 +129,7 @@ const App = () => {
               }
             />
             <Route
-              path="/recipe"
+              path="/recipe/:recipeId"
               element={
                 <PrivateRoute
                   component={<RecipiesPage />}

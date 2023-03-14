@@ -10,13 +10,34 @@ const VerifyPage = () => {
   const navigate = useNavigate();
   const isOneVerify = useRef(true);
 
+  if (verificationToken) {
+    console.log('🚀 ~ isOneVerify.current: befor if', isOneVerify.current);
+    console.log('🚀 ~ verificationToken:', verificationToken);
+    if (isOneVerify.current) {
+      console.log('🚀 ~ isOneVerify.current:', isOneVerify.current);
+      console.log('horray');
+      isOneVerify.current = false;
+      dispatch(verificationUser(verificationToken)).then(() => {
+        navigate('/signin', `{ replace }`);
+      });
+    }
+  }
+
   useEffect(() => {
     if (verificationToken) {
+      console.log('🚀 ~ isOneVerify.current: befor if', isOneVerify.current);
+      console.log('🚀 ~ verificationToken:', verificationToken);
       if (isOneVerify.current) {
-        dispatch(verificationUser(verificationToken)).then(() => {
-          navigate('/signin', `{ replace }`);
-        });
+        console.log('horray');
         isOneVerify.current = false;
+        console.log('🚀 ~ isOneVerify.current:after if', isOneVerify.current);
+        dispatch(verificationUser(verificationToken))
+          .then(() => {
+            navigate('/signin', `{ replace }`);
+          })
+          .catch(error => {
+            console.log('🚀 ~ error inside verify:', error);
+          });
       }
     }
   }, [dispatch, verificationToken, navigate, isOneVerify]);

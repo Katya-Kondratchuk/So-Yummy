@@ -18,6 +18,7 @@ const SigninForm = () => {
   let signinSchema = yup.object().shape({
     email: yup
       .string()
+      .lowercase()
       .min(5, 'Your password its too short')
       .email('Your email must be valid')
       .matches(myEmailRegex, {
@@ -31,9 +32,10 @@ const SigninForm = () => {
       .trim()
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
+      .matches(/^[a-zа-я1-9]/, 'Symbols are not allowed')
       .matches(
-        /[A-Z-А-Я]/,
-        'Your password is little secure. Add a capital letter.',
+        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ0-9]/,
+        'Your password is little secure. Add a number or a capital letter.',
       )
       .required('Type your password please'),
   });
@@ -113,7 +115,7 @@ const SigninForm = () => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.password ===
-                  'Your password is little secure. Add a capital letter.' ? (
+                  'Your password is little secure. Add a number or a capital letter.' ? (
                     <small className={css.smallWarning}>
                       {formik.errors.password}
                     </small>

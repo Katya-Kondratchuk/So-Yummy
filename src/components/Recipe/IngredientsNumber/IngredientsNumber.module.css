@@ -1,12 +1,12 @@
 .wrapper {
   background-color: var(--greenColor);
-  width: 37px;
+  width: 107px;
   height: 23px;
   color: var(--whiteColor);
   font-size: 10px;
   line-height: 15px;
   border-radius: 4px;
-  margin-right: 39px;
+  margin-right: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,18 +14,19 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    width: 68px;
+    width: 158px;
     height: 36px;
-    margin-right: 78px;
-    font-size: 18px;
+    margin-right: 18px;
+    font-size: 16px;
     line-height: 27px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .wrapper {
-    width: 68px;
+    width: 200px;
     height: 35px;
-    margin-right: 151px;
+    font-size: 18px;
+    margin-right: 100px;
   }
 }

@@ -172,3 +172,41 @@ export const verifyResendEmail = createAsyncThunk(
     }
   },
 );
+
+export const reRequestAccessToken = createAsyncThunk(
+  'auth/reRequestAccessToken',
+  async (_, ThunkAPI) => {
+    const { refreshToken } = ThunkAPI.getState().auth;
+
+    if (!refreshToken) {
+      return ThunkAPI.rejectWithValue();
+    }
+
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
+        refreshToken,
+      });
+      token.set(data.accessToken);
+      return data.refreshToken;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const setUpInterceptor = store => {
+  axios.interceptors.response.use(
+    response => response,
+    async error => {
+      if (error.response.status === 401) {
+        try {
+          await store.dispatch(reRequestAccessToken());
+          return axios(error.config);
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      }
+      return Promise.reject(error);
+    },
+  );
+};

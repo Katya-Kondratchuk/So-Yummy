@@ -47,3 +47,23 @@ export const getCategorieRecipes = async (
     return null;
   }
 };
+
+export const patchRecipeFavoriteById = async id => {
+  try {
+    const { data } = await axios.patch(`/recipes/favorite/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const patchRecipeLikeById = async id => {
+  try {
+    const { data } = await axios.patch(`/recipes/like/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

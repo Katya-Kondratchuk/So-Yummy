@@ -16,7 +16,7 @@
   .title {
     width: 704px;
     height: 60px;
-    padding-right: 32px;
+    padding-right: 12px;
     padding-left: 32px;
     margin-top: 4px;
     margin-bottom: 32px;
@@ -42,7 +42,7 @@
 }
 @media screen and (min-width: 768px) {
   .ingredients {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
   }
 }
@@ -57,16 +57,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 115px;
+  width: 125px;
 }
 @media screen and (min-width: 768px) {
   .rightPartText {
-    width: 213px;
+    width: 183px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .rightPartText {
-    width: 284px;
+    width: 304px;
   }
 }

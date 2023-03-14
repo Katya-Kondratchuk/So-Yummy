@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';

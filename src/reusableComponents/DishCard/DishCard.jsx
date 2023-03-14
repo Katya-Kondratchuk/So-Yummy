@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   patchRecipeFavoriteById,
@@ -24,17 +24,14 @@ const DishCard = ({
   const addToFavorite = () => {
     patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
   };
-  useEffect(() => {}, []);
 
-  // useEffect(() => {
   const addLike = () => {
     patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
   };
-  // }, []);
 
   const favFeel =
-    favorite && isFavorite ? 'var(--secondaryGreenColor)' : 'none';
-  const likeFeel = like && isLike ? 'var(--secondaryGreenColor)' : 'none';
+    favorite || isFavorite ? 'var(--secondaryGreenColor)' : 'none';
+  const likeFeel = like || isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
     text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
   return (

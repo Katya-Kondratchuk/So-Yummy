@@ -3,7 +3,7 @@ import { ReactComponent as SvgLogo } from '../../assets/images/LogoHeader/logoHe
 import { ReactComponent as SvgLogoInv } from '../../assets/images/LogoHeader/logoInv.svg';
 const Logo = ({ inv, width, height }) => {
   if (inv) {
-    return <SvgLogoInv />;
+    return <SvgLogoInv style={{ width: width, height: height }} />;
   }
   return <SvgLogo style={{ width: width, height: height }} />;
 };

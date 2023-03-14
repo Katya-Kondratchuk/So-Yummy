@@ -1,0 +1,35 @@
+.title {
+  margin-top: 96px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'liga' off;
+  color: var(--titleColor);
+}
+@media screen and (min-width: 768px) {
+  .title {
+    margin-top: 136px;
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .title {
+    margin-top: 164px;
+    font-size: 44px;
+  }
+}
+
+.shoppingItemList:last-child {
+  margin-bottom: 100px;
+}
+@media screen and (min-width: 768px) {
+  .shoppingItemList:last-child {
+    margin-bottom: 200px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .shoppingItemList:last-child {
+    margin-bottom: 195px;
+  }
+}

@@ -11,13 +11,13 @@ import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
+  <React.StrictMode>
     <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
-      <BrowserRouter basename="/So-Yummy">
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter basename="/So-Yummy">
+          <App />
+        </BrowserRouter>
+      </Provider>
     </PersistGate>
-  </Provider>,
-  // </React.StrictMode>,
+  </React.StrictMode>,
 );

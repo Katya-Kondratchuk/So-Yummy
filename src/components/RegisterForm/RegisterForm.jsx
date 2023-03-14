@@ -11,31 +11,32 @@ import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 import switchImages from '../../services/switchImages';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import { registerUser } from 'redux/auth/authOperation';
+import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
 
 // const loading = useSelector(selectAuthLoading);
-
+// /^[А-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ(\-)(\ )
+// /[\p{L}\p{N}]+/gu
 const RegisterForm = () => {
+  const [notify, setNotify] = useState(false);
   const dispatch = useDispatch();
-  const myEmailRegex =
-    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-
+  const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   let registrationSchema = yup.object().shape({
     name: yup
       .string()
       .trim()
-      .matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/, {
-        message: 'Only letters allowed',
+      .matches(/^[\d\wаА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ]+$/, {
+        message: 'Special simbols are not allowed',
         excludeEmptyString: true,
       })
-      .min(1, 'your name must be 1 character at least')
+      .min(1, 'Your name must be 1 character at least')
       .max(16, '16 characters max')
       .required('Type your name please'),
     email: yup
       .string()
       .min(5, 'Your password its too short')
-      .email('your email must be valid')
+      .email('Your email must be valid')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
@@ -47,34 +48,29 @@ const RegisterForm = () => {
       .trim()
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
-      .matches(/[A-Z-А-Я]/, 'Your password is little secure.')
+      .matches(
+        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ]/,
+        'Your password is little secure. Add a capital letter.',
+      )
       .required('Type your password please'),
   });
-
-  // yup.addMethod(yup.string, 'email', function validateEmail(message) {
-  //   return this.matches(myEmailRegex, {
-  //     message: 'Your email is not valid',
-  //     name: 'email',
-  //     excludeEmptyString: true,
-  //   });
-  // });
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       password: '',
-      confirm: '',
     },
     validationSchema: registrationSchema,
 
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { name, email, password } = values;
+      console.log('log');
       dispatch(registerUser({ name, email, password }));
       setSubmitting(false);
+      setNotify(true);
     },
   });
-  // console.log(formik.errors.name);
-  // const isValid = registrationSchema.isValidSync(formik.values);
+  const isValid = registrationSchema.isValidSync(formik.values);
   const [inputValue, setInputValue] = useState('');
 
   // const handleInputChange = event => {
@@ -85,8 +81,7 @@ const RegisterForm = () => {
   };
   return (
     <div className={css.registrComponent}>
-      <div className={css.authBackgroundImg}></div>
-
+      <AuthBackround />
       <div className="container">
         <div className={css.registrFormatting}>
           <AuthImg />
@@ -99,6 +94,8 @@ const RegisterForm = () => {
               schema={registrationSchema}
               buttonLabel={'Sign Up'}
               formik={formik}
+              isValid={isValid}
+              notify={notify}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
@@ -118,7 +115,10 @@ const RegisterForm = () => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.name && formik.errors.name && (
-                    <HelperText errorText={formik.errors.name} />
+                    <HelperText
+                      value={formik.values.name}
+                      errorText={formik.errors.name}
+                    />
                   )}
                 </div>
 
@@ -137,7 +137,10 @@ const RegisterForm = () => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.email && formik.errors.email && (
-                    <HelperText errorText={formik.errors.email} />
+                    <HelperText
+                      value={formik.values.email}
+                      errorText={formik.errors.email}
+                    />
                   )}
                 </div>
 
@@ -156,14 +159,15 @@ const RegisterForm = () => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.password ===
-                  'Your password is little secure.' ? (
+                  'Your password is little secure. Add a capital letter.' ? (
                     <small className={css.smallWarning}>
                       {formik.errors.password}
                     </small>
                   ) : (
                     <HelperText
+                      value={formik.values.password}
                       errorText={formik.errors.password}
-                      text={'Password is secure'}
+                      textSucsess="Password is secure"
                     />
                   )}
                 </div>

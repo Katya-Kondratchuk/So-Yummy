@@ -1,6 +1,7 @@
 .header {
   display: flex;
   height: auto;
+  padding-top: 18px;
 }
 @media screen and (min-width: 1440px) {
   .header {

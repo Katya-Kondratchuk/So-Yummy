@@ -1,4 +1,5 @@
-import React from 'react';
+// import React, { useState } from 'react';
+import { useParams } from 'react-router';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
 
 import css from './Recipe.module.css';
@@ -31,6 +32,9 @@ const dish = {
 };
 
 const Recipe = () => {
+  const { recipeId } = useParams();
+  // const [recipe, setRecipe] = useState();
+  console.log(recipeId);
   return (
     <>
       <TopContainer />
@@ -39,7 +43,8 @@ const Recipe = () => {
           image={dish.image}
           text={dish.strMeasure1}
           id="1"
-          description={dish.strIngredient1}
+          name={dish.strIngredient1}
+          description={dish.strIngredient2}
         />
       </div>
     </>

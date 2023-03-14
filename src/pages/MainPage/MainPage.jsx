@@ -3,21 +3,11 @@ import MainHero from 'components/Main/Search/Search';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/authOperation';
+// import PreviewCategories from 'components/PreviewCategories/PreviewCategories';
 
 const MainPage = () => {
-  const dispatch = useDispatch();
-
   return (
     <div>
-      <div>
-        <button
-          type="button"
-          style={{ marginLeft: '100px' }}
-          onClick={() => dispatch(logoutUser())}
-        >
-          Log out
-        </button>
-      </div>
       <MainHero />
       <PreviewCategories />
     </div>

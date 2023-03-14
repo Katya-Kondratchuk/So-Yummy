@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { verificationUser } from 'redux/auth/authOperation';
+import SigninForm from 'components/SigninForm';
 
 const VerifyPage = () => {
   const { verificationToken } = useParams();
@@ -17,7 +18,9 @@ const VerifyPage = () => {
   }, [dispatch, verificationToken, navigate]);
 
   return (
-    <div>Checking the correctness of the verification code! Wait, please!</div>
+    <div>
+      <SigninForm />
+    </div>
   );
 };
 

@@ -1,18 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
-import PublicRoute from 'routes/PublicRoute/PublicRoute';
-import WelcomePage from './pages/WelcomePage/WelcomePage';
+import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
+import SharedLayout from 'components/SharedLayout';
 import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
-import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
-import SharedLayout from 'components/SharedLayout';
-import { ToastContainer } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { refreshUser } from 'redux/auth/authOperation';
 import VerifyPage from 'pages/VerifyPage';
-import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
-import { selectAuthIsRefreshUser } from 'redux/auth/authSelectors';
+import { lazy, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { refreshUser } from 'redux/auth/authOperation';
+import { selectAuthIsRefreshUser } from 'redux/auth/authSelectors';
+import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
+import PublicRoute from 'routes/PublicRoute/PublicRoute';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
@@ -27,10 +27,14 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshUser = useSelector(selectAuthIsRefreshUser);
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (isFirstLoad.current) {
+      dispatch(refreshUser());
+      isFirstLoad.current = false;
+    }
+  }, [dispatch, isFirstLoad]);
 
   return (
     <div>
@@ -125,7 +129,7 @@ const App = () => {
               }
             />
             <Route
-              path="/recipe"
+              path="/recipe/:recipeId"
               element={
                 <PrivateRoute
                   component={<RecipiesPage />}

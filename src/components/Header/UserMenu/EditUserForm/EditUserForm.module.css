@@ -1,0 +1,46 @@
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  top: 100px;
+  right: 100px;
+  width: 161px;
+  height: 130px;
+  background-color: var(--whiteColor);
+  border: 1px solid var(--greenColor);
+  border-radius: 8px;
+}
+
+.btnWrp {
+  width: 125px;
+  height: 43px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.editBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 125px;
+  height: 23px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--secondaryTextColor);
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  color: var(--greenColor);
+}
+
+.editSpan {
+  color: inherit;
+}

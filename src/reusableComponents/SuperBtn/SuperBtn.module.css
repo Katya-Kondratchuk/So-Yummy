@@ -2,16 +2,17 @@
   display: inline-block;
   width: 100%;
   height: 100%;
-  border-top-left-radius: 18px 18px;
-  border-bottom-left-radius: 44px 44px;
-  border-bottom-right-radius: 18px 18px;
-  border-top-right-radius: 44px 44px;
+  border-radius: 18px 44px;
   background-color: var(--greenColor);
   color: var(--whiteColor);
   font-family: inherit;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: inherit;
+  line-height: inherit;
   cursor: pointer;
+}
+
+.common:hover {
+  background-color: var(--secondaryBlackColor);
 }
 
 .lnk {
@@ -29,11 +30,32 @@
   color: var(--secondaryBlackColor);
   background-color: transparent;
 }
+
+.outlined:hover {
+  color: var(--whiteColor);
+  background-color: var(--greenColor);
+}
+
 .outlinedInverted {
   border: 2px solid var(--whiteColor);
   background-color: transparent;
 }
 
+.outlinedInverted:hover {
+  border: 2px solid var(--greenColor);
+  color: var(--greenColor);
+  background-color: transparent;
+}
+
 .dark {
   background-color: var(--secondaryBlackColor);
+}
+
+.dark:hover {
+  background-color: var(--greenColor);
+}
+
+.welcome:hover {
+  color: var(--whiteColor);
+  background-color: var(--greenColor);
 }

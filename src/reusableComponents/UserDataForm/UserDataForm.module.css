@@ -17,3 +17,11 @@
     height: 59px;
   }
 }
+
+.notification {
+  text-align: center;
+  margin: 15px auto;
+  font-size: 14px;
+  display: inline-block;
+  color: var(--whiteColor);
+}

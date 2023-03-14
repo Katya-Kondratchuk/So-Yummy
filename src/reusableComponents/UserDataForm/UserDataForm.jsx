@@ -14,6 +14,7 @@ const UserDataForm = ({
   isValid,
   notify,
 }) => {
+  console.log(isValid);
   const loading = useSelector(selectAuthLoading);
   const erorMessage = useSelector(selectAuthErrorMessage);
   return (
@@ -27,10 +28,13 @@ const UserDataForm = ({
           type={'submit'}
           disabled={loading || !isValid}
         />
-        {!erorMessage && notify && !loading && (
+        {!erorMessage && notify && !loading && isValid && (
           <span className={css.notification}>
-            You successfully registered! Check email for verification!
+            Check your email for verification!
           </span>
+        )}
+        {!erorMessage === 'Email is not verified' && (
+          <span className={css.notification}>Email is not verified!</span>
         )}
       </form>
     </div>

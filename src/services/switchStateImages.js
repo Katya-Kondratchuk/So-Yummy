@@ -4,7 +4,10 @@ import { ReactComponent as ErorrIcon } from '../assets/images/formInputIcons/ero
 import { ReactComponent as EditIcon } from '../assets/images/formInputIcons/erorr.svg';
 
 const switchStateImages = (erorr, value, edit) => {
-  if (erorr === 'Your password is little secure. Add a capital letter.') {
+  if (
+    erorr ===
+    'Your password is little secure. Add a number or a capital letter.'
+  ) {
     return <WarningIcon />;
   } else if (erorr) {
     return <ErorrIcon />;

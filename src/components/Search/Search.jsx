@@ -26,13 +26,11 @@ const Search = () => {
       <ul className={css.searchList}>
         {arr.map(item => (
           <li key={id()} className={css.searchItem}>
-            <Link to="/recipe">
-              <DishCard
-                image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-                altText="someDish"
-                text="Delicious dishes"
-              />
-            </Link>
+            <DishCard
+              image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
+              altText="someDish"
+              text="Delicious dishes"
+            />
           </li>
         ))}
       </ul>

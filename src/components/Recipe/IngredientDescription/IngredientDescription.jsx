@@ -23,7 +23,6 @@ const IngredientDescription = ({ name, description = '' }) => {
   };
 
   let str = kitcut(description, count);
-  console.log(str);
 
   const [text, setText] = useState(str);
   const handleMouseEnter = () => {

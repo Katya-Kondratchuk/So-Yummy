@@ -16,12 +16,15 @@
     width: 400px;
     height: 59px;
   }
+  .notification {
+    margin: 17px auto;
+  }
 }
 
 .notification {
   text-align: center;
-  margin: 15px auto;
+  margin: 17px auto;
   font-size: 14px;
-  display: inline-block;
+  display: block;
   color: var(--whiteColor);
 }

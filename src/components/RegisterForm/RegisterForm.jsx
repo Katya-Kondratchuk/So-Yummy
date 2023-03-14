@@ -16,8 +16,7 @@ import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
 
 // const loading = useSelector(selectAuthLoading);
-// /^[А-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ(\-)(\ )
-// /[\p{L}\p{N}]+/gu
+
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
   const dispatch = useDispatch();
@@ -35,25 +34,27 @@ const RegisterForm = () => {
       .required('Type your name please'),
     email: yup
       .string()
-      .min(5, 'Your password its too short')
-      .email('Your email must be valid')
+      .lowercase()
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
         excludeEmptyString: true,
       })
+      .min(5, 'Your password its too short')
       .required('Type your email please'),
     password: yup
       .string()
       .trim()
+      .matches(/^[a-zа-яа-яа-щ1-9]/, 'Symbols are not allowed')
+      .matches(
+        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ0-9]/,
+        'Your password is little secure. Add a number or a capital letter.',
+      )
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
-      .matches(
-        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ]/,
-        'Your password is little secure. Add a capital letter.',
-      )
       .required('Type your password please'),
   });
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -64,7 +65,6 @@ const RegisterForm = () => {
 
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { name, email, password } = values;
-      console.log('log');
       dispatch(registerUser({ name, email, password }));
       setSubmitting(false);
       setNotify(true);
@@ -159,7 +159,7 @@ const RegisterForm = () => {
                     onBlur={formik.handleBlur}
                   />
                   {formik.errors.password ===
-                  'Your password is little secure. Add a capital letter.' ? (
+                  'Your password is little secure. Add a number or a capital letter.' ? (
                     <small className={css.smallWarning}>
                       {formik.errors.password}
                     </small>

@@ -24,6 +24,7 @@
   padding-left: 40px;
   font-size: 14px;
   line-height: 1.5;
+  transition: all 0.2s ease;
 }
 .formInput:hover,
 .formInput:focus {

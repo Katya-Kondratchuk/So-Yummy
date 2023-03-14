@@ -1,7 +1,7 @@
 .header {
-  z-index: 100;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: auto;
   padding-top: 18px;
 }
@@ -14,17 +14,6 @@
   .header {
     padding-top: 18px;
   }
-}
-.wrapperLogo {
-  top: 15px;
-  margin-left: 15px;
-}
-@media screen and (min-width: 768px) {
-  .wrapperLogo {
-    margin: 0;
-  }
-}
-@media screen and (min-width: 1440px) {
   .wrapperLogo {
     margin-right: 187px;
   }

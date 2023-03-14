@@ -37,7 +37,7 @@ const UserMenu = () => {
   };
 
   return (
-    <>
+    <div className={css.wrapper}>
       <div className={css.container} onClick={openModal}>
         <UserAvatar />
         <UserName />
@@ -61,7 +61,7 @@ const UserMenu = () => {
           <ConfirmModal onClose={closeModalConfirm} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 

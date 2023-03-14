@@ -1,63 +1,29 @@
-.textWrapper {
+.container {
+  position: relative;
   width: 225px;
   height: 92px;
   border-radius: 8px;
   padding: 8px;
-  margin-left: 88px;
+  margin-left: 85px;
   margin-bottom: 115px;
-  margin-top: 175px;
+  margin-top: 155px;
   background-color: var(--whiteColor);
-}
-@media screen and (min-width: 768px) {
-  .textWrapper {
-    position: absolute;
-    padding: 8px;
-    width: 260px;
-    height: 100px;
-    margin: 0;
-    right: 27px;
-    top: 370px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .textWrapper {
-    position: absolute;
-    padding: 16px;
-    width: 298px;
-    height: 114px;
-    right: 140px;
-    top: 470px;
-  }
-}
-.textCurrent {
-  text-align: center;
   font-weight: 500;
   font-size: 12px;
-  line-height: 18px;
-  letter-spacing: -0.24px;
-  color: var(--greenColor);
-}
-@media screen and (min-width: 1440px) {
-  .textCurrent {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.24px;
-  }
-}
-
-.text {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
+  line-height: 20px;
   letter-spacing: -0.24px;
   color: var(--mainTextColor);
 }
-@media screen and (min-width: 1440px) {
-  .text {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.24px;
-  }
+.arrowContainer {
+  display: none;
+}
+.seeRecipeWrp {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.textCurrent {
+  color: var(--greenColor);
 }
 .linkWrapper {
   font-size: 10px;
@@ -65,8 +31,42 @@
   letter-spacing: -0.24px;
   color: var(--mainTextColor);
 }
+@media screen and (min-width: 768px) {
+  .container {
+    position: absolute;
+    padding: 8px;
+    width: 260px;
+    height: 100px;
+    margin: 0;
+    right: 40px;
+    top: 310px;
+    font-size: 14px;
+  }
+  .arrowContainer {
+    display: block;
+    position: absolute;
+    width: 186px;
+    height: 115px;
+    left: 45px;
+    bottom: -80px;
+    background-image: url('../../../assets/images/HeroMain/V2/curlyArrow.png');
+  }
+}
 @media screen and (min-width: 1440px) {
-  .linkWrapper {
-    padding-left: 190px;
+  .container {
+    padding: 16px;
+    width: 298px;
+    height: 114px;
+    right: 120px;
+    top: 395px;
+  }
+  .arrowContainer {
+    display: block;
+    position: absolute;
+    width: 190px;
+    height: 148px;
+    left: 45px;
+    bottom: -115px;
+    background-image: url('../../../assets/images/HeroMain/V2/curlyArrow-desc.png');
   }
 }

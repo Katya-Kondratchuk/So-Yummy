@@ -3,7 +3,7 @@ import SharedLayout from 'components/SharedLayout';
 import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
 import VerifyPage from 'pages/VerifyPage';
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -27,14 +27,14 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshUser = useSelector(selectAuthIsRefreshUser);
-  // const isFirstLoad = useRef(true);
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    // if (!isFirstLoad.current) {
-    dispatch(refreshUser());
-    //   isFirstLoad.current = false;
-    // }
-  }, [dispatch]);
+    if (isFirstLoad.current) {
+      dispatch(refreshUser());
+      isFirstLoad.current = false;
+    }
+  }, [dispatch, isFirstLoad]);
 
   return (
     <div>

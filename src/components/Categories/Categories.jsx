@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -65,9 +64,7 @@ const Categories = () => {
           <ul className={css.categoryList}>
             {recepiesCategory.map(({ _id, title, preview }) => (
               <li key={_id} className={css.categoryItem}>
-                <Link to={`/recipe/${_id}`}>
-                  <DishCard image={preview} altText={title} text={title} />
-                </Link>
+                <DishCard image={preview} altText={title} text={title} />
               </li>
             ))}
           </ul>

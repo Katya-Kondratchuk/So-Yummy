@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-export const getAllRecipes = async (page = 1, limit = 12, sort = '') => {
+export const getAllRecipes = async (page, limit, sort = '') => {
   try {
     const { data } = await axios.get(
       `/recipes?page=${page}&limit=${limit}&sort=${sort}`,
     );
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -16,7 +15,6 @@ export const getAllRecipes = async (page = 1, limit = 12, sort = '') => {
 export const getRecipeById = async id => {
   try {
     const { data } = await axios.get(`/recipes/${id}`);
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -27,7 +25,6 @@ export const getRecipeById = async id => {
 export const getAllCategories = async () => {
   try {
     const { data } = await axios.get(`/recipes/category/list`);
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -44,7 +41,6 @@ export const getCategorieRecipes = async (
     const { data } = await axios.get(
       `/recipes/category/${category}?page=${page}&limit=${limit}`,
     );
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

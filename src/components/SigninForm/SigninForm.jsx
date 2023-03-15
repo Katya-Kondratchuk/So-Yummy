@@ -52,10 +52,10 @@ const SigninForm = () => {
       name: '',
       email: '',
       password: '',
-      confirm: '',
     },
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
+      console.log(values);
       const { email, password } = values;
       dispatch(loginUser({ email, password }));
       setSubmitting(false);
@@ -73,6 +73,7 @@ const SigninForm = () => {
               <AuthTitle titleText="Sign in" />
             </div>
             <UserDataForm
+              divButtonClass={css.divButtonClass}
               initialValues={formik.initialValues}
               schema={signinSchema}
               buttonLabel={'Sign in'}
@@ -118,8 +119,7 @@ const SigninForm = () => {
                   formik.values.password &&
                   !warningValidation(formik.values.password) ? (
                     <small className={css.smallWarning}>
-                      Your password is little secure. Add a number a capital
-                      letter.
+                      Your password is little secure. Add a capital letter.
                     </small>
                   ) : (
                     <HelperText

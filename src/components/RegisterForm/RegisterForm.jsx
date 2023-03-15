@@ -94,6 +94,7 @@ const RegisterForm = () => {
               formik={formik}
               isValid={isValid}
               notify={notify}
+              divButtonClass={css.divButtonClass}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
@@ -159,8 +160,7 @@ const RegisterForm = () => {
                   formik.values.password &&
                   !warningValidation(formik.values.password) ? (
                     <small className={css.smallWarning}>
-                      Your password is little secure. Add a number a capital
-                      letter.
+                      Your password is little secure. Add a capital letter.
                     </small>
                   ) : (
                     <HelperText

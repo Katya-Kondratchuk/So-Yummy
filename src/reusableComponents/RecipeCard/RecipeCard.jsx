@@ -4,7 +4,15 @@ import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import TrashButton from 'reusableComponents/TrashButton/TrashButton';
 import css from './RecipeCard.module.css';
 
-const RecipeCard = ({ title, time, text, text2, imgComponent, trashClass }) => {
+const RecipeCard = ({
+  id,
+  title,
+  time,
+  text,
+  imgComponent,
+  trashClass,
+  onDelete,
+}) => {
   return (
     <li className={css.dish}>
       <img src={imgComponent} className={css.dishImg} alt="dish visually" />
@@ -12,15 +20,15 @@ const RecipeCard = ({ title, time, text, text2, imgComponent, trashClass }) => {
         <div className={css.titleWrapper}>
           <h3 className={css.dishTitle}>{title}</h3>
           <div className={css.trashLogo}>
-            <TrashButton bgColorClass={trashClass} />
+            <TrashButton bgColorClass={trashClass} onDelete={onDelete} />
           </div>
         </div>
         <p className={css.dishDiscriptionFirst}>{text}</p>
-        <p className={css.dishDiscriptionSecond}>{text2}</p>
+        {/* <p className={css.dishDiscriptionSecond}>{text2}</p> */}
         <div className={css.bottomWrapper}>
           <p className={css.dishTime}>{time}</p>
           <div className={css.dishButton}>
-            <Link to={`/recipe/${title}`}>
+            <Link to={`/recipe/${id}`}>
               <SuperBtn title={'See recipe'} dark />
             </Link>
           </div>

@@ -11,6 +11,7 @@ import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
+import warningValidation from 'services/warningValidation';
 
 const SigninForm = () => {
   const dispatch = useDispatch();
@@ -32,10 +33,9 @@ const SigninForm = () => {
       .trim()
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
-      .matches(/^[a-zа-я1-9]/, 'Symbols are not allowed')
       .matches(
-        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ0-9]/,
-        'Your password is little secure. Add a number or a capital letter.',
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
+        'Symbols are not allowed',
       )
       .required('Type your password please'),
   });
@@ -114,10 +114,12 @@ const SigninForm = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.errors.password ===
-                  'Your password is little secure. Add a number or a capital letter.' ? (
+                  {!formik.errors.password &&
+                  formik.values.password &&
+                  !warningValidation(formik.values.password) ? (
                     <small className={css.smallWarning}>
-                      {formik.errors.password}
+                      Your password is little secure. Add a number a capital
+                      letter.
                     </small>
                   ) : (
                     <HelperText

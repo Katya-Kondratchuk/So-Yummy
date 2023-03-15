@@ -104,6 +104,7 @@ a {
 
 button {
   padding: 0;
+  cursor: pointer;
 }
 /* Make images and embedded objects responsive */
 img,

@@ -115,11 +115,11 @@ export const logoutUser = createAsyncThunk(
   async (_, ThunkAPI) => {
     try {
       await axios.post(AUTH_ENDPOINT.LOGOUT);
-      toast('You successfully logged out!');
+      toast.success('You successfully logged out!');
       token.unset();
       return;
     } catch (error) {
-      toast('You logged out, please login again!');
+      toast.warn('You logged out, please login again!');
       return ThunkAPI.rejectWithValue(error.message);
     }
   },
@@ -144,7 +144,7 @@ export const verificationUser = createAsyncThunk(
       const { data } = await axios.get(
         `${AUTH_ENDPOINT.VERIFY}/${credentials}`,
       );
-      toast(`${data.message}!`);
+      toast.success(`${data.message}!`);
       return data;
     } catch (error) {
       if (error.response.status === 404) {
@@ -164,7 +164,7 @@ export const verifyResendEmail = createAsyncThunk(
         AUTH_ENDPOINT.VERIFY_RESEND,
         credentials,
       );
-      toast(`${data.message}!`);
+      toast.success(`${data.message}!`);
       return data;
     } catch (error) {
       toast.error(`${error.response?.data?.message || 'Try again'}!`);
@@ -172,3 +172,41 @@ export const verifyResendEmail = createAsyncThunk(
     }
   },
 );
+
+export const reRequestAccessToken = createAsyncThunk(
+  'auth/reRequestAccessToken',
+  async (_, ThunkAPI) => {
+    const { refreshToken } = ThunkAPI.getState().auth;
+
+    if (!refreshToken) {
+      return ThunkAPI.rejectWithValue();
+    }
+
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
+        refreshToken,
+      });
+      token.set(data.accessToken);
+      return data.refreshToken;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const setUpInterceptor = store => {
+  axios.interceptors.response.use(
+    response => response,
+    async error => {
+      if (error.response.status === 401) {
+        try {
+          await store.dispatch(reRequestAccessToken());
+          return axios(error.config);
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      }
+      return Promise.reject(error);
+    },
+  );
+};

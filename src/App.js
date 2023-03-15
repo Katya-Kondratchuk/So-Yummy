@@ -4,11 +4,11 @@ import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
 import VerifyPage from 'pages/VerifyPage';
 import { lazy, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { refreshUser } from 'redux/auth/authOperation';
+import { refreshUser, setUpInterceptor } from 'redux/auth/authOperation';
 import { selectAuthIsRefreshUser } from 'redux/auth/authSelectors';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
@@ -28,6 +28,9 @@ const App = () => {
   const dispatch = useDispatch();
   const isRefreshUser = useSelector(selectAuthIsRefreshUser);
   const isFirstLoad = useRef(true);
+
+  const store = useStore();
+  setUpInterceptor(store);
 
   useEffect(() => {
     if (isFirstLoad.current) {
@@ -79,6 +82,15 @@ const App = () => {
             />
             <Route
               path="/categories"
+              element={
+                <PrivateRoute
+                  component={<CategoriesPage />}
+                  redirectTo="/signin"
+                />
+              }
+            />
+            <Route
+              path="/categories/:categoryName"
               element={
                 <PrivateRoute
                   component={<CategoriesPage />}

@@ -2,6 +2,7 @@ import React from 'react';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './EditUserForm.module.css';
 import { ReactComponent as EditPen } from '../../../../assets/images/editPen/editPen.svg';
+import UserArrowSvg from 'components/Header/UserMenu/UserArrowSvg/UserArrowSvg';
 
 const EditUserForm = ({ closeModal, openEdit, openConfirm }) => {
   const editBtnClickHandle = () => {
@@ -20,7 +21,8 @@ const EditUserForm = ({ closeModal, openEdit, openConfirm }) => {
       </button>
 
       <div onClick={logOutBtnClickHandle} className={css.btnWrp}>
-        <SuperBtn typeBtn="submit" title="LogOut →" />
+        <SuperBtn typeBtn="submit" title="LogOut" />
+        <UserArrowSvg />
       </div>
     </div>
   );

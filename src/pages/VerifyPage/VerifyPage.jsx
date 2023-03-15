@@ -4,17 +4,24 @@ import { useDispatch } from 'react-redux';
 import { verificationUser } from 'redux/auth/authOperation';
 import SigninForm from 'components/SigninForm';
 
+let verify = null;
+
 const VerifyPage = () => {
   const { verificationToken } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (verificationToken) {
-      dispatch(verificationUser(verificationToken)).then(() => {
+    if (!verificationToken) return;
+    if (verificationToken === verify) return;
+
+    verify = verificationToken;
+
+    dispatch(verificationUser(verificationToken))
+      .then(() => {
         navigate('/signin', `{ replace }`);
-      });
-    }
+      })
+      .catch(() => {});
   }, [dispatch, verificationToken, navigate]);
 
   return (

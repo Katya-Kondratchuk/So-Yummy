@@ -1,0 +1,25 @@
+.container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: -2;
+  width: 48px;
+  height: 202px;
+  background-image: url('../../../../assets/images/HeroMain/V2/leafs-left.png');
+  background-size: cover;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    top: 0;
+    width: 67px;
+    height: 323px;
+    background-image: url('../../../../assets/images/HeroMain/V2/leafs-left-tab.png');
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 116px;
+    height: 398px;
+    background-image: url('../../../../assets/images/HeroMain/V2/leafs-left-desc.png');
+  }
+}

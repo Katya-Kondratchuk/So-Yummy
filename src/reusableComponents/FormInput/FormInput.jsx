@@ -1,36 +1,61 @@
 import css from './FormInput.module.css';
-import { ReactComponent as SucsessIcon } from '../../assets/images/formInputIcons/sucsess.svg';
-import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
+import switchStateImages from 'services/switchStateImages';
+import warningValidation from 'services/warningValidation';
 const FormInput = ({
-  placeholder,
-  type,
+  placeholder = '',
+  type = '',
   switchImages,
-  handleClearClick,
-  isValid,
   onBlur,
   onChange,
+  name = '',
+  erorr,
+  value = '',
+  formInputArea = '',
+  formInputUserMenu = '',
+  formInputFooterForm = '',
 }) => {
+  const switchColor = (
+    erorr,
+    value,
+    type,
+    formInputUserMenu,
+    formInputFooterForm = '',
+  ) => {
+    if (!erorr && value && !warningValidation(value) && type === 'password') {
+      return `${css.formInput} ${css.formInputInsecure}`;
+    } else if (erorr) {
+      return `${css.formInput} ${css.formInputInvalid} ${formInputUserMenu}`;
+    } else if (!erorr && value) {
+      return `${css.formInput} ${css.formInputValid} ${formInputUserMenu}`;
+    } else if (formInputUserMenu) {
+      return `${formInputUserMenu}`;
+    } else if (formInputFooterForm) {
+      return `${css.formInput} ${formInputFooterForm}`;
+    } else {
+      return `${css.formInput}`;
+    }
+  };
+  console.log(erorr);
   return (
-    <div className={css.formArea}>
+    <div className={formInputArea}>
       <input
-        className={css.formInput}
+        className={switchColor(
+          erorr,
+          value,
+          type,
+          formInputUserMenu,
+          formInputFooterForm,
+        )}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
-        name="formImput"
+        name={name}
         placeholder={placeholder}
       />
-      <span className={css.formIcon}>{switchImages(type)} </span>
-      {isValid && <SucsessIcon className={css.formStateIcon} />}
-      {isValid && (
-        <button
-          className={css.clearButton}
-          onClick={handleClearClick}
-          type="button"
-        >
-          <ErorrIcon className={css.formStateIcon} />
-        </button>
-      )}
+      <span className={css.formIcon}>{switchImages(name)}</span>
+      <span className={css.formStateIcon}>
+        {switchStateImages(erorr, value, formInputUserMenu, type)}
+      </span>
     </div>
   );
 };

@@ -1,0 +1,73 @@
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  top: 72px;
+  right: 64px;
+  width: 161px;
+  height: 130px;
+  background-color: var(--whiteColor);
+  border: 1px solid var(--greenColor);
+  border-radius: 8px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 16px;
+    top: 82px;
+    right: 158px;
+    width: 177px;
+    height: 134px;
+    border: none;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 18px;
+    top: 77px;
+    right: 223px;
+  }
+}
+
+.btnWrp {
+  width: 125px;
+  height: 43px;
+  font-size: 14px;
+  line-height: 21px;
+}
+@media screen and (min-width: 768px) {
+  .btnWrp {
+    width: 141px;
+  }
+}
+
+.editBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 125px;
+  height: 23px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--secondaryTextColor);
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .editBtn {
+    margin-bottom: 32px;
+  }
+}
+
+.editBtn:hover {
+  color: var(--greenColor);
+}
+
+.editSpan {
+  color: inherit;
+}

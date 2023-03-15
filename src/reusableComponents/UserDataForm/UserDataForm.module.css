@@ -3,9 +3,22 @@
   height: 45px;
   margin: 0 auto;
 }
+
 @media screen and (min-width: 768px) {
   .confirmButton {
     max-width: 400px;
     height: 56px;
   }
+
+  .notification {
+    margin: 17px auto;
+  }
+}
+
+.notification {
+  text-align: center;
+  margin: 17px auto;
+  font-size: 14px;
+  display: block;
+  color: var(--whiteColor);
 }

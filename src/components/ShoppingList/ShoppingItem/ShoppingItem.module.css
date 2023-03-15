@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 343px;
+  height: 86px;
+  padding-right: 19px;
+  border-radius: 8px;
+  border-bottom: 1px solid var(--lineColor);
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 704px;
+    height: 140px;
+    padding-right: 45px;
+    margin-top: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 1240px;
+    height: 182px;
+    padding: 0;
+    padding-right: 68px;
+    padding-left: 40px;
+  }
+}
+
+.leftWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 227px;
+}
+@media screen and (min-width: 768px) {
+  .leftWrapper {
+    width: 461px;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .leftWrapper {
+    width: 870px;
+  }
+}
+
+.button {
+  background: url('../../../assets//images/CheckBoxRecipe/X-btn.png') no-repeat
+    top;
+  width: 18px;
+  height: 18px;
+  border: none;
+}

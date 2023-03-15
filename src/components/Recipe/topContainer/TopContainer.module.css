@@ -3,15 +3,13 @@
   position: relative;
   width: 100%;
   height: calc((100vw / 0.82));
-
   background-size: cover;
   z-index: -1;
   background-position: 50% 0;
-  top: -46px;
+  top: -62px;
   left: 0;
   padding-top: 144px;
   padding-bottom: 90px;
-  /* transform: translate(0, 50%); */
 }
 @media screen and (min-width: 768px) {
   .topContainer {
@@ -44,12 +42,20 @@
   font-feature-settings: 'liga' off;
   color: var(--greenColor);
   margin-bottom: 18px;
+  width: 355px;
+  text-align: center;
 }
 @media screen and (min-width: 768px) {
   .dishName {
     font-size: 44px;
     line-height: 44px;
     margin-bottom: 24px;
+    width: 668px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dishName {
+    width: 940px;
   }
 }
 
@@ -78,11 +84,31 @@
 }
 
 .btn {
-  width: 250px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: var(--orange);
-  border: 2px solid var(--greenColor);
+  width: 150px;
+  height: 35px;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    width: 278px;
+    height: 59px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .btn {
+    width: 270px;
+    height: 59px;
+  }
+}
+
+.btnTxt {
+  font-size: 10px;
+  line-height: 15px;
+}
+@media screen and (min-width: 768px) {
+  .btnTxt {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .dishTime {

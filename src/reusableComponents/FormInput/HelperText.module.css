@@ -1,0 +1,29 @@
+.smallEror {
+  color: var(--errorColor);
+  font-size: 10px;
+  line-height: 1.7;
+  position: relative;
+  top: -3px;
+  left: 5px;
+}
+.smallSucsess {
+  color: var(--successColor);
+  font-size: 10px;
+  line-height: 1.7;
+  position: relative;
+  top: -3px;
+  left: 5px;
+}
+@media screen and (min-width: 768px) {
+  .smallEror {
+    color: var(--errorColor);
+    font-size: 14px;
+    position: relative;
+    top: 0;
+  }
+  .smallSucsess {
+    font-size: 14px;
+    top: 0;
+    left: 5px;
+  }
+}

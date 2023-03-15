@@ -10,6 +10,13 @@
   color: var(--greenColor);
 }
 
+@media screen and (min-width: 768px) {
+  .navLink {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
 .glassWrapper {
   display: inline-block;
   position: relative;

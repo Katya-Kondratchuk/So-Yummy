@@ -1,24 +1,82 @@
-/* .titleText {
-  margin-bottom: 50px;
-} */
-
-.searchList {
+.searchContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   margin-top: 50px;
-  padding-bottom: 200px;
 }
-
-.searchItem {
-  margin-bottom: 100px;
-  margin-right: 12px;
-  flex-basis: calc((100% - 42px) / 4);
+.searchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
 }
-
-.searchItem:nth-child(4n + 4) {
-  margin-right: 0;
+.searchList {
+  margin-bottom: 40px;
 }
-
-.searchItem:nth-last-child(-n + 4) {
-  margin-bottom: 0;
+.searchItem:not(:last-child) {
+  margin-bottom: 30px;
+}
+.noRecipesImg {
+  width: 208px;
+  height: 133px;
+  margin: auto;
+  background-image: url('../../assets/images/SearchBackground/noRecipesImg.png');
+  background-size: contain;
+  margin-bottom: 33px;
+}
+.noRecipesText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  margin-bottom: 101px;
+  opacity: 0.5;
+}
+@media screen and (min-width: 768px) {
+  .searchContainer {
+    margin-top: 40px;
+  }
+  .searchList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+    margin-bottom: 35px;
+  }
+  .searchItem {
+    margin: 15px;
+  }
+  .searchItem:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  .searchWrapper {
+    margin-bottom: 45px;
+  }
+  .noRecipesImg {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 33px;
+  }
+  .noRecipesText {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    margin-bottom: 200px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .searchList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+  }
+  .searchItem {
+    margin: 50px 7px;
+  }
+  .searchItem:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  .searchWrapper {
+    margin-bottom: 70px;
+  }
 }

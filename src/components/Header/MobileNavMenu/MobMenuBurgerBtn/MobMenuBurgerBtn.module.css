@@ -1,7 +1,19 @@
 .button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: transparent;
+}
+
+.svg {
+  width: 28px;
+  height: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .svg {
+    width: 35px;
+    height: 35px;
+  }
 }

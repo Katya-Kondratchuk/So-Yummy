@@ -1,49 +1,32 @@
 import React from 'react';
-import Button from 'reusableComponents/Button/Button';
+import { Link } from 'react-router-dom';
+import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import TrashButton from 'reusableComponents/TrashButton/TrashButton';
-import dish from '../../assets/images/Recipe/image.png';
-import s from './RecipeCard.module.css';
+import css from './RecipeCard.module.css';
 
-const RecipeCard = ({
-  title,
-  text,
-  imgComponent,
-  buttonComponent,
-  trashClass,
-  color,
-}) => {
+const RecipeCard = ({ title, time, text, text2, imgComponent, trashClass }) => {
   return (
-    <div className={s.dish}>
-      <img src={dish} className={s.dishImg} alt="dish visually" />
-      <div className={s.cardWrapper}>
-        <div className={s.titleWrapper}>
-          <h3 className={s.dishTitle}>Salmon Eggs Benedict</h3>
-          <TrashButton bgColorClass={trashClass} />
+    <li className={css.dish}>
+      <img src={imgComponent} className={css.dishImg} alt="dish visually" />
+      <div className={css.cardWrapper}>
+        <div className={css.titleWrapper}>
+          <h3 className={css.dishTitle}>{title}</h3>
+          <div className={css.trashLogo}>
+            <TrashButton bgColorClass={trashClass} />
+          </div>
         </div>
-        <p className={s.dishDiscriptionFirst}>
-          Salmon eggs are rich in essential nutrients, low in calories, and
-          recommended as part of a healthy diet. Including salmon in a balanced
-          diet can help decrease the chances of heart disease, ease
-          inflammation, and more.
-        </p>
-        <p className={s.dishDiscriptionSecond}>
-          Studies have shown a number of potential health benefits to seafood
-          rich in omega-3 fatty acids, which include salmon eggs.
-        </p>
-        <div className={s.bottomWrapper}>
-          <p className="DishTime">20 min</p>
-
-          <Button
-            label={'See recipe'}
-            color={color}
-            isLink
-            divClassName={s.dishButton}
-            FunButton
-          />
-          {/* <div className={s.dishButton}>See recipe</div> */}
+        <p className={css.dishDiscriptionFirst}>{text}</p>
+        <p className={css.dishDiscriptionSecond}>{text2}</p>
+        <div className={css.bottomWrapper}>
+          <p className={css.dishTime}>{time}</p>
+          <div className={css.dishButton}>
+            <Link to={`/recipe/${title}`}>
+              <SuperBtn title={'See recipe'} dark />
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

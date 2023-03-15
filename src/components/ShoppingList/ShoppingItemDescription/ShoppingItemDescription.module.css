@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 167px;
+  height: 65px;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 368px;
+    height: 119px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 777px;
+    height: 150px;
+  }
+}
+
+.name {
+  color: var(--mainTextColor);
+  padding-left: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+}
+@media screen and (min-width: 768px) {
+  .name {
+    font-size: 24px;
+    line-height: 24px;
+    padding-left: 16px;
+  }
+}

@@ -1,0 +1,19 @@
+.wrapper {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  border-radius: 6px;
+  background-color: var(--ingridientsBcg);
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    min-width: 93px;
+    height: 97px;
+  }
+}
+
+.image {
+  border-radius: 6px;
+}

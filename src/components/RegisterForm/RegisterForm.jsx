@@ -1,98 +1,85 @@
 import React, { useState } from 'react';
 import FormInput from '../../reusableComponents/FormInput/FormInput';
-import { ReactComponent as UserIcon } from '../../assets/images/formInputIcons/user.svg';
-import { ReactComponent as MailIcon } from '../../assets/images/formInputIcons/mail.svg';
-import { ReactComponent as LockIcon } from '../../assets/images/formInputIcons/lock.svg';
 import css from './RegisterForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
+import switchImages from '../../services/switchImages';
+import HelperText from 'reusableComponents/FormInput/HelperText';
+import { registerUser } from 'redux/auth/authOperation';
+import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
+import warningValidation from 'services/warningValidation';
 
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
 
 // const loading = useSelector(selectAuthLoading);
-// const dispatch = useDispatch();
 
 const RegisterForm = () => {
-  const switchImages = name => {
-    switch (name) {
-      case 'name':
-        return <UserIcon />;
-
-      case 'email':
-        return <MailIcon />;
-
-      case 'password':
-        return <LockIcon />;
-
-      default:
-        return <UserIcon className={css.img} />;
-    }
-  };
-
+  const [notify, setNotify] = useState(false);
+  // const [showPassword, setShowPassword] = React.useState(false);
+  const dispatch = useDispatch();
+  const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   let registrationSchema = yup.object().shape({
-    username: yup
+    name: yup
       .string()
-      .required('Type your name please')
-      .min(1, 'your name must be 1 character at least')
+      .trim()
+      .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
+        message: 'Special simbols are not allowed',
+        excludeEmptyString: true,
+      })
+      .min(1, 'Your name must be 1 character at least')
       .max(16, '16 characters max')
-      .matches(/^[a-zа-яA-ZА-Яіє'ї ]+$/, 'Only letters allowed'),
+      .required('Type your name please'),
     email: yup
       .string()
-      .min(1, 'your email must be 1 character at least')
-      .max(16, '16 characters max')
-      .email('your email must be valid')
+      .lowercase()
+      .matches(myEmailRegex, {
+        message: 'Your email is not valid',
+        name: 'email',
+        excludeEmptyString: true,
+      })
+      .min(5, 'Your password its too short')
       .required('Type your email please'),
     password: yup
       .string()
-      .min(6, 'its too short')
-      .max(16, 'email must be 16 characters max')
       .trim()
+      .matches(
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
+        'Symbols are not allowed',
+      )
+      .min(6, 'Your password its too short')
+      .max(16, 'Your password must be 16 characters max')
       .required('Type your password please'),
   });
-  const myEmailRegex =
-    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-  yup.addMethod(yup.string, 'email', function validateEmail(message) {
-    return this.matches(myEmailRegex, {
-      message,
-      name: 'email',
-      excludeEmptyString: true,
-    });
-  });
   const formik = useFormik({
     initialValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
-      confirm: '',
     },
     validationSchema: registrationSchema,
+
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      // const { name, email, password } = values;
-      // dispatch(register({ name, email, password }));
-      console.log(formik.values);
+      const { name, email, password } = values;
+      dispatch(registerUser({ name, email, password }));
       setSubmitting(false);
+      setNotify(true);
     },
   });
   const isValid = registrationSchema.isValidSync(formik.values);
-  const [inputValue, setInputValue] = useState('');
 
   // const handleInputChange = event => {
   //   setInputValue(event.target.value);
   // };
 
-  const handleClearClick = () => {
-    setInputValue(inputValue);
-  };
   return (
     <div className={css.registrComponent}>
-      <div className={css.authBackgroundImg}></div>
-
+      <AuthBackround />
       <div className="container">
         <div className={css.registrFormatting}>
           <AuthImg />
@@ -105,60 +92,87 @@ const RegisterForm = () => {
               schema={registrationSchema}
               buttonLabel={'Sign Up'}
               formik={formik}
+              isValid={isValid}
+              notify={notify}
+              divButtonClass={css.divButtonClass}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
                   <FormInput
-                    handleClearClick={handleClearClick}
-                    isValid={isValid}
+                    autocomplete="off"
+                    formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'name'}
-                    id="standard-required-register-pass"
-                    type={'name'}
+                    id="standard-required-register-name"
+                    type="text"
                     name="name"
+                    formik={formik}
+                    erorr={formik.errors.name}
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.name && formik.errors.name && (
-                    <small>{formik.errors.name}</small>
+                    <HelperText
+                      value={formik.values.name}
+                      errorText={formik.errors.name}
+                    />
                   )}
                 </div>
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autocomplete="off"
+                    formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'email'}
-                    id="standard-required-register-pass"
-                    type={'email'}
+                    id="standard-required-register-email"
+                    type="email"
                     name="email"
-                    value={formik.values.password}
+                    erorr={formik.errors.email}
+                    value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
                   {formik.touched.email && formik.errors.email && (
-                    <small>{formik.errors.email}</small>
+                    <HelperText
+                      value={formik.values.email}
+                      errorText={formik.errors.email}
+                    />
                   )}
                 </div>
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autocomplete="off"
+                    formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'password'}
                     id="standard-required-register-pass"
-                    type={'password'}
+                    type="password"
                     name="password"
+                    erorr={formik.errors.password}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.password && formik.errors.password && (
-                    <small>{formik.errors.password}</small>
+                  {!formik.errors.password &&
+                  formik.values.password &&
+                  !warningValidation(formik.values.password) ? (
+                    <small className={css.smallWarning}>
+                      Your password is little secure. Add a capital letter.
+                    </small>
+                  ) : (
+                    <HelperText
+                      value={formik.values.password}
+                      errorText={formik.errors.password}
+                      textSucsess="Password is secure"
+                    />
                   )}
                 </div>
               </div>
             </UserDataForm>
-            <AuthLinkTo route={'./signin'} routeText={'sign in'} />
+            <AuthLinkTo route="/signin" routeText="sign in" />
           </div>
         </div>
       </div>

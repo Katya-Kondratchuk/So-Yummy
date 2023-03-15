@@ -1,0 +1,40 @@
+.buttonWrapper {
+  width: 195px;
+  height: 46px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .buttonWrapper {
+    width: 239px;
+    height: 61px;
+  }
+  .buttonContainer {
+    padding-top: 32px;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .buttonWrapper {
+    width: 239px;
+    height: 61px;
+  }
+  .buttonContainer {
+    padding-top: 14px;
+    padding-bottom: 118px;
+  }
+}

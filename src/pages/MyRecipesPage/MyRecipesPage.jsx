@@ -1,7 +1,12 @@
-import React from "react";
+import MyRecipes from 'components/MyRecipes/MyRecipesPage/MyRecipes';
+import React from 'react';
 
 const MyRecipesPage = () => {
-  return <div>MyRecipesPage</div>;
+  return (
+    <>
+      <MyRecipes />
+    </>
+  );
 };
 
 export default MyRecipesPage;

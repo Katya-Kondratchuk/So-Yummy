@@ -2,14 +2,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { normalizeName } from 'services/normalized';
-axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
+
+axios.defaults.baseURL = 'https://so-yammy-backend.onrender.com/api';
 
 const AUTH_ENDPOINT = {
-  REGISTER: '/auth/register',
-  LOGIN: '/auth/login',
-  LOGOUT: '/auth/logout',
-  REFRESH: '/auth/refresh',
-  USER: '/user',
+  REGISTER: '/users/signup',
+  LOGIN: '/users/login',
+  LOGOUT: '/users/logout',
+  REFRESH: '/users/refresh',
+  VERIFY: '/users/verify',
+  VERIFY_RESEND: '/users/verify/resend-email',
+  USER: '/users/current',
 };
 
 const token = {
@@ -26,19 +29,23 @@ export const registerUser = createAsyncThunk(
   async (credentials, ThunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINT.REGISTER, credentials);
-      toast(`You successfully registered, ${normalizeName(data.username)}!`);
-      ThunkAPI.dispatch(
-        loginUser({ email: credentials.email, password: credentials.password }),
+      toast.success(
+        `You successfully registered, ${normalizeName(
+          data.user.name,
+        )}!Check email for verification!`,
       );
-      return data;
+      return data.user;
     } catch (error) {
-      if (error.response.status === 409) {
+      if (error.response.status === 409 || error.response.status === 400) {
         toast.error(`${error.response?.data?.message}!`);
       }
+      // if (error.response.status === 409  ) {
+      //   toast.error(`${error.response?.data?.message}!`);
+      // }
 
-      if (error.response.status === 400) {
-        toast.error('Failed to register, try again pls!');
-      }
+      // if (error.response.status === 400) {
+      //   toast.error('Failed to register, try again pls!');
+      // }
 
       return ThunkAPI.rejectWithValue(error.message);
     }
@@ -51,9 +58,15 @@ export const loginUser = createAsyncThunk(
     try {
       const { data } = await axios.post(AUTH_ENDPOINT.LOGIN, credentials);
       token.set(data.accessToken);
-      toast.success(`Welcome, ${normalizeName(data.user.username)}!`);
+      toast.success(`Welcome, ${normalizeName(data.user.name)}!`);
       return data;
     } catch (error) {
+      if (error.response.status === 401) {
+        toast.error(
+          `${error.response?.data?.message ?? 'Email is not verified'}!`,
+        );
+      }
+
       if (error.response.status === 403) {
         toast.error(
           `${
@@ -78,19 +91,19 @@ export const loginUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, ThunkAPI) => {
-    const { sid, refreshToken } = ThunkAPI.getState().auth;
+    const { refreshToken } = ThunkAPI.getState().auth;
 
-    if (!refreshToken || !sid) {
+    if (!refreshToken) {
       return ThunkAPI.rejectWithValue();
     }
 
-    token.set(refreshToken);
-
     try {
-      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, { sid });
-      token.set(data.newAccessToken);
+      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
+        refreshToken,
+      });
+      token.set(data.accessToken);
       ThunkAPI.dispatch(getUserInfo());
-      return data;
+      return data.refreshToken;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error.message);
     }
@@ -102,11 +115,11 @@ export const logoutUser = createAsyncThunk(
   async (_, ThunkAPI) => {
     try {
       await axios.post(AUTH_ENDPOINT.LOGOUT);
-      toast('You successfully logged out!');
+      toast.success('You successfully logged out!');
       token.unset();
       return;
     } catch (error) {
-      toast('You logged out, pls login again!');
+      toast.warn('You logged out, please login again!');
       return ThunkAPI.rejectWithValue(error.message);
     }
   },
@@ -123,3 +136,77 @@ export const getUserInfo = createAsyncThunk(
     }
   },
 );
+
+export const verificationUser = createAsyncThunk(
+  'auth/verificationUser',
+  async (credentials, ThunkAPI) => {
+    try {
+      const { data } = await axios.get(
+        `${AUTH_ENDPOINT.VERIFY}/${credentials}`,
+      );
+      toast.success(`${data.message}!`);
+      return data;
+    } catch (error) {
+      if (error.response.status === 404) {
+        toast.error(`${error.response?.data?.message}!`);
+      }
+
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const verifyResendEmail = createAsyncThunk(
+  'auth/verifyResendEmail',
+  async (credentials, ThunkAPI) => {
+    try {
+      const { data } = await axios.post(
+        AUTH_ENDPOINT.VERIFY_RESEND,
+        credentials,
+      );
+      toast.success(`${data.message}!`);
+      return data;
+    } catch (error) {
+      toast.error(`${error.response?.data?.message || 'Try again'}!`);
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const reRequestAccessToken = createAsyncThunk(
+  'auth/reRequestAccessToken',
+  async (_, ThunkAPI) => {
+    const { refreshToken } = ThunkAPI.getState().auth;
+
+    if (!refreshToken) {
+      return ThunkAPI.rejectWithValue();
+    }
+
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
+        refreshToken,
+      });
+      token.set(data.accessToken);
+      return data.refreshToken;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const setUpInterceptor = store => {
+  axios.interceptors.response.use(
+    response => response,
+    async error => {
+      if (error.response.status === 401) {
+        try {
+          await store.dispatch(reRequestAccessToken());
+          return axios(error.config);
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      }
+      return Promise.reject(error);
+    },
+  );
+};

@@ -1,0 +1,73 @@
+.wrapperTextarea {
+  margin-bottom: 18px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+  margin-bottom: 28px;
+}
+
+.recipe {
+  font-family: inherit;
+  border-radius: 6px;
+  width: 100%;
+  height: 154px;
+  overflow-y: auto;
+  resize: none;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  outline: none;
+  background: var(--inputBgWithOpacity);
+}
+
+.recipe,
+.recipe::placeholder {
+  font-family: 'Poppins';
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--recipeText);
+  letter-spacing: -0.02em;
+}
+
+.recipe::placeholder {
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapperTextarea {
+    margin-bottom: 32px;
+  }
+  .title {
+    margin-bottom: 32px;
+  }
+  .recipe {
+    width: 505px;
+    height: 224px;
+    padding: 16px 23px;
+  }
+  .recipe,
+  .recipe::placeholder {
+    font-size: 18px;
+  }
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(217, 217, 217, 0.025);
+  border-radius: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  height: 60px;
+  border-radius: 12px;
+  border: 5px solid rgba(217, 217, 217, 0.025);
+  background-clip: content-box;
+  background-color: #ffffff;
+}

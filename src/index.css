@@ -104,6 +104,7 @@ a {
 
 button {
   padding: 0;
+  cursor: pointer;
 }
 /* Make images and embedded objects responsive */
 img,
@@ -154,6 +155,7 @@ table {
   --countBorder: rgba(51, 51, 51, 0.3);
   --recipeText: rgba(0, 0, 0, 0.8);
   --linksHoverColor: #1e1f28;
+  --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
 }
 
 /* :root.themeBlack {
@@ -186,6 +188,19 @@ table {
 .greensImg {
   background-image: url(./assets/images/GreensBcg/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473\ 1.png);
   background-repeat: no-repeat;
-  background-position: left 0 bottom -413px;
-  background-size: 558px 852px;
+  background-position: left 0 bottom -163px;
+  background-size: 256px 392px;
+}
+
+@media screen and (min-width: 768px) {
+  .greensImg {
+    background-position: left 0 bottom -275px;
+    background-size: 423px 646px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .greensImg {
+    background-position: left 0 bottom -413px;
+    background-size: 558px 852px;
+  }
 }

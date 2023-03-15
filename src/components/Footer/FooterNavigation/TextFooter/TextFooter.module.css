@@ -1,0 +1,57 @@
+.navLeft {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navLeft {
+    margin-top: 40px;
+    margin-right: 173px;
+    padding-left: 20px;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .navLeft li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navLeft {
+    margin-right: 159px;
+
+    font-size: 18px;
+    line-height: 24px;
+    max-width: 418px;
+  }
+  .navLeft li:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  font-family: Poppins;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .logoText {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}

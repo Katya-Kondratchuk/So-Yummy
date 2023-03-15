@@ -1,0 +1,104 @@
+.footer {
+  background-color: var(--secondaryBlackColor);
+  position: relative;
+  height: 435px;
+  max-width: 100%;
+  cursor: url('../../assets/images/Cursors/wooden-spoon.ico'), default;
+}
+
+@media screen and(min-width:768) {
+  .footer {
+    height: 423px;
+  }
+}
+
+@media screen and(min-width:768) {
+  .footer {
+    height: 414px;
+  }
+}
+
+.SocialLinks {
+  display: flex;
+  justify-content: center;
+}
+
+.downText {
+  position: relative;
+  height: 66px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  background-image: url(../../assets/images/Footer/mob\ 1x-min.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 160px 172px;
+}
+
+.downText span {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  opacity: 0.5;
+}
+
+@media only screen and (min-resolution: 192dpi) {
+  .downText {
+    background-image: url(../../assets/images/Footer/mob\ 2x-min.png);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .downText {
+    height: 78px;
+    gap: 28px;
+
+    background-image: url(../../assets/images/Footer/tab\ 1x-min.png);
+    background-size: 290px 313px;
+  }
+
+  .downText span {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  @media only screen and (min-resolution: 192dpi) {
+    .downText {
+      background-image: url(../../assets/images/Footer/tab\ 2x-min.png);
+      background-size: 290px 313px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .downText {
+    height: 114px;
+    gap: 40px;
+
+    background-image: url(../../assets/images/Footer/footer\ bgi.png);
+    background-size: 438px 474px;
+  }
+
+  .downText span {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  @media only screen and (min-resolution: 192dpi) {
+    .downText {
+      background-image: url(../../assets/images/Footer/footer\ bgi2x.png);
+      background-size: 438px 474px;
+    }
+  }
+}
+
+.downText > span:first-of-type {
+  font-weight: 500;
+}

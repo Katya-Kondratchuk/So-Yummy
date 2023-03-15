@@ -13,12 +13,14 @@ import { ReactComponent as Right } from '../../../assets/images/BtnLeftRight/Btn
 const MyRecipes = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26];
 
+
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
 
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+
 
   const handleClick = event => {
     setcurrentPage(Number(event.target.id));
@@ -40,6 +42,7 @@ const MyRecipes = () => {
   };
 
   const renderPageNumbers = pages.map(number => {
+
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
         <li key={number} id={number} onClick={handleClick} className={currentPage === number ? `${css.acti}` : ""} > 
@@ -82,7 +85,6 @@ const MyRecipes = () => {
     pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
   }
 
-
   return (
     <div className="container">
       <section className={css.myRecipe}>
@@ -100,9 +102,11 @@ const MyRecipes = () => {
                     <TrashButton bgColorClass={'darkBcg'} />
                   </div>
                 </div>
+
                 <Textt text="Apple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is d with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesfilled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves.
                 ple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is d with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesfilled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves." />
                 {/* <Textt text="We threw a ladies Melbourne Cup lunch and this was our dessert. Super quick to prepare using store bought pastry." /> */}
+
                 <div className={css.wrapperSecond}>
                   <div className={css.cardContainer5}>
                     <Time text="30 m" />
@@ -116,6 +120,7 @@ const MyRecipes = () => {
             </li>
           ))}
         </ul>
+
         <ul className={css.pageNumbers}>
           <div>
             <button

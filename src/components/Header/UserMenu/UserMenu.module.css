@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 170%;
+  margin-right: 20px;
+}
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    margin-right: 50px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    margin-right: 50px;
+  }
+}

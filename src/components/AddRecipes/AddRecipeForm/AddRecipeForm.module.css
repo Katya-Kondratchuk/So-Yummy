@@ -1,0 +1,20 @@
+.wrapperBtn {
+  width: 129px;
+  height: 46px;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    margin-bottom: 72px;
+  }
+  .wrapperBtn {
+    width: 161px;
+    height: 52px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .form {
+    margin-bottom: 100px;
+  }
+}

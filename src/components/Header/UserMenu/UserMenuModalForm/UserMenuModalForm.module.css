@@ -1,0 +1,112 @@
+.userModal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 330px;
+  height: 358px;
+  background: var(--bgColor);
+  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 32px 24px 60px;
+}
+.divButtonClass {
+  width: 282px;
+  height: 49px;
+}
+.formInputArea {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--secondaryTextColor);
+}
+.formIinputFormat {
+  width: 282px;
+  height: 49px;
+  margin-bottom: 24px;
+}
+.avatarChanger {
+  margin-bottom: 56px;
+}
+.avatartPreview {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formInputUserMenu {
+  color: var(--secondaryTextColor) !important;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--secondaryTextColor);
+  border-radius: 6px;
+  outline: none;
+  background-color: transparent;
+  padding-left: 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+/* .formInputUserMenu:hover,
+.formInputUserMenu:focus {
+  border: 1px solid var(--whiteColor);
+  opacity: 1;
+} */
+
+.formInputUserMenu::placeholder {
+  color: var(--secondaryTextColor);
+}
+.formInputUserMenu:hover,
+.formInputUserMenu:focus {
+  border: 1px solid var(--secondaryTextColor);
+}
+
+@media screen and (min-width: 768px) {
+  .avatartPreview {
+    width: 103px;
+    height: 103px;
+  }
+  .divButtonClass {
+    width: 400px;
+    height: 59px;
+  }
+  .formInputUserMenu {
+    padding-left: 51px;
+  }
+  .userModal {
+    width: 480px;
+    height: 415px;
+    padding: 50px 40px 62px;
+  }
+  .iconChanger {
+    margin-bottom: 49px;
+  }
+  .formIinputFormat {
+    width: 400px;
+    height: 59px;
+    margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .userModal {
+    width: 500px;
+    height: 445px;
+    padding: 60px 50px 80px;
+  }
+  .iconChanger {
+    margin-bottom: 52px;
+  }
+  .formInputUserMenu {
+    padding-left: 51px;
+  }
+}

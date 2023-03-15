@@ -1,0 +1,26 @@
+.footerNavigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 28px;
+  gap: 32px;
+  margin-bottom: 44px;
+
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .footerNavigation {
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footerNavigation {
+    flex-wrap: no-wrap;
+    gap: 0;
+  }
+}

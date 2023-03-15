@@ -1,9 +1,20 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: auto;
+  padding-top: 18px;
 }
-.wrapperLogo {
-  position: absolute;
-  top: 15px;
-  left: 15px;
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 19px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header {
+    padding-top: 18px;
+  }
+  .wrapperLogo {
+    margin-right: 187px;
+  }
 }

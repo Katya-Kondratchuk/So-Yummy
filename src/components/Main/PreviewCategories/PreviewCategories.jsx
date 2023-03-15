@@ -13,6 +13,7 @@ const PreviewCategories = () => {
       setAllCategories(data.slice(0, 4));
     });
   }, []);
+
   return (
     <div className={`${css.sectionWrapper}  ${'greensImg'}`}>
       {allCategories.map(({ title, _id }) => (

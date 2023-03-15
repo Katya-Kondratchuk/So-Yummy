@@ -67,6 +67,14 @@
   margin: 0;
 }
 
+.popularity {
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  transform: translateX(-50%);
+  color: var(--whiteColor);
+}
+
 @media screen and (min-width: 768px) {
   .cardContainer {
     width: 336px;

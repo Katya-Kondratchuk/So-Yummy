@@ -35,7 +35,7 @@ const Recipe = () => {
   } = recipe;
   return (
     recipe.length !== 0 && (
-      <div>
+      <div className=" greensImg">
         <TopContainer title={title} description={description} time={time} />
         <div className={css.wrapper}>
           <IngredientsContainer

@@ -115,11 +115,11 @@ export const logoutUser = createAsyncThunk(
   async (_, ThunkAPI) => {
     try {
       await axios.post(AUTH_ENDPOINT.LOGOUT);
-      toast('You successfully logged out!');
+      toast.success('You successfully logged out!');
       token.unset();
       return;
     } catch (error) {
-      toast('You logged out, please login again!');
+      toast.warn('You logged out, please login again!');
       return ThunkAPI.rejectWithValue(error.message);
     }
   },
@@ -144,7 +144,7 @@ export const verificationUser = createAsyncThunk(
       const { data } = await axios.get(
         `${AUTH_ENDPOINT.VERIFY}/${credentials}`,
       );
-      toast(`${data.message}!`);
+      toast.success(`${data.message}!`);
       return data;
     } catch (error) {
       if (error.response.status === 404) {
@@ -164,7 +164,7 @@ export const verifyResendEmail = createAsyncThunk(
         AUTH_ENDPOINT.VERIFY_RESEND,
         credentials,
       );
-      toast(`${data.message}!`);
+      toast.success(`${data.message}!`);
       return data;
     } catch (error) {
       toast.error(`${error.response?.data?.message || 'Try again'}!`);

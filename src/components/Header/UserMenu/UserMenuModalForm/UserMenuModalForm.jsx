@@ -28,7 +28,6 @@ const UserMenuModalForm = ({ onClose }) => {
     validationSchema: userNameSchema,
 
     onSubmit: values => {
-      console.log(values);
       //   const { name, email, password } = values;
       //   dispatch(register({ name, email, password }));
       //   setSubmitting(false);
@@ -36,7 +35,6 @@ const UserMenuModalForm = ({ onClose }) => {
   });
 
   const isValid = userNameSchema.isValidSync(formik.values);
-  console.log(isValid);
 
   const [image, setImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);

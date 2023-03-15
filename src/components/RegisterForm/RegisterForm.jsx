@@ -28,7 +28,7 @@ const RegisterForm = () => {
       .string()
       .trim()
       .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
-        message: 'Special simbols are not allowed',
+        message: 'Special symbols are not allowed',
         excludeEmptyString: true,
       })
       .min(1, 'Your name must be 1 character at least')
@@ -36,13 +36,14 @@ const RegisterForm = () => {
       .required('Type your name please'),
     email: yup
       .string()
-      .lowercase()
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
         excludeEmptyString: true,
       })
-      .min(5, 'Your password its too short')
+      .min(5, 'Your password is too short')
+      .max(254, 'Your email is too long')
+      .lowercase()
       .required('Type your email please'),
     password: yup
       .string()
@@ -51,7 +52,7 @@ const RegisterForm = () => {
         /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
         'Symbols are not allowed',
       )
-      .min(6, 'Your password its too short')
+      .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
       .required('Type your password please'),
   });
@@ -122,7 +123,6 @@ const RegisterForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
-                    autocomplete="off"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'email'}

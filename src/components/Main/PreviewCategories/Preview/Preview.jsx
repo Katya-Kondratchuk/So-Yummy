@@ -19,7 +19,7 @@ const Preview = ({ category }) => {
     getCategorieRecipes(category).then(response => {
       setMainMeals(response.slice(0, 4));
     });
-  }, [category, mainMeals]);
+  }, [category]);
 
   return (
     <div>

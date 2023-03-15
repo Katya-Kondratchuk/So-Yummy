@@ -1,5 +1,5 @@
 function warningValidation(value) {
-  const regex = /[A-Z-А-Я-ЩЬЮЯЇІЄҐ0-9]/;
+  const regex = /[A-Z-А-Я-ЩЬЮЯЇІЄҐ]/;
   return regex.test(value);
 }
 

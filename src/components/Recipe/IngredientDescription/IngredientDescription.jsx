@@ -12,12 +12,12 @@ const IngredientDescription = ({ name, description = '' }) => {
     count = 60;
   }
   if (isDesktop) {
-    count = 200;
+    count = 280;
   }
 
   const kitcut = (text, limit) => {
     if (text.length <= limit) return text;
-    text = text.slice(0, limit); // тупо отрезать по лимиту
+    text = text.slice(0, limit);
 
     return `${text}...`;
   };

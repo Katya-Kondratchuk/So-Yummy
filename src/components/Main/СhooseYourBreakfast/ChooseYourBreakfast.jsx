@@ -8,12 +8,10 @@ const ChooseYourBreakfast = () => {
       <span className={css.text}>
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </span>
-      <div className={css.seeRecipeWrp}>
-        <Link to="/categories" className={css.linkWrapper}>
-          See recipes
-        </Link>
+      <Link to="/categories" className={css.linkWrapper}>
+        See recipes
         <BreakfastArrowSvg />
-      </div>
+      </Link>
       <div className={css.arrowContainer}></div>
     </div>
   );

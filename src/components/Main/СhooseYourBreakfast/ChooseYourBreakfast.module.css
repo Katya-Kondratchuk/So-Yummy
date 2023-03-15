@@ -26,6 +26,9 @@
   color: var(--greenColor);
 }
 .linkWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   font-size: 10px;
   line-height: 12px;
   letter-spacing: -0.24px;
@@ -45,6 +48,7 @@
   .arrowContainer {
     display: block;
     position: absolute;
+    z-index: -1;
     width: 186px;
     height: 115px;
     left: 45px;

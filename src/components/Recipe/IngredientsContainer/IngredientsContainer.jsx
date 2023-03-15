@@ -11,12 +11,12 @@ const IngredientsContainer = ({
   return (
     <div className="container">
       <TitleRecipesList />
-      {ingridients.map(({ title, thumb, quantity, desc, type }, index) => (
+      {ingridients.map(({ title, thumb, measure, desc, type }, index) => (
         <Ingredient
           key={index}
           title={title}
           thumb={thumb}
-          quantity={quantity}
+          measure={measure}
           desc={desc}
           type={type}
         />

@@ -23,7 +23,7 @@ const Preview = ({ category }) => {
 
   return (
     <div>
-      <div className={css.previewContainer}>
+      <div className={`${css.previewContainer} ${'container'}`}>
         <Link to={`/categories/${category}`} className={css.title}>
           {category}
         </Link>
@@ -59,7 +59,7 @@ const Preview = ({ category }) => {
           )}
         </ul>
       </div>
-      <div className={css.buttonContainer}>
+      <div className={`${css.buttonContainer} ${'container'}`}>
         <Button
           isLink
           href={`/categories/${category}`}

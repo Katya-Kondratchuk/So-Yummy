@@ -16,7 +16,6 @@ const FormInput = ({
   ref,
 }) => {
   const switchColor = (
-    ref,
     erorr,
     value,
     type,

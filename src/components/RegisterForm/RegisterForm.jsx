@@ -22,12 +22,13 @@ const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
   // const [showPassword, setShowPassword] = React.useState(false);
   const dispatch = useDispatch();
-  const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const myEmailRegex =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
   let registrationSchema = yup.object().shape({
     name: yup
       .string()
       .trim()
-      .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
+      .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+$/, {
         message: 'Special symbols are not allowed',
         excludeEmptyString: true,
       })

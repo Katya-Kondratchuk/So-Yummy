@@ -13,8 +13,10 @@ const FormInput = ({
   formInputArea = '',
   formInputUserMenu = '',
   formInputFooterForm = '',
+  ref,
 }) => {
   const switchColor = (
+    ref,
     erorr,
     value,
     type,
@@ -35,11 +37,11 @@ const FormInput = ({
       return `${css.formInput}`;
     }
   };
-  console.log(erorr);
   return (
     <div className={formInputArea}>
       <input
         className={switchColor(
+          ref,
           erorr,
           value,
           type,

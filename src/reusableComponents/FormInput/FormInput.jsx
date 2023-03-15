@@ -40,7 +40,6 @@ const FormInput = ({
     <div className={formInputArea}>
       <input
         className={switchColor(
-          ref,
           erorr,
           value,
           type,

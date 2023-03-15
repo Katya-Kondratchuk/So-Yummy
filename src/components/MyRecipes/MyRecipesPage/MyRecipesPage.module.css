@@ -15,6 +15,8 @@
   flex-grow: 2;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: 8px;
+
 }
 
 .cardContainer {
@@ -48,20 +50,38 @@
   justify-content: space-between;
 }
 
+.cardItem:first-child {
+  margin-top: 50px;
+}
+
 .cardItem:not(:last-child) {
   margin-bottom: 18px;
 }
 
+
 .pageNumbers {
+  margin-left: auto;
+  margin-right: auto;
+  width: min-content;
   list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
 }
 
 .pageNumbers li {
-  padding: 10px;
-  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 8px;
+  color: #656565;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -69,6 +89,57 @@
   width: 87px;
   height: 27px;
 }
+
+
+.pageNumbers li.acti {
+background-color: yellowgreen;
+  color: #22252A;
+}
+
+/* .acti {
+  background-color: red;
+  color: red;
+} */
+
+
+.pageNumbers div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 8px;
+  color: #656565;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.yyyy {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.pageNumbers li:hover,
+.pageNumbers li:focus,
+.pageNumbers div:hover {
+  background-color: #EBF3D4;
+  color:#22252A;
+}
+
+
+.btnWrapper {
+  width: 87px;
+  height: 27px;
+
+}
+
+
+
 
 @media screen and (min-width: 768px) {
   .myRecipe {
@@ -94,6 +165,45 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
+    .cardItem:first-child {
+      margin-top: 100px;
+    }
+
+        .pageNumbers div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 27px;
+          height: 27px;
+          margin: 14px;
+          color: #656565;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          border-radius: 50%;
+          cursor: pointer;
+    
+        }
+        .pageNumbers li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 27px;
+          height: 27px;
+          margin: 14px;
+          color: #656565;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 18px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+
+                .wrapperSecond {
+                  margin-top: 12px;
+                }
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -119,4 +229,5 @@
   .wrapperFirst {
     margin-bottom: 30px;
   }
+
 }

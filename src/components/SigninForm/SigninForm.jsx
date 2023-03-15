@@ -22,11 +22,11 @@ const SigninForm = () => {
       .string()
       .lowercase()
       .matches(myEmailRegex, {
-        message: 'Your email is not valid',
+        message: 'Special symbols are not allowed',
         name: 'email',
         excludeEmptyString: true,
       })
-      .min(5, 'Your password is too short')
+      .min(5, 'Your email is too short')
       .email('Your email must be valid')
       .required('Type your email please'),
     password: yup

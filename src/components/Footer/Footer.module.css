@@ -3,7 +3,7 @@
   position: relative;
   height: 435px;
   max-width: 100%;
-  cursor: url('../../../../../test/wooden-spoon.ico'), default;
+  cursor: url('../../assets/images/Cursors/wooden-spoon.ico'), default;
 }
 
 @media screen and(min-width:768) {

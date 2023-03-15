@@ -1,0 +1,49 @@
+.text {
+    display: block;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    letter-spacing: -0.02em;
+    color: var(--secondaryTextColor);
+   overflow: auto; 
+}
+
+.text::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+    .text {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+                 .btn {
+                     margin-left: 8px;
+                     font-size: 16px;
+                 }
+}
+
+@media screen and (min-width: 1440px) {
+    .text {
+        font-size: 18px;
+            line-height: 24px;
+            
+    }
+
+        .btn {
+            margin-left: 8px;
+            font-size: 20px;
+        }
+       
+} 

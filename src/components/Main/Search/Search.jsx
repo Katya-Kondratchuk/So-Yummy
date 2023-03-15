@@ -1,9 +1,8 @@
-import React from 'react';
-import css from './Search.module.css';
-import SearchInput from 'reusableComponents/SearchInput/SearchInput';
-import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
 import clsx from 'clsx';
+import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Hero from '../Hero/Hero';
+import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
+import css from './Search.module.css';
 
 const MainHero = () => {
   return (
@@ -19,7 +18,7 @@ const MainHero = () => {
       </p>
       <ChooseYourBreakfast />
       <div className={css.heroInput}>
-        <SearchInput dark />
+        <SearchInput lnk dark />
       </div>
       <Hero />
     </div>

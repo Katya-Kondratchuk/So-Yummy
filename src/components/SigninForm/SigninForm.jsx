@@ -16,17 +16,19 @@ import { useRef } from 'react';
 
 const SigninForm = () => {
   const dispatch = useDispatch();
-  const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const myEmailRegex =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
   let signinSchema = yup.object().shape({
     email: yup
       .string()
       .lowercase()
       .matches(myEmailRegex, {
-        message: 'Your email is not valid',
+        message: 'Special symbols are not allowed',
         name: 'email',
         excludeEmptyString: true,
       })
-      .min(5, 'Your password is too short')
+      .min(5, 'Your email is too short')
       .email('Your email must be valid')
       .required('Type your email please'),
     password: yup
@@ -35,7 +37,7 @@ const SigninForm = () => {
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
       .matches(
-        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
         'Symbols are not allowed',
       )
       .required('Type your password please'),

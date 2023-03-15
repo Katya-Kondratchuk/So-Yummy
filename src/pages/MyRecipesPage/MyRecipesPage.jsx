@@ -1,4 +1,4 @@
-import MyRecipes from 'components/MyRecipes/MyRecipesPage/MyRecipes';
+import MyRecipes from 'components/MyRecipes';
 import React from 'react';
 
 const MyRecipesPage = () => {

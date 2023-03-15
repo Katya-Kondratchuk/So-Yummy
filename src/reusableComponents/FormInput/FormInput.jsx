@@ -1,24 +1,21 @@
 import css from './FormInput.module.css';
 import switchStateImages from 'services/switchStateImages';
+import warningValidation from 'services/warningValidation';
 const FormInput = ({
   placeholder,
   type,
   switchImages,
-  handleClearClick,
   onBlur,
   onChange,
   name,
   erorr,
   value,
-  edit,
+  edit = false,
   formInputArea,
-  userName,
+  userName = false,
 }) => {
-  const switchColor = (erorr, value, userName) => {
-    if (
-      erorr ===
-      'Your password is little secure. Add a number or a capital letter.'
-    ) {
+  const switchColor = (erorr, value, userName, type = '') => {
+    if (!erorr && value && !warningValidation(value) && type === 'password') {
       return `${css.formInput} ${css.formInputInsecure}`;
     } else if (erorr) {
       return `${css.formInput} ${css.formInputInvalid}`;
@@ -34,16 +31,16 @@ const FormInput = ({
   return (
     <div className={formInputArea}>
       <input
-        className={switchColor(erorr, value)}
+        className={switchColor(erorr, value, userName, type)}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
         name={name}
         placeholder={placeholder}
       />
-      <span className={css.formIcon}>{switchImages(type)} </span>
+      <span className={css.formIcon}>{switchImages(type)}</span>
       <span className={css.formStateIcon}>
-        {switchStateImages(erorr, value, edit)}{' '}
+        {switchStateImages(erorr, value, edit, type)}
       </span>
     </div>
   );

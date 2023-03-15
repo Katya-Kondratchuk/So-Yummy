@@ -14,7 +14,6 @@ const UserDataForm = ({
   isValid,
   notify,
 }) => {
-  console.log(isValid);
   const loading = useSelector(selectAuthLoading);
   const erorMessage = useSelector(selectAuthErrorMessage);
   return (

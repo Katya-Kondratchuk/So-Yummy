@@ -2,12 +2,10 @@ import { ReactComponent as SucsessIcon } from '../assets/images/formInputIcons/s
 import { ReactComponent as WarningIcon } from '../assets/images/formInputIcons/warning.svg';
 import { ReactComponent as ErorrIcon } from '../assets/images/formInputIcons/erorr.svg';
 import { ReactComponent as EditIcon } from '../assets/images/formInputIcons/erorr.svg';
+import warningValidation from './warningValidation';
 
-const switchStateImages = (erorr, value, edit) => {
-  if (
-    erorr ===
-    'Your password is little secure. Add a number or a capital letter.'
-  ) {
+const switchStateImages = (erorr, value, edit, type = '') => {
+  if (!erorr && value && !warningValidation(value) && type === 'password') {
     return <WarningIcon />;
   } else if (erorr) {
     return <ErorrIcon />;

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
-import css from './Categories.module.css';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
-import { useParams } from 'react-router';
+import css from './Categories.module.css';
 
 // <Link to={`/categories/${category}`} className={css.title}>
 //   {category}

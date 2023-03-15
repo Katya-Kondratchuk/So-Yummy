@@ -31,6 +31,7 @@ const DishCard = ({
 
   useEffect(() => {
     setPopular(popularity);
+    // console.log(popularity);
   }, [isLike, isFavorite, popularity, popular]);
 
   const addToFavorite = () => {
@@ -38,7 +39,6 @@ const DishCard = ({
     patchRecipeFavoriteById(id)
       .then(({ favorite }) => {
         setIsLoadFavorite(false);
-        // setPopular(popularity); //----------------
 
         const changeData = allData.map(item => {
           if (item._id === id) {
@@ -58,7 +58,6 @@ const DishCard = ({
     patchRecipeLikeById(id)
       .then(({ like }) => {
         setIsLoadLike(false);
-        // setPopular(popularity); //----------------
 
         const changeData = allData.map(item => {
           if (item._id === id) {
@@ -72,23 +71,13 @@ const DishCard = ({
       })
       .catch(() => setIsLoadLike(false));
   };
-  // const addToFavorite = () => {
-  //   patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
-  // };
-
-  // const addLike = useCallback(() => {
-  //   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-  // }, [id]);
-
-  // const addLike = () => {
-  //   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-  // };
 
   const favFeel =
     favorite || isFavorite ? 'var(--secondaryGreenColor)' : 'none';
   const likeFeel = like || isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
     text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
+
   return (
     <div className={css.cardContainer}>
       <Link to={`/recipe/${id}`}>
@@ -134,3 +123,15 @@ export default DishCard;
       favorite={false}
       like={false}
 /> */
+
+// const addToFavorite = () => {
+//   patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
+// };
+
+// const addLike = useCallback(() => {
+//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+// }, [id]);
+
+// const addLike = () => {
+//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+// };

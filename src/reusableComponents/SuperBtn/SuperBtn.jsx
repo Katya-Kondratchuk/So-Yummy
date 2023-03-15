@@ -12,6 +12,7 @@ const SuperBtn = ({
   title,
   dark,
   welcome,
+  children,
 }) => {
   if (lnk) {
     return (
@@ -26,6 +27,7 @@ const SuperBtn = ({
         to={to}
       >
         {title}
+        {children}
       </Link>
     );
   } else {
@@ -40,6 +42,7 @@ const SuperBtn = ({
         type={typeBtn}
       >
         {title}
+        {children}
       </button>
     );
   }

@@ -23,7 +23,7 @@ const ConfirmModal = ({ onClose }) => {
           Cancel
         </button>
       </div>
-      <MobMenuCloseBtn onClick={onClose} />
+      <MobMenuCloseBtn closeMenu={onClose} />
     </div>
   );
 };

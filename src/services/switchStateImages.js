@@ -11,7 +11,7 @@ const switchStateImages = (erorr, value, edit, type = '') => {
     return <ErorrIcon />;
   } else if (!erorr && value) {
     return <SucsessIcon />;
-  } else if (edit) {
+  } else if (!erorr && !value && edit) {
     return <EditIcon />;
   } else {
     return;

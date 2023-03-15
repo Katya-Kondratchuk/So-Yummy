@@ -38,14 +38,14 @@
 .buttonClass {
   width: 94px;
   height: 36px;
-  color: var(--bgColor);
+  /* color: var(--bgColor); */
 }
 
-.buttonClass:focus,
+/* .buttonClass:focus,
 .buttonClass:hover {
   outline: none;
   color: var(--econdaryGreenColor);
-}
+} */
 
 @media screen and (min-width: 768px) {
   .buttonContainer {

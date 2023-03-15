@@ -13,30 +13,29 @@ const UserDataForm = ({
   yourClassName = '',
   isValid,
   notify,
+  divButtonClass,
 }) => {
   const loading = useSelector(selectAuthLoading);
   const erorMessage = useSelector(selectAuthErrorMessage);
   return (
-    <div className={yourClassName}>
-      <form onSubmit={formik.handleSubmit}>
-        {children}
-        <Button
-          label={buttonLabel}
-          // onClick = {}
-          divClassName={css.divButtonClass}
-          type={'submit'}
-          disabled={loading || !isValid}
-        />
-        {!erorMessage && notify && !loading && isValid && (
-          <span className={css.notification}>
-            Check your email for verification!
-          </span>
-        )}
-        {!erorMessage === 'Email is not verified' && (
-          <span className={css.notification}>Email is not verified!</span>
-        )}
-      </form>
-    </div>
+    <form onSubmit={formik.handleSubmit} className={yourClassName}>
+      {children}
+      <Button
+        label={buttonLabel}
+        // onClick = {}
+        divClassName={divButtonClass}
+        type={'submit'}
+        disabled={loading || !isValid}
+      />
+      {!erorMessage && notify && !loading && isValid && (
+        <span className={css.notification}>
+          Check your email for verification!
+        </span>
+      )}
+      {!erorMessage === 'Email is not verified' && (
+        <span className={css.notification}>Email is not verified!</span>
+      )}
+    </form>
   );
 };
 

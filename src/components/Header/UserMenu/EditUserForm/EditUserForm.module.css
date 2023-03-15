@@ -4,13 +4,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  top: 100px;
-  right: 100px;
+  top: 72px;
+  right: 64px;
   width: 161px;
   height: 130px;
   background-color: var(--whiteColor);
   border: 1px solid var(--greenColor);
   border-radius: 8px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 16px;
+    top: 82px;
+    right: 158px;
+    width: 177px;
+    height: 134px;
+    border: none;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 18px;
+    top: 77px;
+    right: 223px;
+  }
 }
 
 .btnWrp {
@@ -18,6 +35,11 @@
   height: 43px;
   font-size: 14px;
   line-height: 21px;
+}
+@media screen and (min-width: 768px) {
+  .btnWrp {
+    width: 141px;
+  }
 }
 
 .editBtn {
@@ -35,6 +57,11 @@
   line-height: 22px;
   color: var(--secondaryTextColor);
   cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .editBtn {
+    margin-bottom: 32px;
+  }
 }
 
 .editBtn:hover {

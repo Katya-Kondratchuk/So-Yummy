@@ -8,7 +8,6 @@ import { getCategorieRecipes } from 'services/api/recipesAPI';
 
 const Preview = ({ category }) => {
   const [mainMeals, setMainMeals] = useState([]);
-
   const [isShow, setIsShow] = useState(false);
 
   const toogle = () => {
@@ -19,7 +18,7 @@ const Preview = ({ category }) => {
     getCategorieRecipes(category).then(response => {
       setMainMeals(response.slice(0, 4));
     });
-  }, [category, mainMeals]);
+  }, [category]);
 
   return (
     <div>

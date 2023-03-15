@@ -48,7 +48,15 @@
   display: inline-block;
   width: 275px;
 }
+.divButtonClass {
+  width: 279px;
+  height: 45px;
+}
 @media screen and (min-width: 768px) {
+  .divButtonClass {
+    width: 400px;
+    height: 59px;
+  }
   .formIinputFormat {
     width: 400px;
     height: 59px;

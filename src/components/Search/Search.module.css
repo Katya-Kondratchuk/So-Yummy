@@ -1,50 +1,82 @@
-/* .titleText {
-  margin-bottom: 50px;
-} */
-/* .imageWrapper {
-  width: 100%;
-  height: 192px;
-  background-image: url('../../assets/images/SearchBackground/image1green.png'),
-    url('../../assets/images/SearchBackground/image1black.png'),
-    url('../../assets/images/SearchBackground/image2green.png');
-  background-repeat: no-repeat;
-  background-size: 10px 10px, 7px 7px, 10px 10px;
-  background-position: left 104px top 15px, left 220px top 80px,
-    left 328px top 50px;
-}
-@media screen and (min-width: 768px) {
-  .imageWrapper {
-  }
-} */
 .searchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
 }
+.searchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.searchList {
+  margin-bottom: 40px;
+}
+.searchItem:not(:last-child) {
+  margin-bottom: 30px;
+}
+.noRecipesImg {
+  width: 208px;
+  height: 133px;
+  margin: auto;
+  background-image: url('../../assets/images/SearchBackground/noRecipesImg.png');
+  background-size: contain;
+  margin-bottom: 33px;
+}
+.noRecipesText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  margin-bottom: 101px;
+  opacity: 0.5;
+}
 @media screen and (min-width: 768px) {
   .searchContainer {
     margin-top: 40px;
   }
+  .searchList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+    margin-bottom: 35px;
+  }
+  .searchItem {
+    margin: 15px;
+  }
+  .searchItem:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  .searchWrapper {
+    margin-bottom: 45px;
+  }
+  .noRecipesImg {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 33px;
+  }
+  .noRecipesText {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    margin-bottom: 200px;
+  }
 }
-
-.searchList {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 50px;
-  padding-bottom: 200px;
-}
-
-.searchItem {
-  margin-bottom: 100px;
-  margin-right: 12px;
-  flex-basis: calc((100% - 42px) / 4);
-}
-
-.searchItem:nth-child(4n + 4) {
-  margin-right: 0;
-}
-
-.searchItem:nth-last-child(-n + 4) {
-  margin-bottom: 0;
+@media screen and (min-width: 1440px) {
+  .searchList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+  }
+  .searchItem {
+    margin: 50px 7px;
+  }
+  .searchItem:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  .searchWrapper {
+    margin-bottom: 70px;
+  }
 }

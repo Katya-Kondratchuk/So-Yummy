@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import SuperBtn from '../../../reusableComponents/SuperBtn/SuperBtn';
+import SuperBtn from '../../reusableComponents/SuperBtn/SuperBtn';
 import DishCard from './DishCard/DishCard';
-import Title from '../../../reusableComponents/Title/Title';
+import Title from '../../reusableComponents/Title/Title';
 import Textt from './Text/Text';
 import TitleRecip from './TitleRecip/TitleRecip';
 import Time from './Time/Time';
-import css from './MyRecipesPage.module.css';
-import TrashButton from '../../../reusableComponents/TrashButton/TrashButton';
-import { ReactComponent as Left } from '../../../assets/images/BtnLeftRight/BtnLeft.svg';
-import { ReactComponent as Right } from '../../../assets/images/BtnLeftRight/BtnRight.svg';
+import css from './MyRecipes.module.css';
+import TrashButton from '../../reusableComponents/TrashButton/TrashButton';
+import { ReactComponent as Left } from '../../assets/images/BtnLeftRight/BtnLeft.svg';
+import { ReactComponent as Right } from '../../assets/images/BtnLeftRight/BtnRight.svg';
 
 const MyRecipes = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26];
@@ -17,7 +17,7 @@ const MyRecipes = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
 
-  const [pageNumberLimit, setpageNumberLimit] = useState(5);
+  const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 

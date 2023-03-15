@@ -158,9 +158,9 @@ table {
   --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
 }
 
-/* :root.themeBlack {
-  --bgColor: #ffffff;
-} */
+:root.ThemeDark {
+  --bgColor: #aaa;
+}
 
 .container {
   max-width: 375px;

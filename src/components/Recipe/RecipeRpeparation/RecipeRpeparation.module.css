@@ -17,10 +17,12 @@
 
 .itemsContainer {
   margin-top: 19px;
+  height: 332px;
 }
 @media screen and (min-width: 1440px) {
   .itemsContainer {
     margin-top: 0px;
+    height: 664px;
   }
 }
 
@@ -30,11 +32,11 @@
   align-items: center;
   justify-content: space-between;
   width: 342px;
-  margin-top: 14px;
+  /* margin-top: 14px; */
 }
 @media screen and (min-width: 768px) {
   .itemWrapper {
-    margin-top: 19px;
+    margin-top: 9px;
     width: 678px;
   }
 }
@@ -109,13 +111,13 @@
   background-size: cover;
   border-radius: 8px;
   background-color: var(--secondaryGreenColor);
-  margin-top: 40px;
+  margin-top: 70px;
   margin-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .image {
     width: 704px;
-    margin-top: 50px;
+    margin-top: 132px;
     margin-bottom: 200px;
   }
 }
@@ -124,5 +126,21 @@
   .image {
     width: 664px;
     margin-top: 0px;
+  }
+}
+
+.descriptionWrapper {
+  height: 332px;
+  margin-top: 15px;
+  overflow: auto;
+}
+@media screen and (min-width: 768px) {
+  .descriptionWrapper {
+    margin-top: 25px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .descriptionWrapper {
+    height: 605px;
   }
 }

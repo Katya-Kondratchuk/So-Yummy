@@ -94,6 +94,7 @@ const RegisterForm = () => {
               formik={formik}
               isValid={isValid}
               notify={notify}
+              divButtonClass={css.divButtonClass}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>

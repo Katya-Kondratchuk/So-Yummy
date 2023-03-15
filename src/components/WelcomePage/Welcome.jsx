@@ -1,12 +1,17 @@
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './Welcome.module.css';
 import Logo from 'reusableComponents/Logo/Logo';
+// import FooterForm from 'components/Footer/FooterForm/FooterForm';
+import UserMenuModalForm from 'components/Header/UserMenu/UserMenuModalForm/UserMenuModalForm';
 
 const Welcome = () => {
   return (
     <>
       <div className={css.backgroundImg}>
         <div className={css.welcomeContent}>
+          <UserMenuModalForm />
+          {/* <FooterForm /> */}
+
           <div className={css.welcomeIcon}>
             <Logo width={'100%'} height={'100%'} />
           </div>

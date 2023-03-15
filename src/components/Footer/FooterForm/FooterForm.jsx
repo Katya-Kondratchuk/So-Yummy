@@ -15,7 +15,6 @@ const FooterForm = () => {
     email: yup
       .string()
       .min(5, 'Your password its too short')
-      // .email('your email must be valid')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
@@ -29,9 +28,7 @@ const FooterForm = () => {
     validationSchema: registrationSchema,
 
     onSubmit: values => {
-      console.log(values);
-      //   const { name, email, password } = values;
-      //   dispatch(register({ name, email, password }));
+      //   dispatch(register(values.email));
       //   setSubmitting(false);
     },
   });
@@ -43,10 +40,14 @@ const FooterForm = () => {
         schema={registrationSchema}
         buttonLabel="Subscribe"
         formik={formik}
+        isValid={isValid}
+        yourClassName={css.footerFormFlex}
+        divButtonClass={css.divButtonClass}
       >
         <div className={css.formFromat}>
           <div className={css.formIinputFormat}>
             <FormInput
+              formInputFooterForm={css.formInputFooterForm}
               autocomplete="off"
               formInputArea={css.formInputArea}
               // handleClearClick={handleClearClick}

@@ -28,7 +28,7 @@
 }
 @media screen and (min-width: 1440px) {
   .authImg {
-    margin-top: 14px;
+    margin-top: 22px;
     height: 468px;
     width: 532px;
     background-image: url('../../assets/images/authImages/authImage_desktop2x_min.png');

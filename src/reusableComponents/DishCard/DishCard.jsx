@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   patchRecipeFavoriteById,
@@ -19,6 +19,7 @@ const DishCard = ({
   id,
   allData = [],
   setAllData = () => {},
+  popularity,
 }) => {
   const [isLike, setIsLike] = useState(like);
   const [isFavorite, setIsFavorite] = useState(favorite);
@@ -26,12 +27,18 @@ const DishCard = ({
   const [isLoadFavorite, setIsLoadFavorite] = useState(false);
   const [isLoadLike, setIsLoadLike] = useState(false);
 
-  // console.log(isLoadFavorite);
+  const [popular, setPopular] = useState(popularity);
+
+  useEffect(() => {
+    setPopular(popularity);
+  }, [isLike, isFavorite, popularity, popular]);
+
   const addToFavorite = () => {
     setIsLoadFavorite(true);
     patchRecipeFavoriteById(id)
       .then(({ favorite }) => {
         setIsLoadFavorite(false);
+        // setPopular(popularity); //----------------
 
         const changeData = allData.map(item => {
           if (item._id === id) {
@@ -51,6 +58,7 @@ const DishCard = ({
     patchRecipeLikeById(id)
       .then(({ like }) => {
         setIsLoadLike(false);
+        // setPopular(popularity); //----------------
 
         const changeData = allData.map(item => {
           if (item._id === id) {
@@ -86,19 +94,13 @@ const DishCard = ({
       <Link to={`/recipe/${id}`}>
         <img src={image} alt={altText} className={css.image} />
       </Link>
-
       <button
-        onMouseOver={toogle}
+        onMouseOver={text.length < 30 ? null : toogle}
         className={css.textContainer}
-        onClick={toogle}
+        onClick={text.length < 30 ? null : toogle}
       >
         {isShow ? text : shortText}
       </button>
-      {/* <div className={css.textContainer}>
-        <p className={css.text} onMouseOver={toogle}>
-          {isShow ? text : shortText}
-        </p>
-      </div> */}
       <button
         type="button"
         onClick={() => {
@@ -117,6 +119,7 @@ const DishCard = ({
       >
         <LikeIco className={css.likeIco} fill={likeFeel} />
       </button>
+      <p className={css.popularity}>{popular}</p>
     </div>
   );
 };

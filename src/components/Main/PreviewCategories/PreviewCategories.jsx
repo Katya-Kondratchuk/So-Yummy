@@ -3,12 +3,9 @@ import React, { useEffect, useState } from 'react';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import Preview from './Preview/Preview';
 import css from './PreviewCategories.module.css';
-// import { useDispatch } from 'react-redux';
-// import { logoutUser } from 'redux/auth/authOperation';
 import { getAllCategories } from '../../../services/api/recipesAPI';
 
 const PreviewCategories = () => {
-  // const dispatch = useDispatch();
   const [allCategories, setAllCategories] = useState([]);
 
   useEffect(() => {
@@ -29,20 +26,6 @@ const PreviewCategories = () => {
         </div>
       </div>
     </div>
-
-    // <div className={`${css.sectionWrapper} ${'container'} ${'greensImg'}`}>
-    //   <Preview categorie="Breakfast" />
-    //   <Preview categorie="Miscellaneous" />
-    //   <Preview categorie="Pork" />
-    //   <Preview categorie="Dessert" />
-    //   <div className={`${css.buttonContainer} ${'container'}`}>
-    //     <div className={css.buttonWrapper}>
-    //       <Link to="/categories">
-    //         <SuperBtn title="Other catagories" otln typeBtn="submit" />
-    //       </Link>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

@@ -10,9 +10,7 @@ const SubscribeForm = () => {
         Subscribe up to our newsletter. Be in touch with latest news and special
         offers, etc.
       </p>
-      <div style={{ width: '100%', height: '135px', backgroundColor: 'green' }}>
-        {/* <FormInput/> */}
-      </div>
+      <div className={s.subscribeForm}>{/* <FormInput/> */}</div>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import switchImages from '../../services/switchImages';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import { registerUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
+import warningValidation from 'services/warningValidation';
 
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
 
@@ -19,13 +20,14 @@ import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
+  // const [showPassword, setShowPassword] = React.useState(false);
   const dispatch = useDispatch();
   const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   let registrationSchema = yup.object().shape({
     name: yup
       .string()
       .trim()
-      .matches(/^[\d\wаА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ]+$/, {
+      .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
         message: 'Special simbols are not allowed',
         excludeEmptyString: true,
       })
@@ -45,10 +47,9 @@ const RegisterForm = () => {
     password: yup
       .string()
       .trim()
-      .matches(/^[a-zа-яа-яа-щ1-9]/, 'Symbols are not allowed')
       .matches(
-        /[A-Z-А-Я-ЩЬЮЯЇІЄҐ0-9]/,
-        'Your password is little secure. Add a number or a capital letter.',
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
+        'Symbols are not allowed',
       )
       .min(6, 'Your password its too short')
       .max(16, 'Your password must be 16 characters max')
@@ -71,14 +72,11 @@ const RegisterForm = () => {
     },
   });
   const isValid = registrationSchema.isValidSync(formik.values);
-  const [inputValue, setInputValue] = useState('');
 
   // const handleInputChange = event => {
   //   setInputValue(event.target.value);
   // };
-  const handleClearClick = () => {
-    setInputValue(inputValue);
-  };
+
   return (
     <div className={css.registrComponent}>
       <AuthBackround />
@@ -102,7 +100,6 @@ const RegisterForm = () => {
                   <FormInput
                     autocomplete="off"
                     formInputArea={css.formInputArea}
-                    handleClearClick={handleClearClick}
                     switchImages={switchImages}
                     placeholder={'name'}
                     id="standard-required-register-name"
@@ -158,10 +155,12 @@ const RegisterForm = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.errors.password ===
-                  'Your password is little secure. Add a number or a capital letter.' ? (
+                  {!formik.errors.password &&
+                  formik.values.password &&
+                  !warningValidation(formik.values.password) ? (
                     <small className={css.smallWarning}>
-                      {formik.errors.password}
+                      Your password is little secure. Add a number a capital
+                      letter.
                     </small>
                   ) : (
                     <HelperText

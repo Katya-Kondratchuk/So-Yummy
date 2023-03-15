@@ -6,11 +6,22 @@ import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import css from './Categories.module.css';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
+import { useParams } from 'react-router';
+
+// <Link to={`/categories/${category}`} className={css.title}>
+//   {category}
+// </Link>;
 
 const Categories = () => {
   const [allCategories, setAllCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [recepiesCategory, setRecepiesCategory] = useState([]);
+  const [isShow, setIsShow] = useState(false);
+  const { categoryName } = useParams();
+
+  const toogle = () => {
+    setIsShow(prevState => !prevState);
+  };
 
   const handleChange = (event, newValue) => {
     setCategory(newValue);
@@ -20,8 +31,13 @@ const Categories = () => {
     if (!category) {
       return;
     }
+
+    if (categoryName) {
+      setCategory(categoryName);
+    }
+
     getCategorieRecipes(category || []).then(data => setRecepiesCategory(data));
-  }, [category]);
+  }, [category, categoryName]);
 
   useEffect(() => {
     const getAll = async () => {
@@ -62,11 +78,34 @@ const Categories = () => {
         </Box>
         {recepiesCategory.length !== 0 && (
           <ul className={css.categoryList}>
-            {recepiesCategory.map(({ _id, title, preview }) => (
-              <li key={_id} className={css.categoryItem}>
-                <DishCard image={preview} altText={title} text={title} />
-              </li>
-            ))}
+            {recepiesCategory.map(
+              ({
+                category,
+                description,
+                favorite,
+                like,
+                popularity,
+                preview,
+                time,
+                title,
+                _id,
+              }) => (
+                <li key={_id} className={css.categoryItem}>
+                  <DishCard
+                    id={_id}
+                    isShow={isShow}
+                    toogle={toogle}
+                    image={preview}
+                    altText={title}
+                    text={title}
+                    favorite={favorite}
+                    like={like}
+                    allData={recepiesCategory}
+                    setAllData={setRecepiesCategory}
+                  />
+                </li>
+              ),
+            )}
           </ul>
         )}
       </div>

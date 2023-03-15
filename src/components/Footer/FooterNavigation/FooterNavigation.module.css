@@ -2,20 +2,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 28px;
+  gap: 32px;
+  margin-bottom: 44px;
 
   color: white;
 }
 
 @media screen and (min-width: 768px) {
   .footerNavigation {
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: normal;
+    padding-top: 50px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .footerNavigation {
-    margin-bottom: 41px;
+    flex-wrap: no-wrap;
+    gap: 0;
   }
 }

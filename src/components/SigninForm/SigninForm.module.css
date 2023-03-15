@@ -1,6 +1,3 @@
-.registrComponent {
-  padding-top: 87px;
-}
 .formInputArea {
   width: 100%;
   height: 100%;
@@ -52,9 +49,6 @@
   width: 275px;
 }
 @media screen and (min-width: 768px) {
-  .registrComponent {
-    padding-top: 96px;
-  }
   .formIinputFormat {
     width: 400px;
     height: 59px;

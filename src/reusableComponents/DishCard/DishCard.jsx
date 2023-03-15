@@ -17,17 +17,64 @@ const DishCard = ({
   toogle,
   isShow,
   id,
+  allData = [],
+  setAllData = () => {},
 }) => {
-  const [isLike, setIsLike] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isLike, setIsLike] = useState(like);
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
+  const [isLoadFavorite, setIsLoadFavorite] = useState(false);
+  const [isLoadLike, setIsLoadLike] = useState(false);
+
+  // console.log(isLoadFavorite);
   const addToFavorite = () => {
-    patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
+    setIsLoadFavorite(true);
+    patchRecipeFavoriteById(id)
+      .then(({ favorite }) => {
+        setIsLoadFavorite(false);
+
+        const changeData = allData.map(item => {
+          if (item._id === id) {
+            return { ...item, favorite };
+          }
+          return item;
+        });
+        setAllData(changeData);
+
+        setIsFavorite(favorite);
+      })
+      .catch(() => setIsLoadFavorite(false));
   };
 
   const addLike = () => {
-    patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+    setIsLoadLike(true);
+    patchRecipeLikeById(id)
+      .then(({ like }) => {
+        setIsLoadLike(false);
+
+        const changeData = allData.map(item => {
+          if (item._id === id) {
+            return { ...item, like };
+          }
+          return item;
+        });
+        setAllData(changeData);
+
+        setIsLike(like);
+      })
+      .catch(() => setIsLoadLike(false));
   };
+  // const addToFavorite = () => {
+  //   patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
+  // };
+
+  // const addLike = useCallback(() => {
+  //   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+  // }, [id]);
+
+  // const addLike = () => {
+  //   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
+  // };
 
   const favFeel =
     favorite || isFavorite ? 'var(--secondaryGreenColor)' : 'none';
@@ -52,10 +99,22 @@ const DishCard = ({
           {isShow ? text : shortText}
         </p>
       </div> */}
-      <button type="button" onClick={addToFavorite}>
+      <button
+        type="button"
+        onClick={() => {
+          if (isLoadFavorite) return;
+          addToFavorite();
+        }}
+      >
         <FavoriteIco className={css.favIco} fill={favFeel} />
       </button>
-      <button type="button" onClick={addLike}>
+      <button
+        type="button"
+        onClick={() => {
+          if (isLoadLike) return;
+          addLike();
+        }}
+      >
         <LikeIco className={css.likeIco} fill={likeFeel} />
       </button>
     </div>

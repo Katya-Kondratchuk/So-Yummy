@@ -11,7 +11,16 @@
   position: absolute;
   top: 12.5px;
   right: 18px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  /* transition: background-color 200ms linear, transform 300ms ease-in-out; */
 }
+/* .formStateIcon:active {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px 1px #ff6b08;
+  transform: rotate(180deg);
+} */
 .formInput {
   color: var(--whiteColor);
   width: 100%;
@@ -76,6 +85,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  /* .formStateIcon:hover {
+    box-shadow: 0 0 20px 1px #ff6b08;
+    transform: rotate(180deg);
+  } */
+  .formStateIcon:active {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
   .formArea {
     width: 400px;
   }

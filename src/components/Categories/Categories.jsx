@@ -3,6 +3,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import BGDots from 'reusableComponents/BGDots/BGDots';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
@@ -54,60 +55,63 @@ const Categories = () => {
 
   return (
     allCategories.length !== 0 && (
-      <div className="container greensImg">
-        <Title text={'Categories'} />
-        <Box
-          sx={{
-            maxWidth: '100%',
-            marginTop: { xs: '50px', lg: '100px' },
-            borderBottom: '1px solid #E0E0E0',
-          }}
-        >
-          <Tabs
-            value={category}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons
-            allowScrollButtonsMobile
-            aria-label="scrollable force tabs example"
+      <div className=" greensImg">
+        <div className="container ">
+          <BGDots />
+          <Title text={'Categories'} />
+          <Box
+            sx={{
+              maxWidth: '100%',
+              marginTop: { xs: '50px', lg: '100px' },
+              borderBottom: '1px solid #E0E0E0',
+            }}
           >
-            {allCategories.map(({ title, _id }) => (
-              <Tab key={_id} value={title} label={title} />
-            ))}
-          </Tabs>
-        </Box>
-        {recepiesCategory.length !== 0 && (
-          <ul className={css.categoryList}>
-            {recepiesCategory.map(
-              ({
-                category,
-                description,
-                favorite,
-                like,
-                popularity,
-                preview,
-                time,
-                title,
-                _id,
-              }) => (
-                <li key={_id} className={css.categoryItem}>
-                  <DishCard
-                    id={_id}
-                    isShow={isShow}
-                    toogle={toogle}
-                    image={preview}
-                    altText={title}
-                    text={title}
-                    favorite={favorite}
-                    like={like}
-                    allData={recepiesCategory}
-                    setAllData={setRecepiesCategory}
-                  />
-                </li>
-              ),
-            )}
-          </ul>
-        )}
+            <Tabs
+              value={category}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile
+              aria-label="scrollable force tabs example"
+            >
+              {allCategories.map(({ title, _id }) => (
+                <Tab key={_id} value={title} label={title} />
+              ))}
+            </Tabs>
+          </Box>
+          {recepiesCategory.length !== 0 && (
+            <ul className={css.categoryList}>
+              {recepiesCategory.map(
+                ({
+                  category,
+                  description,
+                  favorite,
+                  like,
+                  popularity,
+                  preview,
+                  time,
+                  title,
+                  _id,
+                }) => (
+                  <li key={_id} className={css.categoryItem}>
+                    <DishCard
+                      id={_id}
+                      isShow={isShow}
+                      toogle={toogle}
+                      image={preview}
+                      altText={title}
+                      text={title}
+                      favorite={favorite}
+                      like={like}
+                      allData={recepiesCategory}
+                      setAllData={setRecepiesCategory}
+                    />
+                  </li>
+                ),
+              )}
+            </ul>
+          )}
+        </div>
       </div>
     )
   );

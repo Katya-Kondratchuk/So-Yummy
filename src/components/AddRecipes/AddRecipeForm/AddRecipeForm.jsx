@@ -1,26 +1,11 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import * as yup from 'yup';
 import RecipeDescriptionFields from './RecipeDescriptionFields';
 import RecipeIngredientsFields from './RecipeIngredientsFields';
 import RecipePreparationFields from './RecipePreparationFields';
-import css from './AddRecipeForm.module.css';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
-
-const allCategory = [
-  'Beef',
-  'Breakfast',
-  'Chicken',
-  'Dessert',
-  'Goat',
-  'Lamb',
-  'Miscellaneous',
-  'Pasta',
-  'Pork',
-  'Seafood',
-  'Side',
-  'Starter',
-  'Vegan',
-  'Vegetarian',
-];
+import { getAllCategories } from 'services/api/recipesAPI';
+import css from './AddRecipeForm.module.css';
 
 const allTime = [
   '5 min',
@@ -50,93 +35,126 @@ const allTime = [
 ];
 
 const AddRecipeForm = () => {
-  // const [allCategory, setAllCategory] = useState();
+  const [allCategory, setAllCategory] = useState([]);
 
-  const [imgAdd, setImgAdd] = useState('');
-  const [nameRecipe, setNameRecipe] = useState('');
+  const [fullImage, setFullImage] = useState('');
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('Beef');
-  const [cookingTime, setCookingTime] = useState('15 min');
+  const [time, setTime] = useState('15 min');
 
-  const [ingredients, setIngredients] = useState([
+  const [ingridients, setIngridients] = useState([
     {
       id: '663713a4-4cd7-43a7-b691-8e012b1873cb',
-      name: 'Avocado',
+      title: 'Avocado',
       amount: '999',
       unit: 'tbs',
     },
     {
       id: '663713a4-eged7-43a7-b691-8e012b1873cb',
-      name: 'Pork',
+      title: 'Pork',
       amount: '999',
       unit: 'g',
     },
     {
       id: '663713agegd7-43a7-b691-8e012b1873cb',
-      name: 'Ca',
+      title: 'Ca',
       amount: '999',
       unit: 'kg',
     },
   ]);
 
-  const [preparation, setPreparation] = useState('');
+  const [instructions, setInstructions] = useState('');
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoriesList = (await getAllCategories()) || [];
+      return categoriesList;
+    };
+    getCategories()
+      .then(data => {
+        const categories = data.map(({ title }) => title);
+        if (categories.length > 0) {
+          setCategory(categories[0]);
+        }
+        setAllCategory(categories);
+      })
+      .catch(() => {});
+  }, []);
 
   const onDelIngredient = id => {
-    const filteredData = ingredients.filter(el => el.id !== id);
-    setIngredients(filteredData);
+    const filteredData = ingridients.filter(el => el.id !== id);
+    setIngridients(filteredData);
   };
 
   const onUpdateData = useCallback(
     (id, data) => {
-      const changedData = ingredients.map(el => {
+      const changedData = ingridients.map(el => {
         if (el.id === id) {
           return { ...el, ...data };
         }
         return el;
       });
-      setIngredients(changedData);
+      setIngridients(changedData);
     },
-    [ingredients],
+    [ingridients],
   );
+
+  const recipeShema = yup.object().shape({
+    fullImage: yup.string(),
+    title: yup.string().required(),
+    description: yup.string().required(),
+    category: yup.string().required(),
+    time: yup.string().required(),
+    ingridients: yup.array(),
+    instructions: yup.array().required(),
+  });
+
+  const objData = {
+    fullImage,
+    title,
+    description,
+    category,
+    time,
+    ingridients,
+    instructions: instructions.split('\n').filter(el => el.trim().length > 0),
+  };
+
+  const isValid = recipeShema.isValidSync(objData);
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const obj = {
-      imgAdd,
-      name: nameRecipe,
-      description,
-      category,
-      cookingTime,
-      ingredients,
-      preparation: preparation.split('\n').filter(el => el.trim().length > 0),
-    };
-    console.log(obj);
-  };
 
-  // TODO: разбивка по enter на массив при сабмите обработать
-  // console.log('🚀 ~ preparation: array enter', preparation.split('\n'));
+    console.log(objData);
+
+    const valid = recipeShema.isValidSync(objData);
+    console.log(valid);
+  };
 
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>
       <RecipeDescriptionFields
         allCategory={allCategory}
         allTime={allTime}
-        image={{ imgAdd, setImgAdd }}
-        name={{ nameRecipe, setNameRecipe }}
+        image={{ fullImage, setFullImage }}
+        name={{ title, setTitle }}
         descriptionData={{ description, setDescription }}
         categoryData={{ category, setCategory }}
-        time={{ cookingTime, setCookingTime }}
+        cokingTime={{ time, setTime }}
       />
       <RecipeIngredientsFields
-        ingredients={ingredients}
-        setIngredients={setIngredients}
+        ingredients={ingridients}
+        setIngredients={setIngridients}
         onUpdate={onUpdateData}
         onRemove={onDelIngredient}
       />
-      <RecipePreparationFields value={preparation} onChange={setPreparation} />
+      <RecipePreparationFields
+        value={instructions}
+        onChange={setInstructions}
+      />
 
       <div className={css.wrapperBtn}>
-        <SuperBtn dark typeBtn="submit" title="Add" />
+        <SuperBtn dark typeBtn="submit" title="Add" disabled={!isValid} />
       </div>
     </form>
   );

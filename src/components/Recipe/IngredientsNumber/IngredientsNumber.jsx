@@ -1,8 +1,8 @@
 import React from 'react';
 import css from './IngredientsNumber.module.css';
 
-const IngredientsNumber = ({ text }) => {
-  return <div className={css.wrapper}>{text}</div>;
+const IngredientsNumber = ({ measure }) => {
+  return <div className={css.wrapper}>{measure}</div>;
 };
 
 export default IngredientsNumber;

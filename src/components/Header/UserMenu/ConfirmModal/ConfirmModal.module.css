@@ -34,8 +34,8 @@
   height: 49px;
   border: none;
   border-radius: 6px;
-  color: var(--secondaryTextColor);
-  background-color: var(--inputBg);
+  color: var(--bgColor);
+  background-color: var(--greenColor);
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -44,9 +44,22 @@
 }
 
 .confirmBtn:hover {
-  color: var(--bgColor);
+  color: var(--secondaryBlackColor);
   background-color: var(--greenColor);
 }
 .btnArr {
   margin-bottom: 5px;
+}
+.confirmBtnCurrent {
+  width: 137px;
+  height: 49px;
+  border: none;
+  border-radius: 6px;
+  color: var(--secondaryTextColor);
+  background-color: #d9d9d9;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
 }

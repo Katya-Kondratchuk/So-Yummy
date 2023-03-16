@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   width: 114px;
   height: 54px;
   margin-right: 13px;
@@ -20,7 +20,9 @@
 @media screen and (min-width: 1440px) {
   .wrapper {
     width: 547px;
-    height: 82px;
+    height: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     margin-right: 37px;
   }
 }
@@ -53,6 +55,11 @@
     font-size: 12px;
     line-height: 20px;
     height: 60px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .description {
+    min-height: 60px;
   }
 }
 .description:hover {

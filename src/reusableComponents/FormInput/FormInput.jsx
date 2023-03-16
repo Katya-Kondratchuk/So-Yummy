@@ -35,7 +35,6 @@ const FormInput = ({
       return `${css.formInput}`;
     }
   };
-  console.log(erorr);
   return (
     <div className={formInputArea}>
       <input

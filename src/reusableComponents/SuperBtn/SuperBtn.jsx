@@ -12,6 +12,7 @@ const SuperBtn = ({
   title,
   dark,
   welcome,
+  disabled = false,
   children,
 }) => {
   if (lnk) {
@@ -40,6 +41,7 @@ const SuperBtn = ({
           [css.welcome]: welcome,
         })}
         type={typeBtn}
+        disabled={disabled}
       >
         {title}
         {children}

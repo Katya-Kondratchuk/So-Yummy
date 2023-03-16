@@ -1,4 +1,4 @@
-.cardContainer {
+.imgContainer {
   position: relative;
   width: 130px;
   height: 152px;
@@ -12,17 +12,8 @@
 }
 
 
-
-.text {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  color: #3e4462;
-  margin: 0;
-}
-
 @media screen and (min-width: 768px) {
-  .cardContainer {
+  .imgContainer {
     width: 250px;
     height: 288px;
   }
@@ -30,7 +21,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .cardContainer {
+  .imgContainer {
     width: 340px;
     height: 372px;
   }

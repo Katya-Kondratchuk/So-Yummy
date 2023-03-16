@@ -2,62 +2,10 @@
   padding-bottom: 100px;
 }
 
-.wrapperFirst {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
-}
-
-.wrapperSecond {
-  display: flex;
-  flex-grow: 2;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 8px;
-
-}
-
-.cardContainer {
-  display: flex;
-}
-
-.cardContainer2 {
-  width: 209px;
-  height: 152px;
-  padding: 14px;
-  padding-right: 8px;
-  position: relative;
-  background-color: var(--whiteColor);
-  display: flex;
-  flex-direction: column;
-}
-
-.cardContainer4 {
-  bottom: 15px;
-  right: 40px;
-  position: absolute;
-}
-
 .cardList {
   margin-top: 50px;
   margin-bottom: 40px;
 }
-
-.cardItem {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cardItem:first-child {
-  margin-top: 50px;
-}
-
-.cardItem:not(:last-child) {
-  margin-bottom: 18px;
-}
-
 
 .pageNumbers {
   margin-left: auto;
@@ -66,7 +14,7 @@
   list-style: none;
   display: flex;
   border-radius: 30px;
-  background-color: #FFFFFF;
+  background-color: var(--whiteColor);
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
 }
 
@@ -77,7 +25,7 @@
   width: 22px;
   height: 22px;
   margin: 8px;
-  color: #656565;
+  color: var(--secondaryLineColor);
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
@@ -85,21 +33,10 @@
   cursor: pointer;
 }
 
-.btnWrapper {
-  width: 87px;
-  height: 27px;
+.pageNumbers li.active {
+background-color: var(--ingridientsBcg);
+  color: var(--secondaryBlackColor);
 }
-
-
-.pageNumbers li.acti {
-background-color: yellowgreen;
-  color: #22252A;
-}
-
-/* .acti {
-  background-color: red;
-  color: red;
-} */
 
 
 .pageNumbers div {
@@ -109,7 +46,7 @@ background-color: yellowgreen;
   width: 22px;
   height: 22px;
   margin: 8px;
-  color: #656565;
+  color: var(--secondaryLineColor);
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
@@ -117,7 +54,7 @@ background-color: yellowgreen;
   cursor: pointer;
 }
 
-.yyyy {
+.btnRightLeft {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -127,48 +64,19 @@ background-color: yellowgreen;
 .pageNumbers li:hover,
 .pageNumbers li:focus,
 .pageNumbers div:hover {
-  background-color: #EBF3D4;
-  color:#22252A;
+  background-color: var(--ingridientsBcg);
+  color: var(--secondaryBlackColor);
 }
 
-
-.btnWrapper {
-  width: 87px;
-  height: 27px;
-
-}
-
-
+ .pageNumbers li.btnThreePoint {
+   display: none;
+ }
 
 
 @media screen and (min-width: 768px) {
   .myRecipe {
     padding-bottom: 200px;
   }
-
-  .btnWrapper {
-    width: 138px;
-    height: 45px;
-  }
-
-  .cardContainer2 {
-    width: 446px;
-    height: 288px;
-    padding: 28px;
-  }
-
-  .cardItem:not(:last-child) {
-    margin-bottom: 40px;
-  }
-
-  .cardList {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-
-    .cardItem:first-child {
-      margin-top: 100px;
-    }
 
         .pageNumbers div {
           display: flex;
@@ -177,7 +85,7 @@ background-color: yellowgreen;
           width: 27px;
           height: 27px;
           margin: 14px;
-          color: #656565;
+          color: var(--secondaryLineColor);
           font-weight: 500;
           font-size: 12px;
           line-height: 18px;
@@ -192,7 +100,7 @@ background-color: yellowgreen;
           width: 27px;
           height: 27px;
           margin: 14px;
-          color: #656565;
+          color: var(--secondaryLineColor);
           font-weight: 500;
           font-size: 12px;
           line-height: 18px;
@@ -200,34 +108,25 @@ background-color: yellowgreen;
           cursor: pointer;
         }
 
-                .wrapperSecond {
-                  margin-top: 12px;
+                .pageNumbers li.btnThreePoint {
+                  display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 27px;
+                    height: 27px;
+                    margin: 14px;
+                    color: var(--secondaryLineColor);
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 18px;
+                    border-radius: 50%;
+                    cursor: pointer;
                 }
-
 }
 
 @media screen and (min-width: 1440px) {
-  .btnWrapper {
-    width: 172px;
-    height: 59px;
-  }
-
   .myRecipe {
     padding-bottom: 100px;
   }
-
-  .cardContainer2 {
-    width: 886px;
-    height: 372px;
-    padding: 40px;
-  }
-
-  .cardItem:not(:last-child) {
-    margin-bottom: 50px;
-  }
-
-  .wrapperFirst {
-    margin-bottom: 30px;
-  }
-
+        
 }

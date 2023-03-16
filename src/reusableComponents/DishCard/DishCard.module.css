@@ -35,19 +35,13 @@
   width: 40px;
   height: 40px;
 }
-.likeIco:hover :first-child {
-  fill: var(--secondaryGreenColor);
-}
+
 .favIco {
   /* position: absolute;
   top: 20px;
   left: 20px; */
   width: 40px;
   height: 40px;
-}
-
-.favIco:hover :first-child {
-  fill: var(--secondaryGreenColor);
 }
 
 .textContainer {
@@ -105,5 +99,11 @@
   }
   .textContainer {
     width: 268px;
+  }
+  .likeIco:hover :first-child {
+    fill: var(--secondaryGreenColor);
+  }
+  .favIco:hover :first-child {
+    fill: var(--secondaryGreenColor);
   }
 }

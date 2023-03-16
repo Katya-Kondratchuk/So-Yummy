@@ -23,7 +23,7 @@ const SigninForm = () => {
       .string()
       .lowercase()
       .matches(myEmailRegex, {
-        message: 'Special symbols are not allowed',
+        message: 'Your email must be valid',
         name: 'email',
         excludeEmptyString: true,
       })
@@ -35,7 +35,7 @@ const SigninForm = () => {
       .trim()
       .matches(
         /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
-        'Symbols are not allowed',
+        'Special symbols are not allowed',
       )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
@@ -51,7 +51,6 @@ const SigninForm = () => {
   });
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
     },

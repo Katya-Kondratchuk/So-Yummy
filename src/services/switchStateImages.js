@@ -7,7 +7,7 @@ import warningValidation from './warningValidation';
 const switchStateImages = (erorr, value, edit, type = '') => {
   if (!erorr && value && !warningValidation(value) && type === 'password') {
     return <WarningIcon />;
-  } else if (erorr) {
+  } else if (erorr && value) {
     return <ErorrIcon />;
   } else if (!erorr && value) {
     return <SucsessIcon />;

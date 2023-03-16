@@ -4,9 +4,9 @@ import warningValidation from 'services/warningValidation';
 const FormInput = ({
   placeholder = '',
   type = '',
-  switchImages,
-  onBlur,
-  onChange,
+  switchImages = () => {},
+  onBlur = () => {},
+  onChange = () => {},
   name = '',
   erorr,
   value = '',
@@ -23,7 +23,7 @@ const FormInput = ({
   ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
       return `${css.formInput} ${css.formInputInsecure}`;
-    } else if (erorr) {
+    } else if (erorr && value) {
       return `${css.formInput} ${css.formInputInvalid} ${formInputUserMenu}`;
     } else if (!erorr && value) {
       return `${css.formInput} ${css.formInputValid} ${formInputUserMenu}`;

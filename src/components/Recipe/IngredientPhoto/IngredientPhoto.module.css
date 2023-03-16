@@ -4,7 +4,6 @@
   height: 65px;
   background-size: cover;
   margin-right: 8px;
-  padding: 10px;
   padding-top: auto;
   padding-bottom: auto;
 }
@@ -22,5 +21,6 @@
     width: 180px;
     height: 180px;
     margin-right: 40px;
+    padding: 10px;
   }
 }

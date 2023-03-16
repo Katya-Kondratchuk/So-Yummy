@@ -32,7 +32,7 @@
   align-items: center;
   justify-content: space-between;
   width: 342px;
-  margin-top: 14px;
+  padding-top: 14px;
 }
 @media screen and (min-width: 768px) {
   .itemWrapper {
@@ -130,6 +130,7 @@
 }
 
 .descriptionWrapper {
+  margin-top: 28px;
   max-height: 332px;
   overflow: auto;
 }

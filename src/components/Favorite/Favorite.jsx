@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
@@ -12,11 +13,16 @@ const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  setPage(1);
 
   useEffect(() => {
     try {
-      getAllFavorite(page, 6).then(data => setAllRecipes(data));
+      getAllFavorite(page, 6).then(data => {
+        if (!data) {
+          return;
+        }
+
+        setAllRecipes(data.favoriteRecipes);
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -24,13 +30,14 @@ const Favorite = () => {
 
   const handelDelete = id => {
     if (isLoading) {
+      setPage(1);
       return;
     }
     setIsLoading(true);
     patchRecipeFavoriteById(id);
     getAllFavorite(page, 6)
       .then(data => setAllRecipes(data ?? []))
-      .catch(e => {
+      .catch(() => {
         setIsLoading(false);
       });
     setIsLoading(false);

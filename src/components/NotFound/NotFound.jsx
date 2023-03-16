@@ -1,5 +1,5 @@
 import React from 'react';
-import img from './404errorPage.png';
+import img from '../../assets/images/NotFound/404errorPage.png';
 import css from './NotFound.module.css';
 import Alert from './Alert/Alert';
 

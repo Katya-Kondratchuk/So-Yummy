@@ -19,11 +19,11 @@ const ConfirmModal = ({ onClose }) => {
         <button onClick={handleLogoutBtnClick} className={css.confirmBtn}>
           Log Out
         </button>
-        <button onClick={onClose} className={css.confirmBtn}>
+        <button onClick={onClose} className={css.confirmBtnCurrent}>
           Cancel
         </button>
       </div>
-      <MobMenuCloseBtn onClick={onClose} />
+      <MobMenuCloseBtn closeMenu={onClose} />
     </div>
   );
 };

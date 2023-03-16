@@ -2,45 +2,58 @@ import css from './FormInput.module.css';
 import switchStateImages from 'services/switchStateImages';
 import warningValidation from 'services/warningValidation';
 const FormInput = ({
-  placeholder,
-  type,
+  placeholder = '',
+  type = '',
   switchImages,
   onBlur,
   onChange,
-  name,
+  name = '',
   erorr,
-  value,
-  edit = false,
-  formInputArea,
-  userName = false,
+  value = '',
+  formInputArea = '',
+  formInputUserMenu = '',
+  formInputFooterForm = '',
 }) => {
-  const switchColor = (erorr, value, userName, type = '') => {
+  const switchColor = (
+    erorr,
+    value,
+    type,
+    formInputUserMenu,
+    formInputFooterForm = '',
+  ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
       return `${css.formInput} ${css.formInputInsecure}`;
     } else if (erorr) {
-      return `${css.formInput} ${css.formInputInvalid}`;
+      return `${css.formInput} ${css.formInputInvalid} ${formInputUserMenu}`;
     } else if (!erorr && value) {
-      return `${css.formInput} ${css.formInputValid}`;
-    } else if (userName) {
-      return `${css.formInput} ${css.formInputUsername}`;
+      return `${css.formInput} ${css.formInputValid} ${formInputUserMenu}`;
+    } else if (formInputUserMenu) {
+      return `${formInputUserMenu}`;
+    } else if (formInputFooterForm) {
+      return `${css.formInput} ${formInputFooterForm}`;
     } else {
       return `${css.formInput}`;
     }
   };
-
   return (
     <div className={formInputArea}>
       <input
-        className={switchColor(erorr, value, userName, type)}
+        className={switchColor(
+          erorr,
+          value,
+          type,
+          formInputUserMenu,
+          formInputFooterForm,
+        )}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
         name={name}
         placeholder={placeholder}
       />
-      <span className={css.formIcon}>{switchImages(type)}</span>
+      <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
-        {switchStateImages(erorr, value, edit, type)}
+        {switchStateImages(erorr, value, formInputUserMenu, type)}
       </span>
     </div>
   );

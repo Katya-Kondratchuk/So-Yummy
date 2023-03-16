@@ -8,7 +8,6 @@ import { getCategorieRecipes } from 'services/api/recipesAPI';
 
 const Preview = ({ category }) => {
   const [mainMeals, setMainMeals] = useState([]);
-
   const [isShow, setIsShow] = useState(false);
 
   const toogle = () => {

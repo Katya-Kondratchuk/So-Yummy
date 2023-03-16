@@ -15,6 +15,10 @@
   position: relative;
   top: -28px;
 }
+.divButtonClass {
+  width: 279px;
+  height: 45px;
+}
 .registrFormatting {
   display: flex;
   flex-direction: column;
@@ -50,7 +54,20 @@
   display: inline-block;
   width: 275px;
 }
+.registrFormatting {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
 @media screen and (min-width: 768px) {
+  .divButtonClass {
+    width: 400px;
+    height: 59px;
+  }
   .formIinputFormat {
     width: 400px;
     height: 59px;

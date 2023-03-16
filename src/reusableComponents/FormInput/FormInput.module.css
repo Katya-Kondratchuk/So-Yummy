@@ -1,6 +1,6 @@
 .formIcon {
   position: absolute;
-  top: 13.5px;
+  top: 28%;
   left: 14px;
   stroke: var(--whiteColor);
   opacity: 0.8;
@@ -98,15 +98,16 @@
   .formInput {
     font-size: 18px;
     padding-left: 50px;
+    padding-right: 50px;
   }
   .formIcon {
-    top: 16px;
-    left: 18px;
+    top: 28%;
+    left: 5%;
     width: 24px;
     height: 24px;
   }
   .formStateIcon {
-    top: 20px;
+    top: 33%;
   }
 }
 .clearButton {

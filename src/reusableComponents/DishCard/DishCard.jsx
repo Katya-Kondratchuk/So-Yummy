@@ -29,11 +29,6 @@ const DishCard = ({
 
   const [popular, setPopular] = useState(popularity);
 
-  // useEffect(() => {
-  //   setPopular(popularity);
-  //   // console.log(popularity);
-  // }, [isLike, isFavorite, popularity, popular]);
-
   const addToFavorite = () => {
     setIsLoadFavorite(true);
     patchRecipeFavoriteById(id)
@@ -92,6 +87,7 @@ const DishCard = ({
         {isShow ? text : shortText}
       </button>
       <button
+        className={css.btnFav}
         type="button"
         onClick={() => {
           if (isLoadFavorite) return;
@@ -101,6 +97,7 @@ const DishCard = ({
         <FavoriteIco className={css.favIco} fill={favFeel} />
       </button>
       <button
+        className={css.btnLike}
         type="button"
         onClick={() => {
           if (isLoadLike) return;
@@ -115,24 +112,3 @@ const DishCard = ({
 };
 
 export default DishCard;
-
-// вызов компонента:
-/* <DishCard
-      image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-      altText="someDish"
-      text="Delicious dishes"
-      favorite={false}
-      like={false}
-/> */
-
-// const addToFavorite = () => {
-//   patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
-// };
-
-// const addLike = useCallback(() => {
-//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-// }, [id]);
-
-// const addLike = () => {
-//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-// };

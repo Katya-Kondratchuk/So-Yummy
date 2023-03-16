@@ -13,7 +13,6 @@ const FormInput = ({
   formInputArea = '',
   formInputUserMenu = '',
   formInputFooterForm = '',
-  ref,
 }) => {
   const switchColor = (
     erorr,

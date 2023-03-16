@@ -7,6 +7,7 @@ import {
 import css from './DishCard.module.css';
 import { ReactComponent as FavoriteIco } from './fav.svg';
 import { ReactComponent as LikeIco } from './like.svg';
+import { toast } from 'react-toastify';
 
 const DishCard = ({
   image,
@@ -31,10 +32,10 @@ const DishCard = ({
 
   const addToFavorite = () => {
     setIsLoadFavorite(true);
+
     patchRecipeFavoriteById(id)
       .then(({ favorite, popularity }) => {
         setIsLoadFavorite(false);
-
         const changeData = allData.map(item => {
           if (item._id === id) {
             return { ...item, favorite };
@@ -44,6 +45,7 @@ const DishCard = ({
         setAllData(changeData);
         setPopular(popularity);
         setIsFavorite(favorite);
+        favorite && toast.success(`Added to Favorite!`);
       })
       .catch(() => setIsLoadFavorite(false));
   };

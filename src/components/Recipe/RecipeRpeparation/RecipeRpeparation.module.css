@@ -17,12 +17,12 @@
 
 .itemsContainer {
   margin-top: 19px;
-  height: 332px;
+  max-height: 332px;
 }
 @media screen and (min-width: 1440px) {
   .itemsContainer {
     margin-top: 0px;
-    height: 664px;
+    max-height: 664px;
   }
 }
 
@@ -55,7 +55,7 @@
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
   color: var(--mainTextColor);
-  margin-bottom: 14px;
+  margin-bottom: 28px;
 }
 @media screen and (min-width: 768px) {
   .title {
@@ -111,13 +111,13 @@
   background-size: cover;
   border-radius: 8px;
   background-color: var(--secondaryGreenColor);
-  margin-top: 70px;
+  margin-top: 40px;
   margin-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .image {
     width: 704px;
-    margin-top: 132px;
+    margin-top: 50px;
     margin-bottom: 200px;
   }
 }
@@ -130,7 +130,7 @@
 }
 
 .descriptionWrapper {
-  height: 332px;
+  max-height: 332px;
   overflow: auto;
 }
 @media screen and (min-width: 768px) {
@@ -140,6 +140,6 @@
 }
 @media screen and (min-width: 1440px) {
   .descriptionWrapper {
-    height: 605px;
+    max-height: 605px;
   }
 }

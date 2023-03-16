@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { normalizeName } from 'services/normalized';
+import { clearRefresh, reRefresh } from './authSlice';
 
 axios.defaults.baseURL = 'https://so-yammy-backend.onrender.com/api';
 
@@ -173,40 +174,49 @@ export const verifyResendEmail = createAsyncThunk(
   },
 );
 
-export const reRequestAccessToken = createAsyncThunk(
-  'auth/reRequestAccessToken',
-  async (_, ThunkAPI) => {
-    const { refreshToken } = ThunkAPI.getState().auth;
-
-    if (!refreshToken) {
-      return ThunkAPI.rejectWithValue();
-    }
-
-    try {
-      const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
-        refreshToken,
-      });
-      token.set(data.accessToken);
-      return data.refreshToken;
-    } catch (error) {
-      return ThunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
-export const setUpInterceptor = store => {
+export const setupInterceptors = store => {
+  const { dispatch } = store;
   axios.interceptors.response.use(
     response => response,
-    async error => {
-      if (error.response.status === 401) {
-        try {
-          await store.dispatch(reRequestAccessToken());
-          return axios(error.config);
-        } catch (error) {
-          return Promise.reject(error);
+    async e => {
+      const originalConfig = e.config;
+      if (originalConfig.url !== '/auth/signin' && e.response) {
+        if (
+          originalConfig.url === '/users/refresh' &&
+          e.response.status === 403
+        ) {
+          try {
+            await dispatch(clearRefresh());
+          } catch (_err) {
+            return Promise.reject(_err);
+          }
+        }
+
+        if (e.response.status === 401 && !originalConfig._retry) {
+          originalConfig._retry = true;
+          try {
+            const { refreshToken } = store.getState().auth;
+
+            if (!refreshToken) {
+              return Promise.reject(e);
+            }
+
+            const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
+              refreshToken,
+            });
+
+            await dispatch(reRefresh(data.refreshToken));
+
+            token.set(data.accessToken);
+            e.config.headers['Authorization'] = 'Bearer ' + data.accessToken;
+            return axios(e.config);
+          } catch (error) {
+            return Promise.reject(error);
+          }
         }
       }
-      return Promise.reject(error);
+
+      return Promise.reject(e);
     },
   );
 };

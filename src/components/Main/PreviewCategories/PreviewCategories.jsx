@@ -31,24 +31,3 @@ const PreviewCategories = () => {
 };
 
 export default PreviewCategories;
-
-// вставить в index.css
-// .greensImg {
-//   background-image: url(./assets/images/GreensBcg/kisspng-pasta-spinach-dip-english-muffin-breakfast-sandwic-spinach-5abcc32f2ee473\ 1.png);
-//   background-repeat: no-repeat;
-//   background-position: left 0 bottom -163px;
-//   background-size: 256px 392px;
-// }
-
-// @media screen and (min-width: 768px) {
-//   .greensImg {
-//     background-position: left 0 bottom -275px;
-//     background-size: 423px 646px;
-//   }
-// }
-// @media screen and (min-width: 1440px) {
-//   .greensImg {
-//     background-position: left 0 bottom -413px;
-//     background-size: 558px 852px;
-//   }
-// }

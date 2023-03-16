@@ -113,11 +113,22 @@
 
 .dishTime {
   margin-top: 48px;
-  width: 75px;
+  width: 150px;
   height: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .dishTime {
+    width: 278px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dishTime {
+    width: 270px;
+  }
 }
 
 .time {

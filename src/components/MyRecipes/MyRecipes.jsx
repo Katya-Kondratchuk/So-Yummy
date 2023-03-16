@@ -107,7 +107,7 @@ const MyRecipes = () => {
             onClick={handleNextbtn}
             disabled={currentPage === pages[pages.length - 1] ? true : false}
           >
-            <Right className={css.right}/>
+            <Right/>
           </button>
         </div>
         </ul>
@@ -273,7 +273,7 @@ export default MyRecipes;
 //                 onClick={handleNextbtn}
 //                 disabled={currentPage === pages[pages.length - 1] ? true : false}
 //               >
-//                 <Right className={css.right} />
+//                 <Right/>
 //               </button>
 //             </div>
 //           </ul>

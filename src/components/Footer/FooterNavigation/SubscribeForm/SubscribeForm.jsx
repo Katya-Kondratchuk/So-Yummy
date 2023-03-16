@@ -1,5 +1,5 @@
 import React from 'react';
-// import FormInput from "reusableComponents/FormInput/FormInput";
+import FormInput from 'reusableComponents/FormInput/FormInput';
 import s from './SubscribeForm.module.css';
 
 const SubscribeForm = () => {
@@ -10,7 +10,9 @@ const SubscribeForm = () => {
         Subscribe up to our newsletter. Be in touch with latest news and special
         offers, etc.
       </p>
-      <div className={s.subscribeForm}>{/* <FormInput/> */}</div>
+      <div className={s.subscribeForm}>
+        <FormInput />
+      </div>
     </div>
   );
 };

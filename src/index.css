@@ -157,12 +157,6 @@ table {
   --recipeText: rgba(0, 0, 0, 0.8);
   --linksHoverColor: #1e1f28;
   --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
-  transition: background-color 1s ease;
-}
-
-:root.ThemeDark {
-  --bgColor: #aaa;
-  transition: background-color 1s ease;
 }
 
 .container {

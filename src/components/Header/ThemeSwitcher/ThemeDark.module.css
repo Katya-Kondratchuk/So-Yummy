@@ -1,0 +1,32 @@
+:root.ThemeDark {
+  --bgColor: #111111;
+  --greyColor: #333333;
+  --whiteColor: #f1f1f1;
+  --greyBgColor: #444444;
+  --blackColor: #ffffff;
+  --secondaryBlackColor: #dddddd;
+  --greenColor: #4a6b17;
+  --secondaryGreenColor: #8aa936;
+  --errorColor: #f44336;
+  --warningColor: #ffeb3b;
+  --successColor: #8bc34a;
+  --titleColor: #ffffff;
+  --mainTextColor: #f1f1f1;
+  --secondaryTextColor: #dddddd;
+  --greyTextColor: #9e9e9e;
+  --secondaryGreyTextColor: #bdbdbd;
+  --secondaryGreyTextColorTransparent: rgba(189, 189, 189, 0.5);
+  --crossColor: #dddddd;
+  --inputBg: #555555;
+  --borderColor: #333333;
+  --ingridientsBcg: #444444;
+  --modalBg: #222222;
+  --lineColor: #555555;
+  --secondaryLineColor: #aaaaaa;
+  --countColor: #ffffff;
+  --countBorder: rgba(255, 255, 255, 0.3);
+  --recipeText: rgba(255, 255, 255, 0.8);
+  --linksHoverColor: #f1f1f1;
+  --inputBgWithOpacity: rgba(85, 85, 85, 0.15);
+  transition: background-color 1s ease;
+}

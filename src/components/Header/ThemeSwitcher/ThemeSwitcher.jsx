@@ -1,4 +1,5 @@
 import css from './ThemeSwitcher.module.css';
+import darkCss from './ThemeDark.module.css';
 
 const audioLight = new Audio('02036.mp3');
 const audioDark = new Audio('cricket-sound.mp3');

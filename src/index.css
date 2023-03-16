@@ -105,6 +105,7 @@ a {
 button {
   padding: 0;
   cursor: pointer;
+  font: inherit;
 }
 /* Make images and embedded objects responsive */
 img,
@@ -114,6 +115,12 @@ video {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 /* Reset table styles */

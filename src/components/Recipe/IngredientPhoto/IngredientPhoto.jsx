@@ -5,7 +5,11 @@ import defaultImage from '../../../assets/images/CheckBoxRecipe/notFound.png';
 const IngredientPhoto = ({ image }) => {
   return (
     <div className={css.wrapper}>
-      <img src={image ? image : defaultImage} alt="ingridient" />
+      <img
+        className={css.image}
+        src={image ? image : defaultImage}
+        alt="ingridient"
+      />
     </div>
   );
 };

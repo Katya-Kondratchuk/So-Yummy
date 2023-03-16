@@ -9,15 +9,12 @@ import Title from 'reusableComponents/Title/Title';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
 import css from './Categories.module.css';
 
-// <Link to={`/categories/${category}`} className={css.title}>
-//   {category}
-// </Link>;
-
 const Categories = () => {
   const [allCategories, setAllCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [recepiesCategory, setRecepiesCategory] = useState([]);
   const [isShow, setIsShow] = useState(false);
+  // const [totalRecipe, setTotalRecipe] = useState(0);
   const { categoryName } = useParams();
 
   const toogle = () => {
@@ -32,20 +29,17 @@ const Categories = () => {
     if (!category) {
       return;
     }
-
     if (categoryName) {
       setCategory(categoryName);
     }
-
-    getCategorieRecipes(category || []).then(data => setRecepiesCategory(data));
+    getCategorieRecipes(category || '').then(({ recipes, total }) => {
+      setRecepiesCategory(recipes);
+      // setTotalRecipe(total);
+    });
   }, [category, categoryName]);
 
   useEffect(() => {
-    const getAll = async () => {
-      const all = (await getAllCategories()) || [];
-      return all;
-    };
-    getAll().then(data => {
+    getAllCategories().then(data => {
       setAllCategories(data);
       if (data.length > 0) {
         setCategory(data[0].title);

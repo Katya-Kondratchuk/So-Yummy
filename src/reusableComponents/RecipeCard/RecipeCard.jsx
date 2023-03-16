@@ -24,7 +24,6 @@ const RecipeCard = ({
           </div>
         </div>
         <p className={css.dishDiscriptionFirst}>{text}</p>
-        {/* <p className={css.dishDiscriptionSecond}>{text2}</p> */}
         <div className={css.bottomWrapper}>
           <p className={css.dishTime}>{time}</p>
           <div className={css.dishButton}>

@@ -11,6 +11,7 @@ import {
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -21,8 +22,17 @@ const Favorite = () => {
   }, []);
 
   const handelDelete = id => {
+    if (isLoading) {
+      return;
+    }
+    setIsLoading(true);
     patchRecipeFavoriteById(id);
-    getAllFavorite(page, 6).then(data => setAllRecipes(data ?? []));
+    getAllFavorite(page, 6)
+      .then(data => setAllRecipes(data ?? []))
+      .catch(e => {
+        setIsLoading(false);
+      });
+    setIsLoading(false);
   };
 
   return (

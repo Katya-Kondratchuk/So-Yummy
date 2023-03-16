@@ -16,7 +16,6 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 8px;
-
 }
 
 .cardContainer {
@@ -58,7 +57,6 @@
   margin-bottom: 18px;
 }
 
-
 .pageNumbers {
   margin-left: auto;
   margin-right: auto;
@@ -66,7 +64,7 @@
   list-style: none;
   display: flex;
   border-radius: 30px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
 }
 
@@ -90,17 +88,15 @@
   height: 27px;
 }
 
-
 .pageNumbers li.acti {
-background-color: yellowgreen;
-  color: #22252A;
+  background-color: yellowgreen;
+  color: #22252a;
 }
 
 /* .acti {
   background-color: red;
   color: red;
 } */
-
 
 .pageNumbers div {
   display: flex;
@@ -127,19 +123,14 @@ background-color: yellowgreen;
 .pageNumbers li:hover,
 .pageNumbers li:focus,
 .pageNumbers div:hover {
-  background-color: #EBF3D4;
-  color:#22252A;
+  background-color: #ebf3d4;
+  color: #22252a;
 }
-
 
 .btnWrapper {
   width: 87px;
   height: 27px;
-
 }
-
-
-
 
 @media screen and (min-width: 768px) {
   .myRecipe {
@@ -166,44 +157,42 @@ background-color: yellowgreen;
     margin-bottom: 50px;
   }
 
-    .cardItem:first-child {
-      margin-top: 100px;
-    }
+  .cardItem:first-child {
+    margin-top: 100px;
+  }
 
-        .pageNumbers div {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 27px;
-          height: 27px;
-          margin: 14px;
-          color: #656565;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 18px;
-          border-radius: 50%;
-          cursor: pointer;
-    
-        }
-        .pageNumbers li {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 27px;
-          height: 27px;
-          margin: 14px;
-          color: #656565;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 18px;
-          border-radius: 50%;
-          cursor: pointer;
-        }
+  .pageNumbers div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    margin: 14px;
+    color: #656565;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .pageNumbers li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    margin: 14px;
+    color: #656565;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-                .wrapperSecond {
-                  margin-top: 12px;
-                }
-
+  .wrapperSecond {
+    margin-top: 12px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -229,5 +218,4 @@ background-color: yellowgreen;
   .wrapperFirst {
     margin-bottom: 30px;
   }
-
 }

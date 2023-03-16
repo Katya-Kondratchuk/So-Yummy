@@ -1,29 +1,28 @@
 import SelectList from 'reusableComponents/SelectList';
-import PropTypes from 'prop-types';
 import css from './RecipeDescriptionFields.module.css';
 import ImgWithPreview from './ImgWithPreview';
 
 const RecipeDescriptionFields = ({
   allCategory,
   allTime,
-  image: { imgAdd, setImgAdd },
-  name: { nameRecipe, setNameRecipe },
+  image: { fullImage, setFullImage },
+  name: { title, setTitle },
   descriptionData: { description, setDescription },
   categoryData: { category, setCategory },
-  time: { cookingTime, setCookingTime },
+  cokingTime: { time, setTime },
 }) => {
   return (
     <div className={css.wrapperInfo}>
-      <ImgWithPreview imgAdd={imgAdd} setImgAdd={setImgAdd} />
+      <ImgWithPreview imgAdd={fullImage} setImgAdd={setFullImage} />
 
       <div className={css.descriptions}>
         <input
           type="text"
-          name="name"
+          name="title"
           autoComplete="off"
-          value={nameRecipe}
+          value={title}
           placeholder="Enter item title"
-          onChange={e => setNameRecipe(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
           className={css.nameRecipe}
         />
 
@@ -66,8 +65,8 @@ const RecipeDescriptionFields = ({
 
           <SelectList
             list={allTime}
-            option={cookingTime}
-            setOption={setCookingTime}
+            option={time}
+            setOption={setTime}
             selectedOption={css.selectTime}
             selectContent={css.selectContentTime}
             scrollbar={css.scrollbar}
@@ -80,19 +79,6 @@ const RecipeDescriptionFields = ({
   );
 };
 
-RecipeDescriptionFields.propTypes = {
-  allCategory: PropTypes.array,
-  allTime: PropTypes.array,
-  imgAdd: PropTypes.string,
-  setImgAdd: PropTypes.func,
-  nameRecipe: PropTypes.string,
-  setNameRecipe: PropTypes.func,
-  description: PropTypes.string,
-  setDescription: PropTypes.func,
-  category: PropTypes.string,
-  setCategory: PropTypes.func,
-  cookingTime: PropTypes.string,
-  setCookingTime: PropTypes.func,
-};
+RecipeDescriptionFields.propTypes = {};
 
 export default RecipeDescriptionFields;

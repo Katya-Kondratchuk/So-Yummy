@@ -15,12 +15,10 @@ import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import warningValidation from 'services/warningValidation';
 
 // import { selectAuthLoading } from 'redux/auth/authSelectors';
-
 // const loading = useSelector(selectAuthLoading);
 
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
-  // const [showPassword, setShowPassword] = React.useState(false);
   const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -38,11 +36,11 @@ const RegisterForm = () => {
     email: yup
       .string()
       .matches(myEmailRegex, {
-        message: 'Your email is not valid',
+        message: 'Your email must be valid',
         name: 'email',
         excludeEmptyString: true,
       })
-      .min(5, 'Your password is too short')
+      .min(5, 'Your email is too short')
       .max(254, 'Your email is too long')
       .lowercase()
       .required('Type your email please'),
@@ -51,7 +49,7 @@ const RegisterForm = () => {
       .trim()
       .matches(
         /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
-        'Symbols are not allowed',
+        'Special symbols are not allowed',
       )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')

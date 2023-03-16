@@ -4,6 +4,15 @@
   margin: 0 auto;
 }
 
+.notification {
+  text-align: center;
+  margin: 9px auto;
+  font-size: 14px;
+  height: 16px;
+  display: block;
+  color: var(--whiteColor);
+}
+
 @media screen and (min-width: 768px) {
   .confirmButton {
     max-width: 400px;
@@ -13,12 +22,4 @@
   .notification {
     margin: 17px auto;
   }
-}
-
-.notification {
-  text-align: center;
-  margin: 17px auto;
-  font-size: 14px;
-  display: block;
-  color: var(--whiteColor);
 }

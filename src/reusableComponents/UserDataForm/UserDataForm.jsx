@@ -27,10 +27,12 @@ const UserDataForm = ({
         type={'submit'}
         disabled={loading || !isValid}
       />
-      {!erorMessage && notify && !loading && isValid && (
+      {!erorMessage && notify && !loading && isValid ? (
         <span className={css.notification}>
           Check your email for verification!
         </span>
+      ) : (
+        <span className={css.notification}> </span>
       )}
       {!erorMessage === 'Email is not verified' && (
         <span className={css.notification}>Email is not verified!</span>

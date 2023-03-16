@@ -12,6 +12,7 @@ const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  setPage(1);
 
   useEffect(() => {
     try {
@@ -19,7 +20,7 @@ const Favorite = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [page]);
 
   const handelDelete = id => {
     if (isLoading) {

@@ -8,6 +8,7 @@ import {
   getAllFavorite,
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
+import { FavoriteLoader } from './ContentLoader/FavoriteLoader';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -16,30 +17,33 @@ const Favorite = () => {
 
   useEffect(() => {
     try {
-      getAllFavorite(page, 6).then(data => {
-        if (!data) {
-          return;
-        }
-
-        setAllRecipes(data.favoriteRecipes);
+      setTimeout(() => {
+        getAllFavorite(page, 6).then(data => {
+          if (!data) {
+            return;
+          }
+          setAllRecipes(data.recipes);
+        }, 1000);
       });
     } catch (error) {
       console.log(error.message);
     }
   }, [page]);
 
-  const handelDelete = id => {
+  const handelDelete = async id => {
     if (isLoading) {
       setPage(1);
       return;
     }
     setIsLoading(true);
-    patchRecipeFavoriteById(id);
-    getAllFavorite(page, 6)
-      .then(data => setAllRecipes(data ?? []))
-      .catch(() => {
-        setIsLoading(false);
-      });
+    await patchRecipeFavoriteById(id);
+    const newRecipes = allRecipes.filter(_id => _id !== id);
+    setAllRecipes(newRecipes);
+    // await getAllFavorite(page, 6)
+    //   .then(data => setAllRecipes(data.recipes ?? []))
+    //   .catch(() => {
+    //     setIsLoading(false);
+    //   });
     setIsLoading(false);
   };
 
@@ -50,11 +54,15 @@ const Favorite = () => {
         <section>
           <Title text="Favorites" />
           <ul>
-            {allRecipes.length !== 0 &&
+            {isLoading ? (
+              <FavoriteLoader />
+            ) : (
+              allRecipes.length !== 0 &&
               allRecipes.map(({ _id, title, description, time, preview }) => {
                 return (
                   <RecipeCard
                     key={_id}
+                    id={_id}
                     trashClass={'lightBcg'}
                     title={title}
                     time={time}
@@ -62,11 +70,11 @@ const Favorite = () => {
                     onDelete={() => {
                       handelDelete(_id);
                     }}
-                    // text2={description2}
                     imgComponent={preview}
                   />
                 );
-              })}
+              })
+            )}
           </ul>
           <BasicPagination count={8} />
         </section>

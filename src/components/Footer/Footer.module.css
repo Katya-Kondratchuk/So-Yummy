@@ -24,11 +24,12 @@
 
 .downText {
   position: relative;
-  height: 66px;
   max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 28px 73px;
+
   background-image: url(../../assets/images/Footer/mob\ 1x-min.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -36,8 +37,9 @@
   background-size: 160px 172px;
 }
 
-.downText:first-of-type {
+.downText > :first-child {
   margin-right: 14px;
+  font-weight: 500;
 }
 
 .downText span {
@@ -59,10 +61,13 @@
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .downText {
     height: 78px;
-    gap: 28px;
 
     background-image: url(../../assets/images/Footer/tab\ 1x-min.png);
     background-size: 290px 313px;
+  }
+
+  .downText > :first-child {
+    margin-right: 28px;
   }
 
   .downText span {
@@ -81,7 +86,6 @@
 @media only screen and (min-width: 1440px) {
   .downText {
     height: 114px;
-    gap: 40px;
 
     background-image: url(../../assets/images/Footer/footer\ bgi.png);
     background-size: 438px 474px;
@@ -98,8 +102,7 @@
       background-size: 438px 474px;
     }
   }
-}
-
-.downText > span:first-of-type {
-  font-weight: 500;
+  .downText > :first-child {
+    margin-right: 40px;
+  }
 }

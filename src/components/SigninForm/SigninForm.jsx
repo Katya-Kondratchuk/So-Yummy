@@ -12,7 +12,6 @@ import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import warningValidation from 'services/warningValidation';
-import { useRef } from 'react';
 
 const SigninForm = () => {
   const dispatch = useDispatch();
@@ -34,12 +33,12 @@ const SigninForm = () => {
     password: yup
       .string()
       .trim()
-      .min(6, 'Your password is too short')
-      .max(16, 'Your password must be 16 characters max')
       .matches(
         /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
         'Symbols are not allowed',
       )
+      .min(6, 'Your password is too short')
+      .max(16, 'Your password must be 16 characters max')
       .required('Type your password please'),
   });
 
@@ -63,8 +62,6 @@ const SigninForm = () => {
       setSubmitting(false);
     },
   });
-  const emailInput = useRef();
-  const passwordInput = useRef();
   const isValid = signinSchema.isValidSync(formik.values);
   return (
     <div className={css.registrComponent}>
@@ -97,7 +94,6 @@ const SigninForm = () => {
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    ref={emailInput}
                   />
                   {formik.touched.email && formik.errors.email && (
                     <HelperText
@@ -119,7 +115,6 @@ const SigninForm = () => {
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    ref={passwordInput}
                   />
                   {!formik.errors.password &&
                   formik.values.password &&

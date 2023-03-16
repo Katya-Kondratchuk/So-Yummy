@@ -16,16 +16,16 @@ const IngridientField = ({
 }) => {
   const inputEl = useRef(null);
   const [isActive, setIsActive] = useState(false);
-  const [name, setName] = useState(data.name);
+  const [title, setTitle] = useState(data.title);
   const [amount, setAmount] = useState(data.amount);
   const [unit, setUnit] = useState(data.unit);
 
   const filteredMeals = useMemo(() => {
-    const normalizeNameMeal = name.toLowerCase();
+    const normalizeNameMeal = title.toLowerCase();
     return meals.filter(el =>
       el.strIngredient.toLowerCase().includes(normalizeNameMeal),
     );
-  }, [meals, name]);
+  }, [meals, title]);
 
   const justThreeDigits = v => {
     if (v.length > 3) {
@@ -40,10 +40,10 @@ const IngridientField = ({
   };
 
   useEffect(() => {
-    if (data.name === name && data.unit === unit && data.amount === amount)
+    if (data.title === title && data.unit === unit && data.amount === amount)
       return;
-    onUpdate(id, { name, amount, unit });
-  }, [onUpdate, name, data.name, amount, data.unit, unit, data.amount, id]);
+    onUpdate(id, { title, amount, unit });
+  }, [onUpdate, title, data.title, amount, data.unit, unit, data.amount, id]);
 
   useEffect(() => {
     const onClick = e => {
@@ -67,30 +67,30 @@ const IngridientField = ({
           autoComplete="off"
           placeholder="Start enter ingredient"
           className={css.ingredient}
-          value={name}
+          value={title}
           onChange={e => {
-            setName(e.target.value);
+            setTitle(e.target.value);
             setIsActive(true);
           }}
         />
 
-        {name.length !== 0 && filteredMeals.length !== 0 && (
+        {title.length !== 0 && filteredMeals.length !== 0 && (
           <span className={css.arrow} onClick={e => setIsActive(!isActive)}>
             <Arrow width="20px" height="20px" />
           </span>
         )}
 
-        {isActive && name.length !== 0 && filteredMeals.length !== 0 && (
+        {isActive && title.length !== 0 && filteredMeals.length !== 0 && (
           <ul className={`${css.selectContentIngredients} ${css.scrollbar}`}>
             {filteredMeals.map(({ strIngredient }, index) => (
               <li
                 key={strIngredient + '' + index}
                 onClick={e => {
-                  setName(strIngredient);
+                  setTitle(strIngredient);
                   setIsActive(false);
                 }}
                 className={`${css.selectItem} ${
-                  strIngredient === name ? css.activeItem : ''
+                  strIngredient === title ? css.activeItem : ''
                 }`}
               >
                 {strIngredient}
@@ -127,7 +127,6 @@ const IngridientField = ({
         type="button"
         className={css.closeBtn}
         onClick={() => {
-          console.log('del');
           onRemove(id);
         }}
       >

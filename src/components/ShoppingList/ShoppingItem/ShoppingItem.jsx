@@ -4,17 +4,16 @@ import ShoppingItemNumber from '../ShoppingItemNumber/ShoppingItemNumber';
 import ShoppingItemPhoto from '../ShoppingItemPhoto/ShoppingItemPhoto';
 import css from './ShoppingItem.module.css';
 
-const ShoppingItem = ({ image, name, text }) => {
+const ShoppingItem = ({ image, name, text, id, onDelete }) => {
   return (
-    <li className={css.wrapper}>
+    <div className={css.wrapper}>
       <div className={css.leftWrapper}>
         <ShoppingItemPhoto image={image} />
         <ShoppingItemDescription name={name} />
       </div>
-
       <ShoppingItemNumber text={text} />
-      <button className={css.button} type="button"></button>
-    </li>
+      <button className={css.button} type="button" onClick={onDelete}></button>
+    </div>
   );
 };
 

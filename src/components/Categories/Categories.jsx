@@ -1,9 +1,11 @@
+import { useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import BGDots from 'reusableComponents/BGDots/BGDots';
+import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
@@ -16,6 +18,11 @@ const Categories = () => {
   const [isShow, setIsShow] = useState(false);
   // const [totalRecipe, setTotalRecipe] = useState(0);
   const { categoryName } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const mobile = useMediaQuery('(max-width: 767px)');
+  const tablet = useMediaQuery('(max-width: 1439px)');
+  const desctop = useMediaQuery('(min-width: 1440px)');
 
   const toogle = () => {
     setIsShow(prevState => !prevState);
@@ -26,88 +33,109 @@ const Categories = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     if (!category) {
+      setIsLoading(false);
       return;
     }
     if (categoryName) {
       setCategory(categoryName);
     }
-    getCategorieRecipes(category || '').then(({ recipes, total }) => {
-      setRecepiesCategory(recipes);
-      // setTotalRecipe(total);
-    });
+    setTimeout(async () => {
+      getCategorieRecipes(category || '').then(({ recipes, total }) => {
+        setRecepiesCategory(recipes);
+        // setTotalRecipe(total);
+      });
+      setIsLoading(false);
+    }, 1500);
   }, [category, categoryName]);
 
   useEffect(() => {
-    getAllCategories().then(data => {
-      setAllCategories(data);
-      if (data.length > 0) {
-        setCategory(data[0].title);
-      }
-    });
+    getAllCategories()
+      .then(data => {
+        setAllCategories(data);
+        if (data.length > 0) {
+          setCategory(data[0].title);
+        }
+      })
+      .catch(error => console.log(error.message));
   }, []);
 
   return (
-    allCategories.length !== 0 && (
-      <div className=" greensImg">
-        <div className="container ">
-          <BGDots />
-          <Title text={'Categories'} />
-          <Box
-            sx={{
-              maxWidth: '100%',
-              marginTop: { xs: '50px', lg: '100px' },
-              borderBottom: '1px solid #E0E0E0',
-            }}
+    <div className=" greensImg">
+      <div className="container ">
+        <BGDots />
+        <Title text={'Categories'} />
+        <Box
+          sx={{
+            maxWidth: '100%',
+            marginTop: { xs: '50px', lg: '100px' },
+            borderBottom: '1px solid #E0E0E0',
+          }}
+        >
+          <Tabs
+            value={category}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons
+            allowScrollButtonsMobile
+            aria-label="scrollable force tabs example"
           >
-            <Tabs
-              value={category}
-              onChange={handleChange}
-              variant="scrollable"
-              scrollButtons
-              allowScrollButtonsMobile
-              aria-label="scrollable force tabs example"
-            >
-              {allCategories.map(({ title, _id }) => (
-                <Tab key={_id} value={title} label={title} />
-              ))}
-            </Tabs>
-          </Box>
-          {recepiesCategory.length !== 0 && (
-            <ul className={css.categoryList}>
-              {recepiesCategory.map(
-                ({
-                  category,
-                  description,
-                  favorite,
-                  like,
-                  popularity,
-                  preview,
-                  time,
-                  title,
-                  _id,
-                }) => (
-                  <li key={_id} className={css.categoryItem}>
-                    <DishCard
-                      id={_id}
-                      isShow={isShow}
-                      toogle={toogle}
-                      image={preview}
-                      altText={title}
-                      text={title}
-                      favorite={favorite}
-                      like={like}
-                      allData={recepiesCategory}
-                      setAllData={setRecepiesCategory}
-                    />
-                  </li>
-                ),
-              )}
-            </ul>
-          )}
-        </div>
+            {allCategories.map(({ title, _id }) => (
+              <Tab key={_id} value={title} label={title} />
+            ))}
+          </Tabs>
+        </Box>
+        {isLoading || recepiesCategory.length === 0 ? (
+          (desctop && (
+            <>
+              <Loader.Desktop />
+              <Loader.Desktop />
+            </>
+          )) ||
+          (tablet && (
+            <>
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+              <Loader.Tablet />
+            </>
+          )) ||
+          (mobile && <Loader.Mobile />)
+        ) : (
+          <ul className={css.categoryList}>
+            {recepiesCategory.map(
+              ({
+                category,
+                description,
+                favorite,
+                like,
+                popularity,
+                preview,
+                time,
+                title,
+                _id,
+              }) => (
+                <li key={_id} className={css.categoryItem}>
+                  <DishCard
+                    id={_id}
+                    isShow={isShow}
+                    toogle={toogle}
+                    image={preview}
+                    altText={title}
+                    text={title}
+                    favorite={favorite}
+                    like={like}
+                    allData={recepiesCategory}
+                    setAllData={setRecepiesCategory}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+        )}
       </div>
-    )
+    </div>
   );
 };
 

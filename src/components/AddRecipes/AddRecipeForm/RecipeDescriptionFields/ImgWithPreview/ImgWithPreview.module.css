@@ -13,6 +13,7 @@
 }
 
 .imgInput {
+  object-fit: cover;
   opacity: 0;
 }
 

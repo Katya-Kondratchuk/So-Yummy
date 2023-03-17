@@ -14,7 +14,7 @@ const ShoppingList = () => {
 
   const handleDeleteIngridient = async (id, measure) => {
     if (isLoading) return;
-    await patchShoppingList({ productId: id, measure })
+    await patchShoppingList({ productId: id, measure: measure[0] })
       .then(data =>
         toast.info('You removed ingridient from shopping list', {
           toastId: '1234',

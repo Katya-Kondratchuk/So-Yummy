@@ -7,7 +7,6 @@ const CheckBoxRecipe = ({ id, measure }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleToShopList = async e => {
-    console.log(e);
     if (isLoading) return;
     setIsLoading(true);
     if (e.target.checked) {

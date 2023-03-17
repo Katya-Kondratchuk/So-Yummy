@@ -11,7 +11,7 @@ const IngredientsContainer = ({
   return (
     <div className="container">
       <TitleRecipesList />
-      {ingridients.map(({ title, thumb, measure, desc, type }, index) => (
+      {ingridients.map(({ title, _id, thumb, measure, desc, type }, index) => (
         <Ingredient
           key={index}
           title={title}
@@ -19,6 +19,7 @@ const IngredientsContainer = ({
           measure={measure}
           desc={desc}
           type={type}
+          id={_id}
         />
       ))}
       <RecipeRpeparation instructions={instructions} previewImg={previewImg} />

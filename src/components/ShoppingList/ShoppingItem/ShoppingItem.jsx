@@ -6,7 +6,7 @@ import css from './ShoppingItem.module.css';
 
 const ShoppingItem = ({ image, name, text }) => {
   return (
-    <div className={css.wrapper}>
+    <li className={css.wrapper}>
       <div className={css.leftWrapper}>
         <ShoppingItemPhoto image={image} />
         <ShoppingItemDescription name={name} />
@@ -14,7 +14,7 @@ const ShoppingItem = ({ image, name, text }) => {
 
       <ShoppingItemNumber text={text} />
       <button className={css.button} type="button"></button>
-    </div>
+    </li>
   );
 };
 

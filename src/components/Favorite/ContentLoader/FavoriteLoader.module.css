@@ -1,0 +1,41 @@
+.favoriteLoader {
+  margin-bottom: 50px;
+  width: 343px;
+  margin-top: 50px;
+}
+.cardLoader {
+  width: 343px;
+  height: 116px;
+}
+.cardLoader:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .favoriteLoader {
+    margin-bottom: 50px;
+    width: 704px;
+    margin-top: 75px;
+  }
+  .cardLoader {
+    width: 704px;
+    height: 288px;
+  }
+  .cardLoader:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .favoriteLoader {
+    margin-bottom: 50px;
+    width: 1240px;
+    margin-top: 100px;
+  }
+  .cardLoader {
+    width: 1240px;
+    height: 404px;
+  }
+  .cardLoader:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}

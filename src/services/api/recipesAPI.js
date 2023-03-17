@@ -14,7 +14,7 @@ export const getAllRecipes = async (page, limit, sort = '') => {
 
 export const getRecipeById = async id => {
   try {
-    const { data } = await axios.get(`/recipes/${id}`);
+    const { data } = await axios.get(`/recipes/id/${id}`);
     return data;
   } catch (error) {
     console.log(error.message);

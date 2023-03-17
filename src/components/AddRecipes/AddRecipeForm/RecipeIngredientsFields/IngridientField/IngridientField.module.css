@@ -48,7 +48,7 @@ input[type='number'] {
 .ingredient,
 .amount {
   display: block;
-  background-color: rgba(217, 217, 217, 0.16);
+  background-color: var(--inputBgWithOpacity);
   border: transparent;
   outline: transparent;
   height: 53px;
@@ -96,7 +96,7 @@ input[type='number'] {
 
 .wrapperUnit {
   flex-shrink: 0;
-  background-color: rgba(217, 217, 217, 0.16);
+  background-color: var(--inputBgWithOpacity);
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   height: 100%;
@@ -131,9 +131,9 @@ input[type='number'] {
   font-size: 12px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--selectContentColor);
   background: var(--whiteColor);
-  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+  box-shadow: 0px 6.51852px 7.82222px var(--boxShadow);
 }
 
 .selectContentUnits {
@@ -194,7 +194,7 @@ input[type='number'] {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background-color: #ffffff;
+  background-color: var(--whiteColor);
   border-radius: 12px;
 }
 
@@ -203,7 +203,7 @@ input[type='number'] {
   border-radius: 12px;
   border: 4px solid transparent;
   background-clip: content-box;
-  background-color: #e7e5e5;
+  background-color: var(--bgScrolbarColorPrimary);
 }
 
 .scrollbarIngredient::-webkit-scrollbar {
@@ -211,7 +211,7 @@ input[type='number'] {
 }
 
 .scrollbarIngredient::-webkit-scrollbar-track {
-  background-color: #ffffff;
+  background-color: var(--whiteColor);
   border-radius: 12px;
 }
 
@@ -220,7 +220,7 @@ input[type='number'] {
   border-radius: 12px;
   border: 4px solid transparent;
   background-clip: content-box;
-  background-color: #e7e5e5;
+  background-color: var(--bgScrolbarColorPrimary);
 }
 
 @media screen and (min-width: 768px) {

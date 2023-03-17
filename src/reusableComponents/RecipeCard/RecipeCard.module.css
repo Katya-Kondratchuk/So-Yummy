@@ -138,6 +138,8 @@
     width: 138px;
     height: 45px;
     display: block;
+    line-height: 1.5;
+    font-size: 14px;
   }
   .dishTime {
     font-size: 14px;
@@ -185,6 +187,7 @@
     width: 160px;
     height: 54px;
     display: block;
+    font-size: 16px;
   }
   .cardWrapper {
     width: 802px;

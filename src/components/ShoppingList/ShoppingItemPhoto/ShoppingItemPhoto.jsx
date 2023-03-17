@@ -1,14 +1,10 @@
 import React from 'react';
 import css from './ShoppingItemPhoto.module.css';
 
-const ShoppingItemPhoto = () => {
+const ShoppingItemPhoto = ({ image }) => {
   return (
     <div className={css.wrapper}>
-      <img
-        className={css.image}
-        src="https://www.themealdb.com/images/media/meals/1549542994.jpg"
-        alt="ss"
-      />
+      <img className={css.image} src={image} alt="ingredient" />
     </div>
   );
 };

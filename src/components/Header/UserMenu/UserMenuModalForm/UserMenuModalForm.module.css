@@ -1,3 +1,42 @@
+.inputTypeFile {
+  display: none;
+}
+.plusIcon {
+  position: absolute;
+  bottom: -6px;
+  right: 13px;
+}
+.avatarChanger {
+  margin-bottom: 56px;
+  position: relative;
+}
+.avatarPrevew {
+  position: relative;
+  top: 23px;
+  width: 88px;
+  left: 33%;
+  height: 88px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: inline-block;
+  background-image: url('../../../../assets/images/UserMenu/userIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--inputBg);
+}
+.userAvatar {
+  height: 88px;
+  width: 88px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.fileWarning {
+  color: var(--errorColor);
+  position: absolute;
+  bottom: -33px;
+  bottom: -34px;
+  left: -83px;
+}
 .userModal {
   position: absolute;
   display: flex;
@@ -32,18 +71,7 @@
   height: 49px;
   margin-bottom: 24px;
 }
-.avatarChanger {
-  margin-bottom: 56px;
-}
-.avatartPreview {
-  width: 88px;
-  height: 88px;
-  margin: 0 auto;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .formInputUserMenu {
   color: var(--secondaryTextColor) !important;
   width: 100%;
@@ -53,6 +81,7 @@
   outline: none;
   background-color: transparent;
   padding-left: 40px;
+  padding-right: 40px;
   font-size: 14px;
   line-height: 1.5;
   transition: all 0.2s ease;
@@ -72,6 +101,23 @@
 }
 
 @media screen and (min-width: 768px) {
+  .userAvatar {
+    height: 103px;
+    width: 103px;
+  }
+  .avatarPrevew {
+    top: 23px;
+    width: 103px;
+    height: 103px;
+    left: 37%;
+  }
+
+  .fileWarning {
+    color: var(--errorColor);
+    position: absolute;
+    bottom: -53px;
+    left: 63px;
+  }
   .avatartPreview {
     width: 103px;
     height: 103px;
@@ -82,6 +128,7 @@
   }
   .formInputUserMenu {
     padding-left: 51px;
+    padding-right: 50px;
   }
   .userModal {
     width: 480px;

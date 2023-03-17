@@ -1,15 +1,13 @@
 .subscribeForm {
   width: 204px;
   height: 84px;
-  background-color: olive;
 }
 
 @media only screen and (min-width: 768px) {
   .subscribeForm {
     width: 442px;
     height: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin: 72px 150px 38px;
   }
 }
 
@@ -44,7 +42,6 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 28px;
     max-width: 338px;
     margin-left: 235px;
 
@@ -55,6 +52,11 @@
     letter-spacing: -0.02em;
     text-align: left;
   }
+
+  .navRight > :not(:last-child) {
+    margin-bottom: 28px;
+  }
+
   .subscribeForm {
     margin: 0;
     width: 100%;

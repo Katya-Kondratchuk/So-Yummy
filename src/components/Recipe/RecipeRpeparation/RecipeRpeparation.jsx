@@ -1,7 +1,8 @@
 import React from 'react';
 import css from './RecipeRpeparation.module.css';
+import defaultImage from '../../../assets/images/CheckBoxRecipe/notFoundBig.jpg';
 
-const RecipeRpeparation = ({ instructions, previewImg }) => {
+const RecipeRpeparation = ({ instructions, previewImg, youtube }) => {
   let i = 0;
   const instructionList = instructions.split('\r\n');
   return (
@@ -21,7 +22,22 @@ const RecipeRpeparation = ({ instructions, previewImg }) => {
           ))}
         </div>
       </div>
-      <img src={previewImg} alt="recipe" className={css.image} />
+      <img
+        src={previewImg ? previewImg : defaultImage}
+        alt="recipe"
+        className={css.image}
+      />
+      {/* <div>
+      <iframe
+          className="vegan__video"
+          loop
+          src="https://www.youtube.com/embed/6NgheY-r5t0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div> */}
     </div>
   );
 };

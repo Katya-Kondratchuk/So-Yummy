@@ -3,10 +3,12 @@
   flex-direction: column;
   align-items: center;
   padding-top: 28px;
-  gap: 32px;
-  margin-bottom: 44px;
 
   color: white;
+}
+
+.footerNavigation > :not(first-child) {
+  margin-bottom: 32px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,11 +18,15 @@
     flex-direction: row;
     padding-top: 50px;
   }
+
+  .footerNavigation > :not(first-child) {
+    margin-bottom: 0px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .footerNavigation {
     flex-wrap: no-wrap;
-    gap: 0;
+    align-items: start;
   }
 }

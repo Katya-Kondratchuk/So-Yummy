@@ -15,28 +15,30 @@ import warningValidation from 'services/warningValidation';
 
 const SigninForm = () => {
   const dispatch = useDispatch();
-  const myEmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const myEmailRegex =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
   let signinSchema = yup.object().shape({
     email: yup
       .string()
       .lowercase()
-      .min(5, 'Your password its too short')
-      .email('Your email must be valid')
       .matches(myEmailRegex, {
-        message: 'Your email is not valid',
+        message: 'Your email must be valid',
         name: 'email',
         excludeEmptyString: true,
       })
+      .min(5, 'Your email is too short')
+      .email('Your email must be valid')
       .required('Type your email please'),
     password: yup
       .string()
       .trim()
-      .min(6, 'Your password its too short')
-      .max(16, 'Your password must be 16 characters max')
       .matches(
-        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+(([' -][a-zA-Zа-яА-Я1-9 ])?[a-zA-Zа-яА-Я1-9]*)*$/,
-        'Symbols are not allowed',
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
+        'Special symbols are not allowed',
       )
+      .min(6, 'Your password is too short')
+      .max(16, 'Your password must be 16 characters max')
       .required('Type your password please'),
   });
 
@@ -49,13 +51,11 @@ const SigninForm = () => {
   });
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
     },
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      console.log(values);
       const { email, password } = values;
       dispatch(loginUser({ email, password }));
       setSubmitting(false);
@@ -83,6 +83,7 @@ const SigninForm = () => {
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autoComplete="email"
                     switchImages={switchImages}
                     erorr={formik.errors.email}
                     placeholder={'email'}
@@ -104,6 +105,7 @@ const SigninForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autoComplete="current-password"
                     erorr={formik.errors.password}
                     switchImages={switchImages}
                     formInputArea={css.formInputArea}

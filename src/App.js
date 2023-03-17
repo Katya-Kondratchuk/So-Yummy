@@ -4,11 +4,11 @@ import RegisterPage from 'pages/RegisterPage';
 import SigninPage from 'pages/SigninPage';
 import VerifyPage from 'pages/VerifyPage';
 import { lazy, useEffect, useRef } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { refreshUser, setUpInterceptor } from 'redux/auth/authOperation';
+import { refreshUser } from 'redux/auth/authOperation';
 import { selectAuthIsRefreshUser } from 'redux/auth/authSelectors';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
@@ -28,9 +28,6 @@ const App = () => {
   const dispatch = useDispatch();
   const isRefreshUser = useSelector(selectAuthIsRefreshUser);
   const isFirstLoad = useRef(true);
-
-  const store = useStore();
-  setUpInterceptor(store);
 
   useEffect(() => {
     if (isFirstLoad.current) {
@@ -71,92 +68,47 @@ const App = () => {
               <PublicRoute component={<SigninPage />} redirectTo="/main" />
             }
           />
-
           <Route path="/" element={<SharedLayout />}>
             <Route
-              path="/main"
+              path="main"
               index
-              element={
-                <PrivateRoute component={<MainPage />} redirectTo="/signin" />
-              }
+              element={<PrivateRoute component={<MainPage />} />}
             />
             <Route
-              path="/categories"
-              element={
-                <PrivateRoute
-                  component={<CategoriesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="categories"
+              element={<PrivateRoute component={<CategoriesPage />} />}
             />
             <Route
-              path="/categories/:categoryName"
-              element={
-                <PrivateRoute
-                  component={<CategoriesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="categories/:categoryName"
+              element={<PrivateRoute component={<CategoriesPage />} />}
             />
             <Route
-              path="/search"
-              element={
-                <PrivateRoute component={<SearchPage />} redirectTo="/signin" />
-              }
+              path="search"
+              element={<PrivateRoute component={<SearchPage />} />}
             />
             <Route
-              path="/add"
-              element={
-                <PrivateRoute
-                  component={<AddRecipesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="add"
+              element={<PrivateRoute component={<AddRecipesPage />} />}
             />
             <Route
-              path="/my"
-              element={
-                <PrivateRoute
-                  component={<MyRecipesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="my"
+              element={<PrivateRoute component={<MyRecipesPage />} />}
             />
             <Route
-              path="/favorite"
-              element={
-                <PrivateRoute
-                  component={<FavoriteRecipesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="favorite"
+              element={<PrivateRoute component={<FavoriteRecipesPage />} />}
             />
             <Route
-              path="/shopping-list"
-              element={
-                <PrivateRoute
-                  component={<ShoppingListPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="shopping-list"
+              element={<PrivateRoute component={<ShoppingListPage />} />}
             />
             <Route
-              path="/recipe/:recipeId"
-              element={
-                <PrivateRoute
-                  component={<RecipiesPage />}
-                  redirectTo="/signin"
-                />
-              }
+              path="recipe/:recipeId"
+              element={<PrivateRoute component={<RecipiesPage />} />}
             />
             <Route
               path="*"
-              element={
-                <PrivateRoute
-                  component={<NotFoundPage />}
-                  redirectTo="/signin"
-                />
-              }
+              element={<PrivateRoute component={<NotFoundPage />} />}
             />
           </Route>
         </Routes>

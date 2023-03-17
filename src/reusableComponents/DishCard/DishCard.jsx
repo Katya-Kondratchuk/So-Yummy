@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   patchRecipeFavoriteById,
@@ -7,6 +7,7 @@ import {
 import css from './DishCard.module.css';
 import { ReactComponent as FavoriteIco } from './fav.svg';
 import { ReactComponent as LikeIco } from './like.svg';
+import { toast } from 'react-toastify';
 
 const DishCard = ({
   image,
@@ -21,6 +22,7 @@ const DishCard = ({
   setAllData = () => {},
   popularity,
 }) => {
+  const maxTextLength = 26;
   const [isLike, setIsLike] = useState(like);
   const [isFavorite, setIsFavorite] = useState(favorite);
 
@@ -29,17 +31,12 @@ const DishCard = ({
 
   const [popular, setPopular] = useState(popularity);
 
-  useEffect(() => {
-    setPopular(popularity);
-    // console.log(popularity);
-  }, [isLike, isFavorite, popularity, popular]);
-
   const addToFavorite = () => {
     setIsLoadFavorite(true);
-    patchRecipeFavoriteById(id)
-      .then(({ favorite }) => {
-        setIsLoadFavorite(false);
 
+    patchRecipeFavoriteById(id)
+      .then(({ favorite, popularity }) => {
+        setIsLoadFavorite(false);
         const changeData = allData.map(item => {
           if (item._id === id) {
             return { ...item, favorite };
@@ -47,8 +44,10 @@ const DishCard = ({
           return item;
         });
         setAllData(changeData);
-
+        setPopular(popularity);
         setIsFavorite(favorite);
+        favorite && toast.success(`Added to Favorite!`);
+        !favorite && toast.info(`Removed from Favorite!`);
       })
       .catch(() => setIsLoadFavorite(false));
   };
@@ -56,7 +55,7 @@ const DishCard = ({
   const addLike = () => {
     setIsLoadLike(true);
     patchRecipeLikeById(id)
-      .then(({ like }) => {
+      .then(({ like, popularity }) => {
         setIsLoadLike(false);
 
         const changeData = allData.map(item => {
@@ -66,6 +65,7 @@ const DishCard = ({
           return item;
         });
         setAllData(changeData);
+        setPopular(popularity);
 
         setIsLike(like);
       })
@@ -76,7 +76,26 @@ const DishCard = ({
     favorite || isFavorite ? 'var(--secondaryGreenColor)' : 'none';
   const likeFeel = like || isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
-    text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
+    text.length < maxTextLength
+      ? text
+      : text.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
+
+  //+++++++++++++++++++++++
+  // let show = text;
+  // const showText = text => {
+  //   let index = 0;
+  //   const intervalId = setInterval(() => {
+  //     if (index === text.length) {
+  //       clearInterval(intervalId);
+  //       return;
+  //     }
+  //     show = text.charAt(index);
+  //     // console.log(text.charAt(index));
+  //     index++;
+  //   }, 1000);
+  // };
+  // console.log(showText('hello world'));
+  //++++++++++++++++++++
 
   return (
     <div className={css.cardContainer}>
@@ -84,13 +103,14 @@ const DishCard = ({
         <img src={image} alt={altText} className={css.image} />
       </Link>
       <button
-        onMouseOver={text.length < 30 ? null : toogle}
+        onMouseOver={text.length < maxTextLength ? null : toogle}
         className={css.textContainer}
-        onClick={text.length < 30 ? null : toogle}
+        onClick={text.length < maxTextLength ? null : toogle}
       >
         {isShow ? text : shortText}
       </button>
       <button
+        className={css.btnFav}
         type="button"
         onClick={() => {
           if (isLoadFavorite) return;
@@ -100,6 +120,7 @@ const DishCard = ({
         <FavoriteIco className={css.favIco} fill={favFeel} />
       </button>
       <button
+        className={css.btnLike}
         type="button"
         onClick={() => {
           if (isLoadLike) return;
@@ -114,24 +135,3 @@ const DishCard = ({
 };
 
 export default DishCard;
-
-// вызов компонента:
-/* <DishCard
-      image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-      altText="someDish"
-      text="Delicious dishes"
-      favorite={false}
-      like={false}
-/> */
-
-// const addToFavorite = () => {
-//   patchRecipeFavoriteById(id).then(({ favorite }) => setIsFavorite(favorite));
-// };
-
-// const addLike = useCallback(() => {
-//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-// }, [id]);
-
-// const addLike = () => {
-//   patchRecipeLikeById(id).then(({ like }) => setIsLike(like));
-// };

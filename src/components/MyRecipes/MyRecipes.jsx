@@ -10,6 +10,7 @@ const MyRecipes = () => {
 
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
 
+
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
 
@@ -35,6 +36,7 @@ const MyRecipes = () => {
           <Pagination arr={arr} currentPage={currentPage} setcurrentPage={setcurrentPage} itemsPerPage={itemsPerPage} />
         </section>
       </div>
+
     </div>
   );
 };

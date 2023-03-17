@@ -12,27 +12,36 @@
   object-fit: cover;
 }
 
-.likeIco {
+.btnLike {
   position: absolute;
+  border: 0;
+  background: transparent;
+
   top: 70px;
   left: 20px;
+}
+.btnFav {
+  position: absolute;
+  border: 0;
+  background: transparent;
+
+  top: 20px;
+  left: 20px;
+}
+.likeIco {
+  /* position: absolute;
+  top: 70px;
+  left: 20px; */
   width: 40px;
   height: 40px;
-}
-.likeIco:hover :first-child {
-  fill: var(--secondaryGreenColor);
 }
 
 .favIco {
-  position: absolute;
+  /* position: absolute;
   top: 20px;
-  left: 20px;
+  left: 20px; */
   width: 40px;
   height: 40px;
-}
-
-.favIco:hover :first-child {
-  fill: var(--secondaryGreenColor);
 }
 
 .textContainer {
@@ -90,5 +99,11 @@
   }
   .textContainer {
     width: 268px;
+  }
+  .likeIco:hover :first-child {
+    fill: var(--secondaryGreenColor);
+  }
+  .favIco:hover :first-child {
+    fill: var(--secondaryGreenColor);
   }
 }

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'redux/store';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
+import { setupInterceptors } from 'redux/auth/authOperation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,3 +22,5 @@ root.render(
     </PersistGate>
   </React.StrictMode>,
 );
+
+setupInterceptors(store);

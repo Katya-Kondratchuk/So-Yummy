@@ -1,17 +1,14 @@
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './Welcome.module.css';
 import Logo from 'reusableComponents/Logo/Logo';
-// import FooterForm from 'components/Footer/FooterForm/FooterForm';
 // import UserMenuModalForm from 'components/Header/UserMenu/UserMenuModalForm/UserMenuModalForm';
+// import HeroTransformer from '../Main/heroTransformer/HeroTransformer';
 
 const Welcome = () => {
   return (
     <>
       <div className={css.backgroundImg}>
         <div className={css.welcomeContent}>
-          {/* <UserMenuModalForm /> */}
-          {/* <FooterForm /> */}
-
           <div className={css.welcomeIcon}>
             <Logo width={'100%'} height={'100%'} />
           </div>
@@ -24,14 +21,14 @@ const Welcome = () => {
             </p>
           </div>
           <div className={css.btnGroup}>
-            <div className={css.registrationBtn}>
-              <SuperBtn
-                lnk
-                to="/register"
-                otlnInv
-                welcome
-                title="Registration"
-              ></SuperBtn>
+            <div
+              className={css.registrationBtn}
+              style={{
+                fontSize: 'inherit',
+                lineHeight: '1.5',
+              }}
+            >
+              <SuperBtn lnk title="Registration" to="/register" />
             </div>
             <div className={css.signinBtn}>
               <SuperBtn
@@ -41,9 +38,11 @@ const Welcome = () => {
                 welcome
                 title="Sign in"
               ></SuperBtn>
+              {/* <UserMenuModalForm /> */}
             </div>
           </div>
         </div>
+        {/* <HeroTransformer /> */}
       </div>
     </>
   );

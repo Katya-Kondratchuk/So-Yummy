@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import css from './UserMenuModalForm.module.css';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
-import * as yup from 'yup';
 import HelperText from 'reusableComponents/FormInput/HelperText';
-import { useFormik } from 'formik';
 import FormInput from 'reusableComponents/FormInput/FormInput';
 import switchImages from 'services/switchImages';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
-
+import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
 const UserMenuModalForm = ({ onClose }) => {
   let userNameSchema = yup.object().shape({
     userName: yup
@@ -24,11 +24,11 @@ const UserMenuModalForm = ({ onClose }) => {
   const formik = useFormik({
     initialValues: {
       userName: '',
+      newAvatartURL: '',
     },
     validationSchema: userNameSchema,
 
     onSubmit: values => {
-      console.log(values);
       //   const { name, email, password } = values;
       //   dispatch(register({ name, email, password }));
       //   setSubmitting(false);
@@ -36,13 +36,20 @@ const UserMenuModalForm = ({ onClose }) => {
   });
 
   const isValid = userNameSchema.isValidSync(formik.values);
-  console.log(isValid);
 
   const [image, setImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleImageChange = event => {
     const selectedFile = event.target.files[0];
+    // const imageURL = window.URL.createObjectURL(selectedFile);
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      // const base64String = reader.result.split(',')[1];
+      // console.log(base64String);
+      // console.log(JSON.stringify({ data: base64String }));
+    };
 
     if (selectedFile.size > 2000000) {
       setErrorMessage('An image has to be less then 2mb ');
@@ -65,27 +72,40 @@ const UserMenuModalForm = ({ onClose }) => {
           divButtonClass={css.divButtonClass}
         >
           <div className={css.avatarChanger}>
-            <div className={css.avatarPrevew}>
-              <input type="file" onChange={handleImageChange} />
-              {errorMessage && <div>{errorMessage}</div>}
-              {image && (
-                <div>
-                  <img src={URL.createObjectURL(image)} alt="selected" />
-                </div>
-              )}
-            </div>
+            <label htmlFor="myFileInput">
+              <div className={css.avatarPrevew}>
+                <input
+                  type="file"
+                  onChange={handleImageChange}
+                  className={css.inputTypeFile}
+                  id="myFileInput"
+                  accept="image/*"
+                />
+
+                <PlusIcon className={css.plusIcon} />
+                {errorMessage && (
+                  <div className={css.fileWarning}>{errorMessage}</div>
+                )}
+                {image && (
+                  <div className={css.userAvatar}>
+                    <img src={URL.createObjectURL(image)} alt="selected" />
+                  </div>
+                )}
+              </div>
+            </label>
           </div>
           <div className={css.formFromat}>
             <div className={css.formIinputFormat}>
               <FormInput
-                autocomplete="off"
                 formInputArea={css.formInputArea}
                 // handleClearClick={handleClearClick}
                 switchImages={switchImages}
+                autoComplete="username"
                 placeholder={'Olga'}
                 id="standard-required-register-username"
                 type="text"
                 name="edit"
+                edit
                 formik={formik}
                 erorr={formik.errors.userName}
                 value={formik.values.userName}

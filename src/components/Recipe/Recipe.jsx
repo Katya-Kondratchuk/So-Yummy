@@ -21,27 +21,33 @@ const Recipe = () => {
     description,
     time,
     title,
-    ingridients,
+    ingredients,
     instructions,
     previewImg,
     // _id,
     // category,
-    // favorite,
+    favorite,
     // fullImage,
     // like,
     // popularity,
     // tags,
-    // youtube,
+    youtube,
   } = recipe;
   return (
     recipe.length !== 0 && (
       <div className=" greensImg">
-        <TopContainer title={title} description={description} time={time} />
+        <TopContainer
+          title={title}
+          description={description}
+          time={time}
+          favorite={favorite}
+        />
         <div className={css.wrapper}>
           <IngredientsContainer
-            ingridients={ingridients}
+            ingridients={ingredients}
             instructions={instructions}
             previewImg={previewImg}
+            youtube={youtube}
           />
         </div>
       </div>

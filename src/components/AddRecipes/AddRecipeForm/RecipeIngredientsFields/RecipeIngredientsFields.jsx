@@ -37,7 +37,7 @@ const RecipeIngredientsFields = ({
             className={css.btnIncrease}
             onClick={() => {
               const id = uuidv4();
-              const newData = { id, name: '', amount: '1', unit: 'g' };
+              const newData = { id, title: '', amount: '1', unit: 'g' };
               const updateIngredients = [...ingredients, newData];
               setIngredients(updateIngredients);
             }}

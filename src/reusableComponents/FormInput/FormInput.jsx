@@ -4,15 +4,16 @@ import warningValidation from 'services/warningValidation';
 const FormInput = ({
   placeholder = '',
   type = '',
-  switchImages,
-  onBlur,
-  onChange,
+  switchImages = () => {},
+  onBlur = () => {},
+  onChange = () => {},
   name = '',
   erorr,
   value = '',
   formInputArea = '',
   formInputUserMenu = '',
   formInputFooterForm = '',
+  autoComplete,
 }) => {
   const switchColor = (
     erorr,
@@ -23,10 +24,10 @@ const FormInput = ({
   ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
       return `${css.formInput} ${css.formInputInsecure}`;
-    } else if (erorr) {
-      return `${css.formInput} ${css.formInputInvalid} ${formInputUserMenu}`;
+    } else if (erorr && value) {
+      return `${css.formInput} ${css.formInputInvalid} `;
     } else if (!erorr && value) {
-      return `${css.formInput} ${css.formInputValid} ${formInputUserMenu}`;
+      return `${css.formInput} ${css.formInputValid} `;
     } else if (formInputUserMenu) {
       return `${formInputUserMenu}`;
     } else if (formInputFooterForm) {
@@ -35,7 +36,6 @@ const FormInput = ({
       return `${css.formInput}`;
     }
   };
-  console.log(erorr);
   return (
     <div className={formInputArea}>
       <input
@@ -51,10 +51,11 @@ const FormInput = ({
         onBlur={onBlur}
         name={name}
         placeholder={placeholder}
+        autoComplete={autoComplete}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
-        {switchStateImages(erorr, value, formInputUserMenu, type)}
+        {switchStateImages(erorr, value, formInputUserMenu, name)}
       </span>
     </div>
   );

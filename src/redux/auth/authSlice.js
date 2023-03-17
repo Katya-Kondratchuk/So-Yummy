@@ -5,7 +5,6 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
-  reRequestAccessToken,
   verificationUser,
   verifyResendEmail,
 } from './authOperation';
@@ -32,6 +31,15 @@ const handlerRejected = (state, { payload }) => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    reRefresh(state, { payload }) {
+      state.refreshToken = payload;
+    },
+    clearRefresh(state, { _ }) {
+      state.isLoggedIn = false;
+      state.refreshToken = '';
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(registerUser.pending, handlerPending)
@@ -107,17 +115,8 @@ export const authSlice = createSlice({
         state.user.avatarURL = payload.avatarURL;
         state.loadind = false;
       })
-      .addCase(getUserInfo.rejected, handlerRejected)
-
-      .addCase(reRequestAccessToken.pending, handlerPending)
-      .addCase(reRequestAccessToken.fulfilled, (state, { payload }) => {
-        state.refreshToken = payload;
-        state.loadind = false;
-      })
-      .addCase(reRequestAccessToken.rejected, (state, { payload }) => {
-        state.refreshToken = '';
-        state.loadind = false;
-        state.error = payload;
-      });
+      .addCase(getUserInfo.rejected, handlerRejected);
   },
 });
+
+export const { reRefresh, clearRefresh } = authSlice.actions;

@@ -7,6 +7,7 @@ const IngredientsContainer = ({
   ingridients = [],
   instructions = '',
   previewImg = '',
+  youtube,
 }) => {
   return (
     <div className="container">
@@ -22,7 +23,11 @@ const IngredientsContainer = ({
           id={_id}
         />
       ))}
-      <RecipeRpeparation instructions={instructions} previewImg={previewImg} />
+      <RecipeRpeparation
+        instructions={instructions}
+        previewImg={previewImg}
+        youtube={youtube}
+      />
     </div>
   );
 };

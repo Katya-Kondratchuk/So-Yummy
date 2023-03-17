@@ -60,14 +60,14 @@
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background-color: rgba(217, 217, 217, 0.025);
+  background-color: var(--bgScrolbarColorSecondary);
   border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   height: 60px;
   border-radius: 12px;
-  border: 5px solid rgba(217, 217, 217, 0.025);
+  border: 5px solid var(--bgScrolbarColorSecondary);
   background-clip: content-box;
-  background-color: #ffffff;
+  background-color: var(--whiteColor);
 }

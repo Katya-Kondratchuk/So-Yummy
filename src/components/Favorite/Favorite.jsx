@@ -13,38 +13,41 @@ import { FavoriteLoader } from './ContentLoader/FavoriteLoader';
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     try {
-      setTimeout(() => {
-        getAllFavorite(page, 6).then(data => {
+      setTimeout(async () => {
+        await getAllFavorite(page, 6).then(data => {
           if (!data) {
             return;
           }
           setAllRecipes(data.recipes);
-        }, 1000);
-      });
+        });
+        setIsLoading(false);
+      }, 1500);
     } catch (error) {
+      setIsLoading(false);
       console.log(error.message);
     }
   }, [page]);
 
-  const handelDelete = async id => {
-    if (isLoading) {
+  const handelDelete = async (id, event) => {
+    if (event.target.disabled) {
+      // Защита от двойного клика
       setPage(1);
       return;
     }
-    setIsLoading(true);
+    event.target.disabled = true;
     await patchRecipeFavoriteById(id);
-    const newRecipes = allRecipes.filter(_id => _id !== id);
-    setAllRecipes(newRecipes);
-    // await getAllFavorite(page, 6)
-    //   .then(data => setAllRecipes(data.recipes ?? []))
-    //   .catch(() => {
-    //     setIsLoading(false);
-    //   });
-    setIsLoading(false);
+    // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
+    // setAllRecipes(newRecipes);
+    await getAllFavorite(page, 6)
+      .then(data => setAllRecipes(data.recipes ?? []))
+      .catch(e => {
+        console.log(e.message);
+      });
   };
 
   return (
@@ -58,6 +61,7 @@ const Favorite = () => {
               <FavoriteLoader />
             ) : (
               allRecipes.length !== 0 &&
+              !isLoading &&
               allRecipes.map(({ _id, title, description, time, preview }) => {
                 return (
                   <RecipeCard
@@ -67,8 +71,8 @@ const Favorite = () => {
                     title={title}
                     time={time}
                     text={description}
-                    onDelete={() => {
-                      handelDelete(_id);
+                    onDelete={e => {
+                      handelDelete(_id, e);
                     }}
                     imgComponent={preview}
                   />
@@ -84,12 +88,3 @@ const Favorite = () => {
 };
 
 export default Favorite;
-
-// const handleDelete = object => {
-//   deleteProduct(object).then(res => {});
-//   getDayProducts({ date: date }).then(res => {
-//     const newEatenProducts = res.eatenProducts;
-//     setProducts(newEatenProducts ?? []);
-
-//     setSummaryDay(res.daySummary);
-//   });

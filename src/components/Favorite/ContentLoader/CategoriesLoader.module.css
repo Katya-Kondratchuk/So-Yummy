@@ -1,0 +1,36 @@
+.loaderWrapper {
+  width: 343px;
+  margin-top: 50px;
+}
+.oneCardLoader {
+  width: 343px;
+  height: 323px;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .loaderWrapper {
+    width: 704px;
+  }
+  .oneCardLoader {
+    width: 336px;
+    height: 323px;
+  }
+  .oneCardLoader:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .loaderWrapper {
+    margin-bottom: 50px;
+    width: 1240px;
+    margin-top: 100px;
+  }
+  .oneCardLoader {
+    width: 290px;
+    height: 313px;
+  }
+  .oneCardLoader:not(:last-child) {
+    margin-right: 24px;
+  }
+}

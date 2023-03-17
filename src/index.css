@@ -165,6 +165,10 @@ table {
   --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
 }
 
+/* :root.themeBlack {
+  --bgColor: #ffffff;
+} */
+
 .container {
   max-width: 375px;
   padding-left: 16px;

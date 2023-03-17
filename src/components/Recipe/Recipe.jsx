@@ -21,7 +21,7 @@ const Recipe = () => {
     description,
     time,
     title,
-    ingridients,
+    ingredients,
     instructions,
     previewImg,
     // _id,
@@ -39,7 +39,7 @@ const Recipe = () => {
         <TopContainer title={title} description={description} time={time} />
         <div className={css.wrapper}>
           <IngredientsContainer
-            ingridients={ingridients}
+            ingridients={ingredients}
             instructions={instructions}
             previewImg={previewImg}
           />

@@ -45,13 +45,13 @@ const ShoppingList = () => {
         <div className={css.title}>Shopping list</div>
         <TitleShoppingList />
         <ul className={css.shoppingItemList}>
-          {list.map(({ thumb, title, measure, listItemId }, index) => (
+          {list.map(({ thumb, title, measure, productId }, index) => (
             <ShoppingItem
               image={thumb}
               name={title}
               text={measure}
-              onDelete={() => handleDeleteIngridient(listItemId)}
-              key={listItemId + index}
+              onDelete={() => handleDeleteIngridient(productId)}
+              key={productId + index}
             />
           ))}
         </ul>

@@ -110,6 +110,16 @@ export const postShoppingList = async info => {
   }
 };
 
+export const patchShoppingList = async info => {
+  try {
+    const { data } = await axios.patch(`/user-info/shopping-list`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 export const deleteShoppingList = async id => {
   try {
     const { data } = await axios.delete(`/user-info/shopping-list/${id}`);

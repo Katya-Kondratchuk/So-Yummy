@@ -5,7 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import BGDots from 'reusableComponents/BGDots/BGDots';
-import Loader from 'reusableComponents/ContentLoader/CategoriesLoader';
+import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';

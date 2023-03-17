@@ -99,7 +99,7 @@ const RegisterForm = () => {
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
                   <FormInput
-                    autocomplete="off"
+                    autoComplete="name"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'name'}
@@ -122,6 +122,7 @@ const RegisterForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autoComplete="email"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'email'}
@@ -143,7 +144,7 @@ const RegisterForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
-                    autocomplete="off"
+                    autoComplete="current-password"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder={'password'}

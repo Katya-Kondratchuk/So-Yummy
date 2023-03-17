@@ -1,24 +1,28 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import Preview from './Preview/Preview';
 import css from './PreviewCategories.module.css';
-import { getAllCategories } from '../../../services/api/recipesAPI';
+// import { getAllCategories } from '../../../services/api/recipesAPI';
 
 const PreviewCategories = () => {
-  const [allCategories, setAllCategories] = useState([]);
+  // const [allCategories, setAllCategories] = useState([]);
 
-  useEffect(() => {
-    getAllCategories().then(data => {
-      setAllCategories(data.slice(0, 4));
-    });
-  }, []);
+  // useEffect(() => {
+  //   getAllCategories().then(data => {
+  //     setAllCategories(data.slice(0, 4));
+  //   });
+  // }, []);
 
   return (
     <div className={`${css.sectionWrapper}  ${'greensImg'}`}>
-      {allCategories.map(({ title, _id }) => (
+      {/* {allCategories.map(({ title, _id }) => (
         <Preview key={_id} category={title} />
-      ))}
+      ))} */}
+      <Preview category={'Breakfast'} />
+      <Preview category={'Miscellaneous'} />
+      <Preview category={'Vegan'} />
+      <Preview category={'Dessert'} />
       <div className={`${css.buttonContainer} ${'container'}`}>
         <div className={css.buttonWrapper}>
           <Link to="/categories">

@@ -129,3 +129,13 @@ export const deleteShoppingList = async id => {
     return null;
   }
 };
+
+export const getIngregientsList = async () => {
+  try {
+    const { data } = await axios.get(`/recipes/ingredients`);
+    return data.ingredients;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

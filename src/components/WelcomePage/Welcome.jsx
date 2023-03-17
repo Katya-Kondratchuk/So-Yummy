@@ -1,6 +1,8 @@
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './Welcome.module.css';
 import Logo from 'reusableComponents/Logo/Logo';
+// import UserMenuModalForm from 'components/Header/UserMenu/UserMenuModalForm/UserMenuModalForm';
+// import HeroTransformer from '../Main/heroTransformer/HeroTransformer';
 
 const Welcome = () => {
   return (
@@ -28,15 +30,6 @@ const Welcome = () => {
             >
               <SuperBtn lnk title="Registration" to="/register" />
             </div>
-            {/* <div className={css.registrationBtn}>
-              <SuperBtn
-                lnk
-                to="/register"
-                otlnInv
-                welcome
-                title="Registration"
-              ></SuperBtn>
-            </div> */}
             <div className={css.signinBtn}>
               <SuperBtn
                 lnk
@@ -45,9 +38,11 @@ const Welcome = () => {
                 welcome
                 title="Sign in"
               ></SuperBtn>
+              {/* <UserMenuModalForm /> */}
             </div>
           </div>
         </div>
+        {/* <HeroTransformer /> */}
       </div>
     </>
   );

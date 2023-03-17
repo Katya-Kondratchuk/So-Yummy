@@ -83,6 +83,7 @@ const SigninForm = () => {
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autoComplete="email"
                     switchImages={switchImages}
                     erorr={formik.errors.email}
                     placeholder={'email'}
@@ -104,6 +105,7 @@ const SigninForm = () => {
 
                 <div className={css.formIinputFormat}>
                   <FormInput
+                    autoComplete="current-password"
                     erorr={formik.errors.password}
                     switchImages={switchImages}
                     formInputArea={css.formInputArea}

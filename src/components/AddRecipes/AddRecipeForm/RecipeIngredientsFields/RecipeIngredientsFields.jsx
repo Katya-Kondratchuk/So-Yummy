@@ -3,17 +3,15 @@ import IngridientField from './IngridientField/IngridientField';
 import { v4 as uuidv4 } from 'uuid';
 import { ReactComponent as IncreaseIcon } from 'assets/images/AddRecipe/increase.svg';
 import { ReactComponent as DecreaseIcon } from 'assets/images/AddRecipe/decrease.svg';
-
 import css from './RecipeIngredientsFields.module.css';
-import meals from 'data/meals.json';
-
-const units = ['tbs', 'tsp', 'kg', 'g'];
+import { units } from 'data/dataForAddRecipeForm';
 
 const RecipeIngredientsFields = ({
   ingredients = [],
   setIngredients,
   onUpdate,
   onRemove,
+  allIngredients = [],
 }) => {
   return (
     <div className={css.wrapperIngredientsFields}>
@@ -37,7 +35,7 @@ const RecipeIngredientsFields = ({
             className={css.btnIncrease}
             onClick={() => {
               const id = uuidv4();
-              const newData = { id, title: '', amount: '1', unit: 'g' };
+              const newData = { id, title: {}, amount: '1', unit: 'kg' };
               const updateIngredients = [...ingredients, newData];
               setIngredients(updateIngredients);
             }}
@@ -55,7 +53,7 @@ const RecipeIngredientsFields = ({
         <ul>
           {ingredients.map(el => (
             <IngridientField
-              meals={meals}
+              allIngredients={allIngredients}
               units={units}
               classItem={css.itemIngridient}
               key={el.id}

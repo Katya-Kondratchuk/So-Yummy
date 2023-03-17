@@ -6,7 +6,7 @@ import SelectList from 'reusableComponents/SelectList';
 import { ReactComponent as Arrow } from 'assets/images/AddRecipe/chevron-down.svg';
 
 const IngridientField = ({
-  meals = [],
+  allIngredients = [],
   units,
   classItem,
   data,
@@ -19,13 +19,15 @@ const IngridientField = ({
   const [title, setTitle] = useState(data.title);
   const [amount, setAmount] = useState(data.amount);
   const [unit, setUnit] = useState(data.unit);
+  const [filter, setFilter] = useState(() => data.title?.ttl || '');
 
   const filteredMeals = useMemo(() => {
-    const normalizeNameMeal = title.toLowerCase();
-    return meals.filter(el =>
-      el.strIngredient.toLowerCase().includes(normalizeNameMeal),
+    if (!filter) return allIngredients;
+    const normalizeNameMeal = filter.toLowerCase();
+    return allIngredients.filter(el =>
+      el.ttl.toLowerCase().includes(normalizeNameMeal),
     );
-  }, [meals, title]);
+  }, [allIngredients, filter]);
 
   const justThreeDigits = v => {
     if (v.length > 3) {
@@ -67,9 +69,10 @@ const IngridientField = ({
           autoComplete="off"
           placeholder="Start enter ingredient"
           className={css.ingredient}
-          value={title}
+          value={filter}
           onChange={e => {
-            setTitle(e.target.value);
+            setFilter(e.target.value);
+            setTitle({});
             setIsActive(true);
           }}
         />
@@ -82,18 +85,19 @@ const IngridientField = ({
 
         {isActive && title.length !== 0 && filteredMeals.length !== 0 && (
           <ul className={`${css.selectContentIngredients} ${css.scrollbar}`}>
-            {filteredMeals.map(({ strIngredient }, index) => (
+            {filteredMeals.map(({ _id, ttl }) => (
               <li
-                key={strIngredient + '' + index}
+                key={_id}
                 onClick={e => {
-                  setTitle(strIngredient);
+                  setFilter(ttl);
+                  setTitle({ _id, ttl });
                   setIsActive(false);
                 }}
                 className={`${css.selectItem} ${
-                  strIngredient === title ? css.activeItem : ''
+                  ttl === title.ttl ? css.activeItem : ''
                 }`}
               >
-                {strIngredient}
+                {ttl}
               </li>
             ))}
           </ul>

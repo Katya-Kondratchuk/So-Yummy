@@ -1,56 +1,49 @@
-// import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAllRecipes } from 'services/api/recipesAPI';
 import css from './PopularRecipe.module.css';
 
-const recipeMokk = [
-  {
-    img: 'https://www.themealdb.com/images/ingredients/Lime-Small.png',
-    title: 'Banana Pancakes',
-    text: 'In a bowl, mash the banana with a fork until it resembles a thick purée...',
-  },
-  {
-    img: 'https://www.themealdb.com/images/ingredients/Lime-Small.png',
-    title: 'Squash linguine',
-    text: 'Pasta is a type of food typically made from an unleavened dough of wheat flour...',
-  },
-  {
-    img: 'https://www.themealdb.com/images/ingredients/Lime-Small.png',
-    title: 'Baked salmon',
-    text: 'Cook in boiling salted water for 10 mins...',
-  },
-  {
-    img: 'https://www.themealdb.com/images/ingredients/Lime-Small.png',
-    title: 'Sugar Pie',
-    text: 'Sugar pie is a dessert in northern French and  Belgiancuisine, where it is called tarte...',
-  },
-];
-
 const PopularRecipe = () => {
-  // const [recipe, setRecipe] = useState(recipeMokk);
+  const [popularRecipe, setpopularRecipe] = useState([]);
 
-  //TODO: обработать длину title (itemTitle) на разных брекпоинтах и добавить ...
+  useMemo(() => {
+    if (popularRecipe.length) return;
+    const getPopularRecipe = async () => {
+      try {
+        const data = await getAllRecipes(1, 4, 'popular');
+        if (!data) return;
+        setpopularRecipe(data.recipes);
+      } catch (error) {}
+    };
+    getPopularRecipe();
+  }, [popularRecipe.length]);
 
   return (
     <div className={css.wrapper}>
       <h3 className={css.title}>Popular recipe</h3>
-      {recipeMokk && (
+      {popularRecipe.length > 0 && (
         <ul className={css.list}>
-          {recipeMokk.slice(0, 4).map(({ img, title, text }) => (
-            <li key={text} className={css.item}>
-              <Link to="/recipe" className={css.itemLink}>
-                <div className={css.imgWrapper}>
-                  <img src={img} alt={title} />
-                </div>
-                <div className={css.textWrapper}>
-                  <h4 className={css.itemTitle}>{title}</h4>
-                  <p className={css.description}>{text}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
+          {popularRecipe.map(({ _id, title, preview, description }) => {
+            const link = `/recipe/${_id}`;
+            return (
+              <li key={_id} className={css.item}>
+                <Link to={link} className={css.itemLink}>
+                  <div className={css.imgWrapper}>
+                    <img src={preview} alt={title} />
+                  </div>
+                  <div className={css.textWrapper}>
+                    <h4 className={css.itemTitle}>{title}</h4>
+                    <p className={css.description}>
+                      {description.slice(0, 90)}...
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
-      {recipeMokk.length === 0 && <p>No popular recipes</p>}
+      {popularRecipe.length === 0 && <p>No popular recipes</p>}
     </div>
   );
 };

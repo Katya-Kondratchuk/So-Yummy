@@ -8,7 +8,7 @@ import {
   getAllFavorite,
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
-import { FavoriteLoader } from './ContentLoader/FavoriteLoader';
+import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);

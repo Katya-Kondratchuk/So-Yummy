@@ -79,3 +79,53 @@ export const getAllFavorite = async (page, limit) => {
     return null;
   }
 };
+
+export const postUserInfo = async info => {
+  try {
+    const { data } = await axios.post(`/user-info/set-user-info`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getShoppingList = async () => {
+  try {
+    const { data } = await axios.get(`/user-info/shopping-list`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const postShoppingList = async info => {
+  try {
+    const { data } = await axios.post(`/user-info/shopping-list`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const patchShoppingList = async info => {
+  try {
+    const { data } = await axios.patch(`/user-info/shopping-list`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const deleteShoppingList = async id => {
+  try {
+    const { data } = await axios.delete(`/user-info/shopping-list/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

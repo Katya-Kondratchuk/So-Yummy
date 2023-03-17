@@ -1,0 +1,169 @@
+.heroRightside {
+  width: 188px;
+  height: 201px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: right bottom;
+
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/images/heroTransformer/rightSide_mobile_1x.png');
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .heroRightside {
+    background-image: url('../../../assets/images/heroTransformer/rightSide_mobile_2x.png');
+  }
+}
+
+.heroBackground {
+  width: 100vw;
+  height: 455px;
+  position: relative;
+  background-size: cover;
+  left: 0;
+  top: -62px;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/images/heroTransformer/heroBackground_mobile_1x.jpg');
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .heroBackground {
+    background-image: url('../../../assets/images/heroTransformer/heroBackground_mobile_2x.jpg');
+  }
+}
+
+.heroLeftside {
+  width: 188px;
+  height: 201px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/images/heroTransformer/leftSide_mobile_1x.png');
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .heroLeftside {
+    background-image: url('../../../assets/images/heroTransformer/leftSide_mobile_2x.png');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .heroBackground {
+    width: 100vw;
+    height: 493px;
+    background-size: cover;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/heroBackground_tablet_1x.jpg');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroBackground {
+      background-image: url('../../../assets/images/heroTransformer/heroBackground_tablet_2x.jpg');
+    }
+  }
+
+  .heroRightside {
+    width: 384px;
+    height: 493px;
+    position: absolute;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/hero_rightSide_tablet_1x.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroRightside {
+      background-image: url('../../../assets/images/heroTransformer/hero_rightSide_tablet_2x.png');
+    }
+  }
+
+  .heroLeftside {
+    width: 384px;
+    height: 493px;
+    position: absolute;
+    background-size: cover;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/hero_lefSide_tablet_1x.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroLeftside {
+      background-image: url('../../../assets/images/heroTransformer/hero_lestSide_tablet_2x.png');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .heroBackground {
+    width: 100vw;
+    height: 493px;
+    background-size: cover;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/hero_background1x.jpg');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroBackground {
+      background-image: url('../../../assets/images/heroTransformer/heroBackground2x.jpg');
+    }
+  }
+  .heroRightside {
+    width: 720px;
+    height: 493px;
+    position: absolute;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/hero_rightside1x.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroRightside {
+      background-image: url('../../../assets/images/heroTransformer/hero_rightside2x.png');
+    }
+  }
+  .heroLeftside {
+    width: 720px;
+    height: 493px;
+    position: absolute;
+    background-size: cover;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/heroTransformer/hero_leftside1x.png');
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .heroLeftside {
+      background-image: url('../../../assets/images/heroTransformer/hero_leftside_a_2x.png');
+    }
+  }
+}

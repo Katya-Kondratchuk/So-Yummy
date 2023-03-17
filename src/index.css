@@ -163,6 +163,10 @@ table {
   --recipeText: rgba(0, 0, 0, 0.8);
   --linksHoverColor: #1e1f28;
   --inputBgWithOpacity: rgba(217, 217, 217, 0.15);
+  --bgScrolbarColorPrimary: #e7e5e5;
+  --bgScrolbarColorSecondary: rgba(217, 217, 217, 0.025);
+  --boxShadow: rgba(0, 0, 0, 0.0314074);
+  --selectContentColor: rgba(0, 0, 0, 0.5);
 }
 
 /* :root.themeBlack {

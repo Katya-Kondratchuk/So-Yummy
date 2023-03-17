@@ -7,7 +7,7 @@
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: #3e4462;
+  color: var(--mainTextColor);
   margin-bottom: 40px;
 }
 

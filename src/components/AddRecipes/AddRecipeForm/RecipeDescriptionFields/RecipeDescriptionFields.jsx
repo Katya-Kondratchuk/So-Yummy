@@ -1,10 +1,10 @@
 import SelectList from 'reusableComponents/SelectList';
 import css from './RecipeDescriptionFields.module.css';
 import ImgWithPreview from './ImgWithPreview';
+import { allTime } from 'data/dataForAddRecipeForm';
 
 const RecipeDescriptionFields = ({
   allCategory,
-  allTime,
   image: { fullImage, setFullImage },
   name: { title, setTitle },
   descriptionData: { description, setDescription },

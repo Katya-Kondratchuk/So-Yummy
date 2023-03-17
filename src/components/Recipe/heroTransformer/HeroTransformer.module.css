@@ -22,10 +22,11 @@
 .heroBackground {
   width: 100vw;
   height: 455px;
-  position: absolute;
+  position: relative;
   background-size: cover;
   left: 0;
-  top: 0;
+  top: -62px;
+  z-index: -1;
   background-repeat: no-repeat;
   background-image: url('../../../assets/images/heroTransformer/heroBackground_mobile_1x.jpg');
 }
@@ -63,7 +64,6 @@
   .heroBackground {
     width: 100vw;
     height: 493px;
-    position: absolute;
     background-size: cover;
     left: 0;
     background-repeat: no-repeat;
@@ -119,7 +119,6 @@
   .heroBackground {
     width: 100vw;
     height: 493px;
-    position: absolute;
     background-size: cover;
     left: 0;
     background-repeat: no-repeat;

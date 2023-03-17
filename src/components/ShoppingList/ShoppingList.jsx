@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import BGDots from 'reusableComponents/BGDots/BGDots';
-import { deleteShoppingList, getShoppingList } from 'services/api/recipesAPI';
+import { getShoppingList, patchShoppingList } from 'services/api/recipesAPI';
 import ShoppingItem from './ShoppingItem/ShoppingItem';
 
 import css from './ShoppingList.module.css';
@@ -12,9 +12,9 @@ const ShoppingList = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleDeleteIngridient = async id => {
+  const handleDeleteIngridient = async (id, measure) => {
     if (isLoading) return;
-    await deleteShoppingList(id)
+    await patchShoppingList({ productId: id, measure })
       .then(data =>
         toast.info('You removed ingridient from shopping list', {
           toastId: '1234',
@@ -50,7 +50,7 @@ const ShoppingList = () => {
               image={thumb}
               name={title}
               text={measure}
-              onDelete={() => handleDeleteIngridient(productId)}
+              onDelete={() => handleDeleteIngridient(productId, measure)}
               key={productId + index}
             />
           ))}

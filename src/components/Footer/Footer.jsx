@@ -5,7 +5,7 @@ import s from './Footer.module.css';
 
 const Footer = () => {
   return (
-    <>
+    <footer>
       <div className={`${s.footer} container`}>
         <FooterNavigation />
         <div className={s.SocialLinks}>
@@ -16,7 +16,7 @@ const Footer = () => {
         <span>© 2023 All Rights Reserved.</span>
         <span> Terms of Service</span>
       </div>
-    </>
+    </footer>
   );
 };
 

@@ -46,6 +46,7 @@ const DishCard = ({
         setPopular(popularity);
         setIsFavorite(favorite);
         favorite && toast.success(`Added to Favorite!`);
+        !favorite && toast.info(`Removed from Favorite!`);
       })
       .catch(() => setIsLoadFavorite(false));
   };
@@ -75,6 +76,23 @@ const DishCard = ({
   const likeFeel = like || isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
     text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
+
+  //+++++++++++++++++++++++
+  // let show = text;
+  // const showText = text => {
+  //   let index = 0;
+  //   const intervalId = setInterval(() => {
+  //     if (index === text.length) {
+  //       clearInterval(intervalId);
+  //       return;
+  //     }
+  //     show = text.charAt(index);
+  //     // console.log(text.charAt(index));
+  //     index++;
+  //   }, 1000);
+  // };
+  // console.log(showText('hello world'));
+  //++++++++++++++++++++
 
   return (
     <div className={css.cardContainer}>

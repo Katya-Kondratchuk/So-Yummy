@@ -1,5 +1,4 @@
 .footerForm {
-  width: 440px;
   height: 50px;
   display: flex;
   flex-direction: column;
@@ -30,7 +29,6 @@
   flex-direction: column;
   gap: 8px;
   width: 204px;
-  height: 84px;
 }
 .formInputFooterForm {
   opacity: 1;
@@ -52,7 +50,6 @@
     flex-direction: row;
     gap: 12px;
     width: 442px;
-    height: 50px;
   }
   .formIinputFormat {
     width: 259px;
@@ -74,7 +71,6 @@
     flex-direction: column;
     gap: 16px;
     width: 339px;
-    height: 135px;
   }
   .footerForm {
     width: 339px;

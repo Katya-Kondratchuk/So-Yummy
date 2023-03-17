@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
@@ -7,33 +8,46 @@ import {
   getAllFavorite,
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
+import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  setPage(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     try {
-      getAllFavorite(page, 6).then(data => setAllRecipes(data));
+      setTimeout(async () => {
+        await getAllFavorite(page, 6).then(data => {
+          if (!data) {
+            return;
+          }
+          setAllRecipes(data.recipes);
+        });
+        setIsLoading(false);
+      }, 1500);
     } catch (error) {
+      setIsLoading(false);
       console.log(error.message);
     }
   }, [page]);
 
-  const handelDelete = id => {
-    if (isLoading) {
+  const handelDelete = async (id, event) => {
+    if (event.target.disabled) {
+      // Защита от двойного клика
+      setPage(1);
       return;
     }
-    setIsLoading(true);
-    patchRecipeFavoriteById(id);
-    getAllFavorite(page, 6)
-      .then(data => setAllRecipes(data ?? []))
+    event.target.disabled = true;
+    await patchRecipeFavoriteById(id);
+    // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
+    // setAllRecipes(newRecipes);
+    await getAllFavorite(page, 6)
+      .then(data => setAllRecipes(data.recipes ?? []))
       .catch(e => {
-        setIsLoading(false);
+        console.log(e.message);
       });
-    setIsLoading(false);
   };
 
   return (
@@ -43,23 +57,28 @@ const Favorite = () => {
         <section>
           <Title text="Favorites" />
           <ul>
-            {allRecipes.length !== 0 &&
+            {isLoading ? (
+              <FavoriteLoader />
+            ) : (
+              allRecipes.length !== 0 &&
+              !isLoading &&
               allRecipes.map(({ _id, title, description, time, preview }) => {
                 return (
                   <RecipeCard
                     key={_id}
+                    id={_id}
                     trashClass={'lightBcg'}
                     title={title}
                     time={time}
                     text={description}
-                    onDelete={() => {
-                      handelDelete(_id);
+                    onDelete={e => {
+                      handelDelete(_id, e);
                     }}
-                    // text2={description2}
                     imgComponent={preview}
                   />
                 );
-              })}
+              })
+            )}
           </ul>
           <BasicPagination count={8} />
         </section>
@@ -69,12 +88,3 @@ const Favorite = () => {
 };
 
 export default Favorite;
-
-// const handleDelete = object => {
-//   deleteProduct(object).then(res => {});
-//   getDayProducts({ date: date }).then(res => {
-//     const newEatenProducts = res.eatenProducts;
-//     setProducts(newEatenProducts ?? []);
-
-//     setSummaryDay(res.daySummary);
-//   });

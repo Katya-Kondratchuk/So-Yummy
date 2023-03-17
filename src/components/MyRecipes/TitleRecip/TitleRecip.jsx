@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './TitleRecip.module.css';
+import css from './TitleRecip.module.css';
 
 const TitleRecip = ({ text }) => {
-  return <h2 className={s.TitleRecip}>{text}</h2>;
+  return <h2 className={css.TitleRecip}>{text}</h2>;
 };
 
 export default TitleRecip;

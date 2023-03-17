@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './Time.module.css';
+import css from './Time.module.css';
 
 const Time = ({ text }) => {
-  return <p className={s.Time}>{text}</p>;
+  return <p className={css.Time}>{text}</p>;
 };
 
 export default Time;

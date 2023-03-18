@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ReactComponent as Icon } from 'assets/images/AddRecipe/input-img.svg';
 import PropTypes from 'prop-types';
 import css from './ImgWithPreview.module.css';
@@ -39,6 +39,15 @@ function previewFile(inputEl) {
 const ImgWithPreview = ({ imgAdd, setImgAdd }) => {
   const [img, setImg] = useState('');
   const inputEl = useRef(null);
+
+  useEffect(() => {
+    if (!imgAdd) {
+      setImg('');
+      inputEl.current.src = '';
+      inputEl.current.style.opacity = 0;
+    }
+  }, [imgAdd]);
+
   return (
     <div className={css.wrapperImg}>
       <input

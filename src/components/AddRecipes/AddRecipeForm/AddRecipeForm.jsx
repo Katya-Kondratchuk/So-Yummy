@@ -84,7 +84,7 @@ const createObjError = (acc, curr) => {
   } else {
     acc[curr.path] = curr.message;
   }
-
+  console.log(acc);
   return acc;
 };
 
@@ -120,16 +120,7 @@ const AddRecipeForm = () => {
   ]);
 
   const [instructions, setInstructions] = useState('');
-  const [formErrors, setFormErrors] = useState({
-    fullImage: '',
-    title: '',
-    description: '',
-    category: '',
-    time: '',
-    ingredients: [],
-    instructions: '',
-  });
-  // console.log('🚀 ~ formErrors:', formErrors);
+  const [formErrors, setFormErrors] = useState({});
   const [isShowErrors, setIsShowErrors] = useState(false);
 
   const formData = useMemo(
@@ -239,6 +230,9 @@ const AddRecipeForm = () => {
     console.log(dataForSend);
   };
 
+  const isDisabledBtnSubmit =
+    isShowErrors && Object.keys(formErrors).length > 0;
+
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>
       <RecipeDescriptionFields
@@ -264,7 +258,12 @@ const AddRecipeForm = () => {
         formErrors={formErrors}
       />
       <div className={css.wrapperBtn}>
-        <SuperBtn dark typeBtn="submit" title="Add" />
+        <SuperBtn
+          dark
+          typeBtn="submit"
+          title="Add"
+          disabled={isDisabledBtnSubmit}
+        />
       </div>
     </form>
   );

@@ -2,6 +2,7 @@ import SelectList from 'reusableComponents/SelectList';
 import css from './RecipeDescriptionFields.module.css';
 import ImgWithPreview from './ImgWithPreview';
 import { allTime } from 'data/dataForAddRecipeForm';
+import PropTypes from 'prop-types';
 
 const RecipeDescriptionFields = ({
   allCategory,
@@ -10,31 +11,47 @@ const RecipeDescriptionFields = ({
   descriptionData: { description, setDescription },
   categoryData: { category, setCategory },
   cokingTime: { time, setTime },
+  formErrors = {},
 }) => {
   return (
     <div className={css.wrapperInfo}>
-      <ImgWithPreview imgAdd={fullImage} setImgAdd={setFullImage} />
+      <div className={css.wrapperImgForError}>
+        <ImgWithPreview imgAdd={fullImage} setImgAdd={setFullImage} />
+        {formErrors?.fullImage && (
+          <p className={css.errorMessageImg}>{formErrors?.fullImage}</p>
+        )}
+      </div>
 
       <div className={css.descriptions}>
-        <input
-          type="text"
-          name="title"
-          autoComplete="off"
-          value={title}
-          placeholder="Enter item title"
-          onChange={e => setTitle(e.target.value)}
-          className={css.nameRecipe}
-        />
+        <div className={css.wrapperErrMessTitle}>
+          <input
+            type="text"
+            name="title"
+            autoComplete="off"
+            value={title}
+            placeholder="Enter item title"
+            onChange={e => setTitle(e.target.value)}
+            className={css.nameRecipe}
+          />
+          {formErrors?.title && (
+            <p className={css.errorMessage}>{formErrors?.title}</p>
+          )}
+        </div>
 
-        <input
-          type="text"
-          name="description"
-          autoComplete="off"
-          placeholder="Enter about recipe"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-          className={css.description}
-        />
+        <div className={css.wrapperErrMessDescr}>
+          <input
+            type="text"
+            name="description"
+            autoComplete="off"
+            placeholder="Enter about recipe"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            className={css.description}
+          />
+          {formErrors?.description && (
+            <p className={css.errorMessage}>{formErrors?.description}</p>
+          )}
+        </div>
 
         <div className={css.wrapperCategory}>
           <input
@@ -43,6 +60,9 @@ const RecipeDescriptionFields = ({
             placeholder="Category"
             className={css.category}
           />
+          {formErrors?.category && (
+            <p className={css.errorMessage}>{formErrors?.category}</p>
+          )}
 
           <SelectList
             list={allCategory}
@@ -62,6 +82,9 @@ const RecipeDescriptionFields = ({
             placeholder="Cooking time"
             className={css.cookingTime}
           />
+          {formErrors?.time && (
+            <p className={css.errorMessage}>{formErrors?.time}</p>
+          )}
 
           <SelectList
             list={allTime}
@@ -79,6 +102,19 @@ const RecipeDescriptionFields = ({
   );
 };
 
-RecipeDescriptionFields.propTypes = {};
+RecipeDescriptionFields.propTypes = {
+  allCategory: PropTypes.array,
+  fullImage: PropTypes.any,
+  setFullImage: PropTypes.func,
+  title: PropTypes.string,
+  setTitle: PropTypes.func,
+  description: PropTypes.string,
+  setDescription: PropTypes.func,
+  category: PropTypes.string,
+  setCategory: PropTypes.func,
+  time: PropTypes.string,
+  setTime: PropTypes.func,
+  formErrors: PropTypes.object,
+};
 
 export default RecipeDescriptionFields;

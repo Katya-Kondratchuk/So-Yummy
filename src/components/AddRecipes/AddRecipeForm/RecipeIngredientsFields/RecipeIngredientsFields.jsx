@@ -12,6 +12,7 @@ const RecipeIngredientsFields = ({
   onUpdate,
   onRemove,
   allIngredients = [],
+  formErrors = {},
 }) => {
   return (
     <div className={css.wrapperIngredientsFields}>
@@ -51,7 +52,7 @@ const RecipeIngredientsFields = ({
       )}
       {ingredients.length > 0 && (
         <ul>
-          {ingredients.map(el => (
+          {ingredients.map((el, index) => (
             <IngridientField
               allIngredients={allIngredients}
               units={units}
@@ -61,6 +62,9 @@ const RecipeIngredientsFields = ({
               data={el}
               onUpdate={onUpdate}
               onRemove={onRemove}
+              errorMessage={
+                formErrors?.ingredients ? formErrors.ingredients[index] : ''
+              }
             />
           ))}
         </ul>
@@ -74,6 +78,8 @@ RecipeIngredientsFields.propTypes = {
   setIngredients: PropTypes.func,
   onUpdate: PropTypes.func,
   onRemove: PropTypes.func,
+  allIngredients: PropTypes.array,
+  formErrors: PropTypes.object,
 };
 
 export default RecipeIngredientsFields;

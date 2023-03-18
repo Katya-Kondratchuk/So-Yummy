@@ -50,11 +50,9 @@ const recipeShema = yup.object().shape({
               .string()
               .min(2, 'Minimum 2 characters')
               .max(200, 'Maximum 250 characters')
-              .required(
-                'You need choose name ingredient from the drop down list',
-              ),
+              .required('You need choose name from the drop down list'),
           })
-          .required('You need choose name ingredient from the drop down list'),
+          .required('You need choose name from the drop down list'),
         amount: yup
           .string('Amount must be a number')
           .min(1, 'You need to add weight')
@@ -67,7 +65,8 @@ const recipeShema = yup.object().shape({
   instructions: yup
     .string()
     .min(2, 'Minimum 2 characters')
-    .required('Add recipe instruction'),
+    .max(2000, 'Maximum 2000 characters')
+    .required('Recipe instruction is required'),
 });
 
 const createObjError = (acc, curr) => {
@@ -127,13 +126,7 @@ const AddRecipeForm = () => {
     description: '',
     category: '',
     time: '',
-    ingredients: [
-      {
-        title: '',
-        amount: '',
-        unit: '',
-      },
-    ],
+    ingredients: [],
     instructions: '',
   });
   // console.log('🚀 ~ formErrors:', formErrors);

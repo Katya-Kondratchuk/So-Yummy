@@ -71,3 +71,13 @@
   background-clip: content-box;
   background-color: var(--whiteColor);
 }
+
+.errorMessage {
+  width: 100%;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--errorColor);
+}

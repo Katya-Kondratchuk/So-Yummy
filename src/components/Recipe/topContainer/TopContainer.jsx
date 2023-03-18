@@ -20,7 +20,7 @@ const TopContainer = ({ title, description, time, favorite }) => {
               <SuperBtn title="Add to favorite recipes" otln typeBtn="button" />
             )}
             {favorite === true && (
-              <SuperBtn title="Delete from favorite" otln typeBtn="button" />
+              <SuperBtn title="Remove from favorite" otln typeBtn="button" />
             )}
           </div>
           <div className={css.dishTime}>

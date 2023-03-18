@@ -1,33 +1,3 @@
-/* .topContainer {
-  background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundMobile.png');
-  position: relative;
-  width: 100%;
-  height: calc((100vw / 0.82));
-  background-size: cover;
-  z-index: -1;
-  background-position: 50% 0;
-  top: -62px;
-  left: 0;
-  padding-top: 144px;
-  padding-bottom: 90px;
-}
-@media screen and (min-width: 768px) {
-  .topContainer {
-    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundTablet.png');
-    height: calc((100vw / 1.55));
-    padding-top: 136px;
-    padding-bottom: 32px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .topContainer {
-    background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundDisplay.png');
-    height: calc((100vw / 2.92));
-    padding-top: 164px;
-    padding-bottom: 32px;
-  }
-} */
-
 .containerWrapper {
   display: flex;
   flex-direction: column;

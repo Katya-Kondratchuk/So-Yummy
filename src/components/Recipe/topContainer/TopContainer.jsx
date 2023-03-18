@@ -6,8 +6,8 @@ import clsx from 'clsx';
 import HeroTransformer from '../heroTransformer/HeroTransformer';
 
 const TopContainer = ({ title, description, time, favorite }) => {
-  const titleStr =
-    favorite === false ? 'Add to favorite recipes' : 'Already favorites';
+  // const titleStr =
+  //   favorite === false ? 'Add to favorite recipes' : 'Already favorite';
   return (
     <>
       <HeroTransformer />
@@ -16,7 +16,12 @@ const TopContainer = ({ title, description, time, favorite }) => {
           <span className={css.dishName}>{title}</span>
           <span className={css.dishDescription}>{description}</span>
           <div className={clsx(css.btnTxt, css.btn)}>
-            <SuperBtn title={titleStr} otln typeBtn="button" />
+            {favorite === false && (
+              <SuperBtn title="Add to favorite recipes" otln typeBtn="button" />
+            )}
+            {favorite === true && (
+              <SuperBtn title="Delete from favorite" otln typeBtn="button" />
+            )}
           </div>
           <div className={css.dishTime}>
             {time && <img src={Timer} alt="Timer" width="20" height="20" />}

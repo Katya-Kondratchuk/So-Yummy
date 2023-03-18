@@ -42,17 +42,18 @@
 
 .textWrapper {
   width: 213px;
+  padding-bottom: 20px;
 }
 
 .itemTitle {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-
   letter-spacing: -0.24px;
-
   color: var(--mainTextColor);
   margin-bottom: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .description {
@@ -62,6 +63,7 @@
   letter-spacing: -0.24px;
   color: var(--secondaryGreyTextColor);
 }
+
 @media screen and (max-width: 767px) {
   .item:not(:last-child) {
     margin-bottom: 24px;

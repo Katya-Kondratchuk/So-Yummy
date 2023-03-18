@@ -1,4 +1,4 @@
-.topContainer {
+/* .topContainer {
   background-image: url('../../../assets/images/CheckBoxRecipe/recipeBackgroundMobile.png');
   position: relative;
   width: 100%;
@@ -26,7 +26,7 @@
     padding-top: 164px;
     padding-bottom: 32px;
   }
-}
+} */
 
 .containerWrapper {
   display: flex;
@@ -39,15 +39,22 @@
   justify-content: center;
   align-items: flex-end;
   position: absolute;
-  top: 136px;
+  top: 144px;
   left: 50%;
-  transform: translate(-50%, 68px);
+  transform: translate(-50%, 0px);
 }
 @media screen and (min-width: 768px) {
   .containerThumb {
     top: 136px;
     left: 50%;
-    transform: translate(-50%, 68px);
+    transform: translate(-50%, 64px);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .containerThumb {
+    top: 164px;
+    left: 50%;
+    transform: translate(-50%, 32px);
   }
 }
 

@@ -4,16 +4,28 @@ import ShoppingItemNumber from '../ShoppingItemNumber/ShoppingItemNumber';
 import ShoppingItemPhoto from '../ShoppingItemPhoto/ShoppingItemPhoto';
 import css from './ShoppingItem.module.css';
 
-const ShoppingItem = ({ image, name, text, id, onDelete }) => {
+const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
   return (
-    <div className={css.wrapper}>
+    <li className={css.wrapper}>
       <div className={css.leftWrapper}>
         <ShoppingItemPhoto image={image} />
         <ShoppingItemDescription name={name} />
       </div>
-      <ShoppingItemNumber text={text} />
-      <button className={css.button} type="button" onClick={onDelete}></button>
-    </div>
+      <div>
+        {measure.map(item => (
+          <div key={`${id}${measure.indexOf(item)}`}>
+            <ShoppingItemNumber text={item} />
+            <button
+              className={css.button}
+              type="button"
+              onClick={() => {
+                onDelete(item);
+              }}
+            ></button>
+          </div>
+        ))}
+      </div>
+    </li>
   );
 };
 

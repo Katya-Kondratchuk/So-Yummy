@@ -4,35 +4,9 @@ import RecipeDescriptionFields from './RecipeDescriptionFields';
 import RecipeIngredientsFields from './RecipeIngredientsFields';
 import RecipePreparationFields from './RecipePreparationFields';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
-import { getAllCategories } from 'services/api/recipesAPI';
+import { getAllCategories, getIngregientsList } from 'services/api/recipesAPI';
 import css from './AddRecipeForm.module.css';
 
-const allTime = [
-  '5 min',
-  '10 min',
-  '15 min',
-  '20 min',
-  '25 min',
-  '30 min',
-  '35 min',
-  '40 min',
-  '45 min',
-  '50 min',
-  '55 min',
-  '60 min',
-  '65 min',
-  '70 min',
-  '75 min',
-  '80 min',
-  '85 min',
-  '90 min',
-  '95 min',
-  '100 min',
-  '105 min',
-  '110 min',
-  '115 min',
-  '120 min',
-];
 const recipeShema = yup.object().shape({
   fullImage: yup
     .mixed()
@@ -100,6 +74,7 @@ const createObjError = (acc, curr) => {
 
 const AddRecipeForm = () => {
   const [allCategory, setAllCategory] = useState([]);
+  const [allIngredients, setAllIngredients] = useState([]);
 
   const [fullImage, setFullImage] = useState(null);
   const [title, setTitle] = useState('');
@@ -110,19 +85,19 @@ const AddRecipeForm = () => {
   const [ingridients, setIngridients] = useState([
     {
       id: '663713a4-4cd7-43a7-b691-8e012b1873cb',
-      title: 'Avocado',
+      title: { _id: '640c2dd963a319ea671e37d7', ttl: 'Walnuts' },
       amount: '999',
       unit: 'tbs',
     },
     {
       id: '663713a4-eged7-43a7-b691-8e012b1873cb',
-      title: 'Pork',
+      title: { _id: '640c2dd963a319ea671e372b', ttl: 'Oil' },
       amount: '999',
       unit: 'g',
     },
     {
       id: '663713agegd7-43a7-b691-8e012b1873cb',
-      title: 'Ca',
+      title: { _id: '640c2dd963a319ea671e36b9', ttl: 'Cumin Seeds' },
       amount: '999',
       unit: 'kg',
     },
@@ -191,6 +166,23 @@ const AddRecipeForm = () => {
     validateForm();
   }, [formData, isShowErrors]);
 
+  useEffect(() => {
+    const getAllIngregientsList = async () => {
+      const categoriesList = (await getIngregientsList()) || [];
+      return categoriesList;
+    };
+    getAllIngregientsList()
+      .then(data => {
+        const normalizedIngredientsList = data.map(({ _id, ttl }) => ({
+          _id,
+          ttl,
+        }));
+
+        setAllIngredients(normalizedIngredientsList);
+      })
+      .catch(() => {});
+  }, []);
+
   const onDelIngredient = id => {
     const filteredData = ingridients.filter(el => el.id !== id);
     setIngridients(filteredData);
@@ -212,6 +204,7 @@ const AddRecipeForm = () => {
   const onSubmitHandler = e => {
     e.preventDefault();
     const isValid = recipeShema.isValidSync(formData);
+    console.log(formData);
     if (!isValid) {
       setIsShowErrors(true);
       return;
@@ -223,7 +216,6 @@ const AddRecipeForm = () => {
     <form onSubmit={onSubmitHandler} className={css.form}>
       <RecipeDescriptionFields
         allCategory={allCategory}
-        allTime={allTime}
         image={{ fullImage, setFullImage }}
         name={{ title, setTitle }}
         descriptionData={{ description, setDescription }}
@@ -237,6 +229,7 @@ const AddRecipeForm = () => {
         onUpdate={onUpdateData}
         onRemove={onDelIngredient}
         formErrors={formErrors}
+        allIngredients={allIngredients}
       />
       <RecipePreparationFields
         value={instructions}

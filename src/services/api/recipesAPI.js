@@ -129,3 +129,37 @@ export const deleteShoppingList = async id => {
     return null;
   }
 };
+
+export const getIngregientsList = async () => {
+  try {
+    const { data } = await axios.get(`/recipes/ingredients`);
+    return data.ingredients;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getSearchByTitle = async (query, page, limit, sort) => {
+  try {
+    const { data } = await axios.get(
+      `/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+    );
+    return data.ingredients;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getSearchByIngredients = async (query, page, limit, sort) => {
+  try {
+    const { data } = await axios.get(
+      `/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+    );
+    return data.ingredients;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

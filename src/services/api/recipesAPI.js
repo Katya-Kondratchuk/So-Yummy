@@ -177,3 +177,35 @@ export const addOwnRecipe = async formData => {
     return { error };
   }
 };
+
+export const getOwnRecipe = async (page = 1, limit = 4) => {
+  try {
+    const { data } = await axios.get(
+      `/own-recipes?page=${page}&limit=${limit}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};
+
+export const deleteOwnRecipe = async id => {
+  try {
+    const { data } = await axios.delete(`/own-recipes/id/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};
+
+export const getOwnRecipeById = async id => {
+  try {
+    const { data } = await axios.get(`/own-recipes/id/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};

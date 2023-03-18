@@ -1,3 +1,15 @@
+.thumb {
+  padding-bottom: 16px;
+}
+@media screen and (min-width: 768px) {
+  .thumb {
+    padding-bottom: 24px;
+  }
+}
+.thumb:last-child {
+  padding-bottom: 0;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -7,7 +19,6 @@
   padding-right: 29px;
   background-color: var(--ingridientsBcg);
   border-radius: 8px;
-  margin-top: 16px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,7 +27,6 @@
     height: 178px;
     padding: 16px;
     padding-left: 24px;
-    margin-top: 24px;
   }
 }
 

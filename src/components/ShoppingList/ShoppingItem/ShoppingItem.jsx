@@ -11,7 +11,7 @@ const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
       <div>
         <ShoppingItemDescription name={name} />
       </div>
-      <div>
+      <div className={css.rightThumb}>
         {measure.map(item => (
           <div
             className={css.rightWrapper}

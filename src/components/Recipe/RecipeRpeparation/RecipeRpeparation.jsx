@@ -22,11 +22,13 @@ const RecipeRpeparation = ({ instructions, previewImg, youtube }) => {
           ))}
         </div>
       </div>
-      <img
-        src={previewImg ? previewImg : defaultImage}
-        alt="recipe"
-        className={css.image}
-      />
+      <div className={css.imageWrapper}>
+        <img
+          src={previewImg ? previewImg : defaultImage}
+          alt="recipe"
+          className={css.image}
+        />
+      </div>
       {/* <div>
       <iframe
           className="vegan__video"

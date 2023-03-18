@@ -1,7 +1,7 @@
 .wrapper {
   background-color: var(--greenColor);
-  width: 97px;
-  height: 23px;
+  width: 120px;
+  min-height: 23px;
   color: var(--whiteColor);
   font-size: 10px;
   line-height: 15px;
@@ -10,16 +10,17 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
-  margin-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    width: 147px;
-    height: 36px;
-    font-size: 18px;
+    width: 190px;
+    min-height: 36px;
+    font-size: 14px;
     line-height: 27px;
-    margin-right: 35px;
   }
 }
 
@@ -27,6 +28,6 @@
   .wrapper {
     width: 197px;
     height: 35px;
-    margin-right: 140px;
+    font-size: 16px;
   }
 }

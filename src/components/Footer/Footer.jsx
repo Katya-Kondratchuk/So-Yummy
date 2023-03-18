@@ -1,18 +1,18 @@
 import React from 'react';
 import SocialLinks from 'reusableComponents/SocialLinks/SocialLinks';
 import FooterNavigation from './FooterNavigation/FooterNavigation';
-import s from './Footer.module.css';
+import css from './Footer.module.css';
 
 const Footer = () => {
   return (
     <footer>
-      <div className={`${s.footer} container`}>
+      <div className={`${css.footer} container`}>
         <FooterNavigation />
-        <div className={s.SocialLinks}>
+        <div className={css.SocialLinks}>
           <SocialLinks />
         </div>
       </div>
-      <div className={`${s.downText} container`}>
+      <div className={`${css.downText} container`}>
         <span>© 2023 All Rights Reserved.</span>
         <span> Terms of Service</span>
       </div>

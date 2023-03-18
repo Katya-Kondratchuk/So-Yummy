@@ -13,6 +13,7 @@ input[type='number'] {
 }
 
 .item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,6 +224,19 @@ input[type='number'] {
   background-color: var(--bgScrolbarColorPrimary);
 }
 
+.errorMessage {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--errorColor);
+}
+
 @media screen and (min-width: 768px) {
   .wrapperIngredient {
     width: 398px;
@@ -281,6 +295,9 @@ input[type='number'] {
     height: 59px;
     width: 38px;
   }
+  .errorMessage {
+    bottom: -18px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -294,5 +311,8 @@ input[type='number'] {
 
   .wrapperUnit {
     width: 70px;
+  }
+  .errorMessage {
+    bottom: -20px;
   }
 }

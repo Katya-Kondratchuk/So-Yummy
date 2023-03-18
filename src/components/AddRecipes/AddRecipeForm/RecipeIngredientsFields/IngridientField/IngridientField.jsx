@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ReactComponent as CloseIcon } from 'assets/images/AddRecipe/close.svg';
 import css from './IngridientField.module.css';
 import SelectList from 'reusableComponents/SelectList';
@@ -13,6 +13,7 @@ const IngridientField = ({
   id,
   onUpdate,
   onRemove,
+  errorMessage,
 }) => {
   const inputEl = useRef(null);
   const [isActive, setIsActive] = useState(false);
@@ -136,10 +137,19 @@ const IngridientField = ({
       >
         <CloseIcon width="18px" height="18px" />
       </button>
+      {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
     </li>
   );
 };
 
-IngridientField.propTypes = {};
+IngridientField.propTypes = {
+  allIngredients: PropTypes.array,
+  units: PropTypes.array,
+  classItem: PropTypes.string,
+  data: PropTypes.object,
+  id: PropTypes.string,
+  onUpdate: PropTypes.func,
+  onRemove: PropTypes.func,
+};
 
 export default IngridientField;

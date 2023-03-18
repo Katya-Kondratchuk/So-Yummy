@@ -48,10 +48,12 @@ body.themeDark {
   --bgColor: rgba(0, 0, 0, 0.8);
   --titleColor: #fafafa;
   --secondaryBlackColor: #8aa936;
-
-  transition: 1s;
 }
 
 body.themeDark .downText {
   --secondaryBlackColor: #fff;
+}
+
+body {
+  transition: 1s;
 }

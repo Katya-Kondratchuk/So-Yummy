@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from 'reusableComponents/Logo/Logo';
-import s from './TextFooter.module.css';
+import css from './TextFooter.module.css';
 
 const TextFooter = () => {
   return (
     <div>
-      <NavLink to="/main" className={s.logoText}>
+      <NavLink to="/main" className={css.logoText}>
         <Logo inv width={'44px'} height={'44px'} /> <span>So Yummy</span>
       </NavLink>
-      <ul className={s.navLeft}>
+      <ul className={css.navLeft}>
         <li>Database of recipes that can be replenished </li>
         <li>Flexible search for desired and unwanted ingredients</li>
         <li>Ability to add your own recipes with photos</li>

@@ -1,0 +1,38 @@
+.IngredientLoader {
+  margin-bottom: 24px;
+  width: 343px;
+  margin-top: 50px;
+}
+.cardIngLoader {
+  width: 343px;
+  height: 65px;
+}
+
+@media screen and (min-width: 768px) {
+  .IngredientLoader {
+    margin-bottom: 50px;
+    width: 704px;
+    margin-top: 32px;
+  }
+  .cardIngLoader {
+    width: 704px;
+    height: 120px;
+  }
+  .cardIngLoader:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .IngredientLoader {
+    margin-bottom: 50px;
+    width: 1240px;
+    margin-top: 50px;
+  }
+  .cardIngLoader {
+    width: 1240px;
+    height: 182px;
+  }
+  .cardIngLoader:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import s from './Nav.module.css';
+import css from './Nav.module.css';
 
 const Nav = () => {
   return (
-    <nav className={s.navCentre}>
+    <nav className={css.navCentre}>
       <NavLink to="/search">Ingredients</NavLink>
       <NavLink to="/add">Add recipes</NavLink>
       <NavLink to="/my"> My recipes</NavLink>

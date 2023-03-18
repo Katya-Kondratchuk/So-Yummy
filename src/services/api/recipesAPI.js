@@ -163,3 +163,17 @@ export const getSearchByIngredients = async (query, page, limit, sort) => {
     return null;
   }
 };
+
+export const addOwnRecipe = async formData => {
+  try {
+    const { data } = await axios.post(`/own-recipes`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};

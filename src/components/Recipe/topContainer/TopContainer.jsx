@@ -1,23 +1,16 @@
-// import React from 'react';
 import css from './TopContainer.module.css';
 import Timer from '../../../assets/images/CheckBoxRecipe/Timer.png';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import clsx from 'clsx';
 import HeroTransformer from '../heroTransformer/HeroTransformer';
 import { patchRecipeFavoriteById } from 'services/api/recipesAPI';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const TopContainer = ({ title, description, time, id, favorite }) => {
-  // const titleStr =
-  //   favorite === false ? 'Add to favorite recipes' : 'Already favorite';
-  const [isFavorite, setIsFavorite] = useState(false);
-  // console.log('favorite=' + isFavorite);
-
-  useEffect(() => {}, []);
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
   const addToFavorite = () => {
     patchRecipeFavoriteById(id).then(({ favorite }) => {
-      // console.log('favorite=' + isFavorite);
       setIsFavorite(favorite);
     });
   };

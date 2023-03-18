@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BGDots from '../../reusableComponents/BGDots/BGDots';
 import Title from '../../reusableComponents/Title/Title';
-import MyRecipeItem from './MyResipeItem/MyRecipeItem';
-import Pagination from './PaginationCustom/Pagination';
+// import MyRecipeItem from './MyResipeItem/MyRecipeItem';
+// import Pagination from './PaginationCustom/Pagination';
 import css from './MyRecipes.module.css';
 import { getOwnRecipe } from 'services/api/recipesAPI';
 

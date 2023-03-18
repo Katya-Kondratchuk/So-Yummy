@@ -19,6 +19,7 @@ const Categories = () => {
   // const [totalRecipe, setTotalRecipe] = useState(0);
   const { categoryName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  // console.log(category);
 
   const mobile = useMediaQuery('(max-width: 767px)');
   const tablet = useMediaQuery('(max-width: 1439px)');

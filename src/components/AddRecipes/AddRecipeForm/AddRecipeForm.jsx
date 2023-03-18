@@ -10,6 +10,8 @@ import {
   getIngregientsList,
 } from 'services/api/recipesAPI';
 import css from './AddRecipeForm.module.css';
+import { toast } from 'react-toastify';
+// import { useNavigate } from 'react-router-dom';
 
 const recipeShema = yup.object().shape({
   fullImage: yup
@@ -125,6 +127,16 @@ const AddRecipeForm = () => {
   const [instructions, setInstructions] = useState('');
   const [formErrors, setFormErrors] = useState({});
   const [isShowErrors, setIsShowErrors] = useState(false);
+  const [isAddRecipe, setIsAddRecipe] = useState(false);
+  // const navigate = useNavigate();
+  const resetDataForm = () => {
+    setFullImage(null);
+    setTitle('');
+    setDescription('');
+    setTime('15 min');
+    setIngredients([]);
+    setInstructions('');
+  };
 
   const formData = useMemo(
     () => ({
@@ -208,13 +220,16 @@ const AddRecipeForm = () => {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const isValid = recipeShema.isValidSync(formData);
+    if (isAddRecipe) {
+      return;
+    }
 
+    const isValid = recipeShema.isValidSync(formData);
     if (!isValid) {
       setIsShowErrors(true);
       return;
     }
-
+    setIsAddRecipe(true);
     const dataForSend = {
       fullImage,
       title,
@@ -230,11 +245,29 @@ const AddRecipeForm = () => {
         .filter(el => el.length !== 0)
         .join('\r\n'),
     };
-    addOwnRecipe(dataForSend);
+
+    addOwnRecipe(dataForSend)
+      .then(data => {
+        console.log(data);
+        setIsAddRecipe(false);
+        if (data?.error) {
+          toast.error(data.error.response.data.message);
+          return;
+        }
+        toast.success(`Your recipe ${title} has been created`);
+        resetDataForm();
+        // const link = `/recipe/${data.id}/true`;
+        // navigate(link);
+      })
+      .catch(e => {
+        console.log(e);
+        toast.error('Something went wrong, try add your recipe again');
+        setIsAddRecipe(false);
+      });
   };
 
   const isDisabledBtnSubmit =
-    isShowErrors && Object.keys(formErrors).length > 0;
+    isAddRecipe || (isShowErrors && Object.keys(formErrors).length > 0);
 
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>

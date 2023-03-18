@@ -21,15 +21,18 @@
 }
 
 .shoppingItemList:last-child {
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .shoppingItemList:last-child {
-    margin-bottom: 200px;
+    padding-bottom: 200px;
   }
 }
 @media screen and (min-width: 1440px) {
   .shoppingItemList:last-child {
-    margin-bottom: 195px;
+    padding-bottom: 195px;
   }
+}
+.shoppingItemList:not(:last-child) {
+  margin-bottom: 24px;
 }

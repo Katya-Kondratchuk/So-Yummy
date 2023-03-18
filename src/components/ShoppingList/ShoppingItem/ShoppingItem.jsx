@@ -7,13 +7,16 @@ import css from './ShoppingItem.module.css';
 const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
   return (
     <li className={css.wrapper}>
-      <div className={css.leftWrapper}>
-        <ShoppingItemPhoto image={image} />
+      <ShoppingItemPhoto image={image} />
+      <div>
         <ShoppingItemDescription name={name} />
       </div>
       <div>
         {measure.map(item => (
-          <div key={`${id}${measure.indexOf(item)}`}>
+          <div
+            className={css.rightWrapper}
+            key={`${id}${measure.indexOf(item)}`}
+          >
             <ShoppingItemNumber text={item} />
             <button
               className={css.button}

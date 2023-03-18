@@ -34,36 +34,40 @@ const Search = () => {
     dispatch(updateSearchQuery(''));
   };
   return (
-    <div className="container">
-      <BGDots />
-      <Title text={'Search'} />
-      <div className={css.searchContainer}></div>
-      <form className={css.searchWrapper} onSubmit={onFormSubmit}>
-        <SearchInput name="search" />
-        <SearchTypeSelector />
-      </form>
-      {recipes.length === 0 && (
-        <>
-          <div className={css.noRecipesImg}></div>
-          <p className={css.noRecipesText}>Try looking for something else..</p>
-        </>
-      )}
-      {recipes.length !== 0 && (
-        <>
-          <ul className={css.searchList}>
-            {recipes.map(item => (
-              <li key={item} className={css.searchItem}>
-                <DishCard
-                  image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-                  altText="someDish"
-                  text="Delicious dishes"
-                />
-              </li>
-            ))}
-          </ul>
-          <BasicPagination />
-        </>
-      )}
+    <div className=" greensImg">
+      <div className="container">
+        <BGDots />
+        <Title text={'Search'} />
+        {/* <div className={css.searchContainer}></div> */}
+        <form className={css.searchWrapper} onSubmit={onFormSubmit}>
+          <SearchInput name="search" />
+          <SearchTypeSelector />
+        </form>
+        {recipes.length === 0 && (
+          <>
+            <div className={css.noRecipesImg}></div>
+            <p className={css.noRecipesText}>
+              Try looking for something else..
+            </p>
+          </>
+        )}
+        {recipes.length !== 0 && (
+          <>
+            <ul className={css.searchList}>
+              {recipes.map(item => (
+                <li key={item} className={css.searchItem}>
+                  <DishCard
+                    image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
+                    altText="someDish"
+                    text="Delicious dishes"
+                  />
+                </li>
+              ))}
+            </ul>
+            <BasicPagination />
+          </>
+        )}
+      </div>
     </div>
   );
 };

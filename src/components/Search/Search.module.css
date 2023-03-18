@@ -1,13 +1,14 @@
-.searchContainer {
+/* .searchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-}
+} */
 .searchWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
   margin-bottom: 40px;
 }
 .searchList {
@@ -34,9 +35,9 @@
   opacity: 0.5;
 }
 @media screen and (min-width: 768px) {
-  .searchContainer {
+  /* .searchContainer {
     margin-top: 40px;
-  }
+  } */
   .searchList {
     display: flex;
     flex-wrap: wrap;
@@ -50,6 +51,7 @@
     margin-bottom: 15px;
   }
   .searchWrapper {
+    margin-top: 40px;
     margin-bottom: 45px;
   }
   .noRecipesImg {

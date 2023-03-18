@@ -4,7 +4,11 @@ import RecipeDescriptionFields from './RecipeDescriptionFields';
 import RecipeIngredientsFields from './RecipeIngredientsFields';
 import RecipePreparationFields from './RecipePreparationFields';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
-import { getAllCategories, getIngregientsList } from 'services/api/recipesAPI';
+import {
+  addOwnRecipe,
+  getAllCategories,
+  getIngregientsList,
+} from 'services/api/recipesAPI';
 import css from './AddRecipeForm.module.css';
 
 const recipeShema = yup.object().shape({
@@ -227,7 +231,7 @@ const AddRecipeForm = () => {
       description,
       category,
       time,
-      ingridients: ingredients.map(({ amount, unit, title }) => ({
+      ingredients: ingredients.map(({ amount, unit, title }) => ({
         measure: `${amount} ${unit}`,
         id: title._id,
       })),
@@ -236,7 +240,7 @@ const AddRecipeForm = () => {
         .filter(el => el.length !== 0)
         .join('\r\n'),
     };
-    console.log(dataForSend);
+    addOwnRecipe(dataForSend);
   };
 
   return (

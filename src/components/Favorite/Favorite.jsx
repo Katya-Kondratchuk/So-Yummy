@@ -9,6 +9,7 @@ import {
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
 import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
+import NothingAdd from './NothingAdd/NothingAdd';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -59,9 +60,7 @@ const Favorite = () => {
           <ul>
             {isLoading ? (
               <FavoriteLoader />
-            ) : (
-              allRecipes.length !== 0 &&
-              !isLoading &&
+            ) : allRecipes.length !== 0 && !isLoading ? (
               allRecipes.map(({ _id, title, description, time, preview }) => {
                 return (
                   <RecipeCard
@@ -78,9 +77,11 @@ const Favorite = () => {
                   />
                 );
               })
+            ) : (
+              <NothingAdd />
             )}
           </ul>
-          <BasicPagination count={8} />
+          {allRecipes.length > 4 && <BasicPagination count={8} />}
         </section>
       </div>
     </div>

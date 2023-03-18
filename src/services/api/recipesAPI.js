@@ -35,7 +35,7 @@ export const getAllCategories = async () => {
 export const getCategorieRecipes = async (
   category = '',
   page = 1,
-  limit = 12,
+  limit = 8,
 ) => {
   try {
     const { data } = await axios.get(

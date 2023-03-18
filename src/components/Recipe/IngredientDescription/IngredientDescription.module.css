@@ -4,16 +4,14 @@
   justify-content: center;
   width: 114px;
   height: 54px;
-  margin-right: 13px;
+  padding-right: 13px;
 }
 
 @media screen and (min-width: 768px) {
   .wrapper {
     width: 258px;
     height: 114px;
-    margin-right: 15px;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    padding-right: 15px;
   }
 }
 
@@ -23,7 +21,7 @@
     height: 60px;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-right: 37px;
+    padding-right: 37px;
   }
 }
 

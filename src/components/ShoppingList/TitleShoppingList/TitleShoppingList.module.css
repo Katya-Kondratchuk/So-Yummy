@@ -71,7 +71,7 @@
 }
 @media screen and (min-width: 768px) {
   .rightPartText {
-    width: 213px;
+    width: 233px;
     font-size: 18px;
     line-height: 27px;
     padding-left: 25px;
@@ -80,7 +80,7 @@
 
 @media screen and (min-width: 1440px) {
   .rightPartText {
-    width: 361px;
+    width: 381px;
     line-height: 26px;
   }
 }

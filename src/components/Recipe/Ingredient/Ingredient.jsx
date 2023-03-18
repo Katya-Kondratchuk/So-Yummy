@@ -7,11 +7,13 @@ import css from './Ingredient.module.css';
 
 const Ingredient = ({ title, thumb, measure, desc, type, id }) => {
   return (
-    <div className={css.wrapper}>
-      <IngredientPhoto image={thumb} />
-      <IngredientDescription name={title} description={desc} />
-      <IngredientsNumber measure={measure} />
-      <CheckBoxRecipe id={id} measure={measure} />
+    <div className={css.thumb}>
+      <div className={css.wrapper}>
+        <IngredientPhoto image={thumb} />
+        <IngredientDescription name={title} description={desc} />
+        <IngredientsNumber measure={measure} />
+        <CheckBoxRecipe id={id} measure={measure} />
+      </div>
     </div>
   );
 };

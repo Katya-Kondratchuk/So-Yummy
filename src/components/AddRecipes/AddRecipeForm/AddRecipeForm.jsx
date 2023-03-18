@@ -84,7 +84,6 @@ const createObjError = (acc, curr) => {
   } else {
     acc[curr.path] = curr.message;
   }
-  console.log(acc);
   return acc;
 };
 

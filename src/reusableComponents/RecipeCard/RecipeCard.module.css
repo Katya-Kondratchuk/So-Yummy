@@ -17,9 +17,13 @@
   margin-top: 50px;
 }
 
-.dish:last-child {
+.cardList {
   margin-bottom: 40px;
 }
+
+/* .dish:last-child {
+  margin-bottom: 40px;
+} */
 
 .dishImg {
   height: 124px;
@@ -94,6 +98,10 @@
   justify-content: space-between;
 }
 
+.contentWrapper {
+  padding-bottom: 100px;
+}
+
 @media screen and (min-width: 768px) {
   .dish {
     width: calc(768px - 64px);
@@ -105,7 +113,10 @@
   .dish:first-child {
     margin-top: 100px;
   }
-  .dish:last-child {
+  /* .dish:last-child {
+    margin-bottom: 50px;
+  } */
+  .cardList {
     margin-bottom: 50px;
   }
   .dishImg {
@@ -153,12 +164,17 @@
   .titleWrapper {
     margin: 0;
   }
+  .contentWrapper {
+    padding-bottom: 200px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .dish {
     width: calc(1440px - 200px);
     padding: 40px;
+  }
+  .dish:not(:last-child) {
     margin-bottom: 50px;
   }
   .dishImg {
@@ -192,5 +208,8 @@
   .cardWrapper {
     width: 802px;
     margin-left: 40px;
+  }
+  .contentWrapper {
+    padding-bottom: 100px;
   }
 }

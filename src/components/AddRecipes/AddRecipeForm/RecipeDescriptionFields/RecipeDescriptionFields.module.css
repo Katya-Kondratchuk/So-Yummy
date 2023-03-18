@@ -38,8 +38,8 @@
   opacity: 0.5;
 }
 
-.nameRecipe,
-.description,
+.wrapperErrMessDescr,
+.wrapperErrMessTitle,
 .wrapperCategory {
   margin-bottom: 24px;
 }
@@ -137,8 +137,8 @@
     font-size: 16px;
   }
 
-  .nameRecipe,
-  .description,
+  .wrapperErrMessDescr,
+  .wrapperErrMessTitle,
   .wrapperCategory {
     margin-bottom: 32px;
   }
@@ -150,8 +150,8 @@
     margin-bottom: 104px;
   }
 
-  .nameRecipe,
-  .description,
+  .wrapperErrMessDescr,
+  .wrapperErrMessTitle,
   .wrapperCategory {
     margin-bottom: 40px;
   }
@@ -176,4 +176,39 @@
   border: 4px solid transparent;
   background-clip: content-box;
   background-color: var(--bgScrolbarColorPrimary);
+}
+
+.wrapperErrMessDescr,
+.wrapperErrMessTitle {
+  position: relative;
+}
+
+.errorMessageImg,
+.errorMessage {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--errorColor);
+}
+
+.errorMessageImg {
+  margin-top: 5px;
+}
+
+.errorMessage {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -18px;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapperImgForError {
+    margin-bottom: 32px;
+  }
+  .errorMessageImg {
+    text-align: center;
+  }
 }

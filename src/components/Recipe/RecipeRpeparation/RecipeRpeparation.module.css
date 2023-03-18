@@ -17,7 +17,6 @@
 
 .itemsContainer {
   margin-top: 19px;
-  /* max-height: 332px; */
 }
 @media screen and (min-width: 1440px) {
   .itemsContainer {

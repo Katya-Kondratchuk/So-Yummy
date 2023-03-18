@@ -61,3 +61,13 @@
   color: var(--whiteColor);
   background-color: var(--greenColor);
 }
+
+.btn:disabled {
+  background-color: var(--secondaryGreyTextColorTransparent);
+  color: var(--bgColor);
+  cursor: not-allowed;
+}
+
+.common:hover:disabled {
+  background-color: var(--secondaryGreyTextColorTransparent);
+}

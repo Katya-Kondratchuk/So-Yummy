@@ -174,6 +174,6 @@ export const addOwnRecipe = async formData => {
     return data;
   } catch (error) {
     console.log(error.message);
-    return { error: error.message };
+    return { error };
   }
 };

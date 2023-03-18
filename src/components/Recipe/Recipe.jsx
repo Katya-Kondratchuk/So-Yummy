@@ -14,9 +14,10 @@ const Recipe = () => {
     getRecipeById(recipeId).then(data => setRecipe(data));
   }, [recipeId]);
 
-  if (!recipe) {
+  if (Object.keys(recipe).length === 0) {
     return null;
   }
+
   const {
     description,
     time,

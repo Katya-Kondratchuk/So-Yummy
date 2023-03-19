@@ -20,6 +20,12 @@ const MyRecipes = () => {
     });
   }, [currentPage]);
 
+  useEffect(() => {
+    getOwnRecipe().then(({ total, recipes }) => {
+      // setTotalItems(total);
+      setRecipesArray(recipes);
+    });
+  }, []);
 
     const scrollToTop = () => {
     scroll.scrollToTop();
@@ -89,3 +95,4 @@ const MyRecipes = () => {
 };
 
 export default MyRecipes;
+

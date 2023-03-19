@@ -35,7 +35,7 @@
 .itemWrapper {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 342px;
   padding-top: 14px;
@@ -120,7 +120,7 @@
     padding-top: 50px;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .imageWrapper {
     padding-top: 0px;
   }
@@ -146,12 +146,14 @@
 
 .descriptionWrapper {
   margin-top: 28px;
-  max-height: 332px;
+  max-height: 290px;
   overflow: auto;
+  height: 100%;
 }
 @media screen and (min-width: 768px) {
   .descriptionWrapper {
     margin-top: 25px;
+    max-height: 302px;
   }
 }
 @media screen and (min-width: 1440px) {

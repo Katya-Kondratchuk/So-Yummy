@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   height: 28px;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid var(--countBorder);
   border-radius: 18px;
   overflow: hidden;
 }
@@ -33,13 +33,16 @@
   padding: 7px 14px 7px 10px;
 }
 
-.amountIngredientrs {
-  min-width: 16px;
-  padding: 4px 0;
-  text-align: center;
+.btnDecrease:disabled,
+.btnIncrease:disabled {
+  background-color: var(--secondaryGreyTextColorTransparent);
+  color: var(--bgColor);
+  cursor: not-allowed;
 }
 
-.textNotify {
+.amountIngredientrs {
+  min-width: 16px;
+  padding: 4px 3px;
   text-align: center;
 }
 
@@ -70,7 +73,7 @@
 
   .amountIngredientrs {
     min-width: 20px;
-    padding: 4px 0;
+    padding: 4px 3px;
     text-align: center;
   }
 
@@ -91,4 +94,14 @@
   .wrapperIngredientsFields {
     width: 609px;
   }
+}
+
+.errorMessage {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--errorColor);
+  margin-top: 10px;
 }

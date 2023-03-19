@@ -1,22 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BGDots from '../../reusableComponents/BGDots/BGDots';
 import Title from '../../reusableComponents/Title/Title';
 import MyRecipeItem from './MyResipeItem/MyRecipeItem';
-import Pagination from './PaginationCustom/Pagination';
+// import Pagination from './PaginationCustom/Pagination';
 import css from './MyRecipes.module.css';
-
+import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
 
 const MyRecipes = () => {
+  // const [currentPage, setcurrentPage] = useState(1);
+  // const [itemsPerPage] = useState(4);
+  //  const indexOfLastItem = currentPage * itemsPerPage;
+  //  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  //  const currentItems = arr.slice(indexOfFirstItem, indexOfLastItem);
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+  // const [totalItems, setTotalItems] = useState(0)
+  const [recipesArray, setRecipesArray] = useState([]);
 
+  useEffect(() => {
+    getOwnRecipe().then(({ total, recipes }) => {
+      // setTotalItems(total);
+      setRecipesArray(recipes);
+    });
+  }, []);
 
-  const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage] = useState(4);
-
-   const indexOfLastItem = currentPage * itemsPerPage;
-   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-   const currentItems = arr.slice(indexOfFirstItem, indexOfLastItem);
+  const handelDelete = async (id, event) => {
+    if (event.target.disabled) {
+      return;
+    }
+    event.target.disabled = true;
+    await deleteOwnRecipe(id);
+    await getOwnRecipe(1, 4)
+      .then(data => {
+        // const pageCounts = Math.ceil(data.total / 4);
+        // if (pageCounts > 1) {
+        //   setTotalPage(pageCounts);
+        // } else {
+        //   setTotalPage(null);
+        // }
+        setRecipesArray(data.recipes ?? []);
+      })
+      .catch(e => {
+        console.log(e.message);
+      });
+  };
 
   return (
     <div className=" greensImg">
@@ -25,27 +51,29 @@ const MyRecipes = () => {
         <section className={css.myRecipe}>
           <Title text="My recipes" />
           <ul className={css.cardList}>
-            {currentItems.map(itt => {
-                  return (
-                    <MyRecipeItem
-                    key={itt}
-                    />
-                  );
-                })}
+            {recipesArray.map(
+              ({ category, description, preview, time, title, _id }) => (
+                <MyRecipeItem
+                  key={_id}
+                  handelDelete={handelDelete}
+                  category={category}
+                  description={description}
+                  preview={preview}
+                  time={time}
+                  title={title}
+                  id={_id}
+                />
+              ),
+            )}
           </ul>
-          <Pagination arr={arr} currentPage={currentPage} setcurrentPage={setcurrentPage} itemsPerPage={itemsPerPage} />
+          {/* <Pagination arr={arr} currentPage={currentPage} setcurrentPage={setcurrentPage} itemsPerPage={itemsPerPage} /> */}
         </section>
       </div>
-
     </div>
   );
 };
 
 export default MyRecipes;
-
-
-
-
 
 // ============================================================================
 
@@ -60,7 +88,6 @@ export default MyRecipes;
 //   getAllMyRecipe,
 //   patchMyRecipeById,
 // } from 'services/api/recipesAPI';
-
 
 // const MyRecipes = () => {
 
@@ -96,7 +123,6 @@ export default MyRecipes;
 //     setIsLoading(false);
 //   };
 
- 
 //   const [currentPage, setcurrentPage] = useState(1);
 //   const [itemsPerPage] = useState(4);
 
@@ -152,7 +178,6 @@ export default MyRecipes;
 //   if (minPageNumberLimit >= 1) {
 //     pageDecrementBtn = <li className={css.btnThreePoint} onClick={handlePrevbtn}> &hellip; </li>;
 //   }
-
 
 //   return (
 //     <div className=" greensImg">

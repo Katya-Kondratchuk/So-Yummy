@@ -1,42 +1,59 @@
 import React from 'react';
 import SuperBtn from '../../../reusableComponents/SuperBtn/SuperBtn';
 import TrashButton from '../../../reusableComponents/TrashButton/TrashButton';
-import css from '../MyResipeItem/MyRecipeItem.module.css'
+import css from '../MyResipeItem/MyRecipeItem.module.css';
 import ImageCard from '../ImageCard/ImageCard';
 import TitleRecip from '../TitleRecip/TitleRecip';
 import Textt from '../Text/Text';
 import Time from '../Time/Time';
+import { useLocation } from 'react-router-dom';
 
-const MyRecipeItem = () => {
+const MyRecipeItem = ({
+  category,
+  description,
+  preview,
+  time,
+  title,
+  id,
+  handelDelete,
+}) => {
+  const location = useLocation();
 
   return (
-    <li  className={css.cardItem}>
-      <ImageCard image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"/>
+    <li className={css.cardItem}>
+      <ImageCard image={preview} />
       <div className={css.mainContainer}>
         <div className={css.wrapperButtons}>
-          <TitleRecip text="Apple Frangipan Tart" />
+          <TitleRecip text={title} />
           <div>
-            <TrashButton bgColorClass={'darkBcg'} />
+            <TrashButton
+              bgColorClass={'darkBcg'}
+              onDelete={e => {
+                handelDelete(id, e);
+              }}
+            />
           </div>
         </div>
-        <Textt text="Apple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is d with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesfilled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves.
-        ple Frangipane Tart is a classic and elegant treat fit for any dessert table. A crisp, sweet-crust is d with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesd with rich almond frangipane filling, baked with sliced apples and finished with apricot preservesfilled with rich almond frangipane filling, baked with sliced apples and finished with apricot preserves." />
-        {/* <Textt text="We threw a ladies Melbourne Cup lunch and this was our dessert. Super quick to prepare using store bought pastry." /> */}
+        <Textt text={description} />
         <div className={css.wrapperUp}>
           <div>
-            <Time text="30 m" />
+            <Time text={time} />
           </div>
           <div className={css.superBtnWrapper}>
-            <SuperBtn title="See recipe" lnk to="/main" />
+            <SuperBtn
+              title="See recipe"
+              lnk
+              to={`/recipe/${id}`}
+              statefrom={{ from: location }}
+            />
           </div>
         </div>
       </div>
     </li>
-          )}
+  );
+};
 
 export default MyRecipeItem;
-
-
 
 // =====================================================
 
@@ -83,12 +100,3 @@ export default MyRecipeItem;
 //   )}
 
 // export default MyRecipeItem;
-
-
-
-
-
-
-
-
-

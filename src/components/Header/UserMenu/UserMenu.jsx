@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Modal from 'reusableComponents/Modal/Modal';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import EditUserForm from './EditUserForm/EditUserForm';
@@ -12,6 +12,7 @@ const UserMenu = () => {
   const [modalEdit, setModalEdit] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
 
+  const userMenuContainerRef = useRef();
   const openModal = () => {
     setModalSmall(true);
   };
@@ -38,7 +39,11 @@ const UserMenu = () => {
 
   return (
     <div className={css.wrapper}>
-      <div className={css.container} onClick={openModal}>
+      <div
+        ref={userMenuContainerRef}
+        className={css.container}
+        onClick={openModal}
+      >
         <UserAvatar />
         <UserName />
       </div>
@@ -48,6 +53,7 @@ const UserMenu = () => {
             closeModal={closeModal}
             openEdit={openModalEdit}
             openConfirm={openModalConfirm}
+            container={userMenuContainerRef.current}
           />
         </Modal>
       )}

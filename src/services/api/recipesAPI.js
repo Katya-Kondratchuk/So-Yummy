@@ -35,7 +35,7 @@ export const getAllCategories = async () => {
 export const getCategorieRecipes = async (
   category = '',
   page = 1,
-  limit = 12,
+  limit = 8,
 ) => {
   try {
     const { data } = await axios.get(
@@ -82,7 +82,11 @@ export const getAllFavorite = async (page, limit) => {
 
 export const postUserInfo = async info => {
   try {
-    const { data } = await axios.post(`/user-info/set-user-info`, info);
+    const { data } = await axios.post(`/user-info/set-user-info`, info, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return data;
   } catch (error) {
     console.log(error.message);
@@ -127,5 +131,85 @@ export const deleteShoppingList = async id => {
   } catch (error) {
     console.log(error.message);
     return null;
+  }
+};
+
+export const getIngregientsList = async () => {
+  try {
+    const { data } = await axios.get(`/recipes/ingredients`);
+    return data.ingredients;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getSearchByTitle = async (query, page, limit, sort) => {
+  try {
+    const { data } = await axios.get(
+      `/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getSearchByIngredients = async (query, page, limit, sort) => {
+  try {
+    const { data } = await axios.get(
+      `/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const addOwnRecipe = async formData => {
+  try {
+    const { data } = await axios.post(`/own-recipes`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};
+
+export const getOwnRecipe = async (page = 1, limit = 4) => {
+  try {
+    const { data } = await axios.get(
+      `/own-recipes?page=${page}&limit=${limit}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};
+
+export const deleteOwnRecipe = async id => {
+  try {
+    const { data } = await axios.delete(`/own-recipes/id/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
+  }
+};
+
+export const getOwnRecipeById = async id => {
+  try {
+    const { data } = await axios.get(`/own-recipes/id/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return { error };
   }
 };

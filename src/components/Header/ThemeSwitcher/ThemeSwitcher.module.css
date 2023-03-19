@@ -1,5 +1,7 @@
 .container {
-  position: relative;
+  position: absolute;
+  left: 16px;
+  bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,10 +50,20 @@ body.themeDark {
   --bgColor: rgba(0, 0, 0, 0.8);
   --titleColor: #fafafa;
   --secondaryBlackColor: #8aa936;
-
-  transition: 1s;
 }
 
 body.themeDark .downText {
   --secondaryBlackColor: #fff;
+}
+
+body {
+  transition: 1s;
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
 }

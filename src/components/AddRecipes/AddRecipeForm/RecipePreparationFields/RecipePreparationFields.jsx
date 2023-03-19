@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './RecipePreparationFields.module.css';
 
-const RecipePreparationFields = ({ value, onChange }) => {
+const RecipePreparationFields = ({ value, onChange, formErrors }) => {
   return (
     <div className={css.wrapperTextarea}>
       <h3 className={css.title}>Recipe Preparation</h3>
@@ -12,6 +12,9 @@ const RecipePreparationFields = ({ value, onChange }) => {
         value={value}
         onChange={e => onChange(e.target.value)}
       />
+      {formErrors?.instructions && (
+        <p className={css.errorMessage}>{formErrors?.instructions}</p>
+      )}
     </div>
   );
 };
@@ -19,6 +22,7 @@ const RecipePreparationFields = ({ value, onChange }) => {
 RecipePreparationFields.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  formErrors: PropTypes.object,
 };
 
 export default RecipePreparationFields;

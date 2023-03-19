@@ -1,10 +1,21 @@
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { updateSearchQuery } from 'redux/search/searchSlice';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Hero from '../Hero/Hero';
 import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
 import css from './Search.module.css';
 
 const MainHero = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onInputSubmit = e => {
+    e.preventDefault();
+    if (!e.target.search.value) return;
+    dispatch(updateSearchQuery(e.target.search.value));
+    navigate('/search');
+  };
   return (
     <div className={clsx('container', css.container)}>
       <div className={css.nameWrapper}>
@@ -17,9 +28,9 @@ const MainHero = () => {
         You can add your own recipes to save them for the future.
       </p>
       <ChooseYourBreakfast />
-      <div className={css.heroInput}>
-        <SearchInput lnk dark />
-      </div>
+      <form onSubmit={onInputSubmit} className={css.heroInput}>
+        <SearchInput searchQuery="" name="search" lnk dark />
+      </form>
       <Hero />
     </div>
   );

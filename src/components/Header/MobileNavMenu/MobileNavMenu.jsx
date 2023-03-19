@@ -4,6 +4,7 @@ import css from './MobileNavMenu.module.css';
 import MobMenuCloseBtn from './MobMenuCloseBtn/MobMenuCloseBtn';
 import { Link } from 'react-router-dom';
 import Logo from 'reusableComponents/Logo/Logo';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 
 const MobileNavMenu = ({ closeMenu }) => {
   return (
@@ -15,6 +16,7 @@ const MobileNavMenu = ({ closeMenu }) => {
       </div>
       <MobMenuCloseBtn className={css.mobNavBtn} closeMenu={closeMenu} />
       <HeaderNavigation closeMenu={closeMenu} />
+      <ThemeSwitcher />
     </div>
   );
 };

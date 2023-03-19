@@ -57,8 +57,8 @@ const UserMenuModalForm = ({ onClose }) => {
           .then(toast.sucsess('Your name was changed'))
           .catch(error => toast.error('An error occured, try again'));
       else if (image) {
-        postUserInfo({ avatar: image })
-          .then(toast.sucsess('Your avatar was changed'))
+        postUserInfo({ name: userName, avatar: image })
+          .then(toast.sucsess('Your data was changed'))
           .catch(error => toast.error('An error occured, try again'));
       } else return toast.error('Change your data please');
     },

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import BGDots from '../../reusableComponents/BGDots/BGDots';
 import Title from '../../reusableComponents/Title/Title';
-// import MyRecipeItem from './MyResipeItem/MyRecipeItem';
+import MyRecipeItem from './MyResipeItem/MyRecipeItem';
 // import Pagination from './PaginationCustom/Pagination';
 import css from './MyRecipes.module.css';
-import { getOwnRecipe } from 'services/api/recipesAPI';
+import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
 
 const MyRecipes = () => {
   // const [currentPage, setcurrentPage] = useState(1);
@@ -23,6 +23,27 @@ const MyRecipes = () => {
     });
   }, []);
 
+  const handelDelete = async (id, event) => {
+    if (event.target.disabled) {
+      return;
+    }
+    event.target.disabled = true;
+    await deleteOwnRecipe(id);
+    await getOwnRecipe(1, 4)
+      .then(data => {
+        // const pageCounts = Math.ceil(data.total / 4);
+        // if (pageCounts > 1) {
+        //   setTotalPage(pageCounts);
+        // } else {
+        //   setTotalPage(null);
+        // }
+        setRecipesArray(data.recipes ?? []);
+      })
+      .catch(e => {
+        console.log(e.message);
+      });
+  };
+
   return (
     <div className=" greensImg">
       <BGDots />
@@ -30,14 +51,20 @@ const MyRecipes = () => {
         <section className={css.myRecipe}>
           <Title text="My recipes" />
           <ul className={css.cardList}>
-            {recipesArray.map(item => console.log(item))}
-            {/* {currentItems.map(itt => {
-                  return (
-                    <MyRecipeItem
-                    key={itt}
-                    />
-                  );
-                })} */}
+            {recipesArray.map(
+              ({ category, description, preview, time, title, _id }) => (
+                <MyRecipeItem
+                  key={_id}
+                  handelDelete={handelDelete}
+                  category={category}
+                  description={description}
+                  preview={preview}
+                  time={time}
+                  title={title}
+                  id={_id}
+                />
+              ),
+            )}
           </ul>
           {/* <Pagination arr={arr} currentPage={currentPage} setcurrentPage={setcurrentPage} itemsPerPage={itemsPerPage} /> */}
         </section>

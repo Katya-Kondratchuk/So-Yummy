@@ -32,7 +32,7 @@ const Recipe = () => {
         .catch(error => console.log(error));
       setIsLoading(false);
     }, 1000);
-  }, [recipeId]);
+  }, [recipeId, location.state?.from]);
 
   // if (Object.keys(recipe).length === 0) {
   //   return null;

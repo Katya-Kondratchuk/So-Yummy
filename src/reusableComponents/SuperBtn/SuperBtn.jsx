@@ -14,6 +14,7 @@ const SuperBtn = ({
   welcome,
   disabled = false,
   children,
+  statefrom,
 }) => {
   if (lnk) {
     return (
@@ -26,6 +27,7 @@ const SuperBtn = ({
           [css.welcome]: welcome,
         })}
         to={to}
+        state={statefrom}
       >
         {title}
         {children}

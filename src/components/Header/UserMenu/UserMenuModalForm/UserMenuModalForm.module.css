@@ -1,20 +1,42 @@
 .inputTypeFile {
   display: none;
 }
+.defaultImg {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .plusIcon {
   position: absolute;
   bottom: -6px;
   right: 13px;
+  z-index: 2;
+}
+.clearButton {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  left: 149px;
+  top: 93px;
+  z-index: 3;
 }
 .avatarChanger {
   margin-bottom: 56px;
   position: relative;
 }
+.avatarChangerLebel {
+  position: relative;
+  left: 35%;
+}
 .avatarPrevew {
   position: relative;
   top: 23px;
   width: 88px;
-  left: 33%;
+  left: 0;
   height: 88px;
   margin: 0 auto;
   border-radius: 50%;
@@ -33,9 +55,9 @@
 .fileWarning {
   color: var(--errorColor);
   position: absolute;
-  bottom: -33px;
   bottom: -34px;
-  left: -83px;
+  left: -97px;
+  width: 280px;
 }
 .userModal {
   position: absolute;
@@ -84,16 +106,18 @@
   padding-right: 40px;
   font-size: 14px;
   line-height: 1.5;
+  opacity: 0.7;
+
   transition: all 0.2s ease;
 }
-/* .formInputUserMenu:hover,
+.formInputUserMenu:hover,
 .formInputUserMenu:focus {
-  border: 1px solid var(--whiteColor);
   opacity: 1;
-} */
+}
 
 .formInputUserMenu::placeholder {
   color: var(--secondaryTextColor);
+  font-size: 14px;
 }
 .formInputUserMenu:hover,
 .formInputUserMenu:focus {
@@ -101,6 +125,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .formInputUserMenu::placeholder {
+    font-size: 18px;
+  }
   .userAvatar {
     height: 103px;
     width: 103px;
@@ -109,14 +136,17 @@
     top: 23px;
     width: 103px;
     height: 103px;
-    left: 37%;
   }
-
+  .clearButton {
+    left: 206px;
+    top: 108px;
+  }
   .fileWarning {
     color: var(--errorColor);
     position: absolute;
-    bottom: -53px;
-    left: 63px;
+    bottom: -33px;
+    text-align: center;
+    left: -84px;
   }
   .avatartPreview {
     width: 103px;
@@ -129,6 +159,7 @@
   .formInputUserMenu {
     padding-left: 51px;
     padding-right: 50px;
+    font-size: 18px;
   }
   .userModal {
     width: 480px;

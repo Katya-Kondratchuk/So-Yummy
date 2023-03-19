@@ -3,21 +3,23 @@ import Header from 'components/Header';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectAuthLoading } from 'redux/auth/authSelectors';
+import css from './SharedLayout.module.css';
 
 const SharedLayout = () => {
-  const loadind = useSelector(selectAuthLoading);
   return (
-    <>
-      {!loadind && <Header />}
+    <div className={css.container}>
+      <div className={css.content}>
+        <Header />
 
-      <Suspense fallback={<LoaderSuspense />}>
-        <Outlet />
-      </Suspense>
+        <Suspense fallback={<LoaderSuspense />}>
+          <Outlet />
+        </Suspense>
+      </div>
 
-      {!loadind && <Footer />}
-    </>
+      <div className={css.footer}>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

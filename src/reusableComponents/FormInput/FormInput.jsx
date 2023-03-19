@@ -9,6 +9,7 @@ const FormInput = ({
   onChange = () => {},
   name = '',
   erorr,
+  userInitName = '',
   value = '',
   formInputArea = '',
   formInputUserMenu = '',
@@ -21,12 +22,13 @@ const FormInput = ({
     type,
     formInputUserMenu,
     formInputFooterForm = '',
+    userInitName,
   ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
       return `${css.formInput} ${css.formInputInsecure}`;
     } else if (erorr && value) {
       return `${css.formInput} ${css.formInputInvalid} `;
-    } else if (!erorr && value) {
+    } else if (!erorr && value && value !== userInitName) {
       return `${css.formInput} ${css.formInputValid} `;
     } else if (formInputUserMenu) {
       return `${formInputUserMenu}`;
@@ -45,6 +47,7 @@ const FormInput = ({
           type,
           formInputUserMenu,
           formInputFooterForm,
+          userInitName,
         )}
         type={type}
         onChange={onChange}
@@ -55,7 +58,7 @@ const FormInput = ({
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
-        {switchStateImages(erorr, value, formInputUserMenu, name)}
+        {switchStateImages(erorr, value, formInputUserMenu, name, userInitName)}
       </span>
     </div>
   );

@@ -10,11 +10,11 @@ import TitleShoppingList from './TitleShoppingList/TitleShoppingList';
 
 const ShoppingList = () => {
   const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDeleteIngridient = async (id, item = '') => {
-    if (isLoading) return;
-    await patchShoppingList({ productId: id, measure: item })
+  const handleDeleteIngridient = async (productId, item, e) => {
+    if (e.target.disabled) return;
+    e.target.disabled = true;
+    await patchShoppingList({ productId: productId, measure: item })
       .then(data => {
         toast.info('You removed ingridient from shopping list', {
           toastId: '1234',
@@ -24,7 +24,6 @@ const ShoppingList = () => {
     await getShoppingList()
       .then(({ shoppingList }) => setList(shoppingList))
       .catch(error => console.log(error.message));
-    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const ShoppingList = () => {
               name={title}
               measure={measure}
               id={productId}
-              onDelete={item => handleDeleteIngridient(productId, item)}
+              onDelete={(item, e) => handleDeleteIngridient(productId, item, e)}
             />
           ))}
         </ul>

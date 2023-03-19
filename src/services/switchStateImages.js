@@ -11,7 +11,7 @@ const switchStateImages = (erorr, value, formInputUserMenu, name = '') => {
     return <ErorrIcon />;
   } else if (!erorr && value) {
     return <SucsessIcon />;
-  } else if (!erorr && !value && formInputUserMenu && name === 'edit') {
+  } else if (!erorr && !value && formInputUserMenu && name === 'userName') {
     return <EditIcon />;
   } else {
     return;

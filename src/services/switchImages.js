@@ -14,7 +14,7 @@ const switchImages = name => {
     case 'password':
       return <LockIcon />;
 
-    case 'edit':
+    case 'userName':
       return <UserIcon2 />;
 
     default:

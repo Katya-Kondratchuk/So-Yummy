@@ -63,6 +63,7 @@
   border: 1px solid var(--successColor);
 }
 .formInputInvalid {
+  color: var(--errorColor);
   border: 1px solid var(--errorColor);
 }
 .formInputInvalid:hover,

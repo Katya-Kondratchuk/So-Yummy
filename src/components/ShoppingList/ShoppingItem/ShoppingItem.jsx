@@ -21,8 +21,8 @@ const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
             <button
               className={css.button}
               type="button"
-              onClick={() => {
-                onDelete(item);
+              onClick={e => {
+                onDelete(item, e);
               }}
             ></button>
           </div>

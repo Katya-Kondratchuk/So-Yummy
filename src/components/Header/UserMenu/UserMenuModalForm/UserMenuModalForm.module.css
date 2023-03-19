@@ -106,16 +106,18 @@
   padding-right: 40px;
   font-size: 14px;
   line-height: 1.5;
+  opacity: 0.7;
+
   transition: all 0.2s ease;
 }
-/* .formInputUserMenu:hover,
+.formInputUserMenu:hover,
 .formInputUserMenu:focus {
-  border: 1px solid var(--whiteColor);
   opacity: 1;
-} */
+}
 
 .formInputUserMenu::placeholder {
   color: var(--secondaryTextColor);
+  font-size: 14px;
 }
 .formInputUserMenu:hover,
 .formInputUserMenu:focus {
@@ -123,6 +125,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .formInputUserMenu::placeholder {
+    font-size: 18px;
+  }
   .userAvatar {
     height: 103px;
     width: 103px;
@@ -154,6 +159,7 @@
   .formInputUserMenu {
     padding-left: 51px;
     padding-right: 50px;
+    font-size: 18px;
   }
   .userModal {
     width: 480px;

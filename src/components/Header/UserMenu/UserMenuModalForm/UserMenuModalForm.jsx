@@ -3,10 +3,7 @@ import { useFormik } from 'formik';
 import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
 import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
 import { useSelector } from 'react-redux';
-import {
-  // selectAuthUserAvatarURL,
-  selectAuthUserName,
-} from 'redux/auth/authSelectors';
+import { selectAuthUserName } from 'redux/auth/authSelectors';
 import * as yup from 'yup';
 import css from './UserMenuModalForm.module.css';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
@@ -15,6 +12,7 @@ import FormInput from 'reusableComponents/FormInput/FormInput';
 import switchImages from 'services/switchImages';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { postUserInfo } from 'services/api/recipesAPI';
+import { toast } from 'react-toastify';
 
 const UserMenuModalForm = ({ onClose }) => {
   // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
@@ -23,7 +21,6 @@ const UserMenuModalForm = ({ onClose }) => {
   const initialValues = {
     image: null,
     userName: userInitName || '',
-    newAvatartURL: '',
   };
   let userNameSchema = yup.object().shape({
     image: yup
@@ -47,26 +44,26 @@ const UserMenuModalForm = ({ onClose }) => {
       })
       .min(1, 'Your name must be 1 character at least')
       .max(16, '16 characters max'),
-    // newAvatartURL: yup.string().url('Your image URL is not valid').nullable(),
   });
   const formik = useFormik({
     initialValues,
     validationSchema: userNameSchema,
 
-    onSubmit: values => {
+    onSubmit: (values, { setSubmitting, resetForm }) => {
       const { userName, image } = values;
-      console.log(image);
-      const formData = new FormData();
-      formData.append('image', image);
+      setSubmitting(false);
       if (userInitName !== userName)
-        postUserInfo({ name: userName, avatar: image })
-          .then(console.log)
-          .catch(error => console.log(error.message));
-      else return;
+        postUserInfo({ name: userName })
+          .then(toast.sucsess('Your name was changed'))
+          .catch(error => toast.error('An error occured, try again'));
+      else if (image) {
+        postUserInfo({ avatar: image })
+          .then(toast.sucsess('Your avatar was changed'))
+          .catch(error => toast.error('An error occured, try again'));
+      } else return toast.error('Change your data please');
     },
   });
-  // console.log(userInitAvatar);
-  // console.log(formik.values);
+
   const isValid = userNameSchema.isValidSync(formik.values);
 
   const handleImageChange = e => {
@@ -86,10 +83,6 @@ const UserMenuModalForm = ({ onClose }) => {
   const onClearImgClick = () => {
     setImage('');
   };
-  // console.log(image);
-  // console.log(userInitName);
-  // console.log(formik.errors);
-  // console.log(isValid);
   return (
     <div className={css.userModal}>
       <div className={css.cont}>
@@ -153,9 +146,10 @@ const UserMenuModalForm = ({ onClose }) => {
                 type="text"
                 name="userName"
                 edit
+                userInitName={userInitName}
                 formik={formik}
                 erorr={formik.errors.userName}
-                value={userInitName || formik.values.userName}
+                value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
               />
@@ -169,7 +163,7 @@ const UserMenuModalForm = ({ onClose }) => {
           </div>
         </UserDataForm>
       </div>
-      <MobMenuCloseBtn onClick={onClose} />
+      <MobMenuCloseBtn closeMenu={onClose} />
     </div>
   );
 };

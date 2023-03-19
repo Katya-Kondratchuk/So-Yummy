@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSearchQuery,
   selectSearchResult,
 } from 'redux/search/searchSelectors';
-import {
-  updateSearchQuery,
-  updateSearchResult,
-} from 'redux/search/searchSlice';
+import { updateSearchResult } from 'redux/search/searchSlice';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
@@ -27,14 +24,17 @@ const Search = () => {
   const searchResult = useSelector(selectSearchResult);
   useEffect(() => {
     if (isFirstLoad.current && searchQuery) {
-      console.log(`Start query for ${searchQuery}`);
+      getSearchByTitle(searchQuery).then(res => {
+        dispatch(updateSearchResult(res.recipes));
+      });
     }
     isFirstLoad.current = false;
-  }, [searchQuery]);
+  }, [dispatch, searchQuery]);
 
   const onFormSubmit = e => {
     e.preventDefault();
     console.dir(e.target);
+    if (!e.target.search.value) return;
     if (e.target.type.value === 'title') {
       getSearchByTitle(searchQuery).then(res => {
         console.log(res.recipes);
@@ -53,7 +53,7 @@ const Search = () => {
         <BGDots />
         <Title text={'Search'} />
         <form className={css.searchWrapper} onSubmit={onFormSubmit}>
-          <SearchInput name="search" />
+          <SearchInput name="search" searchQuery={searchQuery} />
           <SearchTypeSelector />
         </form>
         {searchResult.length === 0 && (

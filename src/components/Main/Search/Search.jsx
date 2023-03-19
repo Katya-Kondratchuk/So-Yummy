@@ -9,6 +9,7 @@ const MainHero = () => {
   const navigate = useNavigate();
   const onInputSubmit = e => {
     e.preventDefault();
+    if (!e.target.search.value) return;
     navigate('/search');
   };
   return (
@@ -24,7 +25,7 @@ const MainHero = () => {
       </p>
       <ChooseYourBreakfast />
       <form onSubmit={onInputSubmit} className={css.heroInput}>
-        <SearchInput lnk dark />
+        <SearchInput name="search" lnk dark />
       </form>
       <Hero />
     </div>

@@ -1,11 +1,13 @@
 import Search from 'components/Search/Search';
 import React from 'react';
+import GoToTop from 'services/scrollToTop';
 
 const SearchPage = () => {
   return (
-    <div>
+    <>
       <Search />
-    </div>
+      <GoToTop />
+    </>
   );
 };
 

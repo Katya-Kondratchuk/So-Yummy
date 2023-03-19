@@ -3,6 +3,7 @@ import FollowUs from 'components/AddRecipes/FollowUs';
 import PopularRecipe from 'components/AddRecipes/PopularRecipe';
 import React from 'react';
 import Title from 'reusableComponents/Title/Title';
+import GoToTop from 'services/scrollToTop';
 import s from './AddRecipesPage.module.css';
 
 const AddRecipesPage = () => {
@@ -16,6 +17,7 @@ const AddRecipesPage = () => {
           <PopularRecipe />
         </div>
       </div>
+      <GoToTop />
     </div>
   );
 };

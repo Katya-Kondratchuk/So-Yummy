@@ -1,67 +1,135 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSearchQuery } from 'redux/search/searchSelectors';
-import { updateSearchQuery } from 'redux/search/searchSlice';
+import {
+  selectSearchQuery,
+  selectSearchResult,
+  selectSearchType,
+} from 'redux/search/searchSelectors';
+import {
+  updateSearchQuery,
+  updateSearchResult,
+  updateSearchType,
+} from 'redux/search/searchSlice';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
+import {
+  getSearchByIngredients,
+  getSearchByTitle,
+} from 'services/api/recipesAPI';
 import css from './Search.module.css';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 
 const Search = () => {
-  const [recipes, setRecipes] = useState([
-    //
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    //
-  ]);
   const dispatch = useDispatch();
-  const isFirstLoad = useRef(true);
   const searchQuery = useSelector(selectSearchQuery);
+  const searchType = useSelector(selectSearchType);
+  const searchResult = useSelector(selectSearchResult);
+  const [count, setCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const isFirstLoading = useRef(true);
+
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
+
   useEffect(() => {
-    if (isFirstLoad.current && searchQuery) {
-      console.log(`Start query for ${searchQuery}`);
+    if (isFirstLoading && searchQuery) {
+      if (searchType === 'title') {
+        getSearchByTitle(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+          })
+          .catch(err => console.log(err.message));
+      } else {
+        getSearchByIngredients(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+          })
+          .catch(err => console.log(err.message));
+      }
     }
-    isFirstLoad.current = false;
-  }, [searchQuery]);
+    isFirstLoading.current = false;
+  }, [dispatch, page, searchQuery, searchType]);
+
+  useEffect(() => {
+    if (searchQuery) {
+      if (searchType === 'title') {
+        getSearchByTitle(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+            setPage(res.page);
+          })
+          .catch(err => console.log(err.message));
+      } else {
+        getSearchByIngredients(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+            setPage(res.page);
+          })
+          .catch(err => console.log(err.message));
+      }
+    }
+  }, [dispatch, page, searchQuery, searchType]);
 
   const onFormSubmit = e => {
     e.preventDefault();
-    const value = e.target.elements.search.value;
-    console.log(`Start query for ${value}`);
-    setRecipes([]);
-    dispatch(updateSearchQuery(''));
+    const searchQuery = e.target.elements.search.value;
+    const searchType = e.target.elements.type.value;
+    if (!searchQuery) return;
+    dispatch(updateSearchQuery(searchQuery));
+    dispatch(updateSearchType(searchType));
   };
   return (
     <div className="container">
       <BGDots />
       <Title text={'Search'} />
-      <div className={css.searchContainer}></div>
       <form className={css.searchWrapper} onSubmit={onFormSubmit}>
-        <SearchInput name="search" />
+        <SearchInput name="search" searchQuery={searchQuery} />
         <SearchTypeSelector />
       </form>
-      {recipes.length === 0 && (
+      {searchResult.length === 0 && (
         <>
           <div className={css.noRecipesImg}></div>
           <p className={css.noRecipesText}>Try looking for something else..</p>
         </>
       )}
-      {recipes.length !== 0 && (
+      {searchResult.length !== 0 && (
         <>
           <ul className={css.searchList}>
-            {recipes.map(item => (
-              <li key={item} className={css.searchItem}>
-                <DishCard
-                  image="https://img.theculturetrip.com/wp-content/uploads/2019/12/2aaeed6.jpg"
-                  altText="someDish"
-                  text="Delicious dishes"
-                />
-              </li>
-            ))}
+            {searchResult.map(
+              ({ _id, preview, title, favorite, like, popularity }) => (
+                <li key={_id} className={css.searchItem}>
+                  <DishCard
+                    image={preview}
+                    altText={title}
+                    text={title}
+                    id={_id}
+                    favorite={favorite}
+                    like={like}
+                    popularity={popularity}
+                  />
+                </li>
+              ),
+            )}
           </ul>
-          <BasicPagination />
+          <div className={css.paginationWrp}>
+            <BasicPagination
+              count={count}
+              page={page}
+              isChange={onPageChange}
+            />
+          </div>
         </>
       )}
     </div>

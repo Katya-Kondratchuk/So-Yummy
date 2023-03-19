@@ -1,3 +1,6 @@
+footer {
+  position: relative;
+}
 .footer {
   background-color: var(--secondaryBlackColor);
   position: relative;
@@ -10,15 +13,39 @@
   padding-bottom: 18px;
 }
 
+.leafs {
+  position: absolute;
+  top: -240px;
+  left: 0;
+  width: 320px;
+  height: 240px;
+  background-image: url('../../assets/images/LeafsOnFooter/leafs-footer-mob.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+}
+
 @media only screen and (min-width: 768px) {
   .SocialLinks {
     padding-bottom: 24px;
+  }
+  .leafs {
+    top: -442px;
+    width: 500px;
+    height: 442px;
+    background-image: url('../../assets/images/LeafsOnFooter/leafs-footer-tab.png');
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .SocialLinks {
     padding-bottom: 50px;
+  }
+  .leafs {
+    top: -547px;
+    width: 696px;
+    height: 547px;
+    background-image: url('../../assets/images/LeafsOnFooter/leafs-footer-desc.png');
   }
 }
 

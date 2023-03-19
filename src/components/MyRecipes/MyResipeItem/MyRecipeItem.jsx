@@ -6,6 +6,7 @@ import ImageCard from '../ImageCard/ImageCard';
 import TitleRecip from '../TitleRecip/TitleRecip';
 import Textt from '../Text/Text';
 import Time from '../Time/Time';
+import { useLocation } from 'react-router-dom';
 
 const MyRecipeItem = ({
   category,
@@ -16,6 +17,8 @@ const MyRecipeItem = ({
   id,
   handelDelete,
 }) => {
+  const location = useLocation();
+
   return (
     <li className={css.cardItem}>
       <ImageCard image={preview} />
@@ -37,7 +40,12 @@ const MyRecipeItem = ({
             <Time text={time} />
           </div>
           <div className={css.superBtnWrapper}>
-            <SuperBtn title="See recipe" lnk to="/main" />
+            <SuperBtn
+              title="See recipe"
+              lnk
+              to={`/recipe/${id}`}
+              statefrom={{ from: location }}
+            />
           </div>
         </div>
       </div>

@@ -131,8 +131,11 @@ table {
 
 .navLink.active {
   color: var(--greenColor);
+  stroke: var(--greenColor);
 }
-
+body.openModal {
+  overflow: hidden;
+}
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;

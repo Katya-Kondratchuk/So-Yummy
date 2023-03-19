@@ -4,14 +4,20 @@ import { ReactComponent as ErorrIcon } from '../assets/images/formInputIcons/ero
 import { ReactComponent as EditIcon } from '../assets/images/formInputIcons/edit.svg';
 import warningValidation from './warningValidation';
 
-const switchStateImages = (erorr, value, formInputUserMenu, name = '') => {
+const switchStateImages = (
+  erorr,
+  value,
+  formInputUserMenu,
+  name = '',
+  userInitName = '',
+) => {
   if (!erorr && value && !warningValidation(value) && name === 'password') {
     return <WarningIcon />;
-  } else if (erorr && value) {
+  } else if (erorr && value && value === userInitName) {
     return <ErorrIcon />;
-  } else if (!erorr && value) {
+  } else if (!erorr && value && value !== userInitName) {
     return <SucsessIcon />;
-  } else if (!erorr && !value && formInputUserMenu && name === 'edit') {
+  } else if (!erorr && !value && formInputUserMenu && name === 'userName') {
     return <EditIcon />;
   } else {
     return;

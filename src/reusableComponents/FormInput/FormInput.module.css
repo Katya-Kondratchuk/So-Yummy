@@ -9,8 +9,9 @@
 }
 .formStateIcon {
   position: absolute;
-  top: 12.5px;
+  top: 50%;
   right: 18px;
+  transform: translate(0, -50%);
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -62,7 +63,11 @@
   color: var(--successColor);
   border: 1px solid var(--successColor);
 }
+.formInputValid::placeholder {
+  color: var(--successColor);
+}
 .formInputInvalid {
+  color: var(--errorColor);
   border: 1px solid var(--errorColor);
 }
 .formInputInvalid:hover,
@@ -106,9 +111,6 @@
     left: 5%;
     width: 24px;
     height: 24px;
-  }
-  .formStateIcon {
-    top: 33%;
   }
 }
 .clearButton {

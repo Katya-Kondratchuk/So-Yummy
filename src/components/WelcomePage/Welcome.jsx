@@ -1,8 +1,6 @@
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import css from './Welcome.module.css';
 import Logo from 'reusableComponents/Logo/Logo';
-// import UserMenuModalForm from 'components/Header/UserMenu/UserMenuModalForm/UserMenuModalForm';
-// import HeroTransformer from '../Main/heroTransformer/HeroTransformer';
 
 const Welcome = () => {
   return (
@@ -38,11 +36,9 @@ const Welcome = () => {
                 welcome
                 title="Sign in"
               ></SuperBtn>
-              {/* <UserMenuModalForm /> */}
             </div>
           </div>
         </div>
-        {/* <HeroTransformer /> */}
       </div>
     </>
   );

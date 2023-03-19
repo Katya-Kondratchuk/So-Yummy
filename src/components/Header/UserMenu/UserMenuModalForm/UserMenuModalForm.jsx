@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
+import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { useSelector } from 'react-redux';
+import { selectAuthUserName } from 'redux/auth/authSelectors';
 import * as yup from 'yup';
 import css from './UserMenuModalForm.module.css';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
@@ -7,59 +11,78 @@ import HelperText from 'reusableComponents/FormInput/HelperText';
 import FormInput from 'reusableComponents/FormInput/FormInput';
 import switchImages from 'services/switchImages';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
-import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
+import { postUserInfo } from 'services/api/recipesAPI';
+import { toast } from 'react-toastify';
+
 const UserMenuModalForm = ({ onClose }) => {
+  // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
+  const userInitName = useSelector(selectAuthUserName);
+  const [image, setImage] = useState(null);
+  const initialValues = {
+    image: null,
+    userName: userInitName || '',
+  };
   let userNameSchema = yup.object().shape({
+    image: yup
+      .mixed()
+      .nullable()
+      .test('type', 'Only image files are allowed', value => {
+        return (
+          !value ||
+          (value &&
+            ['image/jpeg', 'image/png', 'image/svg'].includes(value.type))
+        );
+      })
+      .test('size', 'An image has to be less then 2mb', value => {
+        return !value || (value && value.size <= 2000000);
+      }),
     userName: yup
       .string()
       .trim()
       .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
         message: 'Special simbols are not allowed',
-        excludeEmptyString: true,
       })
       .min(1, 'Your name must be 1 character at least')
-      .max(16, '16 characters max')
-      .required('Type your name please'),
+      .max(16, '16 characters max'),
   });
   const formik = useFormik({
-    initialValues: {
-      userName: '',
-      newAvatartURL: '',
-    },
+    initialValues,
     validationSchema: userNameSchema,
 
-    onSubmit: values => {
-      //   const { name, email, password } = values;
-      //   dispatch(register({ name, email, password }));
-      //   setSubmitting(false);
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      const { userName, image } = values;
+      setSubmitting(false);
+      if (userInitName !== userName)
+        postUserInfo({ name: userName })
+          .then(toast.sucsess('Your name was changed'))
+          .catch(error => toast.error('An error occured, try again'));
+      else if (image) {
+        postUserInfo({ avatar: image })
+          .then(toast.sucsess('Your avatar was changed'))
+          .catch(error => toast.error('An error occured, try again'));
+      } else return toast.error('Change your data please');
     },
   });
 
   const isValid = userNameSchema.isValidSync(formik.values);
 
-  const [image, setImage] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const handleImageChange = event => {
-    const selectedFile = event.target.files[0];
-    // const imageURL = window.URL.createObjectURL(selectedFile);
+  const handleImageChange = e => {
+    const selectedFile = e.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
-      // const base64String = reader.result.split(',')[1];
-      // console.log(base64String);
-      // console.log(JSON.stringify({ data: base64String }));
+      const base64String = reader.result.split(',')[1];
+      formik.values.newAvatartURL = base64String;
     };
-
-    if (selectedFile.size > 2000000) {
-      setErrorMessage('An image has to be less then 2mb ');
-      setImage(null);
-    } else {
+    if (selectedFile) {
+      formik.values.image = selectedFile;
       setImage(selectedFile);
-      setErrorMessage(null);
+    } else {
+      setImage('');
     }
   };
-
+  const onClearImgClick = () => {
+    setImage('');
+  };
   return (
     <div className={css.userModal}>
       <div className={css.cont}>
@@ -72,45 +95,62 @@ const UserMenuModalForm = ({ onClose }) => {
           divButtonClass={css.divButtonClass}
         >
           <div className={css.avatarChanger}>
-            <label htmlFor="myFileInput">
+            <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
               <div className={css.avatarPrevew}>
                 <input
                   type="file"
-                  onChange={handleImageChange}
+                  name="newAvatartURL"
+                  onChange={e => {
+                    handleImageChange(e);
+                    formik.handleChange(e);
+                  }}
                   className={css.inputTypeFile}
-                  id="myFileInput"
+                  id="newAvatartURL"
                   accept="image/*"
                 />
-
-                <PlusIcon className={css.plusIcon} />
-                {errorMessage && (
-                  <div className={css.fileWarning}>{errorMessage}</div>
+                {!image && <PlusIcon className={css.plusIcon} />}
+                {formik.errors.image ? (
+                  <span className={css.fileWarning}>{formik.errors.image}</span>
+                ) : (
+                  <span className={css.fileWarning}> </span>
                 )}
                 {image && (
                   <div className={css.userAvatar}>
-                    <img src={URL.createObjectURL(image)} alt="selected" />
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="selected"
+                      className={css.defaultImg}
+                    />
                   </div>
                 )}
               </div>
             </label>
+            {image && (
+              <button
+                type="button"
+                onClick={onClearImgClick}
+                className={css.clearButton}
+              >
+                <ErorrIcon />
+              </button>
+            )}
           </div>
           <div className={css.formFromat}>
             <div className={css.formIinputFormat}>
               <FormInput
                 formInputArea={css.formInputArea}
-                // handleClearClick={handleClearClick}
                 switchImages={switchImages}
                 autoComplete="username"
-                placeholder={'Olga'}
+                placeholder={userInitName}
                 id="standard-required-register-username"
                 type="text"
-                name="edit"
+                name="userName"
                 edit
+                userInitName={userInitName}
                 formik={formik}
                 erorr={formik.errors.userName}
                 value={formik.values.userName}
                 onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
                 formInputUserMenu={css.formInputUserMenu}
               />
               {formik.touched.userName && formik.errors.userName && (
@@ -123,7 +163,7 @@ const UserMenuModalForm = ({ onClose }) => {
           </div>
         </UserDataForm>
       </div>
-      <MobMenuCloseBtn onClick={onClose} />
+      <MobMenuCloseBtn closeMenu={onClose} />
     </div>
   );
 };

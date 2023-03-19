@@ -22,9 +22,8 @@ const UserDataForm = ({
       {children}
       <Button
         label={buttonLabel}
-        // onClick = {}
         divClassName={divButtonClass}
-        type={'submit'}
+        type="submit"
         disabled={loading || !isValid}
       />
       {!erorMessage && notify && !loading && isValid ? (

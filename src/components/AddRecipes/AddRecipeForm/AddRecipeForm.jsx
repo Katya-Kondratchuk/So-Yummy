@@ -235,7 +235,7 @@ const AddRecipeForm = () => {
       title,
       description,
       category,
-      time,
+      time: time.slice(0, time.indexOf(' ')),
       ingredients: ingredients.map(({ amount, unit, title }) => ({
         measure: `${amount} ${unit}`,
         id: title._id,
@@ -257,7 +257,7 @@ const AddRecipeForm = () => {
         toast.success(`Your recipe ${title} has been created`);
         resetDataForm();
         setIsShowErrors(false);
-        // const link = `/recipe/${data.id}/true`;
+        // const link = `/recipe/${data.id}`;
         // navigate(link);
       })
       .catch(e => {

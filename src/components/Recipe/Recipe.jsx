@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { IngredientsLoader } from 'reusableComponents/ContentLoader/IngredientsLoader';
-import { getRecipeById } from 'services/api/recipesAPI';
+import { getOwnRecipeById, getRecipeById } from 'services/api/recipesAPI';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
 
 import css from './Recipe.module.css';
@@ -12,10 +12,20 @@ const Recipe = () => {
   const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  console.log(location);
 
   useEffect(() => {
     setIsLoading(true);
+
+    if (location.state?.from) {
+      setTimeout(async () => {
+        await getOwnRecipeById(recipeId)
+          .then(data => setRecipe(data))
+          .catch(error => console.log(error));
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
+
     setTimeout(async () => {
       await getRecipeById(recipeId)
         .then(data => setRecipe(data))

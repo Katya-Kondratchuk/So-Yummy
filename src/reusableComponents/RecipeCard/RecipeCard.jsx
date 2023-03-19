@@ -4,6 +4,23 @@ import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import TrashButton from 'reusableComponents/TrashButton/TrashButton';
 import css from './RecipeCard.module.css';
 
+export function getTimeFromMins(mins) {
+  let minutes = mins;
+  let hours = Math.trunc(mins / 60);
+  if (mins >= 60 && mins < 1440) {
+    minutes = mins % 60;
+    return `${hours} hours ${minutes > 0 ? `${minutes} min` : ''}`;
+  }
+
+  if (hours >= 24) {
+    let days = Math.trunc(hours / 24);
+    hours = hours % 24;
+    minutes = mins % 60;
+    return `${days} day ${hours} hours  ${minutes} min`;
+  }
+  return `${minutes} min`;
+}
+
 const RecipeCard = ({
   id,
   title,
@@ -25,7 +42,7 @@ const RecipeCard = ({
         </div>
         <p className={css.dishDiscriptionFirst}>{text}</p>
         <div className={css.bottomWrapper}>
-          <p className={css.dishTime}>{time}</p>
+          <p className={css.dishTime}>{getTimeFromMins(time)}</p>
           <div className={css.dishButton}>
             <Link to={`/recipe/${id}`}>
               <SuperBtn title={'See recipe'} dark />

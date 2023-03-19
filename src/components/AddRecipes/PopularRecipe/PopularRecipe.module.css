@@ -3,7 +3,7 @@
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: #3e4462;
+  color: var(--mainTextColor);
   margin-bottom: 32px;
 }
 
@@ -30,7 +30,7 @@
   height: 1px;
 
   opacity: 0.17;
-  border: 1px solid #707070;
+  border: 1px solid var(--secondaryLineColor);
 }
 
 .imgWrapper {
@@ -42,17 +42,18 @@
 
 .textWrapper {
   width: 213px;
+  padding-bottom: 20px;
 }
 
 .itemTitle {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-
   letter-spacing: -0.24px;
-
-  color: #3e4462;
+  color: var(--mainTextColor);
   margin-bottom: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .description {
@@ -60,8 +61,9 @@
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: -0.24px;
-  color: #7e7e7e;
+  color: var(--secondaryGreyTextColor);
 }
+
 @media screen and (max-width: 767px) {
   .item:not(:last-child) {
     margin-bottom: 24px;

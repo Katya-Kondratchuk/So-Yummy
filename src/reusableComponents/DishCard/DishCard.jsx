@@ -22,6 +22,7 @@ const DishCard = ({
   setAllData = () => {},
   popularity,
 }) => {
+  const maxTextLength = 26;
   const [isLike, setIsLike] = useState(like);
   const [isFavorite, setIsFavorite] = useState(favorite);
 
@@ -75,7 +76,9 @@ const DishCard = ({
     favorite || isFavorite ? 'var(--secondaryGreenColor)' : 'none';
   const likeFeel = like || isLike ? 'var(--secondaryGreenColor)' : 'none';
   const shortText =
-    text.length < 30 ? text : text.substr(0, 30).replace(/\s+\S*$/, '') + '...';
+    text.length < maxTextLength
+      ? text
+      : text.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
 
   //+++++++++++++++++++++++
   // let show = text;
@@ -100,9 +103,9 @@ const DishCard = ({
         <img src={image} alt={altText} className={css.image} />
       </Link>
       <button
-        onMouseOver={text.length < 30 ? null : toogle}
+        onMouseOver={text.length < maxTextLength ? null : toogle}
         className={css.textContainer}
-        onClick={text.length < 30 ? null : toogle}
+        onClick={text.length < maxTextLength ? null : toogle}
       >
         {isShow ? text : shortText}
       </button>

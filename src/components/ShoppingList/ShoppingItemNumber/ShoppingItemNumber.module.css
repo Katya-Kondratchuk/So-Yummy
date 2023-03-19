@@ -1,31 +1,33 @@
 .wrapper {
   background-color: var(--greenColor);
-  width: 37px;
-  height: 23px;
+  width: 120px;
+  min-height: 23px;
   color: var(--whiteColor);
   font-size: 10px;
   line-height: 15px;
   border-radius: 4px;
-  margin-right: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    width: 68px;
-    height: 36px;
-    margin-right: 78px;
-    font-size: 18px;
+    width: 190px;
+    min-height: 36px;
+    font-size: 14px;
     line-height: 27px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .wrapper {
-    width: 68px;
+    width: 197px;
     height: 35px;
-    margin-right: 90px;
+    font-size: 16px;
   }
 }

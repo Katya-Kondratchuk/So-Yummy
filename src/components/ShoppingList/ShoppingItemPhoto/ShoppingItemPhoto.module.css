@@ -5,6 +5,7 @@
   background-size: cover;
   border-radius: 6px;
   background-color: var(--ingridientsBcg);
+  margin: auto;
 }
 
 @media screen and (min-width: 768px) {

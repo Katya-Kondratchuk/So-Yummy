@@ -3,17 +3,16 @@ import IngridientField from './IngridientField/IngridientField';
 import { v4 as uuidv4 } from 'uuid';
 import { ReactComponent as IncreaseIcon } from 'assets/images/AddRecipe/increase.svg';
 import { ReactComponent as DecreaseIcon } from 'assets/images/AddRecipe/decrease.svg';
-
 import css from './RecipeIngredientsFields.module.css';
-import meals from 'data/meals.json';
-
-const units = ['tbs', 'tsp', 'kg', 'g'];
+import { units } from 'data/dataForAddRecipeForm';
 
 const RecipeIngredientsFields = ({
   ingredients = [],
   setIngredients,
   onUpdate,
   onRemove,
+  allIngredients = [],
+  formErrors = {},
 }) => {
   return (
     <div className={css.wrapperIngredientsFields}>
@@ -23,7 +22,11 @@ const RecipeIngredientsFields = ({
           <button
             type="button"
             className={css.btnDecrease}
+            disabled={ingredients.length === 0}
             onClick={() => {
+              if (ingredients.length === 0) {
+                return;
+              }
               setIngredients(ingredients.slice(0, ingredients.length - 1));
             }}
           >
@@ -35,9 +38,13 @@ const RecipeIngredientsFields = ({
           <button
             type="button"
             className={css.btnIncrease}
+            disabled={ingredients.length === 20}
             onClick={() => {
+              if (ingredients.length === 20) {
+                return;
+              }
               const id = uuidv4();
-              const newData = { id, title: '', amount: '1', unit: 'g' };
+              const newData = { id, title: {}, amount: '1', unit: 'g' };
               const updateIngredients = [...ingredients, newData];
               setIngredients(updateIngredients);
             }}
@@ -51,11 +58,14 @@ const RecipeIngredientsFields = ({
           Add the right ingredients to your recipe
         </p>
       )}
+      {ingredients.length === 0 && formErrors?.ingredients && (
+        <p className={css.errorMessage}>{formErrors.ingredients}</p>
+      )}
       {ingredients.length > 0 && (
         <ul>
-          {ingredients.map(el => (
+          {ingredients.map((el, index) => (
             <IngridientField
-              meals={meals}
+              allIngredients={allIngredients}
               units={units}
               classItem={css.itemIngridient}
               key={el.id}
@@ -63,6 +73,9 @@ const RecipeIngredientsFields = ({
               data={el}
               onUpdate={onUpdate}
               onRemove={onRemove}
+              errorMessage={
+                formErrors?.ingredients ? formErrors.ingredients[index] : ''
+              }
             />
           ))}
         </ul>
@@ -76,6 +89,8 @@ RecipeIngredientsFields.propTypes = {
   setIngredients: PropTypes.func,
   onUpdate: PropTypes.func,
   onRemove: PropTypes.func,
+  allIngredients: PropTypes.array,
+  formErrors: PropTypes.object,
 };
 
 export default RecipeIngredientsFields;

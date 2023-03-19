@@ -1,3 +1,14 @@
+.titleWrapper {
+  padding-bottom: 20px;
+  padding-top: 50px;
+}
+@media screen and (min-width: 768px) {
+  .titleWrapper {
+    padding-top: 72px;
+    padding-bottom: 38px;
+  }
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -8,16 +19,12 @@
   padding-right: 14px;
   background-color: var(--greenColor);
   border-radius: 8px;
-  margin-bottom: 32px;
-  margin-top: 50px;
 }
 @media screen and (min-width: 768px) {
   .title {
     width: 704px;
     height: 58px;
     padding-right: 20px;
-    margin-top: 44px;
-    margin-bottom: 50px;
   }
 }
 
@@ -26,7 +33,6 @@
     width: 1240px;
     padding-right: 40px;
     padding-left: 40px;
-    margin-bottom: 50px;
   }
 }
 
@@ -56,15 +62,25 @@
   align-items: center;
   justify-content: space-between;
   width: 115px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+  align-items: center;
+  letter-spacing: 0.03em;
+  color: var(--whiteColor);
 }
 @media screen and (min-width: 768px) {
   .rightPartText {
-    width: 213px;
+    width: 233px;
+    font-size: 18px;
+    line-height: 27px;
+    padding-left: 25px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .rightPartText {
-    width: 255px;
+    width: 381px;
+    line-height: 26px;
   }
 }

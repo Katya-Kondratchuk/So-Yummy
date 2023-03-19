@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { deleteShoppingList, postShoppingList } from 'services/api/recipesAPI';
+import { patchShoppingList, postShoppingList } from 'services/api/recipesAPI';
 import css from './CheckBoxRecipe.module.css';
 
 const CheckBoxRecipe = ({ id, measure }) => {
@@ -21,7 +21,7 @@ const CheckBoxRecipe = ({ id, measure }) => {
     }
 
     if (!e.target.checked) {
-      await deleteShoppingList(id)
+      await patchShoppingList({ productId: id, measure })
         .then(data =>
           toast.info('You removed ingridient from shopping list', {
             toastId: '1234',

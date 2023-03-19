@@ -2,7 +2,7 @@ import { useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
@@ -19,7 +19,7 @@ const Categories = () => {
   // const [totalRecipe, setTotalRecipe] = useState(0);
   const { categoryName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  // console.log(category);
+  const isFirst = useRef(true);
 
   const mobile = useMediaQuery('(max-width: 767px)');
   const tablet = useMediaQuery('(max-width: 1439px)');
@@ -39,16 +39,18 @@ const Categories = () => {
       setIsLoading(false);
       return;
     }
-    if (categoryName) {
+    if (isFirst.current && category === 'Beef' && categoryName) {
       setCategory(categoryName);
+      isFirst.current = false;
     }
+
     setTimeout(async () => {
-      getCategorieRecipes(category || '').then(({ recipes, total }) => {
+      await getCategorieRecipes(category || '').then(({ recipes, total }) => {
         setRecepiesCategory(recipes);
         // setTotalRecipe(total);
       });
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
   }, [category, categoryName]);
 
   useEffect(() => {
@@ -81,9 +83,23 @@ const Categories = () => {
             scrollButtons
             allowScrollButtonsMobile
             aria-label="scrollable force tabs example"
+            sx={{
+              '.MuiTabs-indicator': {
+                backgroundColor: '#8BAA36',
+              },
+            }}
           >
             {allCategories.map(({ title, _id }) => (
-              <Tab key={_id} value={title} label={title} />
+              <Tab
+                sx={{
+                  '&.Mui-selected': {
+                    color: '#8BAA36',
+                  },
+                }}
+                key={_id}
+                value={title}
+                label={title}
+              />
             ))}
           </Tabs>
         </Box>

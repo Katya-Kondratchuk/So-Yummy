@@ -1,10 +1,12 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .wrapper {
     padding-top: 96px;
+    padding-bottom: 200px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -16,11 +18,16 @@
 }
 
 .itemsContainer {
-  margin-top: 19px;
+  padding-top: 19px;
+}
+@media screen and (min-width: 768px) {
+  .itemsContainer {
+    padding-top: 0px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .itemsContainer {
-    margin-top: 0px;
+    padding-top: 0px;
     max-height: 664px;
   }
 }
@@ -35,7 +42,7 @@
 }
 @media screen and (min-width: 768px) {
   .itemWrapper {
-    margin-top: 9px;
+    padding-top: 9px;
     width: 678px;
   }
 }
@@ -105,26 +112,35 @@
   }
 }
 
+.imageWrapper {
+  padding-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    padding-top: 50px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    padding-top: 0px;
+  }
+}
+
 .image {
   width: 343px;
   background-size: cover;
   border-radius: 8px;
   background-color: var(--secondaryGreenColor);
-  margin-top: 40px;
-  margin-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .image {
     width: 704px;
-    margin-top: 50px;
-    margin-bottom: 200px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .image {
     width: 664px;
-    margin-top: 0px;
   }
 }
 

@@ -9,19 +9,26 @@ import {
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
 import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
+import NothingAdd from './NothingAdd/NothingAdd';
+import css from '../../reusableComponents/RecipeCard/RecipeCard.module.css';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     try {
       setTimeout(async () => {
-        await getAllFavorite(page, 6).then(data => {
+        await getAllFavorite(page, 4).then(data => {
           if (!data) {
             return;
+          }
+          const pageCounts = Math.ceil(data.total / 4);
+          if (pageCounts > 1) {
+            setTotalPage(pageCounts);
           }
           setAllRecipes(data.recipes);
         });
@@ -36,32 +43,41 @@ const Favorite = () => {
   const handelDelete = async (id, event) => {
     if (event.target.disabled) {
       // Защита от двойного клика
-      setPage(1);
       return;
     }
     event.target.disabled = true;
     await patchRecipeFavoriteById(id);
     // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
     // setAllRecipes(newRecipes);
-    await getAllFavorite(page, 6)
-      .then(data => setAllRecipes(data.recipes ?? []))
+    await getAllFavorite(page, 4)
+      .then(data => {
+        const pageCounts = Math.ceil(data.total / 4);
+        // console.log(data.total);
+        if (pageCounts > 1) {
+          setTotalPage(pageCounts);
+        } else {
+          setTotalPage(null);
+        }
+        setAllRecipes(data.recipes ?? []);
+      })
       .catch(e => {
         console.log(e.message);
       });
+  };
+  const handleChange = (event, value) => {
+    setPage(value);
   };
 
   return (
     <div className=" greensImg">
       <BGDots />
       <div className={'container'}>
-        <section>
+        <section className={css.contentWrapper}>
           <Title text="Favorites" />
-          <ul>
+          <ul className={css.cardList}>
             {isLoading ? (
               <FavoriteLoader />
-            ) : (
-              allRecipes.length !== 0 &&
-              !isLoading &&
+            ) : allRecipes.length !== 0 && !isLoading ? (
               allRecipes.map(({ _id, title, description, time, preview }) => {
                 return (
                   <RecipeCard
@@ -78,9 +94,17 @@ const Favorite = () => {
                   />
                 );
               })
+            ) : (
+              <NothingAdd />
             )}
           </ul>
-          <BasicPagination count={8} />
+          {totalPage && (
+            <BasicPagination
+              count={totalPage}
+              page={page}
+              isChange={handleChange}
+            />
+          )}
         </section>
       </div>
     </div>

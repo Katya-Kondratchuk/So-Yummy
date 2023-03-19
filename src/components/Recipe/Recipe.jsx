@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { IngredientsLoader } from 'reusableComponents/ContentLoader/IngredientsLoader';
 import { getRecipeById } from 'services/api/recipesAPI';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
 
@@ -9,14 +10,22 @@ import TopContainer from './topContainer/TopContainer';
 const Recipe = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getRecipeById(recipeId).then(data => setRecipe(data));
+    setIsLoading(true);
+    setTimeout(async () => {
+      await getRecipeById(recipeId)
+        .then(data => setRecipe(data))
+        .catch(error => console.log(error));
+      setIsLoading(false);
+    }, 1000);
   }, [recipeId]);
 
-  if (!recipe) {
-    return null;
-  }
+  // if (Object.keys(recipe).length === 0) {
+  //   return null;
+  // }
+
   const {
     description,
     time,
@@ -34,7 +43,7 @@ const Recipe = () => {
     youtube,
   } = recipe;
   return (
-    recipe.length !== 0 && (
+    <>
       <div className=" greensImg">
         <TopContainer
           title={title}
@@ -43,16 +52,22 @@ const Recipe = () => {
           favorite={favorite}
           id={_id}
         />
-        <div className={css.wrapper}>
-          <IngredientsContainer
-            ingridients={ingredients}
-            instructions={instructions}
-            previewImg={previewImg}
-            youtube={youtube}
-          />
-        </div>
+        {isLoading ? (
+          <div className="container">
+            <IngredientsLoader />
+          </div>
+        ) : (
+          <div className={css.wrapper}>
+            <IngredientsContainer
+              ingridients={ingredients}
+              instructions={instructions}
+              previewImg={previewImg}
+              youtube={youtube}
+            />
+          </div>
+        )}
       </div>
-    )
+    </>
   );
 };
 

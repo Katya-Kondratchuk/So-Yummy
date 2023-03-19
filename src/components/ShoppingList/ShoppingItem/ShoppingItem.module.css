@@ -4,7 +4,7 @@
   justify-content: flex-start;
   width: 343px;
   min-height: 86px;
-  padding-right: 9px;
+  padding-right: 19px;
   border-radius: 8px;
   border-bottom: 1px solid var(--lineColor);
   padding-bottom: 12px;
@@ -22,7 +22,6 @@
   .wrapper {
     width: 1240px;
     height: 100%;
-    padding: 0;
     padding-right: 68px;
     padding-left: 40px;
     padding-bottom: 12px;
@@ -33,17 +32,17 @@
 .rightWrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 137px;
+  justify-content: space-between;
+  width: 147px;
 }
 @media screen and (min-width: 768px) {
   .rightWrapper {
-    width: 213px;
+    width: 240px;
   }
 }
 @media screen and (min-width: 1440px) {
   .rightWrapper {
-    width: 371px;
+    width: 401px;
   }
 }
 

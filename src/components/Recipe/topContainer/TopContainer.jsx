@@ -4,10 +4,14 @@ import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import clsx from 'clsx';
 import HeroTransformer from '../heroTransformer/HeroTransformer';
 import { patchRecipeFavoriteById } from 'services/api/recipesAPI';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const TopContainer = ({ title, description, time, id, favorite }) => {
   const [isFavorite, setIsFavorite] = useState(favorite);
+
+  useEffect(() => {
+    setIsFavorite(favorite);
+  }, [favorite]);
 
   const addToFavorite = () => {
     patchRecipeFavoriteById(id).then(({ favorite }) => {

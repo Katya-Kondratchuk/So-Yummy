@@ -9,18 +9,18 @@ const RecipeRpeparation = ({ instructions, previewImg, youtube }) => {
     <div className={css.wrapper}>
       <div className={css.itemsContainer}>
         <span className={css.title}>Recipe Preparation</span>
-        <div className={css.descriptionWrapper}>
+        <ul className={css.descriptionWrapper}>
           {instructionList.map((item, index) => (
-            <div key={index} className={css.itemWrapper}>
+            <li key={index} className={css.itemWrapper}>
               {item.length > 1 && (
                 <div className={css.itemNumber}>{(i += 1)}</div>
               )}
               {item.length > 1 && (
                 <span className={css.description}>{item}</span>
               )}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
       <div className={css.imageWrapper}>
         <img

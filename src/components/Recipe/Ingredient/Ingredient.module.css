@@ -1,13 +1,13 @@
 .thumb {
-  padding-bottom: 16px;
+  margin-bottom: 16px;
 }
 @media screen and (min-width: 768px) {
   .thumb {
-    padding-bottom: 24px;
+    margin-bottom: 24px;
   }
 }
 .thumb:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .wrapper {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSearchQuery } from 'redux/search/searchSelectors';
 import { updateSearchQuery } from 'redux/search/searchSlice';
@@ -23,7 +22,7 @@ const SearchInput = ({ dark, name, lnk }) => {
         value={searchQuery}
       ></input>
       <div className={css.buttonWrapper}>
-        <SuperBtn title="Search" lnk={lnk} to="/search" dark={dark} />
+        <SuperBtn title="Search" typeBtn="submit" dark={dark} />
       </div>
     </div>
   );

@@ -1,10 +1,16 @@
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Hero from '../Hero/Hero';
 import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
 import css from './Search.module.css';
 
 const MainHero = () => {
+  const navigate = useNavigate();
+  const onInputSubmit = e => {
+    e.preventDefault();
+    navigate('/search');
+  };
   return (
     <div className={clsx('container', css.container)}>
       <div className={css.nameWrapper}>
@@ -17,9 +23,9 @@ const MainHero = () => {
         You can add your own recipes to save them for the future.
       </p>
       <ChooseYourBreakfast />
-      <div className={css.heroInput}>
+      <form onSubmit={onInputSubmit} className={css.heroInput}>
         <SearchInput lnk dark />
-      </div>
+      </form>
       <Hero />
     </div>
   );

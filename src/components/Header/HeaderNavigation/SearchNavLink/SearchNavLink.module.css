@@ -4,10 +4,10 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 18px;
-  color: var(--secondaryBlackColor);
+  stroke: var(--secondaryBlackColor);
 }
 .navLink:hover {
-  color: var(--greenColor);
+  stroke: var(--greenColor);
 }
 
 @media screen and (min-width: 768px) {

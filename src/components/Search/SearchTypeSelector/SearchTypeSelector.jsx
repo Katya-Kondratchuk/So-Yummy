@@ -6,9 +6,13 @@ const SearchTypeSelector = () => {
     <div className={css.search}>
       <div className={css.searchForm}>
         <label className={css.text}>Search by:</label>
-        <select className={css.select}>
-          <option className={css.option}>Title</option>
-          <option className={css.option}>Ingridient</option>
+        <select name="type" className={css.select}>
+          <option className={css.option} value="title">
+            Title
+          </option>
+          <option className={css.option} value="ingredient">
+            Ingredient
+          </option>
         </select>
       </div>
     </div>

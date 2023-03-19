@@ -82,7 +82,11 @@ export const getAllFavorite = async (page, limit) => {
 
 export const postUserInfo = async info => {
   try {
-    const { data } = await axios.post(`/user-info/set-user-info`, info);
+    const { data } = await axios.post(`/user-info/set-user-info`, info, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return data;
   } catch (error) {
     console.log(error.message);

@@ -1,11 +1,13 @@
 import NotFound from 'components/NotFound';
 import React from 'react';
+import GoToTop from 'services/scrollToTop';
 
 const NotFoundPage = () => {
   return (
-    <div>
+    <>
       <NotFound />
-    </div>
+      <GoToTop />
+    </>
   );
 };
 

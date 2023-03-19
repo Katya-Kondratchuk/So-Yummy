@@ -11,6 +11,7 @@ import {
 import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
 import NothingAdd from './NothingAdd/NothingAdd';
 import css from '../../reusableComponents/RecipeCard/RecipeCard.module.css';
+import { toast } from 'react-toastify';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -49,6 +50,9 @@ const Favorite = () => {
     await patchRecipeFavoriteById(id);
     // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
     // setAllRecipes(newRecipes);
+    toast.info('You delete recipe from favorites list', {
+      toastId: '12345',
+    });
     await getAllFavorite(page, 4)
       .then(data => {
         const pageCounts = Math.ceil(data.total / 4);

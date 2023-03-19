@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { IngredientsLoader } from 'reusableComponents/ContentLoader/IngredientsLoader';
 import { getRecipeById } from 'services/api/recipesAPI';
 import IngredientsContainer from './IngredientsContainer/IngredientsContainer';
@@ -9,8 +9,10 @@ import TopContainer from './topContainer/TopContainer';
 
 const Recipe = () => {
   const { recipeId } = useParams();
+  const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  console.log(location);
 
   useEffect(() => {
     setIsLoading(true);

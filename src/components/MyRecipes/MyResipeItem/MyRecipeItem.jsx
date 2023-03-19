@@ -37,7 +37,7 @@ const MyRecipeItem = ({
             <Time text={time} />
           </div>
           <div className={css.superBtnWrapper}>
-            <SuperBtn title="See recipe" lnk to="/main" />
+            <SuperBtn title="See recipe" lnk to={`/recipe/${id}`} />
           </div>
         </div>
       </div>

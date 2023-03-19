@@ -1,23 +1,20 @@
-import { useDispatch } from 'react-redux';
-import { updateSearchQuery } from 'redux/search/searchSlice';
+import { useState } from 'react';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 
 import css from './SearchInput.module.css';
 
 const SearchInput = ({ dark, name, searchQuery, lnk }) => {
-  const dispatch = useDispatch();
-  const onInputChange = e => {
-    const value = e.target.value;
-    dispatch(updateSearchQuery(value));
-  };
+  const [inputValue, setInputValue] = useState(searchQuery);
 
   return (
     <div className={css.wrapper}>
       <input
+        onChange={e => {
+          setInputValue(e.target.value);
+        }}
         className={css.input}
         name={name}
-        onChange={onInputChange}
-        value={searchQuery}
+        value={inputValue}
       ></input>
       <div className={css.buttonWrapper}>
         <SuperBtn title="Search" typeBtn="submit" dark={dark} />

@@ -1,10 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSearchQuery,
   selectSearchResult,
+  selectSearchType,
 } from 'redux/search/searchSelectors';
-import { updateSearchResult } from 'redux/search/searchSlice';
+import {
+  updateSearchQuery,
+  updateSearchResult,
+  updateSearchType,
+} from 'redux/search/searchSlice';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import DishCard from 'reusableComponents/DishCard/DishCard';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
@@ -19,74 +24,114 @@ import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const isFirstLoad = useRef(true);
   const searchQuery = useSelector(selectSearchQuery);
+  const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
+  const [count, setCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const isFirstLoading = useRef(true);
+
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
+
   useEffect(() => {
-    if (isFirstLoad.current && searchQuery) {
-      getSearchByTitle(searchQuery).then(res => {
-        dispatch(updateSearchResult(res.recipes));
-      });
+    if (isFirstLoading && searchQuery) {
+      if (searchType === 'title') {
+        getSearchByTitle(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+          })
+          .catch(err => console.log(err.message));
+      } else {
+        getSearchByIngredients(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+          })
+          .catch(err => console.log(err.message));
+      }
     }
-    isFirstLoad.current = false;
-  }, [dispatch, searchQuery]);
+    isFirstLoading.current = false;
+  }, [dispatch, page, searchQuery, searchType]);
+
+  useEffect(() => {
+    if (searchQuery) {
+      if (searchType === 'title') {
+        getSearchByTitle(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+            setPage(res.page);
+          })
+          .catch(err => console.log(err.message));
+      } else {
+        getSearchByIngredients(searchQuery, page)
+          .then(res => {
+            dispatch(updateSearchResult(res.recipes));
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
+            setPage(res.page);
+          })
+          .catch(err => console.log(err.message));
+      }
+    }
+  }, [dispatch, page, searchQuery, searchType]);
 
   const onFormSubmit = e => {
     e.preventDefault();
-    console.dir(e.target);
-    if (!e.target.search.value) return;
-    if (e.target.type.value === 'title') {
-      getSearchByTitle(searchQuery).then(res => {
-        console.log(res.recipes);
-        dispatch(updateSearchResult(res.recipes));
-      });
-    } else {
-      getSearchByIngredients(searchQuery).then(res => {
-        console.log(res.recipes);
-        dispatch(updateSearchResult(res.recipes));
-      });
-    }
+    const searchQuery = e.target.elements.search.value;
+    const searchType = e.target.elements.type.value;
+    if (!searchQuery) return;
+    dispatch(updateSearchQuery(searchQuery));
+    dispatch(updateSearchType(searchType));
   };
   return (
-    <div className=" greensImg">
-      <div className="container">
-        <BGDots />
-        <Title text={'Search'} />
-        <form className={css.searchWrapper} onSubmit={onFormSubmit}>
-          <SearchInput name="search" searchQuery={searchQuery} />
-          <SearchTypeSelector />
-        </form>
-        {searchResult.length === 0 && (
-          <>
-            <div className={css.noRecipesImg}></div>
-            <p className={css.noRecipesText}>
-              Try looking for something else..
-            </p>
-          </>
-        )}
-        {searchResult.length !== 0 && (
-          <>
-            <ul className={css.searchList}>
-              {searchResult.map(
-                ({ _id, preview, title, favorite, like, popularity }) => (
-                  <li key={_id} className={css.searchItem}>
-                    <DishCard
-                      image={preview}
-                      altText={title}
-                      text={title}
-                      id={_id}
-                      favorite={favorite}
-                      like={like}
-                      popularity={popularity}
-                    />
-                  </li>
-                ),
-              )}
-            </ul>
-            <BasicPagination />
-          </>
-        )}
-      </div>
+    <div className="container">
+      <BGDots />
+      <Title text={'Search'} />
+      <form className={css.searchWrapper} onSubmit={onFormSubmit}>
+        <SearchInput name="search" searchQuery={searchQuery} />
+        <SearchTypeSelector />
+      </form>
+      {searchResult.length === 0 && (
+        <>
+          <div className={css.noRecipesImg}></div>
+          <p className={css.noRecipesText}>Try looking for something else..</p>
+        </>
+      )}
+      {searchResult.length !== 0 && (
+        <>
+          <ul className={css.searchList}>
+            {searchResult.map(
+              ({ _id, preview, title, favorite, like, popularity }) => (
+                <li key={_id} className={css.searchItem}>
+                  <DishCard
+                    image={preview}
+                    altText={title}
+                    text={title}
+                    id={_id}
+                    favorite={favorite}
+                    like={like}
+                    popularity={popularity}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+          <div className={css.paginationWrp}>
+            <BasicPagination
+              count={count}
+              page={page}
+              isChange={onPageChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

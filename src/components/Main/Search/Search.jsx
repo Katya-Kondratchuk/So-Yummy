@@ -1,5 +1,7 @@
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { updateSearchQuery } from 'redux/search/searchSlice';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Hero from '../Hero/Hero';
 import ChooseYourBreakfast from '../СhooseYourBreakfast/ChooseYourBreakfast';
@@ -7,9 +9,11 @@ import css from './Search.module.css';
 
 const MainHero = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onInputSubmit = e => {
     e.preventDefault();
     if (!e.target.search.value) return;
+    dispatch(updateSearchQuery(e.target.search.value));
     navigate('/search');
   };
   return (
@@ -25,7 +29,7 @@ const MainHero = () => {
       </p>
       <ChooseYourBreakfast />
       <form onSubmit={onInputSubmit} className={css.heroInput}>
-        <SearchInput name="search" lnk dark />
+        <SearchInput searchQuery="" name="search" lnk dark />
       </form>
       <Hero />
     </div>

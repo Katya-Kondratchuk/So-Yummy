@@ -16,6 +16,7 @@ const Footer = () => {
         <span>© 2023 All Rights Reserved.</span>
         <span> Terms of Service</span>
       </div>
+      <div className={css.leafs}></div>
     </footer>
   );
 };

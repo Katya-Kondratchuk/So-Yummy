@@ -1,4 +1,3 @@
-import React from 'react';
 import css from './SearchTypeSelector.module.css';
 
 const SearchTypeSelector = () => {

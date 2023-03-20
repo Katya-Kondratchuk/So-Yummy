@@ -33,24 +33,22 @@ const ShoppingList = () => {
   }, []);
 
   return (
-    <div className="greensImg">
-      <div className="container">
-        <BGDots />
-        <Title text={'Shopping list'} />
-        <TitleShoppingList />
-        <ul className={css.shoppingItemList}>
-          {list.map(({ thumb, title, measure, productId }, index) => (
-            <ShoppingItem
-              key={productId + index}
-              image={thumb}
-              name={title}
-              measure={measure}
-              id={productId}
-              onDelete={(item, e) => handleDeleteIngridient(productId, item, e)}
-            />
-          ))}
-        </ul>
-      </div>
+    <div className="container">
+      <BGDots />
+      <Title text={'Shopping list'} />
+      <TitleShoppingList />
+      <ul className={css.shoppingItemList}>
+        {list.map(({ thumb, title, measure, productId }, index) => (
+          <ShoppingItem
+            key={productId + index}
+            image={thumb}
+            name={title}
+            measure={measure}
+            id={productId}
+            onDelete={(item, e) => handleDeleteIngridient(productId, item, e)}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

@@ -213,3 +213,43 @@ export const getOwnRecipeById = async id => {
     return { error };
   }
 };
+
+export const postResendLink = async info => {
+  try {
+    const { data } = await axios.post(`/users/reset/send-reset-link`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const postResetPassword = async info => {
+  try {
+    const { data } = await axios.post(`/users/reset/reset-password`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const postSetNewPassword = async info => {
+  try {
+    const { data } = await axios.post(`/users/reset/set-new-password`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const postSubscribeList = async info => {
+  try {
+    const { data } = await axios.post(`/user-info/subscribe-list`, info);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

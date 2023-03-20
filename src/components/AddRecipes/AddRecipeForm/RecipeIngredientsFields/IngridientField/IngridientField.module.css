@@ -102,6 +102,7 @@ input[type='number'] {
   border-bottom-right-radius: 6px;
   height: 100%;
   width: 63px;
+  cursor: pointer;
 }
 
 .selectUnit {

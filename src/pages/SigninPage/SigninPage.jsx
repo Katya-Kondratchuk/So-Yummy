@@ -1,11 +1,13 @@
-import SigninForm from "components/SigninForm";
-import React from "react";
+import SigninForm from 'components/SigninForm';
+import React from 'react';
+import GoToTop from 'services/scrollToTop';
 
 const SigninPage = () => {
   return (
-    <div>
+    <>
       <SigninForm />
-    </div>
+      <GoToTop />
+    </>
   );
 };
 

@@ -6,10 +6,14 @@ import HelperText from 'reusableComponents/FormInput/HelperText';
 import { useFormik } from 'formik';
 import FormInput from 'reusableComponents/FormInput/FormInput';
 import switchImages from 'services/switchImages';
+import { postSubscribeList } from 'services/api/recipesAPI';
+import { useSelector } from 'react-redux';
 
 const FooterForm = () => {
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
+  const userEmail = useSelector(state => state.auth.user.email);
 
   let registrationSchema = yup.object().shape({
     email: yup
@@ -28,8 +32,7 @@ const FooterForm = () => {
     validationSchema: registrationSchema,
 
     onSubmit: values => {
-      //   dispatch(register(values.email));
-      //   setSubmitting(false);
+      postSubscribeList({ email: values.email });
     },
   });
   const isValid = registrationSchema.isValidSync(formik.values);
@@ -52,7 +55,7 @@ const FooterForm = () => {
               formInputArea={css.formInputArea}
               // handleClearClick={handleClearClick}
               switchImages={switchImages}
-              placeholder={'Enter your email address'}
+              placeholder={userEmail}
               id="standard-required-register-email"
               type="email"
               name="email"

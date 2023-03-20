@@ -37,6 +37,10 @@ const FooterForm = () => {
         .then(response => {
           if (!response) throw new Error();
           toast.success('You have successfully subscribed!');
+          toast.info(
+            'if you want cancel you subscribing, please, check your email verification.',
+            { autoClose: 7000 },
+          );
         })
         .catch(error => {
           if (error.response && error.response.status === 400) {

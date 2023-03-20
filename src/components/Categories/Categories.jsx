@@ -33,6 +33,7 @@ const Categories = () => {
 
   const handleChange = (event, newValue) => {
     setCategory(newValue);
+    setPage(1);
   };
 
   useEffect(() => {
@@ -51,6 +52,8 @@ const Categories = () => {
       const pageCounts = Math.ceil(total / 8);
       if (pageCounts > 1) {
         setTotalPage(pageCounts);
+      } else {
+        setTotalPage(null);
       }
     });
     setIsLoading(false);

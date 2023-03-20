@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import HeroTransformer from '../heroTransformer/HeroTransformer';
 import { patchRecipeFavoriteById } from 'services/api/recipesAPI';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const TopContainer = ({ title, description, time, id, favorite }) => {
   const [isFavorite, setIsFavorite] = useState(favorite);
@@ -16,6 +17,8 @@ const TopContainer = ({ title, description, time, id, favorite }) => {
   const addToFavorite = () => {
     patchRecipeFavoriteById(id).then(({ favorite }) => {
       setIsFavorite(favorite);
+      favorite && toast.success(`Added to Favorite!`);
+      !favorite && toast.info(`Removed from Favorite!`);
     });
   };
 

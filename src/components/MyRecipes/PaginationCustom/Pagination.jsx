@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as Left } from '../../../assets/images/BtnLeftRight/32404steamingbowl_98938.svg';
 import { ReactComponent as Right } from '../../../assets/images/BtnLeftRight/32386sandwich_98891.svg';
 import css from '../PaginationCustom/Pagination.module.css';
-// import { animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
   const [pageNumberLimit] = useState(4);
@@ -10,7 +10,7 @@ const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   const scrollToTop = () => {
-    // scroll.scrollToTop();
+    scroll.scrollToTop();
   };
 
   const pages = [];

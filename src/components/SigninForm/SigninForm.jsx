@@ -62,6 +62,7 @@ const SigninForm = () => {
     },
   });
   const isValid = signinSchema.isValidSync(formik.values);
+
   return (
     <div className={css.registrComponent}>
       <AuthBackround />

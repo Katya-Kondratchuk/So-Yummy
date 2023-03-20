@@ -8,6 +8,7 @@ const IngredientsContainer = ({
   instructions = '',
   previewImg = '',
   youtube,
+  fullImg,
 }) => {
   return (
     <div className="container">
@@ -31,6 +32,7 @@ const IngredientsContainer = ({
         instructions={instructions}
         previewImg={previewImg}
         youtube={youtube}
+        fullImg={fullImg}
       />
     </div>
   );

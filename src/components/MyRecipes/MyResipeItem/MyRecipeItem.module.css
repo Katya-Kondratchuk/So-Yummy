@@ -43,6 +43,8 @@
 .superBtnWrapper {
     width: 87px;
     height: 27px;
+    font-size: 10px;
+    line-height: 1.5;
 }
 
 
@@ -50,6 +52,8 @@
     .superBtnWrapper {
         width: 138px;
         height: 45px;
+        font-size: 14px;
+        line-height: 2.1;
     }
 
     .mainContainer {
@@ -81,6 +85,8 @@
     .superBtnWrapper {
         width: 172px;
         height: 59px;
+        font-size: 16px;
+        line-height: 2.4;
     }
 
     .mainContainer {

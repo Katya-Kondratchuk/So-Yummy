@@ -1,5 +1,6 @@
 .wrapperTextarea {
-  margin-bottom: 18px;
+  margin-bottom: 32px;
+  position: relative;
 }
 
 .title {
@@ -38,9 +39,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wrapperTextarea {
-    margin-bottom: 32px;
-  }
   .title {
     margin-bottom: 32px;
   }
@@ -73,7 +71,9 @@
 }
 
 .errorMessage {
-  width: 100%;
+  position: absolute;
+  top: 98%;
+  left: 0;
   font-family: 'Poppins';
   font-weight: 400;
   font-size: 14px;

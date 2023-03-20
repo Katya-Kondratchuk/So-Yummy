@@ -192,11 +192,7 @@ export const setupInterceptors = store => {
           }
         }
 
-        if (
-          e.response.status === 401 &&
-          e.response.status === 400 &&
-          !originalConfig._retry
-        ) {
+        if (e.response.status === 401 && !originalConfig._retry) {
           originalConfig._retry = true;
           try {
             const { refreshToken } = store.getState().auth;

@@ -22,24 +22,10 @@ const remove = key => {
   }
 };
 
-const saveArrayItemToStorage = (key, item) => {
-  let storageData = get(key) || [];
-  storageData = [...storageData, item];
-  save(key, storageData);
-};
-
-const deleteArrayItemFromStorage = (key, id) => {
-  let storageData = get(key);
-  storageData = storageData.filter(data => data.id !== id);
-  save(key, storageData);
-};
-
 const storageServises = {
   get,
   save,
   remove,
-  saveArrayItemToStorage,
-  deleteArrayItemFromStorage,
 };
 
 export default storageServises;

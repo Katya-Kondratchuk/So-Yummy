@@ -21,7 +21,7 @@ const MyRecipes = () => {
 
   useEffect(() => {
     getOwnRecipe().then(({ total, recipes }) => {
-      // setTotalItems(total);
+      setTotalItems(total);
       setRecipesArray(recipes);
     });
   }, []);

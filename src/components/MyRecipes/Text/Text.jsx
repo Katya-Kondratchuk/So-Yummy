@@ -39,7 +39,6 @@ const Textt = ({ description }) => {
         </button>
       </p>
     );
-    // return <p className={css.text}>{isShow ? text : text.substr(0, 200)}<button className={css.btn} onClick={toogle} onMouseOver={toogle}>{isShow ? "Less" : "..."}</button></p>;
   }
   if (tablet && description.length > 300) {
     return (

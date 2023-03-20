@@ -11,7 +11,7 @@ import {
 } from 'services/api/recipesAPI';
 import css from './AddRecipeForm.module.css';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { createObjErrorResipeForm } from 'services/createObjErrorResipeForm';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 
@@ -186,7 +186,7 @@ const AddRecipeForm = () => {
         toast.success(`Your recipe ${title} has been created`);
         resetDataForm();
         setIsShowErrors(false);
-        navigate('/my');
+        // navigate('/my');
       })
       .catch(e => {
         toast.error('Something went wrong, try add your recipe again');

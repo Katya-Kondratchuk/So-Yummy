@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import FormInput from '../../reusableComponents/FormInput/FormInput';
 import css from './RegisterForm.module.css';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
+import * as yup from 'yup';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
@@ -14,11 +15,10 @@ import { registerUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import warningValidation from 'services/warningValidation';
 
-// import { selectAuthLoading } from 'redux/auth/authSelectors';
-// const loading = useSelector(selectAuthLoading);
-
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
+  const passwordInput = useRef(null);
+
   const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -71,11 +71,16 @@ const RegisterForm = () => {
       setNotify(true);
     },
   });
+
   const isValid = registrationSchema.isValidSync(formik.values);
 
-  // const handleInputChange = event => {
-  //   setInputValue(event.target.value);
-  // };
+  const togglePasswordVisibility = () => {
+    if (passwordInput.current.type === 'password') {
+      passwordInput.current.type = 'text';
+    } else {
+      passwordInput.current.type = 'password';
+    }
+  };
 
   return (
     <div className={css.registrComponent}>
@@ -151,11 +156,20 @@ const RegisterForm = () => {
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
+                    ref={passwordInput}
                     erorr={formik.errors.password}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    togglePasswordVisibility={togglePasswordVisibility}
                   />
+                  <button
+                    type="button"
+                    className={css.unlockButton}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <ShowPassword />
+                  </button>
                   {!formik.errors.password &&
                   formik.values.password &&
                   !warningValidation(formik.values.password) ? (

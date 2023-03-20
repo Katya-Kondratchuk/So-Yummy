@@ -20,8 +20,11 @@ const VerifyPage = () => {
     dispatch(verificationUser(verificationToken))
       .then(() => {
         navigate('/signin', `{ replace }`);
+        verify = null;
       })
-      .catch(() => {});
+      .catch(() => {
+        verify = null;
+      });
   }, [dispatch, verificationToken, navigate]);
 
   return (

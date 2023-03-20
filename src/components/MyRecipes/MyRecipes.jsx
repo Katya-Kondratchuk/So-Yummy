@@ -5,14 +5,13 @@ import MyRecipeItem from './MyResipeItem/MyRecipeItem';
 import Pagination from './PaginationCustom/Pagination';
 import css from './MyRecipes.module.css';
 import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
-import { animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from 'react-scroll';
 
 const MyRecipes = () => {
-   
-   const [totalItems, setTotalItems] = useState(0)
-   const [recipesArray, setRecipesArray] = useState([]);
-   const [currentPage, setcurrentPage] = useState(1);
-  
+  const [totalItems, setTotalItems] = useState(0);
+  const [recipesArray, setRecipesArray] = useState([]);
+  const [currentPage, setcurrentPage] = useState(1);
+
   useEffect(() => {
     getOwnRecipe(currentPage).then(({ total, recipes }) => {
       setTotalItems(total);
@@ -27,15 +26,15 @@ const MyRecipes = () => {
     });
   }, []);
 
-    const scrollToTop = () => {
+  const scrollToTop = () => {
     scroll.scrollToTop();
-};
+  };
 
   const handleClick = event => {
     setcurrentPage(Number(event.target.id));
-    scrollToTop()
+    scrollToTop();
   };
- 
+
   const handelDelete = async (id, event) => {
     if (event.target.disabled) {
       return;
@@ -47,10 +46,11 @@ const MyRecipes = () => {
         const totalItems = Math.ceil(data.total / 4);
         if (totalItems > 1) {
           setTotalItems(totalItems);
-        } if (totalItems === 1) {
-          setTotalItems(totalItems);
         }
-        else {
+        if (totalItems === 1) {
+          setTotalItems(totalItems);
+          setcurrentPage(1);
+        } else {
           setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
@@ -82,7 +82,8 @@ const MyRecipes = () => {
               ),
             )}
           </ul>
-          <Pagination recipesArray={recipesArray}
+          <Pagination
+            recipesArray={recipesArray}
             totalItems={totalItems}
             handle={handleClick}
             currentPage={currentPage}
@@ -95,4 +96,3 @@ const MyRecipes = () => {
 };
 
 export default MyRecipes;
-

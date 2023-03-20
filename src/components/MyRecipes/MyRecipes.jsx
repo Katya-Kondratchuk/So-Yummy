@@ -60,7 +60,6 @@ const MyRecipes = () => {
   return (
     <div className='container'>
       <BGDots />
-      <div className="container">
         <section className={css.myRecipe}>
           <Title text="My recipes" />
           <ul className={css.cardList}>
@@ -92,7 +91,6 @@ const MyRecipes = () => {
             setcurrentPage={setcurrentPage}
           />}
         </section>
-      </div>
     </div>
   );
 };

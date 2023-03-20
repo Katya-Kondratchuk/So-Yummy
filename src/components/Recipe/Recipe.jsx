@@ -53,6 +53,7 @@ const Recipe = () => {
     // popularity,
     // tags,
     youtube,
+    fullImg,
   } = recipe;
   return (
     <>
@@ -74,6 +75,7 @@ const Recipe = () => {
             instructions={instructions}
             previewImg={previewImg}
             youtube={youtube}
+            fullImg={fullImg}
           />
         </div>
       )}

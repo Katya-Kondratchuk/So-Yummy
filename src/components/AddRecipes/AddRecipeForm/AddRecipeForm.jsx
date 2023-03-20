@@ -14,6 +14,9 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { createObjErrorResipeForm } from 'services/createObjErrorResipeForm';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
+import storageServises from 'services/localStorage';
+
+const STORAGE_KEY_ADD_RESIPE = 'add-data-recipe';
 
 let isLoadAllCategory = false;
 let isLoadAllIngredients = false;
@@ -44,9 +47,38 @@ const AddRecipeForm = () => {
     setTitle('');
     setDescription('');
     setTime('15 min');
+    setCategory('Beef');
     setIngredients([]);
     setInstructions('');
   };
+
+  useEffect(() => {
+    const data = storageServises.get(STORAGE_KEY_ADD_RESIPE);
+    if (!data) {
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    storageServises.save(STORAGE_KEY_ADD_RESIPE, {
+      fullImage,
+      title,
+      description,
+      category,
+      time,
+      ingredients,
+      instructions,
+    });
+    return () => {};
+  }, [
+    category,
+    description,
+    fullImage,
+    ingredients,
+    instructions,
+    time,
+    title,
+  ]);
 
   const formData = useMemo(
     () => ({

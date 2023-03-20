@@ -15,7 +15,7 @@ const PreviewCategories = () => {
   // }, []);
 
   return (
-    <div className={`${css.sectionWrapper}  ${'greensImg'}`}>
+    <div className={`${css.sectionWrapper} `}>
       {/* {allCategories.map(({ title, _id }) => (
         <Preview key={_id} category={title} />
       ))} */}

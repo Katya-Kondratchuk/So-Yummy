@@ -58,7 +58,7 @@ const MyRecipes = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <BGDots />
       <div className="container">
         <section className={css.myRecipe}>

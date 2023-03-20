@@ -10,7 +10,7 @@
   background-position: bottom right;
   z-index: 10000;
   animation-name: slide-down;
-  animation-duration: 1s;
+  animation-duration: 700ms;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }

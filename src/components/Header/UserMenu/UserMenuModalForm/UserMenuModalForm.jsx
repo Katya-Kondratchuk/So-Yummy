@@ -14,7 +14,7 @@ import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/Mob
 import { postUserInfo } from 'services/api/recipesAPI';
 import { toast } from 'react-toastify';
 
-const UserMenuModalForm = ({ onClose }) => {
+const UserMenuModalForm = ({ closeMenu }) => {
   // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);
@@ -22,6 +22,7 @@ const UserMenuModalForm = ({ onClose }) => {
     image: null,
     userName: userInitName || '',
   };
+
   let userNameSchema = yup.object().shape({
     image: yup
       .mixed()
@@ -163,7 +164,9 @@ const UserMenuModalForm = ({ onClose }) => {
           </div>
         </UserDataForm>
       </div>
-      <MobMenuCloseBtn closeMenu={onClose} />
+      {/* <div onClick={() => closeMenu()}> */}
+      <MobMenuCloseBtn closeMenu={closeMenu} />
+      {/* </div> */}
     </div>
   );
 };

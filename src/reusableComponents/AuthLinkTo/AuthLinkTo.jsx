@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import css from './AuthLinkTo.module.css';
 
-const AuthLinkTo = ({ route, routeText }) => {
+const AuthLinkTo = ({ route, routeText, yourClassName }) => {
   return (
-    <Link className={css.authLinkTo} to={route}>
+    <Link className={`${css.authLinkTo} ${yourClassName}`} to={route}>
       {routeText}
     </Link>
   );

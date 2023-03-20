@@ -75,7 +75,7 @@
 }
 .formInput::placeholder {
   color: var(--whiteColor);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   opacity: 0.8;
 }
 .formInputValid {

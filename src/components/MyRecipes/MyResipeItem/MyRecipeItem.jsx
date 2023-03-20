@@ -34,7 +34,7 @@ const MyRecipeItem = ({
             />
           </div>
         </div>
-        <Textt text={description} />
+        <Textt description={description} />
         <div className={css.wrapperUp}>
           <div>
             <Time text={time} />

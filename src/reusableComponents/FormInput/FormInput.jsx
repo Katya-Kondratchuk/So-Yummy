@@ -47,9 +47,9 @@ const FormInput = forwardRef(function FormInput(props, ref) {
   const hendleButtonShown = () => {
     setVisibility(!visibility);
   };
-  const hendleButtonHide = () => {
-    setVisibility(!visibility);
-  };
+  // const hendleButtonHide = () => {
+  //   setVisibility(!visibility);
+  // };
   return (
     <div className={formInputArea}>
       <input

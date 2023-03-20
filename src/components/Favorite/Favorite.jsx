@@ -73,7 +73,7 @@ const Favorite = () => {
   };
 
   return (
-    <div className=" greensImg">
+    <div>
       <BGDots />
       <div className={'container'}>
         <section className={css.contentWrapper}>

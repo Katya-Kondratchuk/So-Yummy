@@ -8,6 +8,7 @@ import FormInput from 'reusableComponents/FormInput/FormInput';
 import switchImages from 'services/switchImages';
 import { postSubscribeList } from 'services/api/recipesAPI';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const FooterForm = () => {
   const myEmailRegex =
@@ -32,7 +33,18 @@ const FooterForm = () => {
     validationSchema: registrationSchema,
 
     onSubmit: values => {
-      postSubscribeList({ email: values.email });
+      postSubscribeList({ email: values.email })
+        .then(response => {
+          if (!response) throw new Error();
+          toast.success('You have successfully subscribed!');
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 400) {
+            toast.error('There was an error subscribing. Please try again.');
+          } else {
+            toast.error('You are already subscribed!');
+          }
+        });
     },
   });
   const isValid = registrationSchema.isValidSync(formik.values);

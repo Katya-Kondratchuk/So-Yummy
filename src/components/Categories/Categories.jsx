@@ -46,18 +46,14 @@ const Categories = () => {
       isFirst.current = false;
     }
 
-    setTimeout(async () => {
-      await getCategorieRecipes(category || '', page, 8).then(
-        ({ recipes, total }) => {
-          setRecepiesCategory(recipes);
-          const pageCounts = Math.ceil(total / 8);
-          if (pageCounts > 1) {
-            setTotalPage(pageCounts);
-          }
-        },
-      );
-      setIsLoading(false);
-    }, 100);
+    getCategorieRecipes(category || '', page, 8).then(({ recipes, total }) => {
+      setRecepiesCategory(recipes);
+      const pageCounts = Math.ceil(total / 8);
+      if (pageCounts > 1) {
+        setTotalPage(pageCounts);
+      }
+    });
+    setIsLoading(false);
   }, [category, categoryName, page]);
 
   useEffect(() => {
@@ -159,6 +155,7 @@ const Categories = () => {
                     like={like}
                     allData={recepiesCategory}
                     setAllData={setRecepiesCategory}
+                    popularity={popularity}
                   />
                 </li>
               ),

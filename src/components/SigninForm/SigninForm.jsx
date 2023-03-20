@@ -12,8 +12,14 @@ import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import warningValidation from 'services/warningValidation';
+import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
+import { useRef, useState } from 'react';
+import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
 const SigninForm = () => {
+  const signInPasswordInput = useRef(null);
+  const [visibility, setVisibility] = useState(true);
+
   const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -28,7 +34,6 @@ const SigninForm = () => {
         excludeEmptyString: true,
       })
       .min(5, 'Your email is too short')
-      .email('Your email must be valid')
       .required('Type your email please'),
     password: yup
       .string()
@@ -62,7 +67,16 @@ const SigninForm = () => {
     },
   });
   const isValid = signinSchema.isValidSync(formik.values);
-
+  const togglePasswordVisibility = () => {
+    if (signInPasswordInput.current.type === 'password') {
+      signInPasswordInput.current.type = 'text';
+    } else {
+      signInPasswordInput.current.type = 'password';
+    }
+  };
+  const hendleButtonShown = () => {
+    setVisibility(!visibility);
+  };
   return (
     <div className={css.registrComponent}>
       <AuthBackround />
@@ -87,7 +101,7 @@ const SigninForm = () => {
                     autoComplete="email"
                     switchImages={switchImages}
                     erorr={formik.errors.email}
-                    placeholder={'email'}
+                    placeholder="Email"
                     id="standard-required-register-email"
                     type="email"
                     name="email"
@@ -110,14 +124,30 @@ const SigninForm = () => {
                     erorr={formik.errors.password}
                     switchImages={switchImages}
                     formInputArea={css.formInputArea}
-                    placeholder={'password'}
+                    placeholder="Password"
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    ref={signInPasswordInput}
                   />
+                  <button
+                    style={{ opacity: visibility ? '0' : '1' }}
+                    type="button"
+                    className={switchColorUnlock(
+                      formik.errors.password,
+                      formik.values.password,
+                      css.unlockButtonSignIn,
+                    )}
+                    onClick={e => {
+                      togglePasswordVisibility();
+                      hendleButtonShown();
+                    }}
+                  >
+                    <ShowPassword />
+                  </button>
                   {!formik.errors.password &&
                   formik.values.password &&
                   !warningValidation(formik.values.password) ? (
@@ -134,7 +164,18 @@ const SigninForm = () => {
                 </div>
               </div>
             </UserDataForm>
-            <AuthLinkTo route={'/register'} routeText={'registration'} />
+            <div className={css.linkBox}>
+              <AuthLinkTo
+                yourClassName={css.signUpLink}
+                route={'/register'}
+                routeText={'Registration'}
+              />
+              <AuthLinkTo
+                route={'/register'}
+                routeText={'Forgot your password?'}
+                yourClassName={css.forgotPassLink}
+              />
+            </div>
           </div>
         </div>
       </div>

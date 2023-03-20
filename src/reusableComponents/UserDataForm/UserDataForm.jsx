@@ -39,14 +39,14 @@ const UserDataForm = ({
         disabled={loading || !isValid}
       />
       {!erorMessage && notify && !loading && isValid ? (
-        <bautton
+        <button
           type="button"
           onClick={hendleResendClick}
           className={css.notification}
           disabled={loading}
         >
           Check your email for verification! Click here to resend.
-        </bautton>
+        </button>
       ) : (
         <span className={css.notification}> </span>
       )}

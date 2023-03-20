@@ -75,6 +75,7 @@ const FormInput = forwardRef(function FormInput(props, ref) {
         {switchStateImages(erorr, value, formInputUserMenu, name, userInitName)}
       </span>
       <button
+        type="button"
         onMouseEnter={hendleButtonShown}
         onMouseLeave={hendleButtonShown}
         style={{ opacity: visibility ? '0' : '1' }}

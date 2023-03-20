@@ -8,7 +8,7 @@ import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
+import { loginUser, verifyResendEmail } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import warningValidation from 'services/warningValidation';
@@ -62,6 +62,7 @@ const SigninForm = () => {
     },
   });
   const isValid = signinSchema.isValidSync(formik.values);
+
   return (
     <div className={css.registrComponent}>
       <AuthBackround />

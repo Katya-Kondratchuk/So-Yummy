@@ -10,13 +10,30 @@
   background: var(--modalBg);
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  padding: 32px 28px 7px 28px;
+  padding: 32px 28px 20px 28px;
   position: relative;
   top: -28px;
 }
 .divButtonClass {
   width: 279px;
   height: 45px;
+}
+.unlockButton {
+  position: absolute;
+  left: 69px;
+  top: 287px;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  border: none;
+  fill: rgba(255, 255, 255, 0.8);
+  background-color: var(--modalBg);
+
+  transition: fill 400ms ease-in-out;
+}
+.unlockButton:hover,
+.unlockButton:focus {
+  fill: var(--warningColor);
 }
 .registrFormatting {
   display: flex;

@@ -13,7 +13,7 @@ const switchStateImages = (
 ) => {
   if (!erorr && value && !warningValidation(value) && name === 'password') {
     return <WarningIcon />;
-  } else if (erorr && value && value === userInitName) {
+  } else if ((erorr && value) || (erorr && value && value === userInitName)) {
     return <ErorrIcon />;
   } else if (!erorr && value && value !== userInitName) {
     return <SucsessIcon />;

@@ -1,27 +1,31 @@
 import css from './FormInput.module.css';
 import switchStateImages from 'services/switchStateImages';
 import warningValidation from 'services/warningValidation';
-const FormInput = ({
-  placeholder = '',
-  type = '',
-  switchImages = () => {},
-  onBlur = () => {},
-  onChange = () => {},
-  name = '',
-  erorr,
-  userInitName = '',
-  value = '',
-  formInputArea = '',
-  formInputUserMenu = '',
-  formInputFooterForm = '',
-  autoComplete,
-}) => {
+import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
+import { forwardRef, useState } from 'react';
+
+const FormInput = forwardRef(function FormInput(props, ref) {
+  const {
+    placeholder = '',
+    type = '',
+    switchImages = () => {},
+    onBlur = () => {},
+    onChange = () => {},
+    name = '',
+    erorr,
+    userInitName = '',
+    value = '',
+    formInputArea = '',
+    formInputUserMenu = '',
+    formInputFooterForm = '',
+    autoComplete,
+  } = props;
   const switchColor = (
     erorr,
     value,
     type,
     formInputUserMenu,
-    formInputFooterForm = '',
+    formInputFooterForm,
     userInitName,
   ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
@@ -38,6 +42,14 @@ const FormInput = ({
       return `${css.formInput}`;
     }
   };
+  const [visibility, setVisibility] = useState(true);
+
+  const hendleButtonShown = () => {
+    setVisibility(!visibility);
+  };
+  const hendleButtonHide = () => {
+    setVisibility(!visibility);
+  };
   return (
     <div className={formInputArea}>
       <input
@@ -49,6 +61,7 @@ const FormInput = ({
           formInputFooterForm,
           userInitName,
         )}
+        ref={ref}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
@@ -61,8 +74,16 @@ const FormInput = ({
       <span className={css.formStateIcon}>
         {switchStateImages(erorr, value, formInputUserMenu, name, userInitName)}
       </span>
+      <button
+        onMouseEnter={hendleButtonShown}
+        onMouseLeave={hendleButtonShown}
+        style={{ opacity: visibility ? '0' : '1' }}
+        className={css.formClearButtonIcon}
+      >
+        <ErorrIcon />
+      </button>
     </div>
   );
-};
+});
 
 export default FormInput;

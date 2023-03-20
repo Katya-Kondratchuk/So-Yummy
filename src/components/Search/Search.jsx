@@ -115,7 +115,7 @@ const Search = () => {
       {searchResult.length === 0 && (
         <>
           <div className={css.noRecipesImg}></div>
-          <p className={css.noRecipesText}>Try looking for something else..</p>
+          <p className={css.noRecipesText}>You don't have any recipe</p>
         </>
       )}
       {searchResult.length !== 0 && (

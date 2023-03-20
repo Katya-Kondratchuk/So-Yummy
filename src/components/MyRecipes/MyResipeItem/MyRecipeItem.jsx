@@ -45,6 +45,7 @@ const MyRecipeItem = ({
               lnk
               to={`/recipe/${id}`}
               statefrom={{ from: location }}
+              
             />
           </div>
         </div>

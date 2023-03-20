@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import * as yup from 'yup';
+import { recipeShema } from 'services/shemasForm';
 import RecipeDescriptionFields from './RecipeDescriptionFields';
 import RecipeIngredientsFields from './RecipeIngredientsFields';
 import RecipePreparationFields from './RecipePreparationFields';
@@ -11,87 +11,12 @@ import {
 } from 'services/api/recipesAPI';
 import css from './AddRecipeForm.module.css';
 import { toast } from 'react-toastify';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { createObjErrorResipeForm } from 'services/createObjErrorResipeForm';
+import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 
-const recipeShema = yup.object().shape({
-  fullImage: yup
-    .mixed()
-    .test('required', 'Photo is required', value => {
-      return !value || (value && value.name.length > 0);
-    })
-    .test('fileType', 'Only picture files are allowed', value => {
-      return (
-        !value ||
-        (value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type))
-      );
-    })
-    .test('fileSize', 'Picture size is too large', value => {
-      return !value || (value && value.size <= 16777216);
-    })
-    .required('Image recipe is required'),
-  title: yup
-    .string()
-    .min(2, 'Minimum 2 characters')
-    .max(200, 'Maximum 600 characters')
-    .required('Title recipe is required'),
-  description: yup
-    .string()
-    .min(2, 'Minimum 2 characters')
-    .max(600, 'Maximum 600 characters')
-    .required('Description recipe is required'),
-  category: yup.string().required('Category recipe is required'),
-  time: yup.string().required('Time recipe is required'),
-  ingredients: yup
-    .array()
-    .min(1, 'You need and minimun one ingregient')
-    .max(20, 'No more than 20 ingredients')
-    .of(
-      yup.object().shape({
-        id: yup.string(),
-        title: yup
-          .object()
-          .shape({
-            _id: yup.string(),
-            ttl: yup
-              .string()
-              .min(2, 'Minimum 2 characters')
-              .max(200, 'Maximum 250 characters')
-              .required('You need choose name from the drop down list'),
-          })
-          .required('You need choose name from the drop down list'),
-        amount: yup
-          .string('Amount must be a number')
-          .min(1, 'You need to add weight')
-          .max(3, 'Amount must be less than 999')
-          .required('Amount ingredient is required'),
-        unit: yup.string().required(),
-      }),
-    )
-    .required('At least one ingredient is required'),
-  instructions: yup
-    .string()
-    .min(2, 'Minimum 2 characters')
-    .max(2000, 'Maximum 2000 characters')
-    .required('Recipe instruction is required'),
-});
-
-const createObjError = (acc, curr) => {
-  if (curr.path.includes('].')) {
-    const el = curr.path;
-    const currPath = el.slice(0, el.indexOf('['));
-    const index = +el.slice(el.indexOf('[') + 1, el.indexOf(']'));
-    // const item = el.slice(el.indexOf('.') + 1);
-    if (!acc[currPath]) {
-      acc[currPath] = [];
-    }
-    // acc[currPath][index] = { ...acc[currPath][index] };
-    // acc[currPath][index] = {};
-    acc[currPath][index] = curr.message;
-  } else {
-    acc[curr.path] = curr.message;
-  }
-  return acc;
-};
+let isLoadAllCategory = false;
+let isLoadAllIngredients = false;
 
 const AddRecipeForm = () => {
   const [allCategory, setAllCategory] = useState([]);
@@ -103,32 +28,17 @@ const AddRecipeForm = () => {
   const [category, setCategory] = useState('Beef');
   const [time, setTime] = useState('15 min');
 
-  const [ingredients, setIngredients] = useState([
-    {
-      id: '663713a4-4cd7-43a7-b691-8e012b1873cb',
-      title: { _id: '640c2dd963a319ea671e37d7', ttl: 'Walnuts' },
-      amount: '999',
-      unit: 'tbs',
-    },
-    {
-      id: '663713a4-eged7-43a7-b691-8e012b1873cb',
-      title: { _id: '640c2dd963a319ea671e372b', ttl: 'Oil' },
-      amount: '999',
-      unit: 'g',
-    },
-    {
-      id: '663713agegd7-43a7-b691-8e012b1873cb',
-      title: { _id: '640c2dd963a319ea671e36b9', ttl: 'Cumin Seeds' },
-      amount: '999',
-      unit: 'kg',
-    },
-  ]);
+  const [ingredients, setIngredients] = useState([]);
 
   const [instructions, setInstructions] = useState('');
+
   const [formErrors, setFormErrors] = useState({});
   const [isShowErrors, setIsShowErrors] = useState(false);
   const [isAddRecipe, setIsAddRecipe] = useState(false);
-  // const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   const resetDataForm = () => {
     setFullImage(null);
     setTitle('');
@@ -150,12 +60,17 @@ const AddRecipeForm = () => {
     }),
     [category, description, fullImage, ingredients, instructions, time, title],
   );
-
   useEffect(() => {
+    if (isLoadAllCategory) return;
+    isLoadAllCategory = true;
+
     const getCategories = async () => {
       const categoriesList = (await getAllCategories()) || [];
       return categoriesList;
     };
+
+    setIsLoading(true);
+
     getCategories()
       .then(data => {
         const categories = data.map(({ title }) => title);
@@ -164,7 +79,11 @@ const AddRecipeForm = () => {
         }
         setAllCategory(categories);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        isLoadAllCategory = false;
+        setIsLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -175,7 +94,7 @@ const AddRecipeForm = () => {
         setFormErrors({});
         return true;
       } catch (error) {
-        const errors = error.inner.reduce(createObjError, {});
+        const errors = error.inner.reduce(createObjErrorResipeForm, {});
         setFormErrors(errors);
         return false;
       }
@@ -184,20 +103,27 @@ const AddRecipeForm = () => {
   }, [formData, isShowErrors]);
 
   useEffect(() => {
+    if (isLoadAllIngredients) return;
+    isLoadAllIngredients = true;
+
     const getAllIngregientsList = async () => {
       const categoriesList = (await getIngregientsList()) || [];
       return categoriesList;
     };
+    setIsLoading(true);
     getAllIngregientsList()
       .then(data => {
         const normalizedIngredientsList = data.map(({ _id, ttl }) => ({
           _id,
           ttl,
         }));
-
         setAllIngredients(normalizedIngredientsList);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        isLoadAllIngredients = false;
+        setIsLoading(false);
+      });
   }, []);
 
   const onDelIngredient = id => {
@@ -230,6 +156,7 @@ const AddRecipeForm = () => {
       return;
     }
     setIsAddRecipe(true);
+
     const dataForSend = {
       fullImage,
       title,
@@ -246,10 +173,12 @@ const AddRecipeForm = () => {
         .join('\r\n'),
     };
 
+    setIsLoading(true);
+
     addOwnRecipe(dataForSend)
       .then(data => {
-        console.log(data);
         setIsAddRecipe(false);
+        setIsLoading(false);
         if (data?.error) {
           toast.error(data.error.response.data.message);
           return;
@@ -257,13 +186,12 @@ const AddRecipeForm = () => {
         toast.success(`Your recipe ${title} has been created`);
         resetDataForm();
         setIsShowErrors(false);
-        // const link = `/recipe/${data.id}`;
-        // navigate(link);
+        navigate('/my');
       })
       .catch(e => {
-        console.log(e);
         toast.error('Something went wrong, try add your recipe again');
         setIsAddRecipe(false);
+        setIsLoading(false);
       });
   };
 
@@ -272,6 +200,7 @@ const AddRecipeForm = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>
+      {isLoading && <LoaderSuspense />}
       <RecipeDescriptionFields
         allCategory={allCategory}
         image={{ fullImage, setFullImage }}

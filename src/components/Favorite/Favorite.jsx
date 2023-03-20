@@ -116,3 +116,6 @@ const Favorite = () => {
 };
 
 export default Favorite;
+
+// const location = useLocation();
+// navigate(`/recipe/${data.id}`, { state: { from: location } });

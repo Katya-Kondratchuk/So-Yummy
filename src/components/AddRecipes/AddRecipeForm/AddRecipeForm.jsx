@@ -186,7 +186,7 @@ const AddRecipeForm = () => {
         toast.success(`Your recipe ${title} has been created`);
         resetDataForm();
         setIsShowErrors(false);
-        // navigate('/my');
+        navigate('/my');
       })
       .catch(e => {
         toast.error('Something went wrong, try add your recipe again');

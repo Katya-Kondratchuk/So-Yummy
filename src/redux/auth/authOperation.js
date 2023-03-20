@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { normalizeName } from 'services/normalized';
 import { clearRefresh, reRefresh } from './authSlice';
 
-axios.defaults.baseURL = 'https://so-yammy-backend.onrender.com/api';
+axios.defaults.baseURL = 'https://so-yummy.onrender.com/api';
 
 const AUTH_ENDPOINT = {
   REGISTER: '/users/signup',

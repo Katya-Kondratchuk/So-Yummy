@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   selectSearchQuery,
   selectSearchResult,
@@ -40,6 +41,9 @@ const Search = () => {
       if (searchType === 'title') {
         getSearchByTitle(searchQuery, page)
           .then(res => {
+            if (res.recipes.length === 0) {
+              toast.warning('Nothing... Try another search query');
+            }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
@@ -48,6 +52,9 @@ const Search = () => {
       } else {
         getSearchByIngredients(searchQuery, page)
           .then(res => {
+            if (res.recipes.length === 0) {
+              toast.warning('Nothing... Try another search query');
+            }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
@@ -63,6 +70,9 @@ const Search = () => {
       if (searchType === 'title') {
         getSearchByTitle(searchQuery, page)
           .then(res => {
+            if (res.recipes.length === 0) {
+              toast.warning('Nothing... Try another search query');
+            }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
@@ -72,6 +82,9 @@ const Search = () => {
       } else {
         getSearchByIngredients(searchQuery, page)
           .then(res => {
+            if (res.recipes.length === 0) {
+              toast.warning('Nothing... Try another search query');
+            }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
@@ -86,6 +99,7 @@ const Search = () => {
     e.preventDefault();
     const searchQuery = e.target.elements.search.value;
     const searchType = e.target.elements.type.value;
+    setPage(1);
     if (!searchQuery) return;
     dispatch(updateSearchQuery(searchQuery));
     dispatch(updateSearchType(searchType));
@@ -124,11 +138,13 @@ const Search = () => {
             )}
           </ul>
           <div className={css.paginationWrp}>
-            <BasicPagination
-              count={count}
-              page={page}
-              isChange={onPageChange}
-            />
+            {count > 1 && (
+              <BasicPagination
+                count={count}
+                page={page}
+                isChange={onPageChange}
+              />
+            )}
           </div>
         </>
       )}

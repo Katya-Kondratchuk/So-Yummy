@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 const modalRoot = document.querySelector('#modalPortal');
-const body = document.querySelector('body');
 
 const Modal = ({ children, onClose }) => {
   const handleKeyDown = e => {
@@ -20,15 +19,20 @@ const Modal = ({ children, onClose }) => {
       onClose();
     }
   };
+  const handleScroll = e => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
   useEffect(() => {
-    body.classList.add('openModal');
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('resize', closeModal);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      body.classList.remove('openModal');
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('resize', closeModal);
+      window.removeEventListener('scroll', handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

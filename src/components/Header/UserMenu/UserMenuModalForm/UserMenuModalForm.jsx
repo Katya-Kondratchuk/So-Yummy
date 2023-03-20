@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
 import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUserName } from 'redux/auth/authSelectors';
 import * as yup from 'yup';
 import css from './UserMenuModalForm.module.css';
@@ -13,9 +13,11 @@ import switchImages from 'services/switchImages';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { postUserInfo } from 'services/api/recipesAPI';
 import { toast } from 'react-toastify';
+import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
 
-const UserMenuModalForm = ({ closeMenu }) => {
+const UserMenuModalForm = ({ onClose }) => {
   // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
+  const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);
   const initialValues = {
@@ -55,12 +57,26 @@ const UserMenuModalForm = ({ closeMenu }) => {
       setSubmitting(false);
       if (userInitName !== userName)
         postUserInfo({ name: userName })
-          .then(toast.sucsess('Your name was changed'))
-          .catch(error => toast.error('An error occured, try again'));
+          .then(res => {
+            dispatch(updateUserName(res.name));
+            dispatch(updateUserAvatar(res.avatarURL));
+            toast.success('Your name was changed');
+          })
+          .catch(error => toast.error('An error occured, try again'))
+          .finally(() => {
+            onClose();
+          });
       else if (image) {
         postUserInfo({ name: userName, avatar: image })
-          .then(toast.sucsess('Your data was changed'))
-          .catch(error => toast.error('An error occured, try again'));
+          .then(res => {
+            dispatch(updateUserName(res.name));
+            dispatch(updateUserAvatar(res.avatarURL));
+            toast.success('Your name was changed');
+          })
+          .catch(error => toast.error('An error occured, try again'))
+          .finally(() => {
+            onClose();
+          });
       } else return toast.error('Change your data please');
     },
   });
@@ -165,7 +181,7 @@ const UserMenuModalForm = ({ closeMenu }) => {
         </UserDataForm>
       </div>
       {/* <div onClick={() => closeMenu()}> */}
-      <MobMenuCloseBtn closeMenu={closeMenu} />
+      <MobMenuCloseBtn closeMenu={onClose} />
       {/* </div> */}
     </div>
   );

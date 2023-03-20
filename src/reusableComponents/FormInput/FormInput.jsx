@@ -55,6 +55,7 @@ const FormInput = ({
         name={name}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        value={value}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>

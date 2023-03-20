@@ -59,7 +59,7 @@ const UserMenu = () => {
       )}
       {modalEdit && (
         <Modal onClose={closeModalEdit}>
-          <UserMenuModalForm />
+          <UserMenuModalForm onClose={closeModalEdit} />
         </Modal>
       )}
       {modalConfirm && (

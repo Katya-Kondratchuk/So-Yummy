@@ -55,23 +55,12 @@ const UserMenuModalForm = ({ onClose }) => {
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { userName, image } = values;
       setSubmitting(false);
-      if (userInitName !== userName)
-        postUserInfo({ name: userName })
-          .then(res => {
-            dispatch(updateUserName(res.name));
-            dispatch(updateUserAvatar(res.avatarURL));
-            toast.success('Your name was changed');
-          })
-          .catch(error => toast.error('An error occured, try again'))
-          .finally(() => {
-            onClose();
-          });
-      else if (image) {
+      if (image || userName !== initialValues.userName) {
         postUserInfo({ name: userName, avatar: image })
           .then(res => {
             dispatch(updateUserName(res.name));
             dispatch(updateUserAvatar(res.avatarURL));
-            toast.success('Your name was changed');
+            toast.success('Your profile has been changed');
           })
           .catch(error => toast.error('An error occured, try again'))
           .finally(() => {

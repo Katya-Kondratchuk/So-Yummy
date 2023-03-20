@@ -53,32 +53,32 @@ const Recipe = () => {
     // popularity,
     // tags,
     youtube,
+    fullImg,
   } = recipe;
   return (
     <>
-      <div className=" greensImg">
-        <TopContainer
-          title={title}
-          description={description}
-          time={time}
-          favorite={favorite}
-          id={_id}
-        />
-        {isLoading ? (
-          <div className="container">
-            <IngredientsLoader />
-          </div>
-        ) : (
-          <div className={css.wrapper}>
-            <IngredientsContainer
-              ingridients={ingredients}
-              instructions={instructions}
-              previewImg={previewImg}
-              youtube={youtube}
-            />
-          </div>
-        )}
-      </div>
+      <TopContainer
+        title={title}
+        description={description}
+        time={time}
+        favorite={favorite}
+        id={_id}
+      />
+      {isLoading ? (
+        <div className="container">
+          <IngredientsLoader />
+        </div>
+      ) : (
+        <div className={css.wrapper}>
+          <IngredientsContainer
+            ingridients={ingredients}
+            instructions={instructions}
+            previewImg={previewImg}
+            youtube={youtube}
+            fullImg={fullImg}
+          />
+        </div>
+      )}
     </>
   );
 };

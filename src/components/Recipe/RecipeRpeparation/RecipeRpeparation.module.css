@@ -1,33 +1,33 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+  margin-bottom: 100px;
 }
 @media screen and (min-width: 768px) {
   .wrapper {
-    padding-top: 96px;
-    padding-bottom: 200px;
+    margin-top: 96px;
+    margin-bottom: 200px;
   }
 }
 @media screen and (min-width: 1440px) {
   .wrapper {
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 100px;
+    margin-top: 100px;
   }
 }
 
 .itemsContainer {
-  padding-top: 19px;
+  margin-top: 19px;
 }
 @media screen and (min-width: 768px) {
   .itemsContainer {
-    padding-top: 0px;
+    margin-top: 0px;
   }
 }
 @media screen and (min-width: 1440px) {
   .itemsContainer {
-    padding-top: 0px;
+    margin-top: 0px;
     max-height: 664px;
   }
 }
@@ -38,11 +38,11 @@
   align-items: flex-start;
   justify-content: space-between;
   width: 342px;
-  padding-top: 14px;
+  margin-top: 14px;
 }
 @media screen and (min-width: 768px) {
   .itemWrapper {
-    padding-top: 9px;
+    margin-top: 9px;
     width: 678px;
   }
 }
@@ -113,16 +113,16 @@
 }
 
 .imageWrapper {
-  padding-top: 40px;
+  margin-top: 40px;
 }
 @media screen and (min-width: 768px) {
   .imageWrapper {
-    padding-top: 50px;
+    margin-top: 50px;
   }
 }
 @media screen and (min-width: 1440px) {
   .imageWrapper {
-    padding-top: 0px;
+    margin-top: 0px;
   }
 }
 

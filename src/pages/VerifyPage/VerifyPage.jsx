@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { verificationUser } from 'redux/auth/authOperation';
 import SigninForm from 'components/SigninForm';
+import GoToTop from 'services/scrollToTop';
 
 let verify = null;
 
@@ -30,6 +31,7 @@ const VerifyPage = () => {
   return (
     <div>
       <SigninForm />
+      <GoToTop />
     </div>
   );
 };

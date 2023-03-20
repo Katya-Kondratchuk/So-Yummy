@@ -1,22 +1,31 @@
-import { useMemo, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllRecipes } from 'services/api/recipesAPI';
 import css from './PopularRecipe.module.css';
 
+let isLoadPopularRecipes = false;
+
 const PopularRecipe = () => {
   const [popularRecipe, setpopularRecipe] = useState([]);
 
-  useMemo(() => {
-    if (popularRecipe.length) return;
+  useEffect(() => {
+    if (isLoadPopularRecipes) return;
+    isLoadPopularRecipes = true;
+
     const getPopularRecipe = async () => {
-      try {
-        const data = await getAllRecipes(1, 4, 'popular');
+      const data = (await getAllRecipes(1, 4, 'popular')) || [];
+      return data;
+    };
+    getPopularRecipe()
+      .then(data => {
         if (!data) return;
         setpopularRecipe(data.recipes);
-      } catch (error) {}
-    };
-    getPopularRecipe();
-  }, [popularRecipe.length]);
+      })
+      .catch(() => {})
+      .finally(() => {
+        isLoadPopularRecipes = false;
+      });
+  }, []);
 
   return (
     <div className={css.wrapper}>
@@ -34,7 +43,7 @@ const PopularRecipe = () => {
                   <div className={css.textWrapper}>
                     <h4 className={css.itemTitle}>{title}</h4>
                     <p className={css.description}>
-                      {description.slice(0, 90)}...
+                      {description.slice(0, 75)}...
                     </p>
                   </div>
                 </Link>

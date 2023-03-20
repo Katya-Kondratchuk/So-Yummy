@@ -8,11 +8,12 @@ const IngredientsContainer = ({
   instructions = '',
   previewImg = '',
   youtube,
+  fullImg,
 }) => {
   return (
     <div className="container">
       <TitleRecipesList />
-      <div>
+      <ul>
         {ingridients.map(
           ({ title, _id, thumb, measure, desc, type }, index) => (
             <Ingredient
@@ -26,11 +27,12 @@ const IngredientsContainer = ({
             />
           ),
         )}
-      </div>
+      </ul>
       <RecipeRpeparation
         instructions={instructions}
         previewImg={previewImg}
         youtube={youtube}
+        fullImg={fullImg}
       />
     </div>
   );

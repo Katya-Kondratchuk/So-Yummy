@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectAuthUserAvatarURL } from 'redux/auth/authSelectors';
 import css from './UserAvatar.module.css';
-const avatarURL =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStuBtmwhb00WEzU_1MstjzeLHyM7xsWnjdtg&usqp=CAU';
 
 const UserAvatar = () => {
+  const avatarURL = useSelector(selectAuthUserAvatarURL);
   return <img className={css.avatar} src={avatarURL} alt="User's avatar" />;
 };
 

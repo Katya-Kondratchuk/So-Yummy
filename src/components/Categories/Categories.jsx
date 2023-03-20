@@ -10,13 +10,15 @@ import DishCard from 'reusableComponents/DishCard/DishCard';
 import Title from 'reusableComponents/Title/Title';
 import { getAllCategories, getCategorieRecipes } from 'services/api/recipesAPI';
 import css from './Categories.module.css';
+import BasicPagination from 'reusableComponents/Pagination/Pagination';
 
 const Categories = () => {
   const [allCategories, setAllCategories] = useState([]);
   const [category, setCategory] = useState('');
   const [recepiesCategory, setRecepiesCategory] = useState([]);
   const [isShow, setIsShow] = useState(false);
-  // const [totalRecipe, setTotalRecipe] = useState(0);
+  const [totalPage, setTotalPage] = useState(null);
+  const [page, setPage] = useState(1);
   const { categoryName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const isFirst = useRef(true);
@@ -31,6 +33,7 @@ const Categories = () => {
 
   const handleChange = (event, newValue) => {
     setCategory(newValue);
+    setPage(1);
   };
 
   useEffect(() => {
@@ -44,14 +47,17 @@ const Categories = () => {
       isFirst.current = false;
     }
 
-    setTimeout(async () => {
-      await getCategorieRecipes(category || '').then(({ recipes, total }) => {
-        setRecepiesCategory(recipes);
-        // setTotalRecipe(total);
-      });
-      setIsLoading(false);
-    }, 1000);
-  }, [category, categoryName]);
+    getCategorieRecipes(category || '', page, 8).then(({ recipes, total }) => {
+      setRecepiesCategory(recipes);
+      const pageCounts = Math.ceil(total / 8);
+      if (pageCounts > 1) {
+        setTotalPage(pageCounts);
+      } else {
+        setTotalPage(null);
+      }
+    });
+    setIsLoading(false);
+  }, [category, categoryName, page]);
 
   useEffect(() => {
     getAllCategories()
@@ -64,8 +70,12 @@ const Categories = () => {
       .catch(error => console.log(error.message));
   }, []);
 
+  const handleChangePage = (event, value) => {
+    setPage(value);
+  };
+
   return (
-    <div className=" greensImg">
+    <div>
       <div className="container ">
         <BGDots />
         <Title text={'Categories'} />
@@ -74,6 +84,7 @@ const Categories = () => {
             maxWidth: '100%',
             marginTop: { xs: '50px', lg: '100px' },
             borderBottom: '1px solid #E0E0E0',
+            minHeight: '48px',
           }}
         >
           <Tabs
@@ -106,7 +117,9 @@ const Categories = () => {
         {isLoading || recepiesCategory.length === 0 ? (
           (desctop && (
             <>
-              <Loader.Desktop />
+              <div className={css.loader}>
+                <Loader.Desktop />
+              </div>
               <Loader.Desktop />
             </>
           )) ||
@@ -145,6 +158,7 @@ const Categories = () => {
                     like={like}
                     allData={recepiesCategory}
                     setAllData={setRecepiesCategory}
+                    popularity={popularity}
                   />
                 </li>
               ),
@@ -152,6 +166,15 @@ const Categories = () => {
           </ul>
         )}
       </div>
+      {totalPage && (
+        <div className={css.pagination}>
+          <BasicPagination
+            count={totalPage}
+            page={page}
+            isChange={handleChangePage}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import css from './Text.module.css';
 
-const Textt = ({ text }) => {
+const Textt = ({ description }) => {
   const [isShow, setIsShow] = useState(false);
 
   const mobile = useMedia('(max-width: 767px)');
@@ -30,22 +30,21 @@ const Textt = ({ text }) => {
     setIsShow(prevState => !prevState);
   };
 
-  if (mobile && text.length > 150) {
+  if (mobile && description.length > 150) {
     return (
       <p className={css.text}>
-        {isShow ? text : text.substr(0, 150)}
+        {isShow ? description : description.substr(0, 150)}
         <button className={css.btn} onClick={toogle}>
           {isShow ? 'Less' : '...'}
         </button>
       </p>
     );
-    // return <p className={css.text}>{isShow ? text : text.substr(0, 200)}<button className={css.btn} onClick={toogle} onMouseOver={toogle}>{isShow ? "Less" : "..."}</button></p>;
   }
-  if (tablet && text.length > 300) {
+  if (tablet && description.length > 300) {
     return (
       <p className={css.text}>
         {' '}
-        {isShow ? text : text.substr(0, 300)}
+        {isShow ? description : description.substr(0, 300)}
         <button className={css.btn} onClick={toogle}>
           {isShow ? 'Less' : '...'}
         </button>
@@ -53,11 +52,11 @@ const Textt = ({ text }) => {
     );
   }
   if (desctop) {
-    return <p className={css.text}>{text}</p>;
+    return <p className={css.text}>{description}</p>;
   }
 
-  if (text.length < 200) {
-    return <p className={css.text}>{text}</p>;
+  if (description.length < 200) {
+    return <p className={css.text}>{description}</p>;
   }
 };
 export default Textt;

@@ -6,11 +6,44 @@
    margin-bottom: 40px;
 }
 
+.noRecipesImg {
+  width: 208px;
+  height: 133px;
+  margin: auto;
+  background-image: url('../../assets/images/SearchBackground/noRecipesImg.png');
+  background-size: contain;
+  margin-bottom: 33px;
+  margin-top: 25px;
+}
+
+.noRecipesText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  margin-bottom: 101px;
+  opacity: 0.5;
+}
 
 @media screen and (min-width: 768px) {
   .myRecipe {
     padding-bottom: 200px;
   }
+
+    .noRecipesImg {
+      width: 350px;
+      height: 225px;
+      margin-bottom: 33px;
+      margin-top: 125px;
+    }
+  
+    .noRecipesText {
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      margin-bottom: 200px;
+    }
 
 }
 

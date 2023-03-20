@@ -11,7 +11,21 @@
   background-color: var(--whiteColor);
   border: 1px solid var(--greenColor);
   border-radius: 8px;
+  animation-name: slide-down;
+  animation-duration: 500ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .container {
     padding: 16px;

@@ -39,6 +39,12 @@ export const authSlice = createSlice({
       state.isLoggedIn = false;
       state.refreshToken = '';
     },
+    updateUserName(state, { payload }) {
+      state.user.name = payload;
+    },
+    updateUserAvatar(state, { payload }) {
+      state.user.avatarURL = payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -119,4 +125,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { reRefresh, clearRefresh } = authSlice.actions;
+export const { reRefresh, clearRefresh, updateUserName, updateUserAvatar } =
+  authSlice.actions;

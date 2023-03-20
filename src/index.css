@@ -135,6 +135,12 @@ table {
 }
 body.openModal {
   overflow: hidden;
+  display: flex;
+}
+body.openModal::after {
+  content: '';
+  width: 22px;
+  height: 100vh;
 }
 :root.themeLight {
   --bgColor: #fafafa;

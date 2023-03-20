@@ -37,18 +37,25 @@ const ShoppingList = () => {
       <BGDots />
       <Title text={'Shopping list'} />
       <TitleShoppingList />
-      <ul className={css.shoppingItemList}>
-        {list.map(({ thumb, title, measure, productId }, index) => (
-          <ShoppingItem
-            key={productId + index}
-            image={thumb}
-            name={title}
-            measure={measure}
-            id={productId}
-            onDelete={(item, e) => handleDeleteIngridient(productId, item, e)}
-          />
-        ))}
-      </ul>
+      {list.length > 0 ? (
+        <ul className={css.shoppingItemList}>
+          {list.map(({ thumb, title, measure, productId }, index) => (
+            <ShoppingItem
+              key={productId + index}
+              image={thumb}
+              name={title}
+              measure={measure}
+              id={productId}
+              onDelete={(item, e) => handleDeleteIngridient(productId, item, e)}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div className={css.emptyShoppingList}>
+          <div className={css.emptyShoppingListImg}></div>
+          <p className={css.emptyShoppingListText}>Shopping list is empty</p>
+        </div>
+      )}
     </div>
   );
 };

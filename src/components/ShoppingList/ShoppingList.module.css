@@ -36,3 +36,56 @@
 .shoppingItemList:not(:last-child) {
   margin-bottom: 24px;
 }
+
+.emptyShoppingList {
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .emptyShoppingList {
+    margin-top: 50px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .emptyShoppingList {
+    margin-top: 150px;
+  }
+}
+
+.emptyShoppingListImg {
+  width: 208px;
+  height: 133px;
+  margin: auto;
+  background-image: url('../../assets/images/SearchBackground/noRecipesImg.png');
+  background-size: contain;
+  margin-bottom: 33px;
+}
+@media screen and (min-width: 768px) {
+  .emptyShoppingListImg {
+    margin-bottom: 43px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .emptyShoppingListImg {
+    margin-bottom: 70px;
+  }
+}
+
+.emptyShoppingListText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  margin-bottom: 101px;
+  opacity: 0.5;
+}
+@media screen and (min-width: 768px) {
+  .emptyShoppingListText {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .emptyShoppingListText {
+    font-size: 24px;
+  }
+}

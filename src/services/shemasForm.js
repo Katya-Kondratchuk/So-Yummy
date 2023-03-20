@@ -19,12 +19,12 @@ export const recipeShema = yup.object().shape({
   title: yup
     .string()
     .min(2, 'Minimum 2 characters')
-    .max(200, 'Maximum 600 characters')
+    .max(80, 'Maximum 80 characters')
     .required('Title recipe is required'),
   description: yup
     .string()
     .min(2, 'Minimum 2 characters')
-    .max(600, 'Maximum 600 characters')
+    .max(200, 'Maximum 200 characters')
     .required('Description recipe is required'),
   category: yup.string().required('Category recipe is required'),
   time: yup.string().required('Time recipe is required'),

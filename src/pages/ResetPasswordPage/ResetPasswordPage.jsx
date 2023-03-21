@@ -28,7 +28,9 @@ const ResetPasswordPage = () => {
         });
       console.log(resettoken);
     }, 100);
-  }, [resetEmailToken, resettoken, userCurrentEmail]);
+    console.log(resettoken);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmitResetPassword = password => {
     console.log({

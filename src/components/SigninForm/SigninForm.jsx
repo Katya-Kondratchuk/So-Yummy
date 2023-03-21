@@ -3,7 +3,7 @@ import css from './SigninForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
@@ -62,7 +62,6 @@ const SigninForm = () => {
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { email, password } = values;
-      dispatch(loginUser({ email, password }));
       setSubmitting(false);
     },
   });
@@ -171,7 +170,7 @@ const SigninForm = () => {
                 routeText={'Registration'}
               />
               <AuthLinkTo
-                route={'/register'}
+                route={'/password-reset-token/'}
                 routeText={'Forgot your password?'}
                 yourClassName={css.forgotPassLink}
               />

@@ -3,12 +3,10 @@ import css from './SigninForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import warningValidation from 'services/warningValidation';
@@ -16,11 +14,10 @@ import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
 import { useRef, useState } from 'react';
 import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
-const ResetPassForm = () => {
+const ResetPassForm = ({ onSubmitResetPassword }) => {
   const signInPasswordInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
 
-  const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
@@ -51,8 +48,8 @@ const ResetPassForm = () => {
     },
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      const { email, password } = values;
-      dispatch(loginUser({ email, password }));
+      const { password } = values;
+      onSubmitResetPassword(password);
       setSubmitting(false);
     },
   });

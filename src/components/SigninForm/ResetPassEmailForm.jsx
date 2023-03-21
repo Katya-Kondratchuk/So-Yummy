@@ -9,12 +9,11 @@ import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
-import { postResendLink } from 'services/api/recipesAPI.js';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { postResendLink } from 'redux/auth/authOperation';
 
 const ResetPassEmailForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -38,19 +37,10 @@ const ResetPassEmailForm = () => {
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { email } = values;
-      setIsLoading(true);
-      postResendLink({ email: email })
-        .then(email => {
-          toast.info(`Check ${email} for confirmation letter`);
-          setIsLoading(false);
-        })
-        .catch(error =>
-          toast.error('An error occured please check your email and try again'),
-        );
-      setIsLoading(false);
-      setSubmitting(false);
+      dispatch(postResendLink({ email }));
     },
   });
+
   const isValid = signinSchema.isValidSync(formik.values);
   return (
     <div className={css.registrComponent}>
@@ -69,7 +59,6 @@ const ResetPassEmailForm = () => {
               buttonLabel="Confirm "
               formik={formik}
               isValid={isValid}
-              isLoading={isLoading}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>

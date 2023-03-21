@@ -32,9 +32,13 @@
     color: var(--secondaryBlackColor);
     font-weight: 500;
     font-size: 18px;
-  
 }
 
+.pageNumbers li.active:hover,
+.pageNumbers li.active:focus {
+    scale: 1.1;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .pageNumbers div {
     display: flex;
@@ -63,6 +67,7 @@
 .pageNumbers div:hover,
 .pageNumbers div:focus {
     color: var(--secondaryBlackColor);
+    scale: 1.2;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -121,4 +126,6 @@
             scale: 1.2;
             transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
+ 
+        
 }

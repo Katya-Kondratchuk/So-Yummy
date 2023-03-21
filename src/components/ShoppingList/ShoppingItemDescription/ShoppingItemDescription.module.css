@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 107px;
   height: 100%;
+
   padding-right: 10px;
   overflow: hidden;
 }
@@ -23,16 +24,20 @@
 .name {
   color: var(--mainTextColor);
   padding-left: 10px;
+  padding-right: 10px;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.24px;
   height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 @media screen and (min-width: 768px) {
   .name {
     font-size: 24px;
     line-height: 24px;
     padding-left: 16px;
+    padding-right: 16px;
   }
 }

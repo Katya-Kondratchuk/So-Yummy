@@ -1,5 +1,5 @@
 import ResetPassForm from 'components/SigninForm/ResetPassForm';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectAuthResetEmail } from 'redux/auth/authSelectors';
@@ -9,7 +9,7 @@ let verify = null;
 
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
-
+  const [token, setToken] = useState('');
   const userCurrentEmail = useSelector(selectAuthResetEmail);
 
   useEffect(() => {
@@ -22,7 +22,8 @@ const ResetPasswordPage = () => {
       email: userCurrentEmail,
       resetEmailToken: resetEmailToken,
     })
-      .then(() => {
+      .then(({ resetPasswordToken }) => {
+        setToken(resetPasswordToken);
         verify = null;
       })
       .catch(() => {
@@ -34,7 +35,7 @@ const ResetPasswordPage = () => {
     postSetNewPassword({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: resetEmailToken,
+      resetPasswordToken: token,
     });
   };
 

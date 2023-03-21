@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import { toast } from 'react-toastify';
 import {
   selectSearchQuery,
@@ -24,6 +25,7 @@ import css from './Search.module.css';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 
 const Search = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const searchQuery = useSelector(selectSearchQuery);
   const searchType = useSelector(selectSearchType);
@@ -37,7 +39,14 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (isFirstLoading && searchQuery) {
+    if (isFirstLoading.current) {
+      if (location?.state?.ingredient) {
+        dispatch(updateSearchType('ingredient'));
+      } else {
+        dispatch(updateSearchType('title'));
+      }
+    }
+    if (isFirstLoading.current && searchQuery) {
       if (searchType === 'title') {
         getSearchByTitle(searchQuery, page)
           .then(res => {
@@ -63,7 +72,14 @@ const Search = () => {
       }
     }
     isFirstLoading.current = false;
-  }, [dispatch, page, searchQuery, searchType]);
+  }, [
+    dispatch,
+    location,
+    location?.state?.ingredient,
+    page,
+    searchQuery,
+    searchType,
+  ]);
 
   useEffect(() => {
     if (searchQuery) {

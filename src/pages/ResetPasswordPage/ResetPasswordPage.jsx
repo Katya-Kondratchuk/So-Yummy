@@ -35,25 +35,23 @@ const ResetPasswordPage = () => {
   }, [resetEmailToken, userCurrentEmail]);
 
   const onSubmitResetPassword = password => {
-    console.log({
-      email: userCurrentEmail,
-      password: password,
-      resetPasswordToken: token,
-    });
-
-    postSetNewPassword({
-      email: userCurrentEmail,
-      password: password,
-      resetPasswordToken: token,
-    });
+    if (tokenState) {
+      console.log({
+        email: userCurrentEmail,
+        password: password,
+        resetPasswordToken: token,
+      });
+      return postSetNewPassword({
+        email: userCurrentEmail,
+        password: password,
+        resetPasswordToken: token,
+      });
+    } else return;
   };
 
   return (
     <div>
-      <ResetPassForm
-        onSubmitResetPassword={onSubmitResetPassword}
-        tokenState={tokenState}
-      />
+      <ResetPassForm onSubmitResetPassword={onSubmitResetPassword} />
     </div>
   );
 };

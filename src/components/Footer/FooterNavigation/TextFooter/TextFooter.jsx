@@ -6,9 +6,12 @@ import css from './TextFooter.module.css';
 const TextFooter = () => {
   return (
     <div>
-      <NavLink to="/main" className={css.logoText}>
-        <Logo inv width={'44px'} height={'44px'} /> <span>So Yummy</span>
-      </NavLink>
+      <div className={css.logoText}>
+        <NavLink to="/main">
+          <Logo inv width={'44px'} height={'44px'} />
+        </NavLink>
+        <span>So Yummy</span>
+      </div>
       <ul className={css.navLeft}>
         <li>Database of recipes that can be replenished </li>
         <li>Flexible search for desired and unwanted ingredients</li>

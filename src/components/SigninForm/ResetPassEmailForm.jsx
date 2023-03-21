@@ -1,19 +1,21 @@
 import FormInput from '../../reusableComponents/FormInput/FormInput';
-import css from './SigninForm.module.css';
+import css from './ResetPassEmailForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
+import { postResendLink } from 'services/api/recipesAPI.js';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ResetPassEmailForm = () => {
-  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
@@ -36,7 +38,16 @@ const ResetPassEmailForm = () => {
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { email } = values;
-      dispatch(loginUser({ email }));
+      setIsLoading(true);
+      postResendLink({ email: email })
+        .then(email => {
+          toast.info(`Check ${email} for confirmation letter`);
+          setIsLoading(false);
+        })
+        .catch(error =>
+          toast.error('An error occured please check your email and try again'),
+        );
+      setIsLoading(false);
       setSubmitting(false);
     },
   });
@@ -58,6 +69,7 @@ const ResetPassEmailForm = () => {
               buttonLabel="Confirm "
               formik={formik}
               isValid={isValid}
+              isLoading={isLoading}
             >
               <div className={css.formFromat}>
                 <div className={css.formIinputFormat}>
@@ -66,6 +78,7 @@ const ResetPassEmailForm = () => {
                     switchImages={switchImages}
                     erorr={formik.errors.email}
                     placeholder="Email"
+                    formik={formik}
                     id="standard-required-register-email"
                     type="email"
                     name="email"
@@ -92,7 +105,7 @@ const ResetPassEmailForm = () => {
               <AuthLinkTo
                 route="/signin"
                 routeText="Sign in"
-                yourClassName={css.signInLink}
+                yourClassName={css.signInLinkReset}
               />
             </div>
           </div>

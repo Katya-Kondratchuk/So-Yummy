@@ -6,3 +6,4 @@ export const selectAuthLoading = state => state.auth.loadind;
 export const selectAuthIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectAuthIsRefreshUser = state => state.auth.isRefreshUser;
 export const selectAuthErrorMessage = state => state.auth.error;
+export const selectAuthResetEmail = state => state.auth.resetEmail;

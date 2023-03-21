@@ -66,7 +66,7 @@ const App = () => {
             element={
               <PublicRoute
                 component={<ResetPasswordPage />}
-                redirectTo="/main"
+                redirectTo="/signin"
               />
             }
           />

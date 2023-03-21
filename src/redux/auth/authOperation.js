@@ -227,7 +227,7 @@ export const postResendLink = createAsyncThunk(
     try {
       const { data } = await axios.post(AUTH_ENDPOINT.SEND_EMAIL, credentials);
       toast.success(`${data.message}!`);
-      return { data, email: credentials };
+      return credentials;
     } catch (error) {
       toast.error(`${error.response?.data?.message || 'Try again'}!`);
       return ThunkAPI.rejectWithValue(error.message);

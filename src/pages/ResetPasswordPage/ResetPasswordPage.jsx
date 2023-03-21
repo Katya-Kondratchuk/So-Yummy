@@ -20,8 +20,6 @@ const ResetPasswordPage = () => {
     })
       .then(({ resetPasswordToken }) => {
         localStorage.setItem('token', JSON.stringify(resetPasswordToken));
-        toast.success('Your password was change');
-        navigate('/signin');
       })
       .catch(error => {
         console.log(error.message);
@@ -36,6 +34,8 @@ const ResetPasswordPage = () => {
       password: password,
       resetPasswordToken: JSON.parse(localStorage.getItem('token')),
     });
+    toast.success('Your password was change');
+    navigate('/signin');
   };
 
   return (

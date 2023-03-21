@@ -12,7 +12,7 @@ const CheckBoxRecipe = ({ id, measure }) => {
     if (e.target.checked) {
       await postShoppingList({ productId: id, measure })
         .then(data =>
-          toast.success('You add ingridient to shopping list', {
+          toast.success('You added ingredient to shopping list', {
             toastId: '123',
           }),
         )
@@ -23,7 +23,7 @@ const CheckBoxRecipe = ({ id, measure }) => {
     if (!e.target.checked) {
       await patchShoppingList({ productId: id, measure })
         .then(data =>
-          toast.info('You removed ingridient from shopping list', {
+          toast.info('You removed ingredient from shopping list', {
             toastId: '1234',
           }),
         )

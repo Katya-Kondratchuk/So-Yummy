@@ -37,7 +37,7 @@ const ResetPasswordPage = () => {
     postSetNewPassword({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: localStorage.getItem('token'),
+      resetPasswordToken: JSON.parse(localStorage.getItem('token')),
     });
   };
 

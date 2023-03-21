@@ -1,34 +1,34 @@
 import ResetPassForm from 'components/SigninForm/ResetPassForm';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectAuthResetEmail } from 'redux/auth/authSelectors';
 import { postResetPassword, postSetNewPassword } from 'services/api/recipesAPI';
 
-// let verify = null;
+let verify = null;
 
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
-  const [token, setToken] = useState('');
+  // const [token, setToken] = useState('');
   const userCurrentEmail = useSelector(selectAuthResetEmail);
 
   useEffect(() => {
-    // if (!resetEmailToken) return;
-    // if (resetEmailToken === verify) return;
+    if (!resetEmailToken) return;
+    if (resetEmailToken === verify) return;
 
-    // verify = resetEmailToken;
+    verify = resetEmailToken;
 
     postResetPassword({
       email: userCurrentEmail,
       resetEmailToken: resetEmailToken,
     })
-      .then(({ resetPasswordToken }) => {
-        console.log(resetPasswordToken);
-        setToken(resetPasswordToken);
+      .then(data => {
+        console.log(data);
+        // console.log(resetPasswordToken);
+        // setToken(resetPasswordToken);
         // verify = null;
       })
       .catch(error => {
-        // verify = null;
         console.log(error.message);
       });
   }, [resetEmailToken, userCurrentEmail]);
@@ -37,13 +37,13 @@ const ResetPasswordPage = () => {
     console.log({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: token,
+      // resetPasswordToken: token,
     });
 
     postSetNewPassword({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: token,
+      // resetPasswordToken: token,
     });
   };
 

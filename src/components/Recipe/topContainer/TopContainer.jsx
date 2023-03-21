@@ -17,8 +17,8 @@ const TopContainer = ({ title, description, time, id, favorite }) => {
   const addToFavorite = () => {
     patchRecipeFavoriteById(id).then(({ favorite }) => {
       setIsFavorite(favorite);
-      favorite && toast.success(`Added to Favorite!`);
-      !favorite && toast.info(`Removed from Favorite!`);
+      favorite && toast.success(`Added to favorite!`);
+      !favorite && toast.info(`Removed from favorite!`);
     });
   };
 

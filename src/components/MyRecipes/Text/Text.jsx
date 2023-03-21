@@ -55,7 +55,7 @@ const Textt = ({ description }) => {
     return <p className={css.text}>{description}</p>;
   }
 
-  if (description.length < 200) {
+  if (description.length < 300) {
     return <p className={css.text}>{description}</p>;
   }
 };

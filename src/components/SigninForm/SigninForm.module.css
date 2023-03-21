@@ -74,6 +74,9 @@
 .forgotPassLink {
   bottom: -52px;
 }
+.signInLink {
+  bottom: -52px;
+}
 @media screen and (min-width: 768px) {
   .unlockButtonSignIn {
     left: 67px;

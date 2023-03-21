@@ -51,6 +51,12 @@ const App = () => {
             }
           />
           <Route
+            path="/password-reset-token/:resetEmailToken"
+            element={
+              <PublicRoute component={<VerifyPage />} redirectTo="/main" />
+            }
+          />
+          <Route
             path="/"
             element={
               <PublicRoute component={<WelcomePage />} redirectTo="/main" />

@@ -39,14 +39,14 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (isFirstLoading) {
+    if (isFirstLoading.current) {
       if (location?.state?.ingredient) {
         dispatch(updateSearchType('ingredient'));
       } else {
         dispatch(updateSearchType('title'));
       }
     }
-    if (isFirstLoading && searchQuery) {
+    if (isFirstLoading.current && searchQuery) {
       if (searchType === 'title') {
         getSearchByTitle(searchQuery, page)
           .then(res => {

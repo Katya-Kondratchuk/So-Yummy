@@ -49,8 +49,8 @@ const ResetPasswordPage = () => {
     <div>
       <ResetPassForm
         onSubmitResetPassword={() => {
-          setTimeout(async () => {
-            await onSubmitResetPassword();
+          setTimeout(() => {
+            onSubmitResetPassword();
           }, 0);
         }}
       />

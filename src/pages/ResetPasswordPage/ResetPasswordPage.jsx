@@ -10,6 +10,7 @@ let verify = null;
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
   const [token, setToken] = useState('');
+  const [tokenState, setTokenState] = useState(false);
   const userCurrentEmail = useSelector(selectAuthResetEmail);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const ResetPasswordPage = () => {
       .then(data => {
         console.log(data);
         setToken(data.resetPasswordToken);
+        setTokenState(true);
         // verify = null;
       })
       .catch(error => {
@@ -48,7 +50,10 @@ const ResetPasswordPage = () => {
 
   return (
     <div>
-      <ResetPassForm onSubmitResetPassword={onSubmitResetPassword} />
+      <ResetPassForm
+        onSubmitResetPassword={onSubmitResetPassword}
+        tokenState={tokenState}
+      />
     </div>
   );
 };

@@ -14,7 +14,7 @@ import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
 import { useRef, useState } from 'react';
 import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
-const ResetPassForm = ({ onSubmitResetPassword }) => {
+const ResetPassForm = ({ onSubmitResetPassword, tokenState }) => {
   const signInPasswordInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
 
@@ -49,7 +49,9 @@ const ResetPassForm = ({ onSubmitResetPassword }) => {
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { password } = values;
-      onSubmitResetPassword(password);
+      if (tokenState) {
+        onSubmitResetPassword(password);
+      } else return;
       setSubmitting(false);
     },
   });

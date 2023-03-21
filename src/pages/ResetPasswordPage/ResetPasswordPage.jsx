@@ -23,6 +23,7 @@ const ResetPasswordPage = () => {
       resetEmailToken: resetEmailToken,
     })
       .then(({ resetPasswordToken }) => {
+        console.log(resetPasswordToken);
         setToken(resetPasswordToken);
         verify = null;
       })

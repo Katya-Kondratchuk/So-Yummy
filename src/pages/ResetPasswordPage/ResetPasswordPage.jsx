@@ -1,5 +1,5 @@
 import ResetPassForm from 'components/SigninForm/ResetPassForm';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectAuthResetEmail } from 'redux/auth/authSelectors';
@@ -7,7 +7,7 @@ import { postResetPassword, postSetNewPassword } from 'services/api/recipesAPI';
 
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
-  const [resettoken, setToken] = useState('');
+  //   const [resettoken, setToken] = useState('');
   const userCurrentEmail = useSelector(selectAuthResetEmail);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ResetPasswordPage = () => {
       })
         .then(({ resetPasswordToken }) => {
           console.log(resetPasswordToken);
-          setToken(resetPasswordToken);
+          //   setToken(resetPasswordToken);
           localStorage.setItem('token', JSON.stringify(resetPasswordToken));
           console.log(resetPasswordToken);
           console.log(JSON.stringify(resetPasswordToken));

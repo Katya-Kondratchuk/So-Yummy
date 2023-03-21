@@ -18,39 +18,32 @@ const ResetPasswordPage = () => {
         email: userCurrentEmail,
         resetEmailToken: resetEmailToken,
       })
-        .then(data => {
-          console.log(data);
-          setToken(data.resetPasswordToken);
-          console.log(resettoken);
+        .then(({ resetPasswordToken }) => {
+          console.log(resetPasswordToken);
+          setToken(resetPasswordToken);
+          localStorage.setItem('token', JSON.stringify(resetPasswordToken));
+          console.log(resetPasswordToken);
+          console.log(JSON.stringify(resetPasswordToken));
         })
         .catch(error => {
           console.log(error.message);
         });
-      console.log(resettoken);
     }, 100);
-    console.log(resettoken);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmitResetPassword = password => {
-    console.log({
-      email: userCurrentEmail,
-      password: password,
-      resetPasswordToken: resettoken,
-    });
+    console.log(localStorage.getItem('token'));
     postSetNewPassword({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: resettoken,
+      resetPasswordToken: localStorage.getItem('token'),
     });
   };
 
   return (
     <div>
-      <ResetPassForm
-        onSubmitResetPassword={onSubmitResetPassword}
-        resettoken={resettoken}
-      />
+      <ResetPassForm onSubmitResetPassword={onSubmitResetPassword} />
     </div>
   );
 };

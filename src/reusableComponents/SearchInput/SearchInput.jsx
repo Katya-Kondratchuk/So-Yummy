@@ -1,16 +1,27 @@
 import { useState } from 'react';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
+import * as yup from 'yup';
 
 import css from './SearchInput.module.css';
-
+const searchQueryRegex = /^[a-z A-Z]+$/;
 const SearchInput = ({ dark, name, searchQuery, lnk }) => {
   const [inputValue, setInputValue] = useState(searchQuery);
 
   return (
     <div className={css.wrapper}>
       <input
-        onChange={e => {
-          setInputValue(e.target.value);
+        onChange={async e => {
+          const searchQuerySchema = yup.string().matches(searchQueryRegex);
+          try {
+            if (e.target.value !== '') {
+              const validInput = await searchQuerySchema.validate(
+                e.target.value,
+              );
+              setInputValue(validInput);
+            } else {
+              setInputValue('');
+            }
+          } catch (error) {}
         }}
         className={css.input}
         name={name}

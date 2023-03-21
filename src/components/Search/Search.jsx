@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import {
   selectSearchType,
 } from 'redux/search/searchSelectors';
 import {
+  clearSearch,
   updateSearchQuery,
   updateSearchResult,
   updateSearchType,
@@ -32,22 +33,24 @@ const Search = () => {
   const searchResult = useSelector(selectSearchResult);
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
-  const isFirstLoading = useRef(true);
 
   const onPageChange = (e, page) => {
     setPage(page);
   };
 
   useEffect(() => {
-    if (isFirstLoading.current) {
-      if (location?.state?.ingredient) {
-        dispatch(updateSearchType('ingredient'));
-      } else {
-        dispatch(updateSearchType('title'));
-      }
+    return () => {
+      dispatch(clearSearch());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (location?.state?.ingredient) {
+      dispatch(updateSearchType('ingredient'));
+      location.state.ingredient = false;
     }
-    if (isFirstLoading.current && searchQuery) {
-      if (searchType === 'title') {
+    if (searchType === 'title') {
+      if (searchQuery) {
         getSearchByTitle(searchQuery, page)
           .then(res => {
             if (res.recipes.length === 0) {
@@ -58,11 +61,15 @@ const Search = () => {
             setCount(totalPages);
           })
           .catch(err => console.log(err.message));
-      } else {
+      }
+    } else {
+      if (searchQuery) {
         getSearchByIngredients(searchQuery, page)
           .then(res => {
             if (res.recipes.length === 0) {
-              toast.warning('Nothing... Try another search query');
+              toast.warning(
+                'First loading. Nothing... Try another search query',
+              );
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
@@ -71,53 +78,28 @@ const Search = () => {
           .catch(err => console.log(err.message));
       }
     }
-    isFirstLoading.current = false;
   }, [
     dispatch,
     location,
-    location?.state?.ingredient,
+    location.state?.ingredient,
     page,
     searchQuery,
     searchType,
   ]);
 
-  useEffect(() => {
-    if (searchQuery) {
-      if (searchType === 'title') {
-        getSearchByTitle(searchQuery, page)
-          .then(res => {
-            if (res.recipes.length === 0) {
-              toast.warning('Nothing... Try another search query');
-            }
-            dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
-            setPage(res.page);
-          })
-          .catch(err => console.log(err.message));
-      } else {
-        getSearchByIngredients(searchQuery, page)
-          .then(res => {
-            if (res.recipes.length === 0) {
-              toast.warning('Nothing... Try another search query');
-            }
-            dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
-            setPage(res.page);
-          })
-          .catch(err => console.log(err.message));
-      }
-    }
-  }, [dispatch, page, searchQuery, searchType]);
-
   const onFormSubmit = e => {
     e.preventDefault();
-    const searchQuery = e.target.elements.search.value;
+    const newSearchQuery = e.target.elements.search.value;
     const searchType = e.target.elements.type.value;
     setPage(1);
-    if (!searchQuery) return;
-    dispatch(updateSearchQuery(searchQuery));
+    if (
+      !newSearchQuery ||
+      (newSearchQuery === searchQuery && searchResult.length === 0)
+    ) {
+      toast.warning('Type new query');
+      return;
+    }
+    dispatch(updateSearchQuery(newSearchQuery));
     dispatch(updateSearchType(searchType));
   };
   return (

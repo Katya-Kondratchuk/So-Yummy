@@ -13,12 +13,10 @@ import warningValidation from 'services/warningValidation';
 import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
 import { useRef, useState } from 'react';
 import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
-import { postSetNewPassword } from 'services/api/recipesAPI';
 
-const ResetPassForm = ({ token, userCurrentEmail }) => {
+const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
   const signInPasswordInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
-  console.log(token);
 
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -49,15 +47,10 @@ const ResetPassForm = ({ token, userCurrentEmail }) => {
       password: '',
     },
     validationSchema: signinSchema,
-    onSubmit: (values, { setSubmitting, resetForm }) => {
+    onSubmit: (values, resettoken, { setSubmitting, resetForm }) => {
+      console.log(resettoken);
       const { password } = values;
-      // onSubmitResetPassword(password);
-      console.log(token);
-      postSetNewPassword({
-        email: userCurrentEmail,
-        password: password,
-        resetPasswordToken: token,
-      });
+      onSubmitResetPassword(password);
       setSubmitting(false);
     },
   });

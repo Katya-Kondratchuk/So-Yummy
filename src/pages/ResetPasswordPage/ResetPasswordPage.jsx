@@ -1,34 +1,31 @@
 import ResetPassForm from 'components/SigninForm/ResetPassForm';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { selectAuthResetEmail } from 'redux/auth/authSelectors';
 import { postResetPassword, postSetNewPassword } from 'services/api/recipesAPI';
+import { toast } from 'react-toastify';
 
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
-  //   const [resettoken, setToken] = useState('');
   const userCurrentEmail = useSelector(selectAuthResetEmail);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!resetEmailToken) return;
 
-    setTimeout(async () => {
-      await postResetPassword({
-        email: userCurrentEmail,
-        resetEmailToken: resetEmailToken,
+    postResetPassword({
+      email: userCurrentEmail,
+      resetEmailToken: resetEmailToken,
+    })
+      .then(({ resetPasswordToken }) => {
+        localStorage.setItem('token', JSON.stringify(resetPasswordToken));
+        toast.success('Your password was change');
+        navigate('/signin');
       })
-        .then(({ resetPasswordToken }) => {
-          console.log(resetPasswordToken);
-          //   setToken(resetPasswordToken);
-          localStorage.setItem('token', JSON.stringify(resetPasswordToken));
-          console.log(resetPasswordToken);
-          console.log(JSON.stringify(resetPasswordToken));
-        })
-        .catch(error => {
-          console.log(error.message);
-        });
-    }, 100);
+      .catch(error => {
+        console.log(error.message);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

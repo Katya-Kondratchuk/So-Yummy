@@ -7,6 +7,7 @@ import {
   registerUser,
   verificationUser,
   verifyResendEmail,
+  postResendLink,
 } from './authOperation';
 
 const initialState = {
@@ -121,7 +122,12 @@ export const authSlice = createSlice({
         state.user.avatarURL = payload.avatarURL;
         state.loadind = false;
       })
-      .addCase(getUserInfo.rejected, handlerRejected);
+      .addCase(getUserInfo.rejected, handlerRejected)
+      .addCase(postResendLink.pending, handlerPending)
+      .addCase(postResendLink.fulfilled, (state, { payload }) => {
+        state.user.email = payload.email;
+      })
+      .addCase(postResendLink.rejected, handlerRejected);
   },
 });
 

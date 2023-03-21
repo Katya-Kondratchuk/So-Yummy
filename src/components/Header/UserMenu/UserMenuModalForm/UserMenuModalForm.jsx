@@ -3,7 +3,10 @@ import { useFormik } from 'formik';
 import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
 import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUserName } from 'redux/auth/authSelectors';
+import {
+  selectAuthUserAvatarURL,
+  selectAuthUserName,
+} from 'redux/auth/authSelectors';
 import * as yup from 'yup';
 import css from './UserMenuModalForm.module.css';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
@@ -36,7 +39,7 @@ const UserMenuModalForm = ({ onClose }) => {
             ['image/jpeg', 'image/png', 'image/svg'].includes(value.type))
         );
       })
-      .test('size', 'An image has to be less then 2mb', value => {
+      .test('size', 'The image must be less than 2 MB', value => {
         return !value || (value && value.size <= 2000000);
       }),
     userName: yup
@@ -89,6 +92,7 @@ const UserMenuModalForm = ({ onClose }) => {
   const onClearImgClick = () => {
     setImage('');
   };
+  const userAvatarURL = useSelector(selectAuthUserAvatarURL);
   return (
     <div className={css.userModal}>
       <div className={css.cont}>
@@ -102,7 +106,10 @@ const UserMenuModalForm = ({ onClose }) => {
         >
           <div className={css.avatarChanger}>
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
-              <div className={css.avatarPrevew}>
+              <div
+                style={{ backgroundImage: `url(${userAvatarURL})` }}
+                className={css.avatarPrevew}
+              >
                 <input
                   type="file"
                   name="newAvatartURL"

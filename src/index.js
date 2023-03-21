@@ -12,15 +12,13 @@ import { setupInterceptors } from 'redux/auth/authOperation';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
-      <Provider store={store}>
-        <BrowserRouter basename="/So-Yummy">
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </PersistGate>
-  </React.StrictMode>,
+  <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
+    <Provider store={store}>
+      <BrowserRouter basename="/So-Yummy">
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </PersistGate>,
 );
 
 setupInterceptors(store);

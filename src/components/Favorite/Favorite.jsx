@@ -56,7 +56,6 @@ const Favorite = () => {
     await getAllFavorite(page, 4)
       .then(data => {
         const pageCounts = Math.ceil(data.total / 4);
-        // console.log(data.total);
         if (pageCounts > 1) {
           setTotalPage(pageCounts);
         } else {
@@ -74,8 +73,8 @@ const Favorite = () => {
 
   return (
     <div>
-      <BGDots />
       <div className={'container'}>
+        <BGDots />
         <section className={css.contentWrapper}>
           <Title text="Favorites" />
           <ul className={css.cardList}>

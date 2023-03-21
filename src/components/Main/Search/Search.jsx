@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { updateSearchQuery } from 'redux/search/searchSlice';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Hero from '../Hero/Hero';
@@ -12,7 +13,10 @@ const MainHero = () => {
   const dispatch = useDispatch();
   const onInputSubmit = e => {
     e.preventDefault();
-    if (!e.target.search.value) return;
+    if (!e.target.search.value) {
+      toast.warning('Type the query for search');
+      return;
+    }
     dispatch(updateSearchQuery(e.target.search.value));
     navigate('/search');
   };

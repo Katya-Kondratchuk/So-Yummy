@@ -14,10 +14,18 @@ import HelperText from 'reusableComponents/FormInput/HelperText';
 import { registerUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import warningValidation from 'services/warningValidation';
-
+import switchColorUnlock from './unlockColorSwitcher';
+let initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
   const passwordInput = useRef(null);
+  const emailInput = useRef(null);
+  const nameInput = useRef(null);
+  const [visibility, setVisibility] = useState(true);
 
   const dispatch = useDispatch();
   const myEmailRegex =
@@ -57,11 +65,7 @@ const RegisterForm = () => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
+    initialValues,
     validationSchema: registrationSchema,
 
     onSubmit: (values, { setSubmitting, resetForm }) => {
@@ -73,6 +77,9 @@ const RegisterForm = () => {
   });
 
   const isValid = registrationSchema.isValidSync(formik.values);
+  const hendleButtonShown = () => {
+    setVisibility(!visibility);
+  };
 
   const togglePasswordVisibility = () => {
     if (passwordInput.current.type === 'password') {
@@ -81,7 +88,6 @@ const RegisterForm = () => {
       passwordInput.current.type = 'password';
     }
   };
-
   return (
     <div className={css.registrComponent}>
       <AuthBackround />
@@ -107,7 +113,7 @@ const RegisterForm = () => {
                     autoComplete="name"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
-                    placeholder={'name'}
+                    placeholder="Name"
                     id="standard-required-register-name"
                     type="text"
                     name="name"
@@ -116,6 +122,7 @@ const RegisterForm = () => {
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    ref={nameInput}
                   />
                   {formik.touched.name && formik.errors.name && (
                     <HelperText
@@ -130,7 +137,8 @@ const RegisterForm = () => {
                     autoComplete="email"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
-                    placeholder={'email'}
+                    placeholder="Email"
+                    formik={formik}
                     id="standard-required-register-email"
                     type="email"
                     name="email"
@@ -138,6 +146,7 @@ const RegisterForm = () => {
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    ref={emailInput}
                   />
                   {formik.touched.email && formik.errors.email && (
                     <HelperText
@@ -152,10 +161,11 @@ const RegisterForm = () => {
                     autoComplete="current-password"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
-                    placeholder={'password'}
+                    placeholder="Password"
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
+                    formik={formik}
                     ref={passwordInput}
                     erorr={formik.errors.password}
                     value={formik.values.password}
@@ -164,9 +174,17 @@ const RegisterForm = () => {
                     togglePasswordVisibility={togglePasswordVisibility}
                   />
                   <button
+                    style={{ opacity: visibility ? '0' : '1' }}
                     type="button"
-                    className={css.unlockButton}
-                    onClick={togglePasswordVisibility}
+                    className={switchColorUnlock(
+                      formik.errors.password,
+                      formik.values.password,
+                      '',
+                    )}
+                    onClick={e => {
+                      togglePasswordVisibility();
+                      hendleButtonShown();
+                    }}
                   >
                     <ShowPassword />
                   </button>
@@ -186,7 +204,11 @@ const RegisterForm = () => {
                 </div>
               </div>
             </UserDataForm>
-            <AuthLinkTo route="/signin" routeText="sign in" />
+            <AuthLinkTo
+              yourClassName={css.signInLink}
+              route="/signin"
+              routeText="Sign in"
+            />
           </div>
         </div>
       </div>

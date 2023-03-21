@@ -14,6 +14,7 @@ const AUTH_ENDPOINT = {
   VERIFY: '/users/verify',
   VERIFY_RESEND: '/users/verify/resend-email',
   USER: '/users/current',
+  SEND_EMAIL: `/users/reset/send-reset-link`,
 };
 
 const token = {
@@ -220,3 +221,17 @@ export const setupInterceptors = store => {
     },
   );
 };
+export const postResendLink = createAsyncThunk(
+  'auth/postResendLink',
+  async (credentials, ThunkAPI) => {
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINT.SEND_EMAIL, credentials);
+      console.log(data);
+      toast.success(`${data.message}!`);
+      return credentials.email;
+    } catch (error) {
+      toast.error(`${error.response?.data?.message || 'Try again'}!`);
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);

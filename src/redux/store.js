@@ -16,7 +16,7 @@ import { searchReducer } from './search/searchSlice';
 const persistConfig = {
   key: 'refresh-user-token',
   storage,
-  whitelist: ['refreshToken'],
+  whitelist: ['refreshToken', 'resetEmail'],
 };
 
 export const store = configureStore({

@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
@@ -30,12 +31,26 @@ const RecipeCard = ({
   trashClass,
   onDelete,
 }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <li className={css.dish}>
-      <img src={imgComponent} className={css.dishImg} alt="dish visually" />
+      {isMobile ? (
+        <Link to={`/recipe/${id}`}>
+          <img src={imgComponent} className={css.dishImg} alt="dish visually" />
+        </Link>
+      ) : (
+        <img src={imgComponent} className={css.dishImg} alt="dish visually" />
+      )}
       <div className={css.cardWrapper}>
         <div className={css.titleWrapper}>
-          <h3 className={css.dishTitle}>{title}</h3>
+          {isMobile ? (
+            <Link to={`/recipe/${id}`}>
+              <h3 className={css.dishTitle}>{title}</h3>
+            </Link>
+          ) : (
+            <h3 className={css.dishTitle}>{title}</h3>
+          )}
           <div className={css.trashLogo}>
             <TrashButton bgColorClass={trashClass} onDelete={onDelete} />
           </div>

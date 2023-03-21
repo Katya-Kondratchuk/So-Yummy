@@ -1,6 +1,8 @@
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 import SharedLayout from 'components/SharedLayout';
+import ConfirmEmailPage from 'pages/ConfirmEmailPage/ConfirmEmailPage';
 import RegisterPage from 'pages/RegisterPage';
+import ResetPasswordPage from 'pages/ResetPasswordPage/ResetPasswordPage';
 import SigninPage from 'pages/SigninPage';
 import VerifyPage from 'pages/VerifyPage';
 import { lazy, useEffect, useRef } from 'react';
@@ -48,6 +50,24 @@ const App = () => {
             path="/verification-token/:verificationToken"
             element={
               <PublicRoute component={<VerifyPage />} redirectTo="/main" />
+            }
+          />
+          <Route
+            path="/password-reset-token/"
+            element={
+              <PublicRoute
+                component={<ConfirmEmailPage />}
+                redirectTo="/main"
+              />
+            }
+          />
+          <Route
+            path="/password-reset-token/:resetEmailToken"
+            element={
+              <PublicRoute
+                component={<ResetPasswordPage />}
+                redirectTo="/main"
+              />
             }
           />
           <Route

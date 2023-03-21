@@ -19,9 +19,16 @@ const searchSlice = createSlice({
     updateSearchResult(state, action) {
       state.searchResult = action.payload;
     },
+    clearSearch() {
+      return initialState;
+    },
   },
 });
 
-export const { updateSearchQuery, updateSearchResult, updateSearchType } =
-  searchSlice.actions;
+export const {
+  updateSearchQuery,
+  updateSearchResult,
+  updateSearchType,
+  clearSearch,
+} = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;

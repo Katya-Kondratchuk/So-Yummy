@@ -39,7 +39,7 @@ const UserMenuModalForm = ({ onClose }) => {
             ['image/jpeg', 'image/png', 'image/svg'].includes(value.type))
         );
       })
-      .test('size', 'An image has to be less then 2mb', value => {
+      .test('size', 'The image must be less than 2 MB', value => {
         return !value || (value && value.size <= 2000000);
       }),
     userName: yup

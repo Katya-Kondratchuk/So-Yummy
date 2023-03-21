@@ -13,6 +13,7 @@ import {
 const initialState = {
   user: { name: '', email: '', avatarURL: '' },
   refreshToken: '',
+  resetEmail: '',
   loadind: false,
   isLoggedIn: false,
   isRefreshUser: false,
@@ -123,9 +124,10 @@ export const authSlice = createSlice({
         state.loadind = false;
       })
       .addCase(getUserInfo.rejected, handlerRejected)
+
       .addCase(postResendLink.pending, handlerPending)
       .addCase(postResendLink.fulfilled, (state, { payload }) => {
-        state.user.email = payload.email;
+        state.resetEmail = payload;
       })
       .addCase(postResendLink.rejected, handlerRejected);
   },

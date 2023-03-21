@@ -61,7 +61,27 @@
   align-items: center;
   transform: translate(-50%, -50%);
 }
+.unlockButtonSignIn {
+  left: 38px;
+  top: 151px;
+}
+.linkBox {
+  position: relative;
+}
+.signUpLink {
+  bottom: -85px;
+}
+.forgotPassLink {
+  bottom: -52px;
+}
+.signInLink {
+  bottom: -52px;
+}
 @media screen and (min-width: 768px) {
+  .unlockButtonSignIn {
+    left: 67px;
+    top: 202px;
+  }
   .divButtonClass {
     width: 400px;
     height: 59px;

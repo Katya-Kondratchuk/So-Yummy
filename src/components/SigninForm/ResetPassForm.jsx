@@ -16,7 +16,7 @@ import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
 import { useRef, useState } from 'react';
 import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
-const SigninForm = () => {
+const ResetPassForm = () => {
   const signInPasswordInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
 
@@ -25,16 +25,6 @@ const SigninForm = () => {
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
   let signinSchema = yup.object().shape({
-    email: yup
-      .string()
-      .lowercase()
-      .matches(myEmailRegex, {
-        message: 'Your email must be valid',
-        name: 'email',
-        excludeEmptyString: true,
-      })
-      .min(5, 'Your email is too short')
-      .required('Type your email please'),
     password: yup
       .string()
       .trim()
@@ -85,39 +75,17 @@ const SigninForm = () => {
           <AuthImg />
           <div className={css.registrForm}>
             <div className={css.registrationTitleFormat}>
-              <AuthTitle titleText="Sign in" />
+              <AuthTitle titleText="Wright your new password" />
             </div>
             <UserDataForm
               divButtonClass={css.divButtonClass}
               initialValues={formik.initialValues}
               schema={signinSchema}
-              buttonLabel={'Sign in'}
+              buttonLabel={'Send'}
               formik={formik}
               isValid={isValid}
             >
               <div className={css.formFromat}>
-                <div className={css.formIinputFormat}>
-                  <FormInput
-                    autoComplete="email"
-                    switchImages={switchImages}
-                    erorr={formik.errors.email}
-                    placeholder="Email"
-                    id="standard-required-register-email"
-                    type="email"
-                    name="email"
-                    formInputArea={css.formInputArea}
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.touched.email && formik.errors.email && (
-                    <HelperText
-                      value={formik.values.email}
-                      errorText={formik.errors.email}
-                    />
-                  )}
-                </div>
-
                 <div className={css.formIinputFormat}>
                   <FormInput
                     autoComplete="current-password"
@@ -172,8 +140,8 @@ const SigninForm = () => {
               />
               <AuthLinkTo
                 route={'/register'}
-                routeText={'Forgot your password?'}
-                yourClassName={css.forgotPassLink}
+                routeText={'Sign in'}
+                yourClassName={css.signInLink}
               />
             </div>
           </div>
@@ -183,4 +151,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default ResetPassForm;

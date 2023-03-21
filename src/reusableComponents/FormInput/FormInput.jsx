@@ -15,6 +15,8 @@ const FormInput = forwardRef(function FormInput(props, ref) {
     erorr,
     userInitName = '',
     value = '',
+    formik,
+    id,
     formInputArea = '',
     formInputUserMenu = '',
     formInputFooterForm = '',
@@ -43,13 +45,13 @@ const FormInput = forwardRef(function FormInput(props, ref) {
     }
   };
   const [visibility, setVisibility] = useState(true);
-
+  const hendleClearClick = ref => {
+    if (ref) return ref.current.focus(ref);
+    else return;
+  };
   const hendleButtonShown = () => {
     setVisibility(!visibility);
   };
-  // const hendleButtonHide = () => {
-  //   setVisibility(!visibility);
-  // };
   return (
     <div className={formInputArea}>
       <input
@@ -69,19 +71,27 @@ const FormInput = forwardRef(function FormInput(props, ref) {
         placeholder={placeholder}
         autoComplete={autoComplete}
         value={value}
+        id={id}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
         {switchStateImages(erorr, value, formInputUserMenu, name, userInitName)}
       </span>
-      <button
-        onMouseEnter={hendleButtonShown}
-        onMouseLeave={hendleButtonShown}
-        style={{ opacity: visibility ? '0' : '1' }}
-        className={css.formClearButtonIcon}
-      >
-        <ErorrIcon />
-      </button>
+      {value && (
+        <button
+          type="button"
+          onMouseEnter={hendleButtonShown}
+          onMouseLeave={hendleButtonShown}
+          onClick={e => {
+            formik.setFieldValue(`${name}`, '');
+            hendleClearClick(ref);
+          }}
+          style={{ opacity: visibility ? '0' : '1' }}
+          className={css.formClearButtonIcon}
+        >
+          <ErorrIcon />
+        </button>
+      )}
     </div>
   );
 });

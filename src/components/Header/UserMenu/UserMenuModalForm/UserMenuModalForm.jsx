@@ -16,7 +16,11 @@ import switchImages from 'services/switchImages';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { postUserInfo } from 'services/api/recipesAPI';
 import { toast } from 'react-toastify';
-import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
+import {
+  deleteUserAvatar,
+  updateUserAvatar,
+  updateUserName,
+} from 'redux/auth/authSlice';
 
 const UserMenuModalForm = ({ onClose }) => {
   // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
@@ -63,6 +67,7 @@ const UserMenuModalForm = ({ onClose }) => {
           .then(res => {
             dispatch(updateUserName(res.name));
             dispatch(updateUserAvatar(res.avatarURL));
+            // dispatch(deleteUserAvatar(res.avatarURL));
             toast.success('Your profile has been changed');
           })
           .catch(error => toast.error('An error occured, try again'))
@@ -153,7 +158,7 @@ const UserMenuModalForm = ({ onClose }) => {
               <FormInput
                 formInputArea={css.formInputArea}
                 switchImages={switchImages}
-                autoComplete="username"
+                autoComplete="off"
                 placeholder={userInitName}
                 id="standard-required-register-username"
                 type="text"

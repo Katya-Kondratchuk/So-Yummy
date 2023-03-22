@@ -94,7 +94,7 @@ const AddRecipeForm = () => {
   );
   useEffect(() => {
     if (allCategory.length || isLoadAllCategory) return;
-    console.log('hhh');
+
     isLoadAllCategory = true;
 
     const getCategories = async () => {

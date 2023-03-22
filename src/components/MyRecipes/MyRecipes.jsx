@@ -25,7 +25,7 @@ const MyRecipes = () => {
       setTotalItems(total);
       setRecipesArray(recipes);
     });
-  }, [currentPage, location.state.motivation, totalItems]);
+  }, [currentPage, location, totalItems]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();

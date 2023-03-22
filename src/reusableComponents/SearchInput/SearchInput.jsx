@@ -11,6 +11,7 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
   return (
     <div className={css.wrapper}>
       <input
+        placeholder="Enter query"
         onChange={async e => {
           const searchQuerySchema = yup
             .string()

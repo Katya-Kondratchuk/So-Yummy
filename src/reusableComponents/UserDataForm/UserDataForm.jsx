@@ -16,6 +16,7 @@ const UserDataForm = ({
   isValid,
   notify,
   divButtonClass,
+  isLoading = false,
 }) => {
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
@@ -36,7 +37,7 @@ const UserDataForm = ({
         label={buttonLabel}
         divClassName={divButtonClass}
         type="submit"
-        disabled={loading || !isValid}
+        disabled={isLoading || loading || !isValid}
       />
       {!erorMessage && notify && !loading && isValid ? (
         <button

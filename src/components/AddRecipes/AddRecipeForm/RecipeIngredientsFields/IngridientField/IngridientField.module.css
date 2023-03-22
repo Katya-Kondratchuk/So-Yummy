@@ -12,6 +12,11 @@ input[type='number'] {
   color: var(--greenColor);
 }
 
+.itemList {
+  width: 100%;
+  text-align: center;
+}
+
 .item {
   position: relative;
   display: flex;
@@ -65,7 +70,7 @@ input[type='number'] {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   max-width: 40px;
-  padding: 16px 2px 16px 2px;
+  padding: 16px 2px 15px 2px;
   text-align: end;
 }
 
@@ -101,7 +106,7 @@ input[type='number'] {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   height: 100%;
-  width: 63px;
+  width: 67px;
   cursor: pointer;
 }
 
@@ -113,10 +118,12 @@ input[type='number'] {
   height: 100%;
   gap: 4px;
   padding-left: 2px;
-  padding-right: 12px;
+  padding-right: 10px;
 }
 
 .wrapperOptionUnit {
+  display: block;
+  text-align: center;
   width: 100%;
 }
 
@@ -139,12 +146,8 @@ input[type='number'] {
 }
 
 .selectContentUnits {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 122px;
-  padding: 16px 10px 12px;
+  height: 141px;
+  padding: 8px 8px;
 }
 
 .selectContentIngredients {
@@ -271,8 +274,8 @@ input[type='number'] {
   }
 
   .selectContentUnits {
-    height: 128px;
-    padding: 20px 10px 12px;
+    height: 166px;
+    padding: 12px 10px;
   }
 
   .selectContentIngredients {
@@ -289,7 +292,7 @@ input[type='number'] {
   }
 
   .wrapperUnit {
-    width: 65px;
+    width: 75px;
   }
 
   .arrow {

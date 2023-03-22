@@ -15,10 +15,16 @@ import { registerUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import warningValidation from 'services/warningValidation';
 import switchColorUnlock from './unlockColorSwitcher';
-
+let initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
 const RegisterForm = () => {
   const [notify, setNotify] = useState(false);
   const passwordInput = useRef(null);
+  const emailInput = useRef(null);
+  const nameInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
 
   const dispatch = useDispatch();
@@ -59,11 +65,7 @@ const RegisterForm = () => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
+    initialValues,
     validationSchema: registrationSchema,
 
     onSubmit: (values, { setSubmitting, resetForm }) => {
@@ -86,7 +88,6 @@ const RegisterForm = () => {
       passwordInput.current.type = 'password';
     }
   };
-
   return (
     <div className={css.registrComponent}>
       <AuthBackround />
@@ -112,7 +113,7 @@ const RegisterForm = () => {
                     autoComplete="name"
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
-                    placeholder={'Name'}
+                    placeholder="Name"
                     id="standard-required-register-name"
                     type="text"
                     name="name"
@@ -121,6 +122,7 @@ const RegisterForm = () => {
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    ref={nameInput}
                   />
                   {formik.touched.name && formik.errors.name && (
                     <HelperText
@@ -136,6 +138,7 @@ const RegisterForm = () => {
                     formInputArea={css.formInputArea}
                     switchImages={switchImages}
                     placeholder="Email"
+                    formik={formik}
                     id="standard-required-register-email"
                     type="email"
                     name="email"
@@ -143,6 +146,7 @@ const RegisterForm = () => {
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    ref={emailInput}
                   />
                   {formik.touched.email && formik.errors.email && (
                     <HelperText
@@ -161,6 +165,7 @@ const RegisterForm = () => {
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
+                    formik={formik}
                     ref={passwordInput}
                     erorr={formik.errors.password}
                     value={formik.values.password}

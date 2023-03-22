@@ -6,24 +6,28 @@ import HeroTransformer from '../heroTransformer/HeroTransformer';
 import { patchRecipeFavoriteById } from 'services/api/recipesAPI';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
 const TopContainer = ({ title, description, time, id, favorite }) => {
   const [isFavorite, setIsFavorite] = useState(favorite);
+  const [motivation, setMotivation] = useState('');
 
   useEffect(() => {
     setIsFavorite(favorite);
   }, [favorite]);
 
   const addToFavorite = () => {
-    patchRecipeFavoriteById(id).then(({ favorite }) => {
+    patchRecipeFavoriteById(id).then(({ favorite, motivation }) => {
       setIsFavorite(favorite);
-      favorite && toast.success(`Added to Favorite!`);
-      !favorite && toast.info(`Removed from Favorite!`);
+      setMotivation(motivation);
+      favorite && toast.success(`Added to favorite!`);
+      !favorite && toast.info(`Removed from favorite!`);
     });
   };
 
   return (
     <>
+      {motivation === '10' && <MotivatingModal option={3} />}
       <HeroTransformer />
       <div className={css.containerThumb}>
         <div className={css.containerWrapper}>

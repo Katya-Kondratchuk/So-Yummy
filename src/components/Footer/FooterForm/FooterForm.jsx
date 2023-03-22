@@ -28,7 +28,7 @@ const FooterForm = () => {
   });
   const formik = useFormik({
     initialValues: {
-      name: '',
+      email: '',
     },
     validationSchema: registrationSchema,
 
@@ -80,6 +80,7 @@ const FooterForm = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              error={formik.touched.email && formik.errors.email}
             />
             {formik.touched.email && formik.errors.email && (
               <HelperText erorr={formik.errors.email} />

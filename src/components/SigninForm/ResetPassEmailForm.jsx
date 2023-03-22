@@ -1,19 +1,20 @@
 import FormInput from '../../reusableComponents/FormInput/FormInput';
-import css from './SigninForm.module.css';
+import css from './ResetPassEmailForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
+import { useDispatch } from 'react-redux';
+import { postResendLink } from 'redux/auth/authOperation';
 
 const ResetPassEmailForm = () => {
   const dispatch = useDispatch();
+
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
@@ -36,10 +37,10 @@ const ResetPassEmailForm = () => {
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { email } = values;
-      dispatch(loginUser({ email }));
-      setSubmitting(false);
+      dispatch(postResendLink({ email }));
     },
   });
+
   const isValid = signinSchema.isValidSync(formik.values);
   return (
     <div className={css.registrComponent}>
@@ -66,6 +67,7 @@ const ResetPassEmailForm = () => {
                     switchImages={switchImages}
                     erorr={formik.errors.email}
                     placeholder="Email"
+                    formik={formik}
                     id="standard-required-register-email"
                     type="email"
                     name="email"
@@ -92,7 +94,7 @@ const ResetPassEmailForm = () => {
               <AuthLinkTo
                 route="/signin"
                 routeText="Sign in"
-                yourClassName={css.signInLink}
+                yourClassName={css.signInLinkReset}
               />
             </div>
           </div>

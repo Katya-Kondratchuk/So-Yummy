@@ -3,12 +3,10 @@ import css from './SigninForm.module.css';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import switchImages from '../../services/switchImages';
-import { useDispatch } from 'react-redux';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import warningValidation from 'services/warningValidation';
@@ -16,25 +14,14 @@ import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
 import { useRef, useState } from 'react';
 import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
-const SigninForm = () => {
+const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
   const signInPasswordInput = useRef(null);
   const [visibility, setVisibility] = useState(true);
 
-  const dispatch = useDispatch();
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
   let signinSchema = yup.object().shape({
-    email: yup
-      .string()
-      .lowercase()
-      .matches(myEmailRegex, {
-        message: 'Your email must be valid',
-        name: 'email',
-        excludeEmptyString: true,
-      })
-      .min(5, 'Your email is too short')
-      .required('Type your email please'),
     password: yup
       .string()
       .trim()
@@ -61,8 +48,8 @@ const SigninForm = () => {
     },
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      const { email, password } = values;
-      dispatch(loginUser({ email, password }));
+      const { password } = values;
+      onSubmitResetPassword(password);
       setSubmitting(false);
     },
   });
@@ -85,39 +72,17 @@ const SigninForm = () => {
           <AuthImg />
           <div className={css.registrForm}>
             <div className={css.registrationTitleFormat}>
-              <AuthTitle titleText="Sign in" />
+              <AuthTitle titleText="Wright your new password" />
             </div>
             <UserDataForm
               divButtonClass={css.divButtonClass}
               initialValues={formik.initialValues}
               schema={signinSchema}
-              buttonLabel={'Sign in'}
+              buttonLabel={'Send'}
               formik={formik}
               isValid={isValid}
             >
               <div className={css.formFromat}>
-                <div className={css.formIinputFormat}>
-                  <FormInput
-                    autoComplete="email"
-                    switchImages={switchImages}
-                    erorr={formik.errors.email}
-                    placeholder="Email"
-                    id="standard-required-register-email"
-                    type="email"
-                    name="email"
-                    formInputArea={css.formInputArea}
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.touched.email && formik.errors.email && (
-                    <HelperText
-                      value={formik.values.email}
-                      errorText={formik.errors.email}
-                    />
-                  )}
-                </div>
-
                 <div className={css.formIinputFormat}>
                   <FormInput
                     autoComplete="current-password"
@@ -171,9 +136,9 @@ const SigninForm = () => {
                 routeText={'Registration'}
               />
               <AuthLinkTo
-                route={'/password-reset-token/'}
-                routeText={'Forgot your password?'}
-                yourClassName={css.forgotPassLink}
+                route={'/register'}
+                routeText={'Sign in'}
+                yourClassName={css.signInLink}
               />
             </div>
           </div>
@@ -183,4 +148,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default ResetPassForm;

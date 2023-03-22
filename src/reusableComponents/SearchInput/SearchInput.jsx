@@ -23,7 +23,7 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
               setInputValue('');
             }
           } catch (error) {
-            return toast.error('Only letters can be entered');
+            return toast.error('Only latin letters can be entered');
           }
         }}
         className={css.input}

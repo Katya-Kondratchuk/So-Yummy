@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -62,7 +63,7 @@ const UserMenuModalForm = ({ onClose }) => {
           .then(res => {
             dispatch(updateUserName(res.name));
             dispatch(updateUserAvatar(res.avatarURL));
-            // dispatch(deleteUserAvatar(res.avatarURL));
+
             toast.success('Your profile has been changed');
           })
           .catch(error => toast.error('An error occured, try again'))
@@ -93,8 +94,15 @@ const UserMenuModalForm = ({ onClose }) => {
     setImage('');
   };
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
+  const [modalOffset, setModalOffset] = useState(false);
+
   return (
-    <div className={css.userModal}>
+    <div
+      className={clsx(css.userModal, {
+        [css.modalOffset]: modalOffset,
+      })}
+      // className={css.userModal}
+    >
       <div className={css.cont}>
         <UserDataForm
           initialValues={formik.initialValues}
@@ -107,7 +115,9 @@ const UserMenuModalForm = ({ onClose }) => {
           <div className={css.avatarChanger}>
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
               <div
-                style={{ backgroundImage: `url(${userAvatarURL})` }}
+                style={{
+                  backgroundImage: `url(${userAvatarURL})`,
+                }}
                 className={css.avatarPrevew}
               >
                 <input
@@ -165,6 +175,7 @@ const UserMenuModalForm = ({ onClose }) => {
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
+                setModalOffset={setModalOffset}
               />
               {formik.touched.userName && formik.errors.userName && (
                 <HelperText

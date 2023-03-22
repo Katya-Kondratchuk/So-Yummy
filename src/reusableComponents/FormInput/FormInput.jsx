@@ -4,8 +4,6 @@ import warningValidation from 'services/warningValidation';
 import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
 import { forwardRef, useState } from 'react';
 
-const body = document.querySelector('body');
-
 const FormInput = forwardRef(function FormInput(props, ref) {
   const {
     placeholder = '',

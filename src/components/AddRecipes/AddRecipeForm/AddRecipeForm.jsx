@@ -14,6 +14,10 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { createObjErrorResipeForm } from 'services/createObjErrorResipeForm';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
+import storageServises from 'services/localStorage';
+import LoadingSpiner from 'reusableComponents/LoadingSpiner';
+
+const STORAGE_KEY_ADD_RESIPE = 'add-data-recipe';
 
 let isLoadAllCategory = false;
 let isLoadAllIngredients = false;
@@ -23,30 +27,60 @@ const AddRecipeForm = () => {
   const [allIngredients, setAllIngredients] = useState([]);
 
   const [fullImage, setFullImage] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('Beef');
-  const [time, setTime] = useState('15 min');
+  const [title, setTitle] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.title || '',
+  );
+  const [description, setDescription] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.description || '',
+  );
+  const [category, setCategory] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.category || 'Beef',
+  );
+  const [time, setTime] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.time || '15 min',
+  );
 
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.ingredients || [],
+  );
 
-  const [instructions, setInstructions] = useState('');
+  const [instructions, setInstructions] = useState(
+    () => storageServises.get(STORAGE_KEY_ADD_RESIPE)?.instructions || '',
+  );
 
   const [formErrors, setFormErrors] = useState({});
   const [isShowErrors, setIsShowErrors] = useState(false);
   const [isAddRecipe, setIsAddRecipe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isWaitResoinse, setIsWaitResoinse] = useState(false);
 
   const navigate = useNavigate();
 
   const resetDataForm = () => {
     setFullImage(null);
-    setTitle('');
-    setDescription('');
-    setTime('15 min');
-    setIngredients([]);
-    setInstructions('');
+    storageServises.save(STORAGE_KEY_ADD_RESIPE, null);
   };
+
+  useEffect(() => {
+    storageServises.save(STORAGE_KEY_ADD_RESIPE, {
+      category,
+      description,
+      fullImage,
+      ingredients,
+      instructions,
+      time,
+      title,
+    });
+    return () => {};
+  }, [
+    category,
+    description,
+    fullImage,
+    ingredients,
+    instructions,
+    time,
+    title,
+  ]);
 
   const formData = useMemo(
     () => ({
@@ -61,7 +95,7 @@ const AddRecipeForm = () => {
     [category, description, fullImage, ingredients, instructions, time, title],
   );
   useEffect(() => {
-    if (isLoadAllCategory) return;
+    if (allCategory.length || isLoadAllCategory) return;
     isLoadAllCategory = true;
 
     const getCategories = async () => {
@@ -74,7 +108,7 @@ const AddRecipeForm = () => {
     getCategories()
       .then(data => {
         const categories = data.map(({ title }) => title);
-        if (categories.length > 0) {
+        if (categories.length > 0 && !category) {
           setCategory(categories[0]);
         }
         setAllCategory(categories);
@@ -84,7 +118,7 @@ const AddRecipeForm = () => {
         isLoadAllCategory = false;
         setIsLoading(false);
       });
-  }, []);
+  }, [allCategory.length, category]);
 
   useEffect(() => {
     if (!isShowErrors) return;
@@ -106,12 +140,12 @@ const AddRecipeForm = () => {
     if (isLoadAllIngredients) return;
     isLoadAllIngredients = true;
 
-    const getAllIngregientsList = async () => {
-      const categoriesList = (await getIngregientsList()) || [];
-      return categoriesList;
+    const getAllIngredientsList = async () => {
+      const ingredientsList = (await getIngregientsList()) || [];
+      return ingredientsList;
     };
     setIsLoading(true);
-    getAllIngregientsList()
+    getAllIngredientsList()
       .then(data => {
         const normalizedIngredientsList = data.map(({ _id, ttl }) => ({
           _id,
@@ -164,7 +198,7 @@ const AddRecipeForm = () => {
       category,
       time: time.slice(0, time.indexOf(' ')),
       ingredients: ingredients.map(({ amount, unit, title }) => ({
-        measure: `${amount} ${unit}`,
+        measure: `${amount}${unit === '-' ? '' : ` ${unit}`}`,
         id: title._id,
       })),
       instructions: instructions
@@ -173,12 +207,12 @@ const AddRecipeForm = () => {
         .join('\r\n'),
     };
 
-    setIsLoading(true);
+    setIsWaitResoinse(true);
 
     addOwnRecipe(dataForSend)
       .then(data => {
         setIsAddRecipe(false);
-        setIsLoading(false);
+        setIsWaitResoinse(false);
         if (data?.error) {
           toast.error(data.error.response.data.message);
           return;
@@ -191,7 +225,7 @@ const AddRecipeForm = () => {
       .catch(e => {
         toast.error('Something went wrong, try add your recipe again');
         setIsAddRecipe(false);
-        setIsLoading(false);
+        setIsWaitResoinse(false);
       });
   };
 
@@ -200,7 +234,13 @@ const AddRecipeForm = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>
-      {isLoading && <LoaderSuspense />}
+      {isWaitResoinse && <LoaderSuspense />}
+      {isLoading && (
+        <div className={css.wrapperLoader}>
+          <LoadingSpiner />
+        </div>
+      )}
+
       <RecipeDescriptionFields
         allCategory={allCategory}
         image={{ fullImage, setFullImage }}

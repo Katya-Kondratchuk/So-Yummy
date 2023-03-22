@@ -10,13 +10,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import updateLocalStorageMiddleware from 'services/auth/updateLocalStorageMiddleware';
 import { authSlice } from './auth/authSlice';
 import { searchReducer } from './search/searchSlice';
 
 const persistConfig = {
   key: 'refresh-user-token',
   storage,
-  whitelist: ['refreshToken'],
+  whitelist: ['refreshToken', 'resetEmail', 'accessToken', 'user'],
 };
 
 export const store = configureStore({
@@ -30,7 +31,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         ignoredActionPaths: ['payload.error'],
       },
-    }),
+    }).concat(updateLocalStorageMiddleware),
 });
 
 export const persistor = persistStore(store);

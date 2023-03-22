@@ -11,8 +11,14 @@
   height: 16px;
   display: block;
   color: var(--whiteColor);
+  border: none;
+  background-color: transparent;
+  transition: color 500ms ease;
 }
-
+.notification:hover,
+.notification:focus {
+  color: var(--greenColor);
+}
 @media screen and (min-width: 768px) {
   .confirmButton {
     max-width: 400px;

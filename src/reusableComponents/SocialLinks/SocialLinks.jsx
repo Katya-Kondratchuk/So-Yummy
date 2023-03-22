@@ -13,16 +13,32 @@ import clsx from 'clsx';
 const SocialLinks = ({ text }) => {
   return (
     <div className={css.wrapper}>
-      <a href="https://www.facebook.com/">
+      <a
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Facebook className={css[text]} width="20" height="20" />
       </a>
-      <a href="https://www.youtube.com/">
+      <a
+        href="https://www.youtube.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Youtube className={css[text]} width="20" height="15" />
       </a>
-      <a href="https://www.twitter.com/">
+      <a
+        href="https://www.twitter.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Twitter className={css[text]} width="20" height="16" />
       </a>
-      <a href="https://www.instagram.com/">
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Instagram className={clsx(css[text], css.instagramm)} />
       </a>
     </div>

@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
-import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUserName } from 'redux/auth/authSelectors';
-import * as yup from 'yup';
-import css from './UserMenuModalForm.module.css';
-import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
-import HelperText from 'reusableComponents/FormInput/HelperText';
-import FormInput from 'reusableComponents/FormInput/FormInput';
-import switchImages from 'services/switchImages';
+import React, { useRef, useState } from 'react';
+import clsx from 'clsx';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
-import { postUserInfo } from 'services/api/recipesAPI';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import {
+  selectAuthUserAvatarURL,
+  selectAuthUserName,
+} from 'redux/auth/authSelectors';
 import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
+import FormInput from 'reusableComponents/FormInput/FormInput';
+import HelperText from 'reusableComponents/FormInput/HelperText';
+import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
+import { postUserInfo } from 'services/api/recipesAPI';
+import switchImages from 'services/switchImages';
+import * as yup from 'yup';
+import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
+import css from './UserMenuModalForm.module.css';
 
 const UserMenuModalForm = ({ onClose }) => {
-  // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
+  const userMenuInput = useRef(null);
   const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);
@@ -36,7 +40,7 @@ const UserMenuModalForm = ({ onClose }) => {
             ['image/jpeg', 'image/png', 'image/svg'].includes(value.type))
         );
       })
-      .test('size', 'An image has to be less then 2mb', value => {
+      .test('size', 'The image must be less than 2 MB', value => {
         return !value || (value && value.size <= 2000000);
       }),
     userName: yup
@@ -60,6 +64,7 @@ const UserMenuModalForm = ({ onClose }) => {
           .then(res => {
             dispatch(updateUserName(res.name));
             dispatch(updateUserAvatar(res.avatarURL));
+
             toast.success('Your profile has been changed');
           })
           .catch(error => toast.error('An error occured, try again'))
@@ -74,11 +79,11 @@ const UserMenuModalForm = ({ onClose }) => {
 
   const handleImageChange = e => {
     const selectedFile = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = reader.result.split(',')[1];
-      formik.values.newAvatartURL = base64String;
-    };
+    // const reader = new FileReader();
+    // reader.onloadend = () => {
+    //   const base64String = reader.result.split(',')[1];
+    //   formik.values.newAvatartURL = base64String;
+    // };
     if (selectedFile) {
       formik.values.image = selectedFile;
       setImage(selectedFile);
@@ -89,8 +94,16 @@ const UserMenuModalForm = ({ onClose }) => {
   const onClearImgClick = () => {
     setImage('');
   };
+  const userAvatarURL = useSelector(selectAuthUserAvatarURL);
+  const [modalOffset, setModalOffset] = useState(false);
+
   return (
-    <div className={css.userModal}>
+    <div
+      className={clsx(css.userModal, {
+        [css.modalOffset]: modalOffset,
+      })}
+      // className={css.userModal}
+    >
       <div className={css.cont}>
         <UserDataForm
           initialValues={formik.initialValues}
@@ -102,7 +115,12 @@ const UserMenuModalForm = ({ onClose }) => {
         >
           <div className={css.avatarChanger}>
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
-              <div className={css.avatarPrevew}>
+              <div
+                style={{
+                  backgroundImage: image ? 'none' : `url(${userAvatarURL})`,
+                }}
+                className={css.avatarPrevew}
+              >
                 <input
                   type="file"
                   name="newAvatartURL"
@@ -146,20 +164,22 @@ const UserMenuModalForm = ({ onClose }) => {
               <FormInput
                 formInputArea={css.formInputArea}
                 switchImages={switchImages}
-                autoComplete="username"
+                autoComplete="off"
                 placeholder={userInitName}
                 id="standard-required-register-username"
                 type="text"
                 name="userName"
                 edit
+                ref={userMenuInput}
                 userInitName={userInitName}
                 formik={formik}
                 erorr={formik.errors.userName}
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
+                setModalOffset={setModalOffset}
               />
-              {formik.touched.userName && formik.errors.userName && (
+              {formik.errors.userName && (
                 <HelperText
                   value={formik.values.userName}
                   errorText={formik.errors.userName}

@@ -44,6 +44,7 @@
   background-image: url('../../../../assets/images/UserMenu/userIcon.svg');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   background-color: var(--inputBg);
 }
 .userAvatar {
@@ -79,6 +80,13 @@
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
+@media screen and (max-width: 1339px) {
+  .userModal.modalOffset {
+    transition: all 0.2s ease;
+    top: 20%;
+  }
+}
+
 @keyframes slide-down {
   0% {
     opacity: 0;

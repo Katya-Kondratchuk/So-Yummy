@@ -13,11 +13,11 @@ const switchStateImages = (
 ) => {
   if (!erorr && value && !warningValidation(value) && name === 'password') {
     return <WarningIcon />;
-  } else if (erorr && value && value === userInitName) {
+  } else if (erorr && value) {
     return <ErorrIcon />;
   } else if (!erorr && value && value !== userInitName) {
     return <SucsessIcon />;
-  } else if (!erorr && !value && formInputUserMenu && name === 'userName') {
+  } else if (!erorr && formInputUserMenu && name === 'userName') {
     return <EditIcon />;
   } else {
     return;

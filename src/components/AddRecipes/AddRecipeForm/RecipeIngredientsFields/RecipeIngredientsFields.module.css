@@ -21,7 +21,7 @@
 .btnIncrease {
   display: flex;
   align-items: center;
-  border: transparent;
+  border: none;
   background-color: inherit;
 }
 
@@ -35,14 +35,13 @@
 
 .btnDecrease:disabled,
 .btnIncrease:disabled {
-  background-color: var(--secondaryGreyTextColorTransparent);
   color: var(--bgColor);
   cursor: not-allowed;
 }
 
 .amountIngredientrs {
   min-width: 16px;
-  padding: 4px 3px;
+  padding: 6px 3px;
   text-align: center;
 }
 
@@ -56,6 +55,10 @@
 
 .itemIngridient:not(:last-child) {
   margin-bottom: 18px;
+}
+
+.wrapperTextErorr {
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {
@@ -97,11 +100,13 @@
 }
 
 .errorMessage {
+  position: absolute;
+  top: 140%;
+  left: 0;
   font-family: 'Poppins';
   font-weight: 400;
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--errorColor);
-  margin-top: 10px;
 }

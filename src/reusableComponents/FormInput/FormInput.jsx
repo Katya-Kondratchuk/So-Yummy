@@ -1,27 +1,36 @@
 import css from './FormInput.module.css';
 import switchStateImages from 'services/switchStateImages';
 import warningValidation from 'services/warningValidation';
-const FormInput = ({
-  placeholder = '',
-  type = '',
-  switchImages = () => {},
-  onBlur = () => {},
-  onChange = () => {},
-  name = '',
-  erorr,
-  userInitName = '',
-  value = '',
-  formInputArea = '',
-  formInputUserMenu = '',
-  formInputFooterForm = '',
-  autoComplete,
-}) => {
+import { ReactComponent as ErorrIcon } from '../../assets/images/formInputIcons/erorr.svg';
+import { forwardRef, useState } from 'react';
+
+const FormInput = forwardRef(function FormInput(props, ref) {
+  const {
+    placeholder = '',
+    type = '',
+    switchImages = () => {},
+    onBlur = () => {
+      setModalOffset(false);
+    },
+    onChange = () => {},
+    name = '',
+    erorr,
+    userInitName = '',
+    value = '',
+    formik,
+    id,
+    formInputArea = '',
+    formInputUserMenu = '',
+    formInputFooterForm = '',
+    autoComplete,
+    setModalOffset,
+  } = props;
   const switchColor = (
     erorr,
     value,
     type,
     formInputUserMenu,
-    formInputFooterForm = '',
+    formInputFooterForm,
     userInitName,
   ) => {
     if (!erorr && value && !warningValidation(value) && type === 'password') {
@@ -38,6 +47,18 @@ const FormInput = ({
       return `${css.formInput}`;
     }
   };
+  const [visibility, setVisibility] = useState(true);
+  const hendleClearClick = ref => {
+    if (ref) return ref.current.focus(ref);
+    else return;
+  };
+  const hendleButtonShown = () => {
+    setVisibility(!visibility);
+  };
+  const onInputFocus = e => {
+    e.stopPropagation();
+    setModalOffset(true);
+  };
   return (
     <div className={formInputArea}>
       <input
@@ -49,6 +70,7 @@ const FormInput = ({
           formInputFooterForm,
           userInitName,
         )}
+        ref={ref}
         type={type}
         onChange={onChange}
         onBlur={onBlur}
@@ -56,13 +78,31 @@ const FormInput = ({
         placeholder={placeholder}
         autoComplete={autoComplete}
         value={value}
+        id={id}
+        onClick={onInputFocus}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
         {switchStateImages(erorr, value, formInputUserMenu, name, userInitName)}
       </span>
+      {value && (
+        <button
+          type="button"
+          onMouseEnter={hendleButtonShown}
+          onMouseLeave={hendleButtonShown}
+          onClick={e => {
+            formik.setFieldValue(`${name}`, '');
+            hendleClearClick(ref);
+            hendleButtonShown();
+          }}
+          style={{ opacity: visibility ? '0' : '1' }}
+          className={css.formClearButtonIcon}
+        >
+          <ErorrIcon />
+        </button>
+      )}
     </div>
   );
-};
+});
 
 export default FormInput;

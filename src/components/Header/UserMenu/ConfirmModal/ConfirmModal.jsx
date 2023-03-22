@@ -17,7 +17,7 @@ const ConfirmModal = ({ onClose }) => {
       <span className={css.title}>Are you sure you want to log out?</span>
       <div className={css.btnWrp}>
         <button onClick={handleLogoutBtnClick} className={css.confirmBtn}>
-          Log Out
+          Log out
         </button>
         <button onClick={onClose} className={css.confirmBtnCurrent}>
           Cancel

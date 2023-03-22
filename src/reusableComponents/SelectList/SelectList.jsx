@@ -12,6 +12,7 @@ const SelectList = ({
   setOption,
   activeItemClass = '',
   wrapperOption = '',
+  itemList = '',
 }) => {
   const [isActive, setIsActive] = useState(false);
   const inputEl = useRef(null);
@@ -52,7 +53,7 @@ const SelectList = ({
               }}
               className={`${css.selectItem} ${
                 value === option ? activeItemClass : ''
-              }`}
+              } ${itemList}`}
             >
               {value}
             </li>
@@ -72,6 +73,7 @@ SelectList.propTypes = {
   activeItemClass: PropTypes.string,
   wrapperOption: PropTypes.string,
   setOption: PropTypes.func,
+  itemList: PropTypes.string,
 };
 
 export default SelectList;

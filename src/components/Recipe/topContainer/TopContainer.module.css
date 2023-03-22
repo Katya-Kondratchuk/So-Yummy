@@ -9,20 +9,20 @@
   justify-content: center;
   align-items: flex-end;
   position: absolute;
-  top: 144px;
+  top: 115px;
   left: 50%;
   transform: translate(-50%, 0px);
 }
 @media screen and (min-width: 768px) {
   .containerThumb {
-    top: 72px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%, 64px);
   }
 }
 @media screen and (min-width: 1440px) {
   .containerThumb {
-    top: 164px;
+    top: 125px;
     left: 50%;
     transform: translate(-50%, 32px);
   }
@@ -109,7 +109,7 @@
 
 .dishTime {
   position: absolute;
-  margin-top: 195px;
+  margin-top: 230px;
   width: 150px;
   height: 20px;
   display: flex;
@@ -120,14 +120,14 @@
 @media screen and (min-width: 768px) {
   .dishTime {
     width: 278px;
-    margin-top: 320px;
+    margin-top: 347px;
   }
 }
 @media screen and (min-width: 1440px) {
   .dishTime {
-    width: 270px;
+    width: 297px;
     position: absolute;
-    margin-top: 255px;
+    margin-top: 295px;
   }
 }
 

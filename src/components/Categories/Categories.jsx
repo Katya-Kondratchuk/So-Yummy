@@ -2,7 +2,7 @@ import { useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import Loader from '../../reusableComponents/ContentLoader/CategoriesLoader';
@@ -21,7 +21,6 @@ const Categories = () => {
   const [page, setPage] = useState(1);
   const { categoryName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const isFirst = useRef(true);
 
   const mobile = useMediaQuery('(max-width: 767px)');
   const tablet = useMediaQuery('(max-width: 1439px)');
@@ -33,6 +32,7 @@ const Categories = () => {
 
   const handleChange = (event, newValue) => {
     setCategory(newValue);
+    setPage(1);
   };
 
   useEffect(() => {
@@ -41,16 +41,14 @@ const Categories = () => {
       setIsLoading(false);
       return;
     }
-    if (isFirst.current && category === 'Beef' && categoryName) {
-      setCategory(categoryName);
-      isFirst.current = false;
-    }
 
     getCategorieRecipes(category || '', page, 8).then(({ recipes, total }) => {
       setRecepiesCategory(recipes);
       const pageCounts = Math.ceil(total / 8);
       if (pageCounts > 1) {
         setTotalPage(pageCounts);
+      } else {
+        setTotalPage(null);
       }
     });
     setIsLoading(false);
@@ -59,12 +57,19 @@ const Categories = () => {
   useEffect(() => {
     getAllCategories()
       .then(data => {
-        setAllCategories(data);
+        const titleArray = data.map(({ title }) => title);
+        const sortTitle = titleArray.sort((a, b) => a.localeCompare(b));
+        setAllCategories(sortTitle);
+        if (categoryName) {
+          setCategory(categoryName);
+          return;
+        }
         if (data.length > 0) {
           setCategory(data[0].title);
         }
       })
       .catch(error => console.log(error.message));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangePage = (event, value) => {
@@ -97,14 +102,14 @@ const Categories = () => {
               },
             }}
           >
-            {allCategories.map(({ title, _id }) => (
+            {allCategories.map((title, index) => (
               <Tab
                 sx={{
                   '&.Mui-selected': {
                     color: '#8BAA36',
                   },
                 }}
-                key={_id}
+                key={index}
                 value={title}
                 label={title}
               />

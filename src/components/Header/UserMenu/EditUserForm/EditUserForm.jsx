@@ -27,7 +27,7 @@ const EditUserForm = ({ closeModal, openEdit, openConfirm, container }) => {
       </button>
 
       <div onClick={logOutBtnClickHandle} className={css.btnWrp}>
-        <SuperBtn typeBtn="submit" title={'LogOut'}>
+        <SuperBtn typeBtn="submit" title={'Log out'}>
           <UserArrowSvg />
         </SuperBtn>
       </div>

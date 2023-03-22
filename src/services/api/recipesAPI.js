@@ -214,15 +214,15 @@ export const getOwnRecipeById = async id => {
   }
 };
 
-export const postResendLink = async info => {
-  try {
-    const { data } = await axios.post(`/users/reset/send-reset-link`, info);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-    return null;
-  }
-};
+// export const postResendLink = async info => {
+//   try {
+//     const { data } = await axios.post(`/users/reset/send-reset-link`, info);
+//     return data;
+//   } catch (error) {
+//     console.log(error.message);
+//     return null;
+//   }
+// };
 
 export const postResetPassword = async info => {
   try {

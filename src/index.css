@@ -133,7 +133,6 @@ table {
   color: var(--greenColor);
   stroke: var(--greenColor);
 }
-
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;

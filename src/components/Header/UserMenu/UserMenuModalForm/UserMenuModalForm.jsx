@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
-import clsx from 'clsx';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
@@ -95,14 +94,13 @@ const UserMenuModalForm = ({ onClose }) => {
     setImage('');
   };
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
-  const [modalOffset, setModalOffset] = useState(false);
 
   return (
     <div
-      className={clsx(css.userModal, {
-        [css.modalOffset]: modalOffset,
-      })}
-      // className={css.userModal}
+      // className={clsx(css.userModal, {
+      //   [css.modalOffset]: modalOffset,
+      // })}
+      className={css.userModal}
     >
       <div className={css.cont}>
         <UserDataForm
@@ -177,7 +175,6 @@ const UserMenuModalForm = ({ onClose }) => {
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
-                setModalOffset={setModalOffset}
               />
               {formik.errors.userName && (
                 <HelperText

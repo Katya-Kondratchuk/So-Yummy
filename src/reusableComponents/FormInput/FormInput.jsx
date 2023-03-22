@@ -72,6 +72,9 @@ const FormInput = forwardRef(function FormInput(props, ref) {
         autoComplete={autoComplete}
         value={value}
         id={id}
+        onClick={e => {
+          e.stopPropagation();
+        }}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>
@@ -85,6 +88,7 @@ const FormInput = forwardRef(function FormInput(props, ref) {
           onClick={e => {
             formik.setFieldValue(`${name}`, '');
             hendleClearClick(ref);
+            hendleButtonShown();
           }}
           style={{ opacity: visibility ? '0' : '1' }}
           className={css.formClearButtonIcon}

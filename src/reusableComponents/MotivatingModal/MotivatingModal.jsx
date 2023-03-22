@@ -91,6 +91,3 @@ const MotivatingModal = ({ option }) => {
 };
 
 export default MotivatingModal;
-
-// вызов компонента:
-// <MotivatingModal option={1} />;

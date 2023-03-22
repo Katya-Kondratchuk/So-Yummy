@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { createObjErrorResipeForm } from 'services/createObjErrorResipeForm';
 import LoaderSuspense from 'components/LoaderSuspense/LoaderSuspense';
 import storageServises from 'services/localStorage';
+import LoadingSpiner from 'reusableComponents/LoadingSpiner';
 
 const STORAGE_KEY_ADD_RESIPE = 'add-data-recipe';
 
@@ -51,6 +52,7 @@ const AddRecipeForm = () => {
   const [isShowErrors, setIsShowErrors] = useState(false);
   const [isAddRecipe, setIsAddRecipe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isWaitResoinse, setIsWaitResoinse] = useState(false);
 
   const navigate = useNavigate();
 
@@ -94,7 +96,6 @@ const AddRecipeForm = () => {
   );
   useEffect(() => {
     if (allCategory.length || isLoadAllCategory) return;
-    console.log('hhh');
     isLoadAllCategory = true;
 
     const getCategories = async () => {
@@ -197,7 +198,7 @@ const AddRecipeForm = () => {
       category,
       time: time.slice(0, time.indexOf(' ')),
       ingredients: ingredients.map(({ amount, unit, title }) => ({
-        measure: `${amount} ${unit}`,
+        measure: `${amount}${unit === '-' ? '' : ` ${unit}`}`,
         id: title._id,
       })),
       instructions: instructions
@@ -206,12 +207,12 @@ const AddRecipeForm = () => {
         .join('\r\n'),
     };
 
-    setIsLoading(true);
+    setIsWaitResoinse(true);
 
     addOwnRecipe(dataForSend)
       .then(data => {
         setIsAddRecipe(false);
-        setIsLoading(false);
+        setIsWaitResoinse(false);
         if (data?.error) {
           toast.error(data.error.response.data.message);
           return;
@@ -219,12 +220,12 @@ const AddRecipeForm = () => {
         toast.success(`Your recipe ${title} has been created`);
         resetDataForm();
         setIsShowErrors(false);
-        navigate('/my');
+        navigate('/my', { state: { motivation: data.motivation } });
       })
       .catch(e => {
         toast.error('Something went wrong, try add your recipe again');
         setIsAddRecipe(false);
-        setIsLoading(false);
+        setIsWaitResoinse(false);
       });
   };
 
@@ -233,7 +234,13 @@ const AddRecipeForm = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className={css.form}>
-      {isLoading && <LoaderSuspense />}
+      {isWaitResoinse && <LoaderSuspense />}
+      {isLoading && (
+        <div className={css.wrapperLoader}>
+          <LoadingSpiner />
+        </div>
+      )}
+
       <RecipeDescriptionFields
         allCategory={allCategory}
         image={{ fullImage, setFullImage }}

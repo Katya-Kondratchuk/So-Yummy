@@ -44,7 +44,7 @@ const RecipeIngredientsFields = ({
                 return;
               }
               const id = uuidv4();
-              const newData = { id, title: {}, amount: '', unit: 'g' };
+              const newData = { id, title: {}, amount: '', unit: '-' };
               const updateIngredients = [...ingredients, newData];
               setIngredients(updateIngredients);
             }}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as Left } from '../../../assets/images/BtnLeftRight/32404steamingbowl_98938.svg';
 import { ReactComponent as Right } from '../../../assets/images/BtnLeftRight/32386sandwich_98891.svg';
 import css from '../PaginationCustom/Pagination.module.css';
-import { animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from 'react-scroll';
 
 const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
   const [pageNumberLimit] = useState(5);
@@ -101,3 +101,69 @@ const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
 };
 
 export default Pagination;
+
+
+
+// const handelDelete = async (id, event) => {
+//     if (event.target.disabled) {
+//       // Защита от двойного клика
+//       return;
+//     }
+//     event.target.disabled = true;
+//     await patchRecipeFavoriteById(id);
+//     // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
+//     // setAllRecipes(newRecipes);
+//     toast.info('You delete recipe from favorites list', {
+//       toastId: '12345',
+//     });
+//     // console.log(page);
+//     await getAllFavorite(page, 4)
+//       .then(data => {
+//         const pageCounts = Math.ceil(data.total / 4);
+//         // console.log(pageCounts);
+//         if (pageCounts > 1) {
+//           setTotalPage(pageCounts);
+//           if (pageCounts !== page) {
+//             console.log('Сработало');
+//             setPage(pageCounts);
+//             return;
+//           }
+//         } else {
+//           setTotalPage(null);
+//         }
+//         setAllRecipes(data.recipes ?? []);
+//       })
+//       .catch(e => {
+//         console.log(e.message);
+//       });
+//   };
+
+
+
+// await getAllFavorite(page, 4)
+//       .then(data => {
+//         // TODO
+//         if (data.total === 4) {
+//           setPage(1);
+//           setTotalPage(null);
+//           return;
+//         }
+//         //
+//         const pageCounts = Math.ceil(data.total / 4);
+//         console.log(pageCounts);
+//         if (pageCounts > 1) {
+//           setTotalPage(pageCounts);
+
+//           if (pageCounts < page) {
+//             setPage(pageCounts);
+//             return;
+//           }
+//         } else {
+//           setTotalPage(null);
+//         }
+//         setAllRecipes(data.recipes ?? []);
+//       })
+//       .catch(e => {
+//         console.log(e.message);
+//       });
+//   };

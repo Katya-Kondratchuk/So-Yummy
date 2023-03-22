@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import * as yup from 'yup';
 
@@ -10,6 +11,7 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
   return (
     <div className={css.wrapper}>
       <input
+        placeholder="Enter query"
         onChange={async e => {
           const searchQuerySchema = yup.string().matches(searchQueryRegex);
           try {
@@ -21,7 +23,9 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
             } else {
               setInputValue('');
             }
-          } catch (error) {}
+          } catch (error) {
+            return toast.error('Only latin letters can be entered');
+          }
         }}
         className={css.input}
         name={name}

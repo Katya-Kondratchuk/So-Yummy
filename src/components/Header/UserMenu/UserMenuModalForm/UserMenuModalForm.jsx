@@ -1,7 +1,6 @@
-import clsx from 'clsx';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
@@ -20,6 +19,7 @@ import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/p
 import css from './UserMenuModalForm.module.css';
 
 const UserMenuModalForm = ({ onClose }) => {
+  const userMenuInput = useRef(null);
   const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);
@@ -46,7 +46,7 @@ const UserMenuModalForm = ({ onClose }) => {
       .string()
       .trim()
       .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
-        message: 'Special simbols are not allowed',
+        message: 'Special symbols are not allowed',
       })
       .min(1, 'Your name must be 1 character at least')
       .max(16, '16 characters max'),
@@ -78,11 +78,11 @@ const UserMenuModalForm = ({ onClose }) => {
 
   const handleImageChange = e => {
     const selectedFile = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = reader.result.split(',')[1];
-      formik.values.newAvatartURL = base64String;
-    };
+    // const reader = new FileReader();
+    // reader.onloadend = () => {
+    //   const base64String = reader.result.split(',')[1];
+    //   formik.values.newAvatartURL = base64String;
+    // };
     if (selectedFile) {
       formik.values.image = selectedFile;
       setImage(selectedFile);
@@ -94,14 +94,13 @@ const UserMenuModalForm = ({ onClose }) => {
     setImage('');
   };
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
-  const [modalOffset, setModalOffset] = useState(false);
 
   return (
     <div
-      className={clsx(css.userModal, {
-        [css.modalOffset]: modalOffset,
-      })}
-      // className={css.userModal}
+      // className={clsx(css.userModal, {
+      //   [css.modalOffset]: modalOffset,
+      // })}
+      className={css.userModal}
     >
       <div className={css.cont}>
         <UserDataForm
@@ -116,7 +115,7 @@ const UserMenuModalForm = ({ onClose }) => {
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
               <div
                 style={{
-                  backgroundImage: `url(${userAvatarURL})`,
+                  backgroundImage: image ? 'none' : `url(${userAvatarURL})`,
                 }}
                 className={css.avatarPrevew}
               >
@@ -169,15 +168,15 @@ const UserMenuModalForm = ({ onClose }) => {
                 type="text"
                 name="userName"
                 edit
+                ref={userMenuInput}
                 userInitName={userInitName}
                 formik={formik}
                 erorr={formik.errors.userName}
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
-                setModalOffset={setModalOffset}
               />
-              {formik.touched.userName && formik.errors.userName && (
+              {formik.errors.userName && (
                 <HelperText
                   value={formik.values.userName}
                   errorText={formik.errors.userName}

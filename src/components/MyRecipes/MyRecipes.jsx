@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useLocation } from 'react-router';
 import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
+
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [recipesArray, setRecipesArray] = useState([]);
@@ -25,7 +26,9 @@ const MyRecipes = () => {
       setTotalItems(total);
       setRecipesArray(recipes);
     });
-  }, [currentPage, location.state.motivation]);
+
+  }, [currentPage,location.state.motivation, totalItems]);
+
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -42,24 +45,34 @@ const MyRecipes = () => {
     }
     event.target.disabled = true;
     await deleteOwnRecipe(id);
-    toast.info('Delete recipe', {});
-    await getOwnRecipe(1, 4)
+
+    toast.info('Delete recipe', {
+    });
+    await getOwnRecipe(currentPage, 4)
       .then(data => {
+        if (data.total === 4) {
+          setcurrentPage(1);
+          setTotalItems(null);
+          return;
+        }
         const totalItems = Math.ceil(data.total / 4);
         if (totalItems > 1) {
-          setTotalItems(totalItems);
+          if (totalItems < currentPage) {
+            setcurrentPage(totalItems);
+            return;
+          }
         }
-        if (totalItems === 1) {
-          setTotalItems(totalItems);
-        } else {
-          setTotalItems(0);
+        else {
+          setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
+        // setcurrentPage(1);
       })
       .catch(e => {
         console.log(e.message);
       });
   };
+
 
   return (
     <div className="container">
@@ -82,16 +95,15 @@ const MyRecipes = () => {
                   id={_id}
                 />
               ),
-            )
-          ) : (
-            <>
-              <div className={css.noRecipesImg}></div>
-              <p className={css.noRecipesText}>You don't have any recipe</p>
-            </>
-          )}
-        </ul>
-        {totalItems > 4 && (
-          <Pagination
+
+              ))  : (
+              <>
+                <div className={css.noRecipesImg}></div>
+                <p className={css.noRecipesText}>You don't have any recipe.</p>
+              </>
+            )}
+          </ul>
+          {totalItems > 4 && <Pagination
             recipesArray={recipesArray}
             totalItems={totalItems}
             handle={handleClick}

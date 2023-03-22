@@ -110,18 +110,19 @@
     cursor: pointer;
   }
 
-  .pageNumbers li.active {
-    font-size: 24px;
-    height: 55px;
-    width: 55px;
-  }
-  .btnSVG {
-    width: 28px;
-    height: 28px;
-  }
-  .btnSVG:hover,
-  .btnSVG:focus {
-    scale: 1.2;
-    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+    .pageNumbers li.active {
+        font-size: 24px;
+        height: 55px;
+        width: 55px;
+    }
+        .btnSVG {
+            width: 28px;
+            height: 28px;
+        }
+        .btnSVG:hover,
+        .btnSVG:focus {
+            scale: 1.1;
+            transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+ 
 }

@@ -11,9 +11,11 @@ import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
 import { useDispatch } from 'react-redux';
 import { postResendLink } from 'redux/auth/authOperation';
+import { useRef } from 'react';
 
 const ResetPassEmailForm = () => {
   const dispatch = useDispatch();
+  const confirmEmailFormInput = useRef(null);
 
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -38,6 +40,7 @@ const ResetPassEmailForm = () => {
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const { email } = values;
       dispatch(postResendLink({ email }));
+      setSubmitting(false);
     },
   });
 
@@ -56,7 +59,7 @@ const ResetPassEmailForm = () => {
               divButtonClass={css.divButtonClass}
               initialValues={formik.initialValues}
               schema={signinSchema}
-              buttonLabel="Confirm "
+              buttonLabel="Confirm"
               formik={formik}
               isValid={isValid}
             >
@@ -71,12 +74,13 @@ const ResetPassEmailForm = () => {
                     id="standard-required-register-email"
                     type="email"
                     name="email"
+                    ref={confirmEmailFormInput}
                     formInputArea={css.formInputArea}
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.email && formik.errors.email && (
+                  {formik.errors.email && (
                     <HelperText
                       value={formik.values.email}
                       errorText={formik.errors.email}

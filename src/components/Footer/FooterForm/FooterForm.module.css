@@ -27,7 +27,7 @@
 .footerFormFlex {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 17px;
   width: 204px;
 }
 .formInputFooterForm {
@@ -69,7 +69,7 @@
   }
   .footerFormFlex {
     flex-direction: column;
-    gap: 16px;
+    gap: 25px;
     width: 339px;
   }
   .footerForm {

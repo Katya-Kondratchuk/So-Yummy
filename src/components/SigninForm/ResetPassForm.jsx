@@ -72,7 +72,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
           <AuthImg />
           <div className={css.registrForm}>
             <div className={css.registrationTitleFormat}>
-              <AuthTitle titleText="Wright your new password" />
+              <AuthTitle titleText="Write your new password" />
             </div>
             <UserDataForm
               divButtonClass={css.divButtonClass}
@@ -93,18 +93,20 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
+                    formik={formik}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     ref={signInPasswordInput}
                   />
+
                   <button
                     style={{ opacity: visibility ? '0' : '1' }}
                     type="button"
                     className={switchColorUnlock(
                       formik.errors.password,
                       formik.values.password,
-                      css.unlockButtonSignIn,
+                      css.unlockButtonResetPass,
                     )}
                     onClick={e => {
                       togglePasswordVisibility();
@@ -136,7 +138,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                 routeText={'Registration'}
               />
               <AuthLinkTo
-                route={'/register'}
+                route={'/signin'}
                 routeText={'Sign in'}
                 yourClassName={css.signInLink}
               />

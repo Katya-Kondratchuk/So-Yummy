@@ -33,17 +33,6 @@ const RecipeRpeparation = ({ instructions, previewImg, youtube, fullImg }) => {
           />
         )}
       </div>
-      {/* <div>
-      <iframe
-          className="vegan__video"
-          loop
-          src="https://www.youtube.com/embed/6NgheY-r5t0"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div> */}
     </div>
   );
 };

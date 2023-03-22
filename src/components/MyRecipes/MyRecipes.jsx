@@ -8,7 +8,6 @@ import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
 import { animateScroll as scroll } from 'react-scroll';
 import { toast } from 'react-toastify';
 
-
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [recipesArray, setRecipesArray] = useState([]);
@@ -19,7 +18,7 @@ const MyRecipes = () => {
       setTotalItems(total);
       setRecipesArray(recipes);
     });
-  }, [currentPage]);
+  }, [currentPage, totalItems]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -44,18 +43,17 @@ const MyRecipes = () => {
         if (totalItems > 1) {
           setTotalItems(totalItems);
         }
-        if (totalItems === 1) {
-          setTotalItems(totalItems);
-        }
         else {
-          setTotalItems(0);
+          setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
+        setcurrentPage(1);
       })
       .catch(e => {
         console.log(e.message);
       });
   };
+
 
   return (
     <div className='container'>
@@ -79,7 +77,7 @@ const MyRecipes = () => {
               ))  : (
               <>
                 <div className={css.noRecipesImg}></div>
-                <p className={css.noRecipesText}>You don't have any recipe</p>
+                <p className={css.noRecipesText}>You don't have any recipe.</p>
               </>
             )}
           </ul>

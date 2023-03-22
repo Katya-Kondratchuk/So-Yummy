@@ -1,105 +1,100 @@
 .wrapperButtons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
 }
 
 .wrapperUp {
-    display: flex;
-    flex-grow: 2;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 8px;
-
+  display: flex;
+  flex-grow: 2;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 8px;
 }
 
 .mainContainer {
-    width: 209px;
-    height: 152px;
-    padding: 14px;
-    position: relative;
-    background-color: var(--whiteColor);
-    display: flex;
-    flex-direction: column;
+  width: 209px;
+  height: 152px;
+  padding: 14px;
+  position: relative;
+  background-color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
 }
 
 .cardItem {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cardItem:first-child {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .cardItem:not(:last-child) {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
-
 
 .superBtnWrapper {
-    width: 87px;
-    height: 27px;
-    font-size: 10px;
-    line-height: 1.5;
+  width: 87px;
+  height: 27px;
+  font-size: 10px;
+  line-height: 1.5;
 }
 
-
 @media screen and (min-width: 768px) {
-    .superBtnWrapper {
-        width: 138px;
-        height: 45px;
-        font-size: 14px;
-        line-height: 2.1;
-    }
+  .superBtnWrapper {
+    width: 138px;
+    height: 45px;
+    font-size: 14px;
+    line-height: 2.1;
+  }
 
-    .mainContainer {
-        width: 446px;
-        height: 288px;
-        padding: 28px;
-    }
+  .mainContainer {
+    width: 446px;
+    height: 288px;
+    padding: 28px;
+  }
 
-    .cardItem:not(:last-child) {
-        margin-bottom: 40px;
-    }
+  .cardItem:not(:last-child) {
+    margin-bottom: 40px;
+  }
 
-    .cardList {
-        margin-top: 50px;
-        margin-bottom: 50px;
-    }
+  .cardList {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 
-    .cardItem:first-child {
-        margin-top: 100px;
-    }
+  .cardItem:first-child {
+    margin-top: 100px;
+  }
 
-    .wrapperUp {
-        margin-top: 12px;
-    }
-
+  .wrapperUp {
+    margin-top: 12px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .superBtnWrapper {
-        width: 172px;
-        height: 59px;
-        font-size: 16px;
-        line-height: 2.4;
-    }
+  .superBtnWrapper {
+    width: 172px;
+    height: 59px;
+    font-size: 16px;
+    line-height: 2.4;
+  }
 
-    .mainContainer {
-        width: 886px;
-        height: 372px;
-        padding: 40px;
-    }
+  .mainContainer {
+    width: 886px;
+    height: 372px;
+    padding: 40px;
+  }
 
-    .cardItem:not(:last-child) {
-        margin-bottom: 50px;
-    }
+  .cardItem:not(:last-child) {
+    margin-bottom: 50px;
+  }
 
-    .wrapperButtons {
-        margin-bottom: 30px;
-    }
-
+  .wrapperButtons {
+    margin-bottom: 30px;
+  }
 }

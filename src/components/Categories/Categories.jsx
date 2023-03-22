@@ -57,7 +57,9 @@ const Categories = () => {
   useEffect(() => {
     getAllCategories()
       .then(data => {
-        setAllCategories(data);
+        const titleArray = data.map(({ title }) => title);
+        const sortTitle = titleArray.sort((a, b) => a.localeCompare(b));
+        setAllCategories(sortTitle);
         if (categoryName) {
           setCategory(categoryName);
           return;
@@ -100,14 +102,14 @@ const Categories = () => {
               },
             }}
           >
-            {allCategories.map(({ title, _id }) => (
+            {allCategories.map((title, index) => (
               <Tab
                 sx={{
                   '&.Mui-selected': {
                     color: '#8BAA36',
                   },
                 }}
-                key={_id}
+                key={index}
                 value={title}
                 label={title}
               />

@@ -3,10 +3,10 @@ import {
   getUserInfo,
   loginUser,
   logoutUser,
+  postResendLink,
   registerUser,
   verificationUser,
   verifyResendEmail,
-  postResendLink,
 } from './authOperation';
 
 const initialState = {

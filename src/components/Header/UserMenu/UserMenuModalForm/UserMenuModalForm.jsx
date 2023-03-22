@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
+import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
-import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
-import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   selectAuthUserAvatarURL,
   selectAuthUserName,
 } from 'redux/auth/authSelectors';
-import * as yup from 'yup';
-import css from './UserMenuModalForm.module.css';
-import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
-import HelperText from 'reusableComponents/FormInput/HelperText';
+import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
 import FormInput from 'reusableComponents/FormInput/FormInput';
-import switchImages from 'services/switchImages';
-import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
+import HelperText from 'reusableComponents/FormInput/HelperText';
+import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import { postUserInfo } from 'services/api/recipesAPI';
-import { toast } from 'react-toastify';
-import {
-  deleteUserAvatar,
-  updateUserAvatar,
-  updateUserName,
-} from 'redux/auth/authSlice';
+import switchImages from 'services/switchImages';
+import * as yup from 'yup';
+import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
+import css from './UserMenuModalForm.module.css';
 
 const UserMenuModalForm = ({ onClose }) => {
-  // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
   const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);

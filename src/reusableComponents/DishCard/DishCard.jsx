@@ -82,23 +82,6 @@ const DishCard = ({
       ? text
       : text.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
 
-  //+++++++++++++++++++++++
-  // let show = text;
-  // const showText = text => {
-  //   let index = 0;
-  //   const intervalId = setInterval(() => {
-  //     if (index === text.length) {
-  //       clearInterval(intervalId);
-  //       return;
-  //     }
-  //     show = text.charAt(index);
-  //     // console.log(text.charAt(index));
-  //     index++;
-  //   }, 1000);
-  // };
-  // console.log(showText('hello world'));
-  //++++++++++++++++++++
-
   return (
     <div className={css.cardContainer}>
       {motivation === '10' && <MotivatingModal option={3} />}

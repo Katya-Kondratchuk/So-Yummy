@@ -48,7 +48,6 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
     },
     validationSchema: signinSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      console.log(resettoken);
       const { password } = values;
       onSubmitResetPassword(password);
       setSubmitting(false);

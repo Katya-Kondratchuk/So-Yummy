@@ -5,8 +5,8 @@ import css from '../PaginationCustom/Pagination.module.css';
 import { animateScroll as scroll } from "react-scroll";
 
 const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
-  const [pageNumberLimit] = useState(4);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(4);
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   const scrollToTop = () => {

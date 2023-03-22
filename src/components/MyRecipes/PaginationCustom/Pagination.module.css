@@ -32,9 +32,13 @@
     color: var(--secondaryBlackColor);
     font-weight: 500;
     font-size: 18px;
-  
 }
 
+.pageNumbers li.active:hover,
+.pageNumbers li.active:focus {
+    scale: 1.1;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .pageNumbers div {
     display: flex;
@@ -63,6 +67,7 @@
 .pageNumbers div:hover,
 .pageNumbers div:focus {
     color: var(--secondaryBlackColor);
+    scale: 1.2;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -79,33 +84,17 @@
 @media screen and (min-width: 768px) {
 
 .pageNumbers div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 27px;
     height: 27px;
     margin: 14px;
-    color: var(--secondaryLineColor);
-    font-weight: 500;
     font-size: 12px;
-    line-height: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-
 }
 
 .pageNumbers li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 27px;
     height: 27px;
     margin: 14px;
-    color: var(--secondaryLineColor);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    cursor: pointer;
+    font-size: 18px;
 }
 
 .pageNumbers li.btnThreePoint {
@@ -124,14 +113,9 @@
 }
 
     .pageNumbers li.active {
-        background-image: url('../../../assets/images/BtnLeftRight/32405spaghetti_98887.svg');
-        margin: auto;
-        font-weight: 500;
         font-size: 24px;
         height: 55px;
         width: 55px;
-        background-size: contain;
-        color: var(--secondaryBlackColor);
     }
         .btnSVG {
             width: 28px;
@@ -142,4 +126,6 @@
             scale: 1.2;
             transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
+ 
+        
 }

@@ -1,58 +1,46 @@
 import ResetPassForm from 'components/SigninForm/ResetPassForm';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { selectAuthResetEmail } from 'redux/auth/authSelectors';
 import { postResetPassword, postSetNewPassword } from 'services/api/recipesAPI';
-
-// let verify = null;
+import { toast } from 'react-toastify';
 
 const ResetPasswordPage = () => {
   const { resetEmailToken } = useParams();
-  const [resettoken, setToken] = useState('');
   const userCurrentEmail = useSelector(selectAuthResetEmail);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!resetEmailToken) return;
-    // if (resetEmailToken === verify) return;
-
-    // verify = resetEmailToken;
 
     postResetPassword({
       email: userCurrentEmail,
       resetEmailToken: resetEmailToken,
     })
-      .then(data => {
-        console.log(data);
-        setToken(data.resetPasswordToken);
-        // verify = null;
+      .then(({ resetPasswordToken }) => {
+        localStorage.setItem('token', JSON.stringify(resetPasswordToken));
       })
       .catch(error => {
         console.log(error.message);
       });
-  }, [resetEmailToken, userCurrentEmail]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmitResetPassword = password => {
-    console.log({
-      email: userCurrentEmail,
-      password: password,
-      resetPasswordToken: resettoken,
-    });
+    console.log(localStorage.getItem('token'));
     postSetNewPassword({
       email: userCurrentEmail,
       password: password,
-      resetPasswordToken: resettoken,
+      resetPasswordToken: JSON.parse(localStorage.getItem('token')),
     });
+    toast.success('Your password was change');
+    navigate('/signin');
   };
-  // password => {
-  //   onSubmitResetPassword(password, token);
-  // }
+
   return (
     <div>
-      <ResetPassForm
-        onSubmitResetPassword={onSubmitResetPassword}
-        resettoken={resettoken}
-      />
+      <ResetPassForm onSubmitResetPassword={onSubmitResetPassword} />
     </div>
   );
 };

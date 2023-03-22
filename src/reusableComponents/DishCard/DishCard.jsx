@@ -8,6 +8,7 @@ import css from './DishCard.module.css';
 import { ReactComponent as FavoriteIco } from './fav.svg';
 import { ReactComponent as LikeIco } from './like.svg';
 import { toast } from 'react-toastify';
+import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
 const DishCard = ({
   image,
@@ -28,14 +29,14 @@ const DishCard = ({
 
   const [isLoadFavorite, setIsLoadFavorite] = useState(false);
   const [isLoadLike, setIsLoadLike] = useState(false);
-
+  const [motivation, setMotivation] = useState('');
   const [popular, setPopular] = useState(popularity);
 
   const addToFavorite = () => {
     setIsLoadFavorite(true);
 
     patchRecipeFavoriteById(id)
-      .then(({ favorite, popularity }) => {
+      .then(({ favorite, popularity, motivation }) => {
         setIsLoadFavorite(false);
         const changeData = allData.map(item => {
           if (item._id === id) {
@@ -46,6 +47,7 @@ const DishCard = ({
         setAllData(changeData);
         setPopular(popularity);
         setIsFavorite(favorite);
+        setMotivation(motivation);
         favorite && toast.success(`Added to Favorite!`);
         !favorite && toast.info(`Removed from Favorite!`);
       })
@@ -99,6 +101,7 @@ const DishCard = ({
 
   return (
     <div className={css.cardContainer}>
+      {motivation === '10' && <MotivatingModal option={3} />}
       <Link to={`/recipe/${id}`}>
         <img src={image} alt={altText} className={css.image} />
       </Link>

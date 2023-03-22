@@ -104,6 +104,7 @@ const SigninForm = () => {
                     placeholder="Email"
                     id="standard-required-register-email"
                     type="email"
+                    formik={formik}
                     name="email"
                     formInputArea={css.formInputArea}
                     value={formik.values.email}
@@ -127,6 +128,7 @@ const SigninForm = () => {
                     placeholder="Password"
                     id="standard-required-register-pass"
                     type="password"
+                    formik={formik}
                     name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}

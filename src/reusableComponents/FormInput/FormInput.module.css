@@ -13,8 +13,8 @@
   right: 18px;
   transform: translate(0, -50%);
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
 }
 .formClearButtonIcon {
   opacity: 0;
@@ -23,11 +23,11 @@
   background-color: var(--secondaryTextColor);
   z-index: 2;
   top: 50%;
-  right: 18px;
+  right: 15px;
   transform: translate(0, -50%);
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   transition: background-color 200ms linear, transform 300ms ease-in-out,
     box-shadow 300ms ease-in-out;
 }

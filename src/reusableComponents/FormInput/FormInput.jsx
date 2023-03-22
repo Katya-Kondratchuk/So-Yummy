@@ -93,6 +93,7 @@ const FormInput = forwardRef(function FormInput(props, ref) {
           onClick={e => {
             formik.setFieldValue(`${name}`, '');
             hendleClearClick(ref);
+            hendleButtonShown();
           }}
           style={{ opacity: visibility ? '0' : '1' }}
           className={css.formClearButtonIcon}

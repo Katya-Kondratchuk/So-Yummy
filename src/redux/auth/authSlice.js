@@ -32,6 +32,13 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    updateDataUser(state, { payload }) {
+      state.refreshToken = payload.refreshToken;
+      state.accessToken = payload.accessToken;
+      state.user.name = payload.user.name;
+      state.user.email = payload.user.email;
+      state.user.avatarURL = payload.user.avatarURL;
+    },
     updateTokens(state, { payload }) {
       state.refreshToken = payload.refreshToken;
       state.accessToken = payload.accessToken;
@@ -117,5 +124,10 @@ export const authSlice = createSlice({
   },
 });
 
-export const { updateTokens, clearTokens, updateUserName, updateUserAvatar } =
-  authSlice.actions;
+export const {
+  updateDataUser,
+  updateTokens,
+  clearTokens,
+  updateUserName,
+  updateUserAvatar,
+} = authSlice.actions;

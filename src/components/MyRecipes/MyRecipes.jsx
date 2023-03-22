@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 import { useLocation } from 'react-router';
 import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
-
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [recipesArray, setRecipesArray] = useState([]);
@@ -26,9 +25,7 @@ const MyRecipes = () => {
       setTotalItems(total);
       setRecipesArray(recipes);
     });
-
-  }, [currentPage,location.state.motivation, totalItems]);
-
+  }, [currentPage, location.state.motivation, totalItems]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -46,8 +43,7 @@ const MyRecipes = () => {
     event.target.disabled = true;
     await deleteOwnRecipe(id);
 
-    toast.info('Delete recipe', {
-    });
+    toast.info('Delete recipe', {});
     await getOwnRecipe(currentPage, 4)
       .then(data => {
         if (data.total === 4) {
@@ -61,8 +57,7 @@ const MyRecipes = () => {
             setcurrentPage(totalItems);
             return;
           }
-        }
-        else {
+        } else {
           setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
@@ -72,7 +67,6 @@ const MyRecipes = () => {
         console.log(e.message);
       });
   };
-
 
   return (
     <div className="container">
@@ -95,15 +89,16 @@ const MyRecipes = () => {
                   id={_id}
                 />
               ),
-
-              ))  : (
-              <>
-                <div className={css.noRecipesImg}></div>
-                <p className={css.noRecipesText}>You don't have any recipe.</p>
-              </>
-            )}
-          </ul>
-          {totalItems > 4 && <Pagination
+            )
+          ) : (
+            <>
+              <div className={css.noRecipesImg}></div>
+              <p className={css.noRecipesText}>You don't have any recipe.</p>
+            </>
+          )}
+        </ul>
+        {totalItems > 4 && (
+          <Pagination
             recipesArray={recipesArray}
             totalItems={totalItems}
             handle={handleClick}

@@ -28,7 +28,9 @@ const ShoppingList = () => {
 
   useEffect(() => {
     getShoppingList()
-      .then(({ shoppingList }) => setList(shoppingList))
+      .then(({ shoppingList }) => {
+        setList(shoppingList);
+      })
       .catch(error => console.log(error.message));
   }, []);
 

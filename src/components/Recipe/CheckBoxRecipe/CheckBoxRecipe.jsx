@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 import { patchShoppingList, postShoppingList } from 'services/api/recipesAPI';
 import css from './CheckBoxRecipe.module.css';
 
 const CheckBoxRecipe = ({ id, measure }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [motivation, setMotivation] = useState('');
 
   const toggleToShopList = async e => {
     if (isLoading) return;
     setIsLoading(true);
     if (e.target.checked) {
       await postShoppingList({ productId: id, measure })
-        .then(data =>
+        .then(data => {
+          setMotivation(data.motivation);
           toast.success('You added ingredient to shopping list', {
             toastId: '123',
-          }),
-        )
+          });
+        })
         .catch(error => toast.error(`${error.message}`));
       setIsLoading(false);
     }
@@ -34,6 +37,8 @@ const CheckBoxRecipe = ({ id, measure }) => {
 
   return (
     <div className={css.wrapper}>
+      {motivation === 'first' && <MotivatingModal option={1} />}
+
       <input
         className={css.input}
         type={'checkbox'}

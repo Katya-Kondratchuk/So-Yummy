@@ -78,11 +78,7 @@ const UserMenuModalForm = ({ onClose }) => {
 
   const handleImageChange = e => {
     const selectedFile = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.onloadend = () => {
-    //   const base64String = reader.result.split(',')[1];
-    //   formik.values.newAvatartURL = base64String;
-    // };
+
     if (selectedFile) {
       formik.values.image = selectedFile;
       setImage(selectedFile);
@@ -96,12 +92,7 @@ const UserMenuModalForm = ({ onClose }) => {
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
 
   return (
-    <div
-      // className={clsx(css.userModal, {
-      //   [css.modalOffset]: modalOffset,
-      // })}
-      className={css.userModal}
-    >
+    <div className={css.userModal}>
       <div className={css.cont}>
         <UserDataForm
           initialValues={formik.initialValues}
@@ -186,9 +177,8 @@ const UserMenuModalForm = ({ onClose }) => {
           </div>
         </UserDataForm>
       </div>
-      {/* <div onClick={() => closeMenu()}> */}
+
       <MobMenuCloseBtn closeMenu={onClose} />
-      {/* </div> */}
     </div>
   );
 };

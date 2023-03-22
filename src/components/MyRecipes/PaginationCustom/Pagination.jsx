@@ -101,3 +101,69 @@ const Pagination = ({ totalItems, handle, currentPage, setcurrentPage }) => {
 };
 
 export default Pagination;
+
+
+
+// const handelDelete = async (id, event) => {
+//     if (event.target.disabled) {
+//       // Защита от двойного клика
+//       return;
+//     }
+//     event.target.disabled = true;
+//     await patchRecipeFavoriteById(id);
+//     // const newRecipes = allRecipes.filter(({ _id }) => _id !== id);
+//     // setAllRecipes(newRecipes);
+//     toast.info('You delete recipe from favorites list', {
+//       toastId: '12345',
+//     });
+//     // console.log(page);
+//     await getAllFavorite(page, 4)
+//       .then(data => {
+//         const pageCounts = Math.ceil(data.total / 4);
+//         // console.log(pageCounts);
+//         if (pageCounts > 1) {
+//           setTotalPage(pageCounts);
+//           if (pageCounts !== page) {
+//             console.log('Сработало');
+//             setPage(pageCounts);
+//             return;
+//           }
+//         } else {
+//           setTotalPage(null);
+//         }
+//         setAllRecipes(data.recipes ?? []);
+//       })
+//       .catch(e => {
+//         console.log(e.message);
+//       });
+//   };
+
+
+
+// await getAllFavorite(page, 4)
+//       .then(data => {
+//         // TODO
+//         if (data.total === 4) {
+//           setPage(1);
+//           setTotalPage(null);
+//           return;
+//         }
+//         //
+//         const pageCounts = Math.ceil(data.total / 4);
+//         console.log(pageCounts);
+//         if (pageCounts > 1) {
+//           setTotalPage(pageCounts);
+
+//           if (pageCounts < page) {
+//             setPage(pageCounts);
+//             return;
+//           }
+//         } else {
+//           setTotalPage(null);
+//         }
+//         setAllRecipes(data.recipes ?? []);
+//       })
+//       .catch(e => {
+//         console.log(e.message);
+//       });
+//   };

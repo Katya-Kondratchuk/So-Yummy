@@ -37,17 +37,26 @@ const MyRecipes = () => {
     await deleteOwnRecipe(id);
     toast.info('Delete recipe', {
     });
-    await getOwnRecipe(1, 4)
+    await getOwnRecipe(currentPage, 4)
       .then(data => {
+        if (data.total === 4) {
+          setcurrentPage(1);
+          setTotalItems(null);
+          return;
+        }
         const totalItems = Math.ceil(data.total / 4);
         if (totalItems > 1) {
           setTotalItems(totalItems);
+          if (totalItems < currentPage) {
+            setcurrentPage(totalItems);
+            return;
+          }
         }
         else {
           setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
-        setcurrentPage(1);
+        // setcurrentPage(1);
       })
       .catch(e => {
         console.log(e.message);

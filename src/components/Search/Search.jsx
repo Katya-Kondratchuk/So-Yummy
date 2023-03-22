@@ -62,7 +62,9 @@ const Search = () => {
             setCount(totalPages);
             setIsSearchResult(true);
           })
-          .catch(err => console.log(err.message));
+          .catch(err => {
+            toast.warning('Bad query');
+          });
       }
     } else {
       if (searchQuery) {
@@ -76,7 +78,7 @@ const Search = () => {
             setCount(totalPages);
             setIsSearchResult(true);
           })
-          .catch(err => console.log(err.message));
+          .catch(err => toast.warning('Bad query'));
       }
     }
   }, [

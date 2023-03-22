@@ -1,6 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import {
+  startTokenRefreshInterval,
+  stopTokenRefreshInterval,
+} from 'services/auth/checkAuthInterval';
 import { AUTH_ENDPOINT } from 'services/auth/endpoint';
 import { normalizeName } from 'services/normalized';
 
@@ -31,6 +35,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, ThunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINT.LOGIN, credentials);
+      startTokenRefreshInterval(ThunkAPI.dispatch, data.refreshToken);
       toast.success(`Welcome, ${normalizeName(data.user.name)}!`);
       return data;
     } catch (error) {
@@ -66,9 +71,11 @@ export const logoutUser = createAsyncThunk(
   async (_, ThunkAPI) => {
     try {
       await axios.post(AUTH_ENDPOINT.LOGOUT);
+      stopTokenRefreshInterval();
       toast.success('You successfully logged out!');
       return;
     } catch (error) {
+      stopTokenRefreshInterval();
       toast.warn('You logged out, please login again!');
       return ThunkAPI.rejectWithValue(error.message);
     }

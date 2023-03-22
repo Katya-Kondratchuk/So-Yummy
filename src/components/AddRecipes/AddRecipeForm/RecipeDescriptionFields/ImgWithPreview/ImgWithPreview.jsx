@@ -76,7 +76,6 @@ const ImgWithPreview = ({ imgAdd, setImgAdd }) => {
 };
 
 ImgWithPreview.propTypes = {
-  imgAdd: PropTypes.object,
   setImgAdd: PropTypes.func,
 };
 

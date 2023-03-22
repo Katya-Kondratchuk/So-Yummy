@@ -7,10 +7,14 @@ import VerifyPage from 'pages/VerifyPage';
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { store } from 'redux/store';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import PublicRoute from 'routes/PublicRoute/PublicRoute';
+
 import WelcomePage from './pages/WelcomePage/WelcomePage';
+import { updateDataUser } from 'redux/auth/authSlice';
+import { deepParseJson } from 'services/deepParseJson';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
@@ -26,7 +30,10 @@ const App = () => {
   useEffect(() => {
     const handleStorageChange = e => {
       if (e.key === 'persist:refresh-user-token' && e.newValue !== e.oldValue) {
-        window.location.reload();
+        try {
+          const updatedLocalStorageData = deepParseJson(JSON.parse(e.newValue));
+          store.dispatch(updateDataUser(updatedLocalStorageData));
+        } catch (error) {}
       }
     };
 

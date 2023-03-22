@@ -67,9 +67,7 @@ const Search = () => {
         getSearchByIngredients(searchQuery, page)
           .then(res => {
             if (res.recipes.length === 0) {
-              toast.warning(
-                'First loading. Nothing... Try another search query',
-              );
+              toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);

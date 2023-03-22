@@ -41,9 +41,11 @@ const PopularRecipe = () => {
                     <img src={preview} alt={title} />
                   </div>
                   <div className={css.textWrapper}>
-                    <h4 className={css.itemTitle}>{title}</h4>
+                    <h4 className={css.itemTitle}>
+                      {title.length > 30 ? title.slice(0, 35) + '...' : title}
+                    </h4>
                     <p className={css.description}>
-                      {description.slice(0, 75)}...
+                      {description.slice(0, 80)}...
                     </p>
                   </div>
                 </Link>

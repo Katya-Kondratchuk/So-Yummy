@@ -9,7 +9,9 @@ const FormInput = forwardRef(function FormInput(props, ref) {
     placeholder = '',
     type = '',
     switchImages = () => {},
-    onBlur = () => {},
+    onBlur = () => {
+      setModalOffset(false);
+    },
     onChange = () => {},
     name = '',
     erorr,
@@ -21,6 +23,7 @@ const FormInput = forwardRef(function FormInput(props, ref) {
     formInputUserMenu = '',
     formInputFooterForm = '',
     autoComplete,
+    setModalOffset,
   } = props;
   const switchColor = (
     erorr,
@@ -52,6 +55,10 @@ const FormInput = forwardRef(function FormInput(props, ref) {
   const hendleButtonShown = () => {
     setVisibility(!visibility);
   };
+  const onInputFocus = e => {
+    e.stopPropagation();
+    setModalOffset(true);
+  };
   return (
     <div className={formInputArea}>
       <input
@@ -72,6 +79,7 @@ const FormInput = forwardRef(function FormInput(props, ref) {
         autoComplete={autoComplete}
         value={value}
         id={id}
+        onClick={onInputFocus}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>

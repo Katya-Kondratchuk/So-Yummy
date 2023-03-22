@@ -72,7 +72,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
           <AuthImg />
           <div className={css.registrForm}>
             <div className={css.registrationTitleFormat}>
-              <AuthTitle titleText="Wright your new password" />
+              <AuthTitle titleText="Write your new password" />
             </div>
             <UserDataForm
               divButtonClass={css.divButtonClass}
@@ -93,6 +93,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                     id="standard-required-register-pass"
                     type="password"
                     name="password"
+                    formik={formik}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -136,7 +137,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                 routeText={'Registration'}
               />
               <AuthLinkTo
-                route={'/register'}
+                route={'/signin'}
                 routeText={'Sign in'}
                 yourClassName={css.signInLink}
               />

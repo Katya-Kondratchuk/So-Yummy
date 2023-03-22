@@ -79,11 +79,11 @@ const FooterForm = () => {
               formik={formik}
               erorr={formik.errors.email}
               value={formik.values.email}
-              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               error={formik.touched.email && formik.errors.email}
             />
-            {formik.touched.email && formik.errors.email && (
+            {formik.errors.email && (
               <HelperText
                 value={formik.values.email}
                 errorText={formik.errors.email}

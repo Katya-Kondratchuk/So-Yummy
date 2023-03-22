@@ -80,7 +80,7 @@ const ResetPassEmailForm = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.email && formik.errors.email && (
+                  {formik.errors.email && (
                     <HelperText
                       value={formik.values.email}
                       errorText={formik.errors.email}

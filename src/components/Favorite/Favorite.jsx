@@ -43,7 +43,6 @@ const Favorite = () => {
 
   const handelDelete = async (id, event) => {
     if (event.target.disabled) {
-      // Защита от двойного клика
       return;
     }
     event.target.disabled = true;

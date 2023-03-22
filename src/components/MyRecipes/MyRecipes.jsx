@@ -16,16 +16,19 @@ const MyRecipes = () => {
   const [currentPage, setcurrentPage] = useState(1);
   const location = useLocation();
   const [motivation, setMotivation] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     if (location.state?.motivation) {
       setMotivation(location.state.motivation);
     }
     getOwnRecipe(currentPage).then(({ total, recipes }) => {
       setTotalItems(total);
       setRecipesArray(recipes);
+      setIsLoading(false);
     });
-  }, [currentPage, location, totalItems]);
+  }, [currentPage, location]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -90,7 +93,7 @@ const MyRecipes = () => {
                 />
               ),
             )
-          ) : (
+          ) : isLoading ? null : (
             <>
               <div className={css.noRecipesImg}></div>
               <p className={css.noRecipesText}>You don't have any recipe.</p>

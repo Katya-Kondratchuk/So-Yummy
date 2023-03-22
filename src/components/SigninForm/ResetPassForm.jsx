@@ -99,6 +99,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                     onBlur={formik.handleBlur}
                     ref={signInPasswordInput}
                   />
+
                   <button
                     style={{ opacity: visibility ? '0' : '1' }}
                     type="button"

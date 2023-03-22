@@ -47,7 +47,7 @@ const UserMenuModalForm = ({ onClose }) => {
       .string()
       .trim()
       .matches(/^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ1-9]+$/, {
-        message: 'Special simbols are not allowed',
+        message: 'Special symbols are not allowed',
       })
       .min(1, 'Your name must be 1 character at least')
       .max(16, '16 characters max'),

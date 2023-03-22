@@ -5,6 +5,7 @@
   display: inline-block;
   background-color: var(--modalBg);
 }
+
 .registrForm {
   max-width: 335px;
   background: var(--modalBg);

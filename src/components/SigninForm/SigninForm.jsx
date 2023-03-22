@@ -150,6 +150,7 @@ const SigninForm = () => {
                   >
                     <ShowPassword />
                   </button>
+
                   {!formik.errors.password &&
                   formik.values.password &&
                   !warningValidation(formik.values.password) ? (

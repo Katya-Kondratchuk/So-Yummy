@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 const modalRoot = document.querySelector('#modalPortal');
+const body = document.querySelector('body');
 const isMobileBrowserMode = () => {
   let check = false;
   (function (a) {
@@ -26,10 +27,6 @@ const Modal = ({ children, onClose }) => {
     }
   };
 
-  const closeModal = () => {
-    onClose();
-  };
-
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       onClose();
@@ -44,17 +41,19 @@ const Modal = ({ children, onClose }) => {
     const isMobile = isMobileBrowserMode();
     if (!isMobile) {
       window.addEventListener('scroll', handleScroll);
+    } else {
+      body.classList.add('openModal');
     }
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('resize', closeModal);
 
     return () => {
       const isMobile = isMobileBrowserMode();
       if (!isMobile) {
         window.removeEventListener('scroll', handleScroll);
+      } else {
+        body.classList.remove('openModal');
       }
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('resize', closeModal);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

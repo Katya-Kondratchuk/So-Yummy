@@ -72,6 +72,9 @@ const FormInput = forwardRef(function FormInput(props, ref) {
         autoComplete={autoComplete}
         value={value}
         id={id}
+        onClick={e => {
+          e.stopPropagation();
+        }}
       />
       <span className={css.formIcon}>{switchImages(name)}</span>
       <span className={css.formStateIcon}>

@@ -128,7 +128,6 @@ export const postResendLink = createAsyncThunk(
   async (credentials, ThunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINT.SEND_EMAIL, credentials);
-      console.log(data);
       toast.success(`${data.message}!`);
       return credentials.email;
     } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useFormik } from 'formik';
 import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
 import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
@@ -19,6 +19,7 @@ import { toast } from 'react-toastify';
 import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
 
 const UserMenuModalForm = ({ onClose }) => {
+  const userMenuInput = useRef(null);
   // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
   const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
@@ -77,11 +78,11 @@ const UserMenuModalForm = ({ onClose }) => {
 
   const handleImageChange = e => {
     const selectedFile = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = reader.result.split(',')[1];
-      formik.values.newAvatartURL = base64String;
-    };
+    // const reader = new FileReader();
+    // reader.onloadend = () => {
+    //   const base64String = reader.result.split(',')[1];
+    //   formik.values.newAvatartURL = base64String;
+    // };
     if (selectedFile) {
       formik.values.image = selectedFile;
       setImage(selectedFile);
@@ -107,7 +108,9 @@ const UserMenuModalForm = ({ onClose }) => {
           <div className={css.avatarChanger}>
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
               <div
-                style={{ backgroundImage: `url(${userAvatarURL})` }}
+                style={{
+                  backgroundImage: image ? 'none' : `url(${userAvatarURL})`,
+                }}
                 className={css.avatarPrevew}
               >
                 <input
@@ -153,12 +156,13 @@ const UserMenuModalForm = ({ onClose }) => {
               <FormInput
                 formInputArea={css.formInputArea}
                 switchImages={switchImages}
-                autoComplete="username"
+                autoComplete="name"
                 placeholder={userInitName}
                 id="standard-required-register-username"
                 type="text"
                 name="userName"
                 edit
+                ref={userMenuInput}
                 userInitName={userInitName}
                 formik={formik}
                 erorr={formik.errors.userName}
@@ -166,7 +170,7 @@ const UserMenuModalForm = ({ onClose }) => {
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
               />
-              {formik.touched.userName && formik.errors.userName && (
+              {formik.errors.userName && (
                 <HelperText
                   value={formik.values.userName}
                   errorText={formik.errors.userName}

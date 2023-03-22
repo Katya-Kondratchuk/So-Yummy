@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import css from './FooterForm.module.css';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import * as yup from 'yup';
@@ -9,17 +9,18 @@ import switchImages from 'services/switchImages';
 import { postSubscribeList } from 'services/api/recipesAPI';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { selectAuthUserEmail } from 'redux/auth/authSelectors';
 
 const FooterForm = () => {
   const myEmailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-
-  const userEmail = useSelector(state => state.auth.user.email);
+  const footerInput = useRef(null);
+  const userEmail = useSelector(selectAuthUserEmail);
 
   let registrationSchema = yup.object().shape({
     email: yup
       .string()
-      .min(5, 'Your password its too short')
+      .min(5, 'Your email is too short')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
@@ -28,7 +29,7 @@ const FooterForm = () => {
   });
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: userEmail || '',
     },
     validationSchema: registrationSchema,
 
@@ -67,14 +68,14 @@ const FooterForm = () => {
           <div className={css.formIinputFormat}>
             <FormInput
               formInputFooterForm={css.formInputFooterForm}
-              autocomplete="off"
+              autocomplete="email"
               formInputArea={css.formInputArea}
-              // handleClearClick={handleClearClick}
               switchImages={switchImages}
-              placeholder={userEmail}
+              placeholder="Enter your email"
               id="standard-required-register-email"
               type="email"
               name="email"
+              ref={footerInput}
               formik={formik}
               erorr={formik.errors.email}
               value={formik.values.email}
@@ -83,7 +84,10 @@ const FooterForm = () => {
               error={formik.touched.email && formik.errors.email}
             />
             {formik.touched.email && formik.errors.email && (
-              <HelperText erorr={formik.errors.email} />
+              <HelperText
+                value={formik.values.email}
+                errorText={formik.errors.email}
+              />
             )}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -12,13 +12,15 @@ import { setupInterceptors } from 'services/auth/setupInterceptors';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
-    <Provider store={store}>
-      <BrowserRouter basename="/So-Yummy">
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </PersistGate>,
+  <StrictMode>
+    <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
+      <Provider store={store}>
+        <BrowserRouter basename="/So-Yummy">
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </PersistGate>
+  </StrictMode>,
 );
 
 setupInterceptors(store);

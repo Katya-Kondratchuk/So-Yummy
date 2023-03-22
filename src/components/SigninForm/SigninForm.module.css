@@ -77,7 +77,18 @@
 .signInLink {
   bottom: -52px;
 }
+.unlockButtonResetPass {
+  left: 37px;
+  top: 90px;
+}
 @media screen and (min-width: 768px) {
+  .unlockButtonResetPass {
+    left: 37px;
+    top: 90px;
+    left: 67px;
+    top: 118px;
+  }
+
   .unlockButtonSignIn {
     left: 67px;
     top: 202px;

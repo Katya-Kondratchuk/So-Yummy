@@ -104,7 +104,7 @@ const ResetPassForm = ({ onSubmitResetPassword, resettoken }) => {
                     className={switchColorUnlock(
                       formik.errors.password,
                       formik.values.password,
-                      css.unlockButtonSignIn,
+                      css.unlockButtonResetPass,
                     )}
                     onClick={e => {
                       togglePasswordVisibility();

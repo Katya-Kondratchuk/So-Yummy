@@ -37,10 +37,8 @@ const FooterForm = () => {
       postSubscribeList({ email: values.email })
         .then(response => {
           if (!response) throw new Error();
-          toast.success('You have successfully subscribed!');
-          toast.info(
-            'if you want cancel you subscribing, please, check your email verification.',
-            { autoClose: 7000 },
+          toast.success(
+            'You have successfully subscribed! Visit your email to unsubscribe ',
           );
         })
         .catch(error => {

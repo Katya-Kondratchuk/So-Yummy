@@ -6,9 +6,8 @@ export const refreshTokens = async refreshToken => {
     const { data } = await axios.post(AUTH_ENDPOINT.REFRESH, {
       refreshToken,
     });
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import clsx from 'clsx';
+import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
-import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
-import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   selectAuthUserAvatarURL,
   selectAuthUserName,
 } from 'redux/auth/authSelectors';
-import * as yup from 'yup';
-import css from './UserMenuModalForm.module.css';
-import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
-import HelperText from 'reusableComponents/FormInput/HelperText';
-import FormInput from 'reusableComponents/FormInput/FormInput';
-import switchImages from 'services/switchImages';
-import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
-import { postUserInfo } from 'services/api/recipesAPI';
-import { toast } from 'react-toastify';
 import { updateUserAvatar, updateUserName } from 'redux/auth/authSlice';
+import FormInput from 'reusableComponents/FormInput/FormInput';
+import HelperText from 'reusableComponents/FormInput/HelperText';
+import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
+import { postUserInfo } from 'services/api/recipesAPI';
+import switchImages from 'services/switchImages';
+import * as yup from 'yup';
+import { ReactComponent as ErorrIcon } from '../../../../assets/images/formInputIcons/erorr.svg';
+import { ReactComponent as PlusIcon } from '../../../../assets/images/UserMenu/plus.svg';
+import css from './UserMenuModalForm.module.css';
 
 const UserMenuModalForm = ({ onClose }) => {
-  // const userInitAvatar = useSelector(selectAuthUserAvatarURL);
   const dispatch = useDispatch();
   const userInitName = useSelector(selectAuthUserName);
   const [image, setImage] = useState(null);
@@ -63,6 +63,7 @@ const UserMenuModalForm = ({ onClose }) => {
           .then(res => {
             dispatch(updateUserName(res.name));
             dispatch(updateUserAvatar(res.avatarURL));
+
             toast.success('Your profile has been changed');
           })
           .catch(error => toast.error('An error occured, try again'))
@@ -93,8 +94,15 @@ const UserMenuModalForm = ({ onClose }) => {
     setImage('');
   };
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
+  const [modalOffset, setModalOffset] = useState(false);
+
   return (
-    <div className={css.userModal}>
+    <div
+      className={clsx(css.userModal, {
+        [css.modalOffset]: modalOffset,
+      })}
+      // className={css.userModal}
+    >
       <div className={css.cont}>
         <UserDataForm
           initialValues={formik.initialValues}
@@ -107,7 +115,9 @@ const UserMenuModalForm = ({ onClose }) => {
           <div className={css.avatarChanger}>
             <label htmlFor="newAvatartURL" className={css.avatarChangerLebel}>
               <div
-                style={{ backgroundImage: `url(${userAvatarURL})` }}
+                style={{
+                  backgroundImage: `url(${userAvatarURL})`,
+                }}
                 className={css.avatarPrevew}
               >
                 <input
@@ -153,7 +163,7 @@ const UserMenuModalForm = ({ onClose }) => {
               <FormInput
                 formInputArea={css.formInputArea}
                 switchImages={switchImages}
-                autoComplete="username"
+                autoComplete="off"
                 placeholder={userInitName}
                 id="standard-required-register-username"
                 type="text"
@@ -165,6 +175,7 @@ const UserMenuModalForm = ({ onClose }) => {
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
+                setModalOffset={setModalOffset}
               />
               {formik.touched.userName && formik.errors.userName && (
                 <HelperText

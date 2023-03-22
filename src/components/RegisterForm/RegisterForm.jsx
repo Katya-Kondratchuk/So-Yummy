@@ -124,7 +124,7 @@ const RegisterForm = () => {
                     onBlur={formik.handleBlur}
                     ref={nameInput}
                   />
-                  {formik.touched.name && formik.errors.name && (
+                  {formik.errors.name && (
                     <HelperText
                       value={formik.values.name}
                       errorText={formik.errors.name}

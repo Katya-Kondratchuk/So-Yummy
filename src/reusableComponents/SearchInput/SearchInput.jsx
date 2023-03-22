@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import SuperBtn from 'reusableComponents/SuperBtn/SuperBtn';
 import * as yup from 'yup';
 
@@ -21,7 +22,9 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
             } else {
               setInputValue('');
             }
-          } catch (error) {}
+          } catch (error) {
+            return toast.error('Only letters can be entered');
+          }
         }}
         className={css.input}
         name={name}

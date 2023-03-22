@@ -56,7 +56,6 @@ const Favorite = () => {
     await getAllFavorite(page, 4)
       .then(data => {
         const pageCounts = Math.ceil(data.total / 4);
-        // console.log(data.total);
         if (pageCounts > 1) {
           setTotalPage(pageCounts);
         } else {
@@ -73,9 +72,9 @@ const Favorite = () => {
   };
 
   return (
-    <div className=" greensImg">
-      <BGDots />
+    <div>
       <div className={'container'}>
+        <BGDots />
         <section className={css.contentWrapper}>
           <Title text="Favorites" />
           <ul className={css.cardList}>
@@ -116,3 +115,6 @@ const Favorite = () => {
 };
 
 export default Favorite;
+
+// const location = useLocation();
+// navigate(`/recipe/${data.id}`, { state: { from: location } });

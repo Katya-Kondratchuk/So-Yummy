@@ -1,28 +1,26 @@
 .authLinkTo {
-  text-transform: capitalize;
   color: var(--bgColor);
   font-size: 16px;
   line-height: 1.5;
   position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translate(-50%, 0);
   text-decoration: underline;
   transition: color 500ms ease;
+  width: 300px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .authLinkTo:hover,
 .authLinkTo:focus {
   color: var(--greenColor);
 }
+
 @media screen and (min-width: 768px) {
   .authLinkTo {
-    text-transform: capitalize;
     color: var(--bgColor);
     font-size: 16px;
     line-height: 1.5;
     position: absolute;
-    bottom: -42px;
-    left: 50%;
     transform: translate(-50%, 0);
     text-decoration: underline;
   }

@@ -44,7 +44,7 @@ const RecipeIngredientsFields = ({
                 return;
               }
               const id = uuidv4();
-              const newData = { id, title: {}, amount: '1', unit: 'g' };
+              const newData = { id, title: {}, amount: '', unit: '-' };
               const updateIngredients = [...ingredients, newData];
               setIngredients(updateIngredients);
             }}
@@ -53,14 +53,17 @@ const RecipeIngredientsFields = ({
           </button>
         </div>
       </div>
-      {ingredients.length === 0 && (
-        <p className={css.textNotify}>
-          Add the right ingredients to your recipe
-        </p>
-      )}
-      {ingredients.length === 0 && formErrors?.ingredients && (
-        <p className={css.errorMessage}>{formErrors.ingredients}</p>
-      )}
+      <div className={css.wrapperTextErorr}>
+        {ingredients.length === 0 && (
+          <p className={css.textNotify}>
+            Add the right ingredients to your recipe
+          </p>
+        )}
+        {ingredients.length === 0 && formErrors?.ingredients && (
+          <p className={css.errorMessage}>{formErrors.ingredients}</p>
+        )}
+      </div>
+
       {ingredients.length > 0 && (
         <ul>
           {ingredients.map((el, index) => (

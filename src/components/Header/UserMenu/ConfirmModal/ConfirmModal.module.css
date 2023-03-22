@@ -58,12 +58,20 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.28;
 }
 
 .confirmBtn:hover {
   color: var(--secondaryBlackColor);
   background-color: var(--greenColor);
+}
+@media screen and (min-width: 768px) {
+  .confirmBtn {
+    width: 192px;
+    height: 59px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
 }
 .btnArr {
   margin-bottom: 5px;
@@ -79,5 +87,13 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.28;
+}
+@media screen and (min-width: 768px) {
+  .confirmBtnCurrent {
+    width: 192px;
+    height: 59px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
 }

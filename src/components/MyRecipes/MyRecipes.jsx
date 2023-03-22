@@ -5,7 +5,8 @@ import MyRecipeItem from './MyResipeItem/MyRecipeItem';
 import Pagination from './PaginationCustom/Pagination';
 import css from './MyRecipes.module.css';
 import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
-// import { animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from 'react-scroll';
+import { toast } from 'react-toastify';
 
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
@@ -17,17 +18,10 @@ const MyRecipes = () => {
       setTotalItems(total);
       setRecipesArray(recipes);
     });
-  }, [currentPage]);
-
-  useEffect(() => {
-    getOwnRecipe().then(({ total, recipes }) => {
-      setTotalItems(total);
-      setRecipesArray(recipes);
-    });
-  }, []);
+  }, [currentPage, totalItems]);
 
   const scrollToTop = () => {
-    // scroll.scrollToTop();
+    scroll.scrollToTop();
   };
 
   const handleClick = event => {
@@ -41,34 +35,35 @@ const MyRecipes = () => {
     }
     event.target.disabled = true;
     await deleteOwnRecipe(id);
+    toast.info('Delete recipe', {
+    });
     await getOwnRecipe(1, 4)
       .then(data => {
         const totalItems = Math.ceil(data.total / 4);
         if (totalItems > 1) {
           setTotalItems(totalItems);
         }
-        if (totalItems === 1) {
-          setTotalItems(totalItems);
-        } else {
+        else {
           setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
+        setcurrentPage(1);
       })
       .catch(e => {
         console.log(e.message);
       });
   };
 
+
   return (
-    <div className=" greensImg">
+    <div className='container'>
       <BGDots />
-      <div className="container">
         <section className={css.myRecipe}>
           <Title text="My recipes" />
           <ul className={css.cardList}>
-            {recipesArray.map(
+            {totalItems !== 0 ? (recipesArray.map(
               ({ category, description, preview, time, title, _id }) => (
-                <MyRecipeItem
+                (<MyRecipeItem
                   key={_id}
                   handelDelete={handelDelete}
                   category={category}
@@ -77,19 +72,23 @@ const MyRecipes = () => {
                   time={time}
                   title={title}
                   id={_id}
-                />
+                />)
               ),
+              ))  : (
+              <>
+                <div className={css.noRecipesImg}></div>
+                <p className={css.noRecipesText}>You don't have any recipe.</p>
+              </>
             )}
           </ul>
-          <Pagination
+          {totalItems > 4 && <Pagination
             recipesArray={recipesArray}
             totalItems={totalItems}
             handle={handleClick}
             currentPage={currentPage}
             setcurrentPage={setcurrentPage}
-          />
+          />}
         </section>
-      </div>
     </div>
   );
 };

@@ -7,10 +7,6 @@
   margin-bottom: 32px;
 }
 
-.list {
-  width: 343px;
-}
-
 .item {
   position: relative;
 }
@@ -65,6 +61,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .list {
+    width: 343px;
+  }
   .item:not(:last-child) {
     margin-bottom: 24px;
   }
@@ -84,9 +83,7 @@
   .list {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 704px;
-    gap: 37px;
+    gap: 32px;
   }
   .item:nth-last-child(-n + 2) {
     display: none;

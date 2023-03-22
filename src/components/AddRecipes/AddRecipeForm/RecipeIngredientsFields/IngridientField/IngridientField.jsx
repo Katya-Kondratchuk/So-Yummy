@@ -124,6 +124,8 @@ const IngridientField = ({
             selectContent={css.selectContentUnits}
             activeItemClass={css.activeItem}
             wrapperOption={css.wrapperOptionUnit}
+            itemList={css.itemList}
+            scrollbar={css.scrollbar}
           />
         </div>
       </div>

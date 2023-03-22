@@ -12,7 +12,10 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
     <div className={css.wrapper}>
       <input
         onChange={async e => {
-          const searchQuerySchema = yup.string().matches(searchQueryRegex);
+          const searchQuerySchema = yup
+            .string()
+            .matches(searchQueryRegex)
+            .trim();
           try {
             if (e.target.value !== '') {
               const validInput = await searchQuerySchema.validate(

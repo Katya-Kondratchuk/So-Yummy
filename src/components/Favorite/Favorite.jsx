@@ -53,11 +53,18 @@ const Favorite = () => {
     toast.info('You delete recipe from favorites list', {
       toastId: '12345',
     });
+    // console.log(page);
     await getAllFavorite(page, 4)
       .then(data => {
         const pageCounts = Math.ceil(data.total / 4);
+        // console.log(pageCounts);
         if (pageCounts > 1) {
           setTotalPage(pageCounts);
+          if (pageCounts !== page) {
+            console.log('Сработало');
+            setPage(pageCounts);
+            return;
+          }
         } else {
           setTotalPage(null);
         }

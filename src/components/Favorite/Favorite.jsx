@@ -60,18 +60,14 @@ const Favorite = () => {
         if (data.total === 4) {
           setPage(1);
           setTotalPage(null);
-
           return;
         }
         //
         const pageCounts = Math.ceil(data.total / 4);
-        console.log(pageCounts);
         if (pageCounts > 1) {
           setTotalPage(pageCounts);
-          console.log('Внутри');
 
           if (pageCounts < page) {
-            console.log('Отработал');
             setPage(pageCounts);
             return;
           }

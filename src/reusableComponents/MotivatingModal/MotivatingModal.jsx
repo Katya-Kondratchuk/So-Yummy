@@ -81,11 +81,13 @@ const MotivatingModal = ({ option }) => {
   };
 
   return isVisible ? (
-    <div className={css.wrapper}>
-      <button className={css.closeButton} onClick={handleClose}>
-        &#10005;
-      </button>
-      {getContent()}
+    <div className={css.backdrop}>
+      <div className={css.wrapper}>
+        <button className={css.closeButton} onClick={handleClose}>
+          &#10005;
+        </button>
+        {getContent()}
+      </div>
     </div>
   ) : null;
 };

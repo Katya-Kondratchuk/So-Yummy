@@ -37,29 +37,20 @@ const ShoppingList = () => {
         })
         .catch(error => console.log(error));
       setIsLoading(false);
-    }, 500);
+    }, 1000);
     return;
   }, []);
-
-  // useEffect(() => {
-  //   getShoppingList()
-  //     .then(({ shoppingList }) => {
-  //       setList(shoppingList);
-  //     })
-  //     .catch(error => console.log(error.message));
-  // }, []);
 
   return (
     <div className="container">
       <BGDots />
       <Title text={'Shopping list'} />
       <TitleShoppingList />
-      {isLoading && (
+      {isLoading ? (
         <div className="container">
           <IngredientsLoader />
         </div>
-      )}
-      {list.length > 0 ? (
+      ) : list.length > 0 ? (
         <ul className={css.shoppingItemList}>
           {list.map(({ thumb, title, measure, productId }, index) => (
             <ShoppingItem

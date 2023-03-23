@@ -1,5 +1,4 @@
 /* border: 1px solid var(--borderInputBgWithOpacity); */
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -41,7 +40,7 @@ input[type='number'] {
   justify-content: baseline;
   min-width: 84px;
   height: 53px;
-  border: 1px solid var(--inheritToWhite);
+  border: 1px solid var(--borderInputBgWithOpacity);
   border-radius: 5px;
 }
 
@@ -53,6 +52,15 @@ input[type='number'] {
   margin-right: 0;
   border: none;
   background-color: inherit;
+  transition: transform 250ms ease-in-out;
+}
+
+.closeBtn:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+
+.closeBtn svg path {
+  stroke: var(--closeBtFill);
 }
 
 .ingredient,

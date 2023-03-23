@@ -82,7 +82,7 @@ const CustomSelect = () => {
           borderColor: 'none',
           boxShadow: 'none',
           '&:hover': {
-            backgroundColor: 'transparent', // remove the hover background color
+            backgroundColor: '#ffffff', // remove the hover background color
             borderStyle: 'none',
             borderColor: 'none',
             boxShadow: 'none',
@@ -90,7 +90,7 @@ const CustomSelect = () => {
             outline: 'none',
           },
           '&:focus': {
-            backgroundColor: 'transparent', // remove the focus background color
+            backgroundColor: '#ffffff', // remove the focus background color
             borderStyle: 'none',
             borderColor: 'none',
             boxShadow: 'none',
@@ -115,13 +115,14 @@ const CustomSelect = () => {
           border: 'none',
           color: '#000000',
           opacity: '0.5',
-          padding: '5px',
+          paddingBottom: '3px',
 
           '&:hover': {
-            backgroundColor: 'transparent', // remove the hover background color
+            color: '#8BAA36',
+            backgroundColor: '#ffffff', // remove the hover background color
           },
           '&:focus': {
-            backgroundColor: 'transparent', // remove the focus background color
+            backgroundColor: '#ffffff', // remove the focus background color
           },
         }),
       }}

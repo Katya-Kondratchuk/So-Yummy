@@ -1,20 +1,21 @@
-import FormInput from '../../reusableComponents/FormInput/FormInput';
-import css from './SigninForm.module.css';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import switchImages from '../../services/switchImages';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/auth/authOperation';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import switchImages from '../../services/switchImages';
+import warningValidation from 'services/warningValidation';
+import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
+import css from './SigninForm.module.css';
+import FormInput from '../../reusableComponents/FormInput/FormInput';
+import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
+import { ReactComponent as GoogleIcon } from '../../assets/images/authImages/iconGoogle.svg';
 import UserDataForm from 'reusableComponents/UserDataForm/UserDataForm';
 import AuthTitle from 'reusableComponents/authTitle/AuthTitle';
 import AuthImg from 'reusableComponents/AuthImg/AuthImg';
 import AuthLinkTo from 'reusableComponents/AuthLinkTo/AuthLinkTo';
-import { loginUser } from 'redux/auth/authOperation';
 import AuthBackround from 'reusableComponents/AuthImg/AuthBackground';
 import HelperText from 'reusableComponents/FormInput/HelperText';
-import warningValidation from 'services/warningValidation';
-import switchColorUnlock from 'components/RegisterForm/unlockColorSwitcher';
-import { useRef, useState } from 'react';
-import { ReactComponent as ShowPassword } from '../../assets/images/formInputIcons/unlock.svg';
 
 const SigninForm = () => {
   const signInPasswordInput = useRef(null);
@@ -79,9 +80,6 @@ const SigninForm = () => {
   };
   return (
     <div className={css.registrComponent}>
-      <a href="https://so-yummy.onrender.com/api/users/redirect-google-login">
-        Google login
-      </a>
       <AuthBackround />
       <div className="container">
         <div className={css.registrFormatting}>
@@ -90,6 +88,12 @@ const SigninForm = () => {
             <div className={css.registrationTitleFormat}>
               <AuthTitle titleText="Sign in" />
             </div>
+            <a
+              href="https://so-yummy.onrender.com/api/users/redirect-google-login"
+              className={css.googleAuth}
+            >
+              <GoogleIcon />
+            </a>
             <UserDataForm
               divButtonClass={css.divButtonClass}
               initialValues={formik.initialValues}

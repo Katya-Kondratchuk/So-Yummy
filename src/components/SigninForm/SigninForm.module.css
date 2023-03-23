@@ -79,13 +79,36 @@
   bottom: -52px;
 }
 .unlockButtonResetPass {
-  left: 37px;
-  top: 90px;
+  left: 40px;
+  top: 121px;
+}
+
+.googleAuth {
+  position: absolute;
+  display: inline-block;
+  z-index: 3;
+  border-radius: 50%;
+  width: 40px;
+  top: 28px;
+  left: 269px;
+  height: 40px;
+  opacity: 0.9;
+  transition: scale 200ms linear, opacity 300ms linear;
+}
+.googleAuth:hover,
+.googleAuth:focus {
+  scale: 1.2;
+  opacity: 1;
 }
 @media screen and (min-width: 768px) {
+  .googleAuth {
+    width: 50px;
+    top: 36px;
+    left: 392px;
+    height: 50px;
+    opacity: 0.8;
+  }
   .unlockButtonResetPass {
-    left: 37px;
-    top: 90px;
     left: 67px;
     top: 118px;
   }

@@ -79,7 +79,7 @@ const SigninForm = () => {
   };
   return (
     <div className={css.registrComponent}>
-      <a href="http://localhost:3000/api/users/redirect-google-login">
+      <a href="https://so-yummy.onrender.com/api/users/redirect-google-login">
         Google login
       </a>
       <AuthBackround />

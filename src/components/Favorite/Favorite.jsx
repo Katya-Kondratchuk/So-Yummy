@@ -34,7 +34,7 @@ const Favorite = () => {
           setAllRecipes(data.recipes);
         });
         setIsLoading(false);
-      }, 1500);
+      }, 500);
     } catch (error) {
       setIsLoading(false);
       console.log(error.message);

@@ -69,8 +69,8 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 22px;
   color: var(--textColorForModal);
+  line-height: 1.6;
   cursor: pointer;
 }
 

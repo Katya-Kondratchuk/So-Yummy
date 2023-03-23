@@ -15,13 +15,16 @@ const Recipe = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    if (location.state?.from) {
+    const storedFrom = JSON.parse(localStorage.getItem('fromId'));
+
+    if (location.state?.from || storedFrom === recipeId) {
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
           .then(data => setRecipe(data))
           .catch(error => console.log(error));
         setIsLoading(false);
       }, 1000);
+      localStorage.setItem('fromId', JSON.stringify(recipeId));
       return;
     }
 

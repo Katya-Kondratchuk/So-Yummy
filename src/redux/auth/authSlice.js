@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getUserInfo,
   loginUser,
+  loginWithGoogle,
   logoutUser,
   postResendLink,
   registerUser,
@@ -80,6 +81,17 @@ export const authSlice = createSlice({
         state.loadind = false;
       })
       .addCase(loginUser.rejected, handlerRejected)
+
+      .addCase(loginWithGoogle.pending, handlerPending)
+      .addCase(loginWithGoogle.fulfilled, (state, { payload }) => {
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
+        state.user.avatarURL = payload.user.avatarURL;
+        state.refreshToken = payload.refreshToken;
+        state.accessToken = payload.accessToken;
+        state.loadind = false;
+      })
+      .addCase(loginWithGoogle.rejected, handlerRejected)
 
       .addCase(logoutUser.pending, handlerPending)
       .addCase(logoutUser.fulfilled, (state, _) => {

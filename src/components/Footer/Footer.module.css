@@ -1,5 +1,10 @@
 footer {
   position: relative;
+  color: var(--textColorForModal);
+}
+
+.footer button {
+  background-color: var(--bgColoForFootrBtn);
 }
 
 .footer {
@@ -12,6 +17,19 @@ footer {
   display: flex;
   justify-content: center;
   padding-bottom: 18px;
+}
+
+.SocialLinks a svg > path {
+  fill: var(--followUsSvg);
+}
+.SocialLinks a:hover svg > path {
+  fill: var(--bgColorForModal);
+}
+.SocialLinks a svg:hover > path {
+  fill: var(--bgColorForModal);
+}
+.SocialLinks a svg > path:hover {
+  fill: var(--bgColorForModal);
 }
 
 .leafs {

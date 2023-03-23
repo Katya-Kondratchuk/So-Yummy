@@ -33,6 +33,10 @@
   padding: 7px 14px 7px 10px;
 }
 
+.btnDecrease svg path {
+  stroke: var(--countBorder);
+}
+
 .btnDecrease:disabled,
 .btnIncrease:disabled {
   color: var(--bgColor);
@@ -43,6 +47,7 @@
   min-width: 16px;
   padding: 6px 3px;
   text-align: center;
+  color: var(--secondaryTextColor);
 }
 
 .title {
@@ -109,4 +114,8 @@
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--errorColor);
+}
+
+.textNotifyToDark {
+  color: var(--secondaryTextColor);
 }

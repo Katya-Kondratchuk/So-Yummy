@@ -19,7 +19,7 @@
   height: 152px;
   padding: 14px;
   position: relative;
-  background-color: var(--whiteColor);
+  background-color: var(--BgRecipeCard);
   display: flex;
   flex-direction: column;
 }

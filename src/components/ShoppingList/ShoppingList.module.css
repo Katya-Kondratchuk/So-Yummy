@@ -80,6 +80,7 @@
   letter-spacing: -0.02em;
   margin-bottom: 101px;
   opacity: 0.5;
+  color: var(--secondaryTextColor);
 }
 @media screen and (min-width: 768px) {
   .emptyShoppingListText {

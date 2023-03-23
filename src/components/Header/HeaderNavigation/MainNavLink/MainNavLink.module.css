@@ -4,7 +4,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 18px;
-  color: var(--secondaryBlackColor);
+  color: var(--secondaryTextColor);
 }
 .navLink:hover {
   color: var(--greenColor);
@@ -21,4 +21,8 @@
     font-size: 14px;
     line-height: 22px;
   }
+}
+
+.navLink.recipePageColor {
+  color: var(--blackColor);
 }

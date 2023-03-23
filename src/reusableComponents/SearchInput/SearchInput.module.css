@@ -1,14 +1,14 @@
 .wrapper {
   position: relative;
 
-  border: 1px solid var(--borderColor);
+  border: 1px solid var(--borderColorHalf);
   width: 295px;
   height: 53px;
   border-top-left-radius: 18px 18px;
   border-bottom-left-radius: 44px 44px;
   border-bottom-right-radius: 18px 18px;
   border-top-right-radius: 44px 44px;
-  background-color: var(--whiteColor);
+  background-color: var(--WhiteToInherit);
 }
 .input {
   font-size: 12px;

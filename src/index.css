@@ -134,6 +134,10 @@ table {
   stroke: var(--greenColor);
 }
 
+.linkFooter.active {
+  color: var(--activeFooterLink);
+}
+
 body.openModal {
   overflow: hidden;
 }
@@ -172,11 +176,33 @@ body.openModal {
   --bgScrolbarColorSecondary: rgba(217, 217, 217, 0.025);
   --boxShadow: rgba(0, 0, 0, 0.0314074);
   --selectContentColor: rgba(0, 0, 0, 0.5);
-}
 
-/* :root.themeBlack {
-  --bgColor: #ffffff;
-} */
+  /* ========================================== */
+  --textColorForModal: var(--secondaryTextColor);
+  --bgColorForModal: var(--whiteColor);
+  --bgColoForFootrBtn: var(--greenColor);
+  --BgRecipeCard: var(--whiteColor);
+  --ingridientsBcg2: #ebf3d4;
+  --mainTextColor2: #3e4462;
+  --blackColor2: #000000;
+  --whiteToGreenColor: #ffffff;
+  --countBorderToWhite: rgba(51, 51, 51, 0.3);
+  --inheritToWhite: 'inherit';
+  --WhiteToInherit: var(--whiteColor);
+  /* --centreDot:url('../assets/images/SearchBackground/Rectangle8'), */
+  --categoriesForDarkToWhite: var(--textColorForModal);
+  --activeFooterLink: var(--greenColor);
+  --borderColorHalf: var(--borderColor);
+  --borderInputBgWithOpacity: 'transparent';
+  --secondaryGreyTextColorSix: #7e7e7e;
+  --lineColorDescription: #e0e0e0;
+  --blackColorOpacity: rgba(0, 0, 0, 0.5);
+  --activeGreenToBlack: var(--greenColor);
+  --secondaryTextColorFull: #23262a;
+  --secondaryTextColorForText: #23262a;
+  --followUsSvg: #8baa36;
+  --followUsSvgHover: #000;
+}
 
 .container {
   max-width: 375px;

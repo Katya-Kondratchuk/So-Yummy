@@ -85,7 +85,7 @@ const Categories = () => {
           sx={{
             maxWidth: '100%',
             marginTop: { xs: '50px', lg: '100px' },
-            borderBottom: '1px solid #E0E0E0',
+            borderBottom: '1px solid var(--lineColor)',
             minHeight: '48px',
           }}
         >
@@ -108,6 +108,7 @@ const Categories = () => {
                   '&.Mui-selected': {
                     color: '#8BAA36',
                   },
+                  color: 'var(--categoriesForDarkToWhite)',
                 }}
                 key={index}
                 value={title}

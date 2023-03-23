@@ -7,12 +7,13 @@
   margin-left: 85px;
   margin-bottom: 115px;
   margin-top: 155px;
-  background-color: var(--whiteColor);
+
+  background-color: var(--bgColorForModal);
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
   letter-spacing: -0.24px;
-  color: var(--mainTextColor);
+  color: var(--textColorForModal);
 }
 .arrowContainer {
   display: none;
@@ -32,7 +33,7 @@
   font-size: 10px;
   line-height: 12px;
   letter-spacing: -0.24px;
-  color: var(--mainTextColor);
+  color: var(--textColorForModal);
 }
 @media screen and (min-width: 768px) {
   .container {

@@ -59,7 +59,9 @@ const Preview = ({ data }) => {
       <div className={`${css.buttonContainer} ${'container'}`}>
         <Button
           isLink
-          href={`/categories/${data[0]}`}
+          href={`/categories/${
+            data[0].charAt(0).toUpperCase() + data[0].slice(1)
+          }`}
           divClassName={css.buttonClass}
           label={'See all'}
         />

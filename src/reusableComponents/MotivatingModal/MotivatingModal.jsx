@@ -85,8 +85,7 @@ const MotivatingModal = ({ option }) => {
             <img className={css.blur} src={img_blur} alt="blur" />
 
             <p className={css.text}>
-              <span>Wow!</span> You have added the first recipe to your
-              favorites!
+              <span>Wow!</span> You have created your first recipe!
             </p>
           </div>
         );

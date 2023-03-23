@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
-import clsx from 'clsx';
 import MobMenuCloseBtn from 'components/Header/MobileNavMenu/MobMenuCloseBtn/MobMenuCloseBtn';
 import { useFormik } from 'formik';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
@@ -79,11 +78,7 @@ const UserMenuModalForm = ({ onClose }) => {
 
   const handleImageChange = e => {
     const selectedFile = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.onloadend = () => {
-    //   const base64String = reader.result.split(',')[1];
-    //   formik.values.newAvatartURL = base64String;
-    // };
+
     if (selectedFile) {
       formik.values.image = selectedFile;
       setImage(selectedFile);
@@ -95,15 +90,9 @@ const UserMenuModalForm = ({ onClose }) => {
     setImage('');
   };
   const userAvatarURL = useSelector(selectAuthUserAvatarURL);
-  const [modalOffset, setModalOffset] = useState(false);
 
   return (
-    <div
-      className={clsx(css.userModal, {
-        [css.modalOffset]: modalOffset,
-      })}
-      // className={css.userModal}
-    >
+    <div className={css.userModal}>
       <div className={css.cont}>
         <UserDataForm
           initialValues={formik.initialValues}
@@ -177,7 +166,6 @@ const UserMenuModalForm = ({ onClose }) => {
                 value={formik.values.userName}
                 onChange={formik.handleChange}
                 formInputUserMenu={css.formInputUserMenu}
-                setModalOffset={setModalOffset}
               />
               {formik.errors.userName && (
                 <HelperText
@@ -189,9 +177,8 @@ const UserMenuModalForm = ({ onClose }) => {
           </div>
         </UserDataForm>
       </div>
-      {/* <div onClick={() => closeMenu()}> */}
+
       <MobMenuCloseBtn closeMenu={onClose} />
-      {/* </div> */}
     </div>
   );
 };

@@ -79,6 +79,9 @@ const SigninForm = () => {
   };
   return (
     <div className={css.registrComponent}>
+      <a href="http://localhost:3000/api/users/redirect-google-login">
+        Google login
+      </a>
       <AuthBackround />
       <div className="container">
         <div className={css.registrFormatting}>

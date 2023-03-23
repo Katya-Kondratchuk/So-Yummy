@@ -134,6 +134,10 @@ table {
   stroke: var(--greenColor);
 }
 
+body.openModal {
+  overflow: hidden;
+}
+
 :root.themeLight {
   --bgColor: #fafafa;
   --greyColor: #ececec;

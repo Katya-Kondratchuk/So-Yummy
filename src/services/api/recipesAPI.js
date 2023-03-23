@@ -147,7 +147,7 @@ export const getIngregientsList = async () => {
 export const getSearchByTitle = async (query, page, limit, sort) => {
   try {
     const { data } = await axios.get(
-      `/recipes/title/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+      `/recipes/title/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`,
     );
     return data;
   } catch (error) {
@@ -159,7 +159,7 @@ export const getSearchByTitle = async (query, page, limit, sort) => {
 export const getSearchByIngredients = async (query, page, limit, sort) => {
   try {
     const { data } = await axios.get(
-      `/recipes/ingredient/${query}?page=${page}&limit=${limit}&sort=${sort}`,
+      `/recipes/ingredient/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`,
     );
     return data;
   } catch (error) {

@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { clearTokens, updateTokens } from 'redux/auth/authSlice';
 import { persistor } from 'redux/store';
+import {
+  startTokenRefreshInterval,
+  stopTokenRefreshInterval,
+} from './checkAuthInterval';
 import { refreshTokens } from './refreshTokens';
 
 let isRefreshing = false;
 let failedRequests = [];
 
-function updateLocalStorage() {
+export function updateLocalStorage() {
   persistor.flush().then(() => {});
 }
 
@@ -46,13 +50,13 @@ export const setupInterceptors = s => {
           const refreshToken = s.getState().auth.refreshToken;
 
           const data = await refreshTokens(refreshToken);
-
+          stopTokenRefreshInterval();
           s.dispatch(updateTokens(data));
-
-          updateLocalStorage();
+          // updateLocalStorage();
 
           originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
 
+          startTokenRefreshInterval(s.dispatch, data.refreshToken);
           const result = await axios(originalRequest);
 
           for (const request of failedRequests) {
@@ -63,6 +67,7 @@ export const setupInterceptors = s => {
           return result;
         } catch (err) {
           failedRequests = [];
+          stopTokenRefreshInterval();
           s.dispatch(clearTokens());
           return Promise.reject(err);
         } finally {

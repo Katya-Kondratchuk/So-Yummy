@@ -33,6 +33,7 @@ const Search = () => {
   const searchResult = useSelector(selectSearchResult);
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
+  const [isSearchResult, setIsSearchResult] = useState(false);
 
   const onPageChange = (e, page) => {
     setPage(page);
@@ -59,8 +60,11 @@ const Search = () => {
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
+            setIsSearchResult(true);
           })
-          .catch(err => console.log(err.message));
+          .catch(err => {
+            toast.warning('Bad query');
+          });
       }
     } else {
       if (searchQuery) {
@@ -72,8 +76,9 @@ const Search = () => {
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
+            setIsSearchResult(true);
           })
-          .catch(err => console.log(err.message));
+          .catch(err => toast.warning('Bad query'));
       }
     }
   }, [
@@ -111,7 +116,12 @@ const Search = () => {
       {searchResult.length === 0 && (
         <>
           <div className={css.noRecipesImg}></div>
-          <p className={css.noRecipesText}>Try looking for something else..</p>
+          {!isSearchResult && <p className={css.noRecipesText}>Enter query</p>}
+          {isSearchResult && (
+            <p className={css.noRecipesText}>
+              Try looking for something else..
+            </p>
+          )}
         </>
       )}
       {searchResult.length !== 0 && (

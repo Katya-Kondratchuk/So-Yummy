@@ -83,40 +83,42 @@ const DishCard = ({
       : text.substr(0, maxTextLength).replace(/\s+\S*$/, '') + '...';
 
   return (
-    <div className={css.cardContainer}>
+    <>
       {motivation === '10' && <MotivatingModal option={3} />}
-      <Link to={`/recipe/${id}`}>
-        <img src={image} alt={altText} className={css.image} />
-      </Link>
-      <button
-        onMouseOver={text.length < maxTextLength ? null : toogle}
-        className={css.textContainer}
-        onClick={text.length < maxTextLength ? null : toogle}
-      >
-        {isShow ? text : shortText}
-      </button>
-      <button
-        className={css.btnFav}
-        type="button"
-        onClick={() => {
-          if (isLoadFavorite) return;
-          addToFavorite();
-        }}
-      >
-        <FavoriteIco className={css.favIco} fill={favFeel} />
-      </button>
-      <button
-        className={css.btnLike}
-        type="button"
-        onClick={() => {
-          if (isLoadLike) return;
-          addLike();
-        }}
-      >
-        <LikeIco className={css.likeIco} fill={likeFeel} />
-      </button>
-      <p className={css.popularity}>{popular}</p>
-    </div>
+      <div className={css.cardContainer}>
+        <Link to={`/recipe/${id}`}>
+          <img src={image} alt={altText} className={css.image} />
+        </Link>
+        <button
+          onMouseOver={text.length < maxTextLength ? null : toogle}
+          className={css.textContainer}
+          onClick={text.length < maxTextLength ? null : toogle}
+        >
+          {isShow ? text : shortText}
+        </button>
+        <button
+          className={css.btnFav}
+          type="button"
+          onClick={() => {
+            if (isLoadFavorite) return;
+            addToFavorite();
+          }}
+        >
+          <FavoriteIco className={css.favIco} fill={favFeel} />
+        </button>
+        <button
+          className={css.btnLike}
+          type="button"
+          onClick={() => {
+            if (isLoadLike) return;
+            addLike();
+          }}
+        >
+          <LikeIco className={css.likeIco} fill={likeFeel} />
+        </button>
+        <p className={css.popularity}>{popular}</p>
+      </div>
+    </>
   );
 };
 

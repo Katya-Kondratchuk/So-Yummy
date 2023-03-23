@@ -1,3 +1,4 @@
+import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
 import SharedLayout from 'components/SharedLayout';
 import ConfirmEmailPage from 'pages/ConfirmEmailPage/ConfirmEmailPage';
 import RegisterPage from 'pages/RegisterPage';
@@ -53,6 +54,12 @@ const App = () => {
           path="/verification-token/:verificationToken"
           element={
             <PublicRoute component={<VerifyPage />} redirectTo="/main" />
+          }
+        />
+        <Route
+          path="/google-auth/:googleAuthToken"
+          element={
+            <PublicRoute component={<GoogleAuth />} redirectTo="/main" />
           }
         />
         <Route

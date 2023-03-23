@@ -274,9 +274,9 @@ export const postSubscribeList = async info => {
   }
 };
 
-export const postUnsubscribeList = async token => {
+export const postUnsubscribeList = async emailToken => {
   try {
-    const { data } = await axios.post(`/user-info/unsubscribe`, token);
+    const { data } = await axios.post(`/user-info/unsubscribe`, { emailToken });
     return data;
   } catch (error) {
     console.log(error.message);

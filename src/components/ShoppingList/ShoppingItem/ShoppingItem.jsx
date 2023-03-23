@@ -5,6 +5,7 @@ import ShoppingItemPhoto from '../ShoppingItemPhoto/ShoppingItemPhoto';
 import css from './ShoppingItem.module.css';
 import defaultImage from '../../../assets/images/CheckBoxRecipe/notFound.png';
 import { nanoid } from '@reduxjs/toolkit';
+import { ReactComponent as CloseIcon } from 'assets/images/AddRecipe/close.svg';
 
 const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
   return (
@@ -23,7 +24,9 @@ const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
               onClick={e => {
                 onDelete(item, e);
               }}
-            ></button>
+            >
+              <CloseIcon width="18px" height="18px" />
+            </button>
           </div>
         ))}
       </div>

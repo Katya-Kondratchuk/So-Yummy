@@ -47,13 +47,22 @@
 }
 
 .button {
-  background: url('../../../assets//images/CheckBoxRecipe/X-btn.png') no-repeat
-    top;
   width: 18px;
   height: 18px;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 0;
+  border: none;
+  background-color: inherit;
+  transition: scale 0.3s;
 }
 .button:hover {
   scale: 1.4;
-  transition: scale 0.3s;
+}
+
+.button svg path {
+  stroke: var(--closeBtFill);
 }

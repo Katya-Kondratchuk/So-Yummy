@@ -80,6 +80,7 @@ body.themeDark {
   --secondaryTextColorForText: rgba(255, 255, 255, 0.6);
   --followUsSvg: #ffffff;
   --followUsSvgHover: #8baa36;
+  --closeBtFill: #fff;
 }
 
 body {

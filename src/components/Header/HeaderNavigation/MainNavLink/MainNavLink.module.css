@@ -26,3 +26,7 @@
 .navLink.recipePageColor {
   color: var(--blackColor);
 }
+
+.navLink.recipePageColor:hover {
+  color: var(--greenColor);
+}

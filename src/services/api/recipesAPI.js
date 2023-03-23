@@ -154,7 +154,12 @@ export const getIngregientsList = async () => {
   }
 };
 
-export const getSearchByTitle = async (query, page, limit, sort) => {
+export const getSearchByTitle = async (
+  query,
+  page = 1,
+  limit = 12,
+  sort = 'popular',
+) => {
   try {
     const { data } = await axios.get(
       `/recipes/title/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`,
@@ -166,7 +171,12 @@ export const getSearchByTitle = async (query, page, limit, sort) => {
   }
 };
 
-export const getSearchByIngredients = async (query, page, limit, sort) => {
+export const getSearchByIngredients = async (
+  query,
+  page = 1,
+  limit = 12,
+  sort = 'popular',
+) => {
   try {
     const { data } = await axios.get(
       `/recipes/ingredient/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`,

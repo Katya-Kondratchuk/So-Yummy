@@ -2,11 +2,9 @@ import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Modal from 'reusableComponents/Modal/Modal';
-// import { UserLogo } from './UserLogo';
 import css from './Header.module.css';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
-
 import MobileNavMenu from './MobileNavMenu/MobileNavMenu';
 import MobMenuBurgerBtn from './MobileNavMenu/MobMenuBurgerBtn/MobMenuBurgerBtn';
 import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';

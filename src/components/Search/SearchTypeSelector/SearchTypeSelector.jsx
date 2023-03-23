@@ -10,9 +10,10 @@ const SearchTypeSelector = () => {
     <div className={css.search}>
       <div className={css.searchForm}>
         <label className={css.text}>Search by:</label>
+
         <select
+          className={css.customSelect}
           name="type"
-          className={css.select}
           onChange={e => {
             dispatch(updateSearchType(e.target.value));
           }}

@@ -10,13 +10,11 @@
   background-color: var(--whiteColor);
   font-weight: 500;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 1.6;
   letter-spacing: -0.24px;
   color: var(--mainTextColor);
 }
-.arrowContainer {
-  display: none;
-}
+
 .seeRecipeWrp {
   display: flex;
   justify-content: flex-end;
@@ -30,10 +28,15 @@
   justify-content: flex-end;
   align-items: center;
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   letter-spacing: -0.24px;
-  color: var(--mainTextColor);
+  stroke: var(--mainTextColor);
 }
+.linkWrapper:hover {
+  color: var(--greenColor);
+  stroke: var(--greenColor);
+}
+
 @media screen and (min-width: 768px) {
   .container {
     position: absolute;
@@ -45,16 +48,6 @@
     top: 310px;
     font-size: 14px;
   }
-  .arrowContainer {
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 186px;
-    height: 115px;
-    left: 45px;
-    bottom: -80px;
-    background-image: url('../../../assets/images/HeroMain/V2/curlyArrow.png');
-  }
 }
 @media screen and (min-width: 1440px) {
   .container {
@@ -63,14 +56,5 @@
     height: 114px;
     right: 120px;
     top: 395px;
-  }
-  .arrowContainer {
-    display: block;
-    position: absolute;
-    width: 190px;
-    height: 148px;
-    left: 45px;
-    bottom: -115px;
-    background-image: url('../../../assets/images/HeroMain/V2/curlyArrow-desc.png');
   }
 }

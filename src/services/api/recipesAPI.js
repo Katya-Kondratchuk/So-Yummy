@@ -273,3 +273,13 @@ export const postSubscribeList = async info => {
     return null;
   }
 };
+
+export const postUnsubscribeList = async token => {
+  try {
+    const { data } = await axios.post(`/user-info/unsubscribe`, token);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};

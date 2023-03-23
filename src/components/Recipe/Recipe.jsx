@@ -12,10 +12,11 @@ const Recipe = () => {
   const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  console.log(location);
 
   useEffect(() => {
     setIsLoading(true);
-
+    console.log(location);
     if (location.state?.from) {
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
@@ -32,7 +33,7 @@ const Recipe = () => {
         .catch(error => console.log(error));
       setIsLoading(false);
     }, 1000);
-  }, [recipeId, location.state?.from]);
+  }, [recipeId, location.state?.from, location]);
 
   const {
     description,

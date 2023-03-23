@@ -70,11 +70,11 @@
   top: 120px;
   text-align: center;
   z-index: 130;
-  color: var(--whiteColor);
+  color: var(--blackColor);
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1.1;
 }
 .text span {
   color: var(--greenColor);
@@ -122,11 +122,10 @@
     right: 90px;
     width: 220px;
     height: 120px;
-    text-align: left;
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
-    line-height: 1.07;
+    line-height: 1.2;
   }
 }
 
@@ -156,10 +155,9 @@
     right: 140px;
     width: 220px;
     height: 120px;
-    text-align: left;
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
-    line-height: 1.07;
+    line-height: 1.5;
   }
 }

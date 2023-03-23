@@ -5,7 +5,7 @@ footer {
 .footer {
   background-color: var(--secondaryBlackColor);
   position: relative;
-  max-width: 100%;
+  max-width: 100% !important;
 }
 
 .SocialLinks {

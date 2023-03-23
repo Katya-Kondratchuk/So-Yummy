@@ -1,44 +1,311 @@
-.authImg {
-  height: 250px;
+.imageMain {
   width: 285px;
-  background-size: contain;
-  background-image: url('../../assets/images/authImages/authImg_mobile1x_min.png');
+  height: 250px;
+  position: relative;
 }
-@media screen and (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .authImg {
-    background-image: url('../../assets/images/authImages/authImg_mobile2x_min.png');
+
+.humanimage {
+  width: 126.48px;
+  height: 151.96px;
+  position: absolute;
+  top: 89.28px;
+  left: 35px;
+  z-index: 3;
+}
+
+.firstimage {
+  width: 50.68px;
+  height: 50.14px;
+  position: absolute;
+  top: 50.26px;
+  left: 89.38px;
+  animation: scale1 15000ms infinite 0000ms;
+}
+
+@keyframes scale1 {
+  0% {
+    transform: scale(0);
+  }
+  8% {
+    transform: scale(1.1);
+  }
+  15% {
+    transform: scale(1);
+  }
+  82% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.secondimage {
+  width: 98.47px;
+  height: 33.05px;
+  position: absolute;
+  top: 46.34px;
+  left: 153.08px;
+  z-index: 2;
+
+  animation: scale2 15000ms infinite 0000ms;
+}
+
+@keyframes scale2 {
+  0% {
+    transform: scale(0);
+  }
+  15% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  25% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  85% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.thirdimage {
+  width: 98.47px;
+  height: 33.05px;
+  position: absolute;
+  top: 78.34px;
+  left: 153.08px;
+  z-index: 2;
+
+  animation: scale3 15000ms infinite 0000ms;
+}
+
+@keyframes scale3 {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  35% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.fourthimage {
+  width: 98.47px;
+  height: 33.05px;
+  position: absolute;
+
+  top: 109.34px;
+  left: 153.08px;
+
+  z-index: 2;
+
+  animation: scale4 15000ms infinite 0000ms;
+}
+
+@keyframes scale4 {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  35% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.fifthimage {
+  width: 98.47px;
+  height: 33.05px;
+  position: absolute;
+  top: 141.34px;
+  left: 153.08px;
+  z-index: 2;
+
+  animation: scale5 15000ms infinite 0000ms;
+}
+
+@keyframes scale5 {
+  0% {
+    transform: scale(0);
+  }
+  35% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.sixthimage {
+  width: 98.47px;
+  height: 33.05px;
+  position: absolute;
+  top: 171.34px;
+  left: 153.08px;
+  z-index: 2;
+
+  animation: scale6 15000ms infinite 0000ms;
+}
+
+@keyframes scale6 {
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(0);
+  }
+  45% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
   }
 }
 @media screen and (min-width: 768px) {
-  .authImg {
-    height: 359px;
+  .imageMain {
     width: 409px;
-    background-image: url('../../assets/images/authImages/authImg_tablet1x_min.png');
+    height: 359px;
   }
 
-  @media screen and (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .authImg {
-      background-image: url('../../assets/images/authImages/authImg_tablet2x_min.png');
-    }
+  .humanimage {
+    width: 194.48px;
+    height: 314.96px;
+    top: 89.28px;
+    left: 36px;
+  }
+
+  .firstimage {
+    width: 66.68px;
+    height: 66.14px;
+    top: 65.26px;
+    left: 128.38px;
+  }
+  .secondimage {
+    width: 139.47px;
+    height: 45.05px;
+    top: 68.34px;
+    left: 221.08px;
+  }
+  .thirdimage {
+    width: 139.47px;
+    height: 45.05px;
+    top: 113.5px;
+    left: 221.08px;
+  }
+  .fourthimage {
+    width: 139.47px;
+    height: 45.05px;
+    top: 158.5px;
+    left: 221.08px;
+  }
+  .fifthimage {
+    width: 139.47px;
+    height: 45.05px;
+    top: 202.5px;
+    left: 221.08px;
+  }
+  .sixthimage {
+    width: 139.47px;
+    height: 52.05px;
+    top: 242.5px;
+    left: 221.08px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .authImg {
-    margin-top: 22px;
-    height: 468px;
+  .imageMain {
     width: 532px;
-    background-image: url('../../assets/images/authImages/authImage_desktop2x_min.png');
+    height: 468px;
   }
 
-  @media screen and (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .authImg {
-      background-image: url('../../assets/images/authImages/authImage_desktop2x_min.png');
-    }
+  .humanimage {
+    width: 265.48px;
+    height: 314.96px;
+    top: 136.28px;
+    left: 35px;
+  }
+
+  .firstimage {
+    width: 89.68px;
+    height: 91.14px;
+    top: 102.26px;
+    left: 164.38px;
+  }
+  .secondimage {
+    width: 174.47px;
+    height: 52.05px;
+    top: 89.34px;
+    left: 289.08px;
+  }
+  .thirdimage {
+    width: 174.47px;
+    height: 52.05px;
+    top: 145.5px;
+    left: 290.08px;
+  }
+  .fourthimage {
+    width: 174.47px;
+    height: 52.05px;
+    top: 201.5px;
+    left: 291.08px;
+    z-index: 2;
+  }
+  .fifthimage {
+    width: 174.47px;
+    height: 52.05px;
+    top: 257.5px;
+    left: 291.08px;
   }
 }

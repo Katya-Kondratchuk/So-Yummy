@@ -68,6 +68,16 @@ export const patchRecipeLikeById = async id => {
   }
 };
 
+export const getMainPage = async () => {
+  try {
+    const { data } = await axios.get(`/recipes/main-page`);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 export const getAllFavorite = async (page, limit) => {
   try {
     const { data } = await axios.get(

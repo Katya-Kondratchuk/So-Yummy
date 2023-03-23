@@ -3,7 +3,7 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 18px;
-  line-height: 18px;
+  line-height: 1;
   stroke: var(--secondaryBlackColor);
 }
 .navLink:hover {
@@ -14,7 +14,7 @@
 @media screen and (min-width: 768px) {
   .navLink {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 1;
   }
 }
 

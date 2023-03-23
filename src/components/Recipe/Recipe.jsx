@@ -15,14 +15,16 @@ const Recipe = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    const storedFrom = JSON.parse(localStorage.getItem('fromId'));
 
-    if (location.state?.from) {
+    if (location.state?.from || storedFrom === recipeId) {
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
           .then(data => setRecipe(data))
           .catch(error => console.log(error));
         setIsLoading(false);
       }, 1000);
+      localStorage.setItem('fromId', JSON.stringify(recipeId));
       return;
     }
 
@@ -32,7 +34,7 @@ const Recipe = () => {
         .catch(error => console.log(error));
       setIsLoading(false);
     }, 1000);
-  }, [recipeId, location.state?.from]);
+  }, [recipeId, location.state?.from, location]);
 
   const {
     description,
@@ -40,12 +42,14 @@ const Recipe = () => {
     title,
     ingredients,
     instructions,
+    preview,
     previewImg,
     _id,
     favorite,
     youtube,
     fullImg,
   } = recipe;
+
   return (
     <>
       <TopContainer
@@ -61,13 +65,16 @@ const Recipe = () => {
         </div>
       ) : (
         <div className={css.wrapper}>
-          <IngredientsContainer
-            ingridients={ingredients}
-            instructions={instructions}
-            previewImg={previewImg}
-            youtube={youtube}
-            fullImg={fullImg}
-          />
+          {
+            <IngredientsContainer
+              ingridients={ingredients}
+              instructions={instructions}
+              preview={preview}
+              previewImg={previewImg}
+              youtube={youtube}
+              fullImg={fullImg}
+            />
+          }
         </div>
       )}
     </>

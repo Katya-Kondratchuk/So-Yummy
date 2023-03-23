@@ -98,9 +98,7 @@ const App = () => {
         />
         <Route
           path="/unsubscribe/:unsubscribeToken"
-          element={
-            <PublicRoute component={<Unsubscribe />} redirectTo="/main" />
-          }
+          element={<PublicRoute component={<Unsubscribe />} />}
         />
         <Route path="/" element={<SharedLayout />}>
           <Route

@@ -60,7 +60,7 @@
   line-height: 24px;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
-  color: var(--mainTextColor);
+  color: var(--secondaryTextColor);
   margin-bottom: 28px;
 }
 @media screen and (min-width: 768px) {
@@ -93,7 +93,7 @@
 
 .description {
   text-align: justify;
-  color: var(--blackColor);
+  color: var(--blackColor2);
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.02em;

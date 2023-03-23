@@ -20,7 +20,7 @@
   overflow-y: auto;
   resize: none;
   padding: 10px 16px;
-  border: 1px solid transparent;
+  border: 1px solid var(--borderInputBgWithOpacity);
   outline: none;
   background: var(--inputBgWithOpacity);
 }

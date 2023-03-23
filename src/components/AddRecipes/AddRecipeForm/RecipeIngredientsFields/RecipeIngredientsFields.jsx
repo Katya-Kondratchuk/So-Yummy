@@ -55,7 +55,7 @@ const RecipeIngredientsFields = ({
       </div>
       <div className={css.wrapperTextErorr}>
         {ingredients.length === 0 && (
-          <p className={css.textNotify}>
+          <p className={`${css.textNotify} ${css.textNotifyToDark}`}>
             Add the right ingredients to your recipe
           </p>
         )}

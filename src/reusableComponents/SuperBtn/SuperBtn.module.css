@@ -29,7 +29,7 @@
 
 .outlined {
   border: 2px solid var(--greenColor);
-  color: var(--secondaryBlackColor);
+  color: var(--textColorForModal);
   background-color: transparent;
 }
 

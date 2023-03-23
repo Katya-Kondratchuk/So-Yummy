@@ -17,3 +17,16 @@
     margin-bottom: 100px;
   }
 }
+
+.wrapper a svg > path {
+  fill: var(--followUsSvg);
+}
+.wrapper a:hover svg > path {
+  fill: var(--followUsSvgHover);
+}
+.wrapper a svg:hover > path {
+  fill: var(--followUsSvgHover);
+}
+.wrapper a svg > path:hover {
+  fill: var(--followUsSvgHover);
+}

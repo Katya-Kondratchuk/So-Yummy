@@ -93,7 +93,6 @@ const Search = () => {
   const onFormSubmit = e => {
     e.preventDefault();
     const newSearchQuery = e.target.elements.search.value;
-    const searchType = e.target.elements.type.value;
     setPage(1);
     if (
       !newSearchQuery ||
@@ -103,7 +102,6 @@ const Search = () => {
       return;
     }
     dispatch(updateSearchQuery(newSearchQuery));
-    dispatch(updateSearchType(searchType));
   };
   return (
     <div className="container">

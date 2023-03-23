@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
 import BreakfastArrowSvg from './BreakfastArrowSvg/BreakfastArrowSvg';
 import css from './ChooseYourBreakfast.module.css';
 const ChooseYourBreakfast = () => {
@@ -8,11 +9,10 @@ const ChooseYourBreakfast = () => {
       <span className={css.text}>
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </span>
-      <Link to="/categories" className={css.linkWrapper}>
+      <NavLink to="/categories" className={clsx(css.linkWrapper)}>
         See recipes
         <BreakfastArrowSvg />
-      </Link>
-      <div className={css.arrowContainer}></div>
+      </NavLink>
     </div>
   );
 };

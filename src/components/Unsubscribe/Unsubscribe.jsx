@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import css from './Unsubscribe.module.css';
 import img_blur from '../../reusableComponents/MotivatingModal/images/m_blur.png';
-import img_first_shl from '../../reusableComponents/MotivatingModal/images/m_first_shl.png';
+import img_first_shl from '../Unsubscribe/Image20230323221828.jpg';
 import { useNavigate, useParams } from 'react-router';
 import { postUnsubscribeList } from 'services/api/recipesAPI';
 

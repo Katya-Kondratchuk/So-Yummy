@@ -3,11 +3,12 @@ import ShoppingItemDescription from '../ShoppingItemDescription/ShoppingItemDesc
 import ShoppingItemNumber from '../ShoppingItemNumber/ShoppingItemNumber';
 import ShoppingItemPhoto from '../ShoppingItemPhoto/ShoppingItemPhoto';
 import css from './ShoppingItem.module.css';
+import defaultImage from '../../../assets/images/CheckBoxRecipe/notFound.png';
 
 const ShoppingItem = ({ image, name, measure, id, onDelete }) => {
   return (
     <li className={css.wrapper}>
-      <ShoppingItemPhoto image={image} />
+      <ShoppingItemPhoto image={image ? image : defaultImage} />
       <div>
         <ShoppingItemDescription name={name} />
       </div>

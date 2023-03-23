@@ -88,10 +88,8 @@ const SigninForm = () => {
             <div className={css.registrationTitleFormat}>
               <AuthTitle titleText="Sign in" />
             </div>
-            <a
-              href="http://localhost:3000/api/users/redirect-google-login"
+            <a href="https://so-yummy.onrender.com/api/users/redirect-google-login">
               className={css.googleAuth}
-            >
               <GoogleIcon />
             </a>
             <UserDataForm

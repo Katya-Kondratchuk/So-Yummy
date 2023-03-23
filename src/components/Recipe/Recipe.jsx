@@ -33,7 +33,7 @@ const Recipe = () => {
         .catch(error => console.log(error));
       setIsLoading(false);
     }, 1000);
-  }, [recipeId, location.state?.from]);
+  }, [recipeId, location.state?.from, location]);
 
   const {
     description,

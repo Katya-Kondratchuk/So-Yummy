@@ -16,6 +16,7 @@ import PublicRoute from 'routes/PublicRoute/PublicRoute';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import { updateDataUser } from 'redux/auth/authSlice';
 import { deepParseJson } from 'services/deepParseJson';
+import Unsubscribe from 'components/Unsubscribe/Unsubscribe';
 
 const CategoriesPage = lazy(() => import('./pages/CategoriesPage'));
 const SearchPage = lazy(() => import('pages/SearchPage'));
@@ -93,6 +94,12 @@ const App = () => {
           path="/signin"
           element={
             <PublicRoute component={<SigninPage />} redirectTo="/main" />
+          }
+        />
+        <Route
+          path="/unsubscribe/:unsubscribeToken"
+          element={
+            <PublicRoute component={<Unsubscribe />} redirectTo="/main" />
           }
         />
         <Route path="/" element={<SharedLayout />}>

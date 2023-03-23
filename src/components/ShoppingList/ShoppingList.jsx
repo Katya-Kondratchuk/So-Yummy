@@ -4,6 +4,7 @@ import BGDots from 'reusableComponents/BGDots/BGDots';
 import Title from 'reusableComponents/Title/Title';
 import { getShoppingList, patchShoppingList } from 'services/api/recipesAPI';
 import ShoppingItem from './ShoppingItem/ShoppingItem';
+import { nanoid } from '@reduxjs/toolkit';
 
 import css from './ShoppingList.module.css';
 import TitleShoppingList from './TitleShoppingList/TitleShoppingList';
@@ -15,14 +16,12 @@ const ShoppingList = () => {
     if (e.target.disabled) return;
     e.target.disabled = true;
     await patchShoppingList({ productId: productId, measure: item })
-      .then(data => {
+      .then(({ shoppingList }) => {
+        setList(shoppingList);
         toast.info('You removed ingridient from shopping list', {
           toastId: '1234',
         });
       })
-      .catch(error => toast.error(`${error.message}`));
-    await getShoppingList()
-      .then(({ shoppingList }) => setList(shoppingList))
       .catch(error => console.log(error.message));
   };
 
@@ -43,7 +42,7 @@ const ShoppingList = () => {
         <ul className={css.shoppingItemList}>
           {list.map(({ thumb, title, measure, productId }, index) => (
             <ShoppingItem
-              key={productId + index}
+              key={nanoid()}
               image={thumb}
               name={title}
               measure={measure}

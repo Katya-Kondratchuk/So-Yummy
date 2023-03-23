@@ -43,12 +43,14 @@ const Recipe = () => {
     title,
     ingredients,
     instructions,
+    preview,
     previewImg,
     _id,
     favorite,
     youtube,
     fullImg,
   } = recipe;
+
   return (
     <>
       <TopContainer
@@ -64,13 +66,16 @@ const Recipe = () => {
         </div>
       ) : (
         <div className={css.wrapper}>
-          <IngredientsContainer
-            ingridients={ingredients}
-            instructions={instructions}
-            previewImg={previewImg}
-            youtube={youtube}
-            fullImg={fullImg}
-          />
+          {
+            <IngredientsContainer
+              ingridients={ingredients}
+              instructions={instructions}
+              preview={preview}
+              previewImg={previewImg}
+              youtube={youtube}
+              fullImg={fullImg}
+            />
+          }
         </div>
       )}
     </>

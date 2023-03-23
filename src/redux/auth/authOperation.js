@@ -143,3 +143,40 @@ export const postResendLink = createAsyncThunk(
     }
   },
 );
+
+export const loginWithGoogle = createAsyncThunk(
+  'auth/loginWithGoogle',
+  async (googleAuthToken, ThunkAPI) => {
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINT.LOGIN_WITH_GOOGLE, {
+        googleAuthToken,
+      });
+      toast.success(`Welcome, ${normalizeName(data.user.name)}!`);
+      return data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        toast.error(
+          `${error.response?.data?.message ?? 'Email is not verified'}!`,
+        );
+      }
+
+      if (error.response.status === 403) {
+        toast.error(
+          `${
+            error.response?.data?.message ??
+            'Wrong password or login, try again pls!'
+          }!`,
+        );
+      }
+
+      if (error.response.status === 400) {
+        toast.error(
+          `${
+            error.response?.data?.message ?? 'Failed to login, try again pls!'
+          }!`,
+        );
+      }
+      return ThunkAPI.rejectWithValue(error.message);
+    }
+  },
+);

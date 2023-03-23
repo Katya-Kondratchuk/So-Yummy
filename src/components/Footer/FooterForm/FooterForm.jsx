@@ -20,12 +20,12 @@ const FooterForm = () => {
   let registrationSchema = yup.object().shape({
     email: yup
       .string()
-      .min(5, 'Your email is too short')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
         excludeEmptyString: true,
-      }),
+      })
+      .min(5, 'Your email is too short'),
   });
   const formik = useFormik({
     initialValues: {

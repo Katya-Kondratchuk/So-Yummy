@@ -1,31 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectSearchType } from 'redux/search/searchSelectors';
-import { updateSearchType } from 'redux/search/searchSlice';
+import CustomSelect from './CustomSelect';
 import css from './SearchTypeSelector.module.css';
 
 const SearchTypeSelector = () => {
-  const dispatch = useDispatch();
-  const searchType = useSelector(selectSearchType);
   return (
     <div className={css.search}>
       <div className={css.searchForm}>
         <label className={css.text}>Search by:</label>
-
-        <select
-          className={css.customSelect}
-          name="type"
-          onChange={e => {
-            dispatch(updateSearchType(e.target.value));
-          }}
-          value={searchType}
-        >
-          <option className={css.option} value="title">
-            Title
-          </option>
-          <option className={css.option} value="ingredient">
-            Ingredient
-          </option>
-        </select>
+        <CustomSelect />
       </div>
     </div>
   );

@@ -9,10 +9,7 @@ const ChooseYourBreakfast = () => {
       <span className={css.text}>
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </span>
-      <NavLink
-        to="/categories"
-        className={clsx(css.linkWrapper, 'linkWrapper')}
-      >
+      <NavLink to="/categories" className={clsx(css.linkWrapper)}>
         See recipes
         <BreakfastArrowSvg />
       </NavLink>

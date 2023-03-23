@@ -53,3 +53,7 @@
   height: 18px;
   border: none;
 }
+.button:hover {
+  scale: 1.4;
+  transition: scale 0.3s;
+}

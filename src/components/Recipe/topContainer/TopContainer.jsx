@@ -6,6 +6,7 @@ import HeroTransformer from '../heroTransformer/HeroTransformer';
 import { patchRecipeFavoriteById } from 'services/api/recipesAPI';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { getTimeFromMins } from '../../../reusableComponents/RecipeCard/RecipeCard';
 import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
 const TopContainer = ({ title, description, time, id, favorite }) => {
@@ -49,7 +50,7 @@ const TopContainer = ({ title, description, time, id, favorite }) => {
           </div>
           <div className={css.dishTime}>
             {time && <img src={Timer} alt="Timer" width="20" height="20" />}
-            {time && <span className={css.time}>{time} min</span>}
+            {time && <span className={css.time}>{getTimeFromMins(time)}</span>}
           </div>
         </div>
       </div>

@@ -20,12 +20,12 @@ const FooterForm = () => {
   let registrationSchema = yup.object().shape({
     email: yup
       .string()
-      .min(5, 'Your email is too short')
       .matches(myEmailRegex, {
         message: 'Your email is not valid',
         name: 'email',
         excludeEmptyString: true,
-      }),
+      })
+      .min(5, 'Your email is too short'),
   });
   const formik = useFormik({
     initialValues: {
@@ -37,10 +37,8 @@ const FooterForm = () => {
       postSubscribeList({ email: values.email })
         .then(response => {
           if (!response) throw new Error();
-          toast.success('You have successfully subscribed!');
-          toast.info(
-            'if you want cancel you subscribing, please, check your email verification.',
-            { autoClose: 7000 },
+          toast.success(
+            'You have successfully subscribed! Visit your email to unsubscribe ',
           );
         })
         .catch(error => {
@@ -79,11 +77,11 @@ const FooterForm = () => {
               formik={formik}
               erorr={formik.errors.email}
               value={formik.values.email}
-              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               error={formik.touched.email && formik.errors.email}
             />
-            {formik.touched.email && formik.errors.email && (
+            {formik.errors.email && (
               <HelperText
                 value={formik.values.email}
                 errorText={formik.errors.email}

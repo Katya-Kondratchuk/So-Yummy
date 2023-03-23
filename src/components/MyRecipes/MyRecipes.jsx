@@ -7,18 +7,28 @@ import css from './MyRecipes.module.css';
 import { deleteOwnRecipe, getOwnRecipe } from 'services/api/recipesAPI';
 import { animateScroll as scroll } from 'react-scroll';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router';
+import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
 
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [recipesArray, setRecipesArray] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
+  const location = useLocation();
+  const [motivation, setMotivation] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
+    if (location.state?.motivation) {
+      setMotivation(location.state.motivation);
+    }
     getOwnRecipe(currentPage).then(({ total, recipes }) => {
       setTotalItems(total);
       setRecipesArray(recipes);
+      setIsLoading(false);
     });
-  }, [currentPage, totalItems]);
+  }, [currentPage, location]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -35,8 +45,8 @@ const MyRecipes = () => {
     }
     event.target.disabled = true;
     await deleteOwnRecipe(id);
-    toast.info('Delete recipe', {
-    });
+
+    toast.info('Delete recipe', {});
     await getOwnRecipe(currentPage, 4)
       .then(data => {
         if (data.total === 4) {
@@ -46,13 +56,11 @@ const MyRecipes = () => {
         }
         const totalItems = Math.ceil(data.total / 4);
         if (totalItems > 1) {
-          setTotalItems(totalItems);
           if (totalItems < currentPage) {
             setcurrentPage(totalItems);
             return;
           }
-        }
-        else {
+        } else {
           setTotalItems(null);
         }
         setRecipesArray(data.recipes ?? []);
@@ -63,16 +71,17 @@ const MyRecipes = () => {
       });
   };
 
-
   return (
-    <div className='container'>
+    <div className="container">
+      {motivation === 'first' && <MotivatingModal option={4} />}
       <BGDots />
-        <section className={css.myRecipe}>
-          <Title text="My recipes" />
-          <ul className={css.cardList}>
-            {totalItems !== 0 ? (recipesArray.map(
+      <section className={css.myRecipe}>
+        <Title text="My recipes" />
+        <ul className={css.cardList}>
+          {totalItems !== 0 ? (
+            recipesArray.map(
               ({ category, description, preview, time, title, _id }) => (
-                (<MyRecipeItem
+                <MyRecipeItem
                   key={_id}
                   handelDelete={handelDelete}
                   category={category}
@@ -81,23 +90,26 @@ const MyRecipes = () => {
                   time={time}
                   title={title}
                   id={_id}
-                />)
+                />
               ),
-              ))  : (
-              <>
-                <div className={css.noRecipesImg}></div>
-                <p className={css.noRecipesText}>You don't have any recipe.</p>
-              </>
-            )}
-          </ul>
-          {totalItems > 4 && <Pagination
+            )
+          ) : isLoading ? null : (
+            <>
+              <div className={css.noRecipesImg}></div>
+              <p className={css.noRecipesText}>You don't have any recipe.</p>
+            </>
+          )}
+        </ul>
+        {totalItems > 4 && (
+          <Pagination
             recipesArray={recipesArray}
             totalItems={totalItems}
             handle={handleClick}
             currentPage={currentPage}
             setcurrentPage={setcurrentPage}
-          />}
-        </section>
+          />
+        )}
+      </section>
     </div>
   );
 };

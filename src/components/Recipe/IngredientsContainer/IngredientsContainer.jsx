@@ -6,7 +6,7 @@ import TitleRecipesList from '../TitleRecipesList/TitleRecipesList';
 const IngredientsContainer = ({
   ingridients = [],
   instructions = '',
-  previewImg = '',
+  preview = '',
   youtube,
   fullImg,
 }) => {
@@ -30,7 +30,7 @@ const IngredientsContainer = ({
       </ul>
       <RecipeRpeparation
         instructions={instructions}
-        previewImg={previewImg}
+        preview={preview}
         youtube={youtube}
         fullImg={fullImg}
       />

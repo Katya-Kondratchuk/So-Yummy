@@ -12,11 +12,9 @@ const Recipe = () => {
   const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  console.log(location);
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(location);
     if (location.state?.from) {
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
@@ -42,6 +40,7 @@ const Recipe = () => {
     ingredients,
     instructions,
     preview,
+    previewImg,
     _id,
     favorite,
     youtube,
@@ -68,6 +67,7 @@ const Recipe = () => {
               ingridients={ingredients}
               instructions={instructions}
               preview={preview}
+              previewImg={previewImg}
               youtube={youtube}
               fullImg={fullImg}
             />

@@ -2,7 +2,13 @@ import React from 'react';
 import css from './RecipeRpeparation.module.css';
 import defaultImage from '../../../assets/images/CheckBoxRecipe/notFoundBig.jpg';
 
-const RecipeRpeparation = ({ instructions, preview, youtube, fullImg }) => {
+const RecipeRpeparation = ({
+  instructions,
+  preview,
+  previewImg,
+  youtube,
+  fullImg,
+}) => {
   let i = 0;
   const instructionList = instructions.split('\r\n');
   return (
@@ -23,11 +29,11 @@ const RecipeRpeparation = ({ instructions, preview, youtube, fullImg }) => {
         </ul>
       </div>
       <div className={css.imageWrapper}>
-        {fullImg ? (
-          <img src={fullImg} alt="recipe" className={css.image} />
+        {preview ? (
+          <img src={preview} alt="recipe" className={css.image} />
         ) : (
           <img
-            src={preview ? preview : defaultImage}
+            src={previewImg ? previewImg : defaultImage}
             alt="recipe"
             className={css.image}
           />

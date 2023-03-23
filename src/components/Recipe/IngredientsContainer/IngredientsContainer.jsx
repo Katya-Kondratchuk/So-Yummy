@@ -7,6 +7,7 @@ const IngredientsContainer = ({
   ingridients = [],
   instructions = '',
   preview = '',
+  previewImg = '',
   youtube,
   fullImg,
 }) => {
@@ -31,6 +32,7 @@ const IngredientsContainer = ({
       <RecipeRpeparation
         instructions={instructions}
         preview={preview}
+        previewImg={previewImg}
         youtube={youtube}
         fullImg={fullImg}
       />

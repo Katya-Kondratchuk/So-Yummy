@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { IngredientsLoader } from 'reusableComponents/ContentLoader/IngredientsLoader';
 import { getOwnRecipeById, getRecipeById } from 'services/api/recipesAPI';
@@ -12,11 +12,14 @@ const Recipe = () => {
   const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const ownInfoRef = useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
-
-    if (location.state?.from) {
+    // console.log(location);
+    if (location.state?.from || ownInfoRef.current) {
+      ownInfoRef.current = location.state?.from ?? ownInfoRef.current;
+      console.log(ownInfoRef.current);
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
           .then(data => setRecipe(data))
@@ -32,7 +35,7 @@ const Recipe = () => {
         .catch(error => console.log(error));
       setIsLoading(false);
     }, 1000);
-  }, [recipeId, location.state?.from]);
+  }, [recipeId, location.state?.from, location]);
 
   const {
     description,
@@ -40,12 +43,14 @@ const Recipe = () => {
     title,
     ingredients,
     instructions,
+    preview,
     previewImg,
     _id,
     favorite,
     youtube,
     fullImg,
   } = recipe;
+
   return (
     <>
       <TopContainer
@@ -61,13 +66,16 @@ const Recipe = () => {
         </div>
       ) : (
         <div className={css.wrapper}>
-          <IngredientsContainer
-            ingridients={ingredients}
-            instructions={instructions}
-            previewImg={previewImg}
-            youtube={youtube}
-            fullImg={fullImg}
-          />
+          {
+            <IngredientsContainer
+              ingridients={ingredients}
+              instructions={instructions}
+              preview={preview}
+              previewImg={previewImg}
+              youtube={youtube}
+              fullImg={fullImg}
+            />
+          }
         </div>
       )}
     </>

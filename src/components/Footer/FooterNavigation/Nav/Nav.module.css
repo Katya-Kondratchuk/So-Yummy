@@ -8,6 +8,11 @@
   letter-spacing: -0.02em;
 }
 
+.navCentre a:hover {
+  cursor: url('../../../../assets/images/Cursors/cursor.cur'), default;
+  color: var(--greenColor);
+}
+
 .navCentre > :not(:last-child) {
   margin-bottom: 14px;
 }

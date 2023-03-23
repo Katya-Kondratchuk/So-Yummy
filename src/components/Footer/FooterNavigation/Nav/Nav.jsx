@@ -4,13 +4,26 @@ import css from './Nav.module.css';
 const Nav = () => {
   return (
     <nav className={css.navCentre}>
-      <NavLink to="/search" state={{ ingredient: true }}>
+      <NavLink
+        exact
+        to="/search"
+        state={{ ingredient: true }}
+        activeClassName={css.active}
+      >
         Ingredients
       </NavLink>
-      <NavLink to="/add">Add recipes</NavLink>
-      <NavLink to="/my"> My recipes</NavLink>
-      <NavLink to="/favorite"> Favorite</NavLink>
-      <NavLink to="/shopping-list"> Shopping list</NavLink>
+      <NavLink exact to="/add" activeClassName={css.active}>
+        Add recipes
+      </NavLink>
+      <NavLink exact to="/my" activeClassName={css.active}>
+        My recipes
+      </NavLink>
+      <NavLink exact to="/favorite" activeClassName={css.active}>
+        Favorite
+      </NavLink>
+      <NavLink exact to="/shopping-list" activeClassName={css.active}>
+        Shopping list
+      </NavLink>
     </nav>
   );
 };

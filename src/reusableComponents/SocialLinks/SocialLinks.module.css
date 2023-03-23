@@ -18,15 +18,15 @@
 }
 
 .light:hover * {
-  fill: var(--linksHoverColor);
+  fill: var(--whiteColor);
 }
 
 .dark * {
-  fill: var(--greenColor);
+  fill: var(--whiteColor);
 }
 
 .dark:hover * {
-  fill: var(--whiteColor);
+  fill: var(--linksHoverColor);
 }
 
 .green * {

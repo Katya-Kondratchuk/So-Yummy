@@ -14,16 +14,16 @@ const ShoppingList = () => {
   const handleDeleteIngridient = async (productId, item, e) => {
     if (e.target.disabled) return;
     e.target.disabled = true;
-    await patchShoppingList({ productId: productId, measure: item })
-      .then(data => {
-        toast.info('You removed ingridient from shopping list', {
-          toastId: '1234',
-        });
-      })
-      .catch(error => toast.error(`${error.message}`));
-    await getShoppingList()
-      .then(({ shoppingList }) => setList(shoppingList))
-      .catch(error => console.log(error.message));
+    await patchShoppingList({ productId: productId, measure: item }).then(
+      ({ shoppingList }) => {
+        setList(shoppingList);
+        toast
+          .info('You removed ingridient from shopping list', {
+            toastId: '1234',
+          })
+          .catch(error => console.log(error.message));
+      },
+    );
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { IngredientsLoader } from 'reusableComponents/ContentLoader/IngredientsLoader';
 import { getOwnRecipeById, getRecipeById } from 'services/api/recipesAPI';
@@ -12,20 +12,19 @@ const Recipe = () => {
   const location = useLocation();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const ownInfoRef = useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
-    // console.log(location);
-    if (location.state?.from || ownInfoRef.current) {
-      ownInfoRef.current = location.state?.from ?? ownInfoRef.current;
-      console.log(ownInfoRef.current);
+    const storedFrom = JSON.parse(localStorage.getItem('fromId'));
+
+    if (location.state?.from || storedFrom === recipeId) {
       setTimeout(async () => {
         await getOwnRecipeById(recipeId)
           .then(data => setRecipe(data))
           .catch(error => console.log(error));
         setIsLoading(false);
       }, 1000);
+      localStorage.setItem('fromId', JSON.stringify(recipeId));
       return;
     }
 

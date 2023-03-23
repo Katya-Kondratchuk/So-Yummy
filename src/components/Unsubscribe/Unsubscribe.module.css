@@ -8,6 +8,9 @@
   background-image: url('./pie-in-the-face-getty.png');
   backdrop-filter: blur(5px);
   z-index: 90;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .wrapper {
   position: fixed;
@@ -65,13 +68,13 @@
   height: 96px;
   right: 68px;
   top: 120px;
-  text-align: left;
+  text-align: center;
   z-index: 130;
   color: var(--whiteColor);
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 .text span {
   color: var(--greenColor);

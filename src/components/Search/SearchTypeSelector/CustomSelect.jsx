@@ -116,9 +116,10 @@ const CustomSelect = () => {
           color: '#000000',
           opacity: '0.5',
           paddingBottom: '3px',
+          cursor: 'pointer',
 
           '&:hover': {
-            color: '#8BAA36',
+            color: '#8baa36',
             backgroundColor: '#ffffff', // remove the hover background color
           },
           '&:focus': {

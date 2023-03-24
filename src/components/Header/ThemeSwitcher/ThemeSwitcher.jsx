@@ -18,15 +18,6 @@ const ThemeSwitcher = () => {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle(css.themeDark);
-    const audio = new Audio();
-    audio.src = isDarkMode
-      ? require('../../../assets/sounds/02036.mp3')
-      : require('../../../assets/sounds/cricket-sound.mp3');
-    audio.play();
-
-    setTimeout(() => {
-      audio.pause();
-    }, 2500);
   };
 
   return (

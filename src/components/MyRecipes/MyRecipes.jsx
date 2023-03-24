@@ -9,6 +9,7 @@ import { animateScroll as scroll } from 'react-scroll';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router';
 import MotivatingModal from 'reusableComponents/MotivatingModal/MotivatingModal';
+import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
 
 const MyRecipes = () => {
   const [totalItems, setTotalItems] = useState(0);
@@ -78,7 +79,9 @@ const MyRecipes = () => {
       <section className={css.myRecipe}>
         <Title text="My recipes" />
         <ul className={css.cardList}>
-          {totalItems !== 0 ? (
+          {isLoading ? (
+            <FavoriteLoader />
+          ) : totalItems !== 0 && !isLoading ? (
             recipesArray.map(
               ({ category, description, preview, time, title, _id }) => (
                 <MyRecipeItem
@@ -93,7 +96,7 @@ const MyRecipes = () => {
                 />
               ),
             )
-          ) : isLoading ? null : (
+          ) : (
             <>
               <div className={css.noRecipesImg}></div>
               <p className={css.noRecipesText}>You don't have any recipe.</p>

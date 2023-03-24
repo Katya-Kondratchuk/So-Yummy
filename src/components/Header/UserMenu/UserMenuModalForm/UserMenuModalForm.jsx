@@ -34,9 +34,7 @@ const UserMenuModalForm = ({ onClose }) => {
       .nullable()
       .test('type', 'Only image files are allowed', value => {
         return (
-          !value ||
-          (value &&
-            ['image/jpeg', 'image/png', 'image/svg'].includes(value.type))
+          !value || (value && ['image/jpeg', 'image/png'].includes(value.type))
         );
       })
       .test('size', 'The image must be less than 2 MB', value => {

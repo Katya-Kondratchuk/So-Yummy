@@ -202,6 +202,7 @@ body.openModal {
   --secondaryTextColorForText: #23262a;
   --followUsSvg: #8baa36;
   --followUsSvgHover: #000;
+  --closeBtFill: #333333;
 }
 
 .container {

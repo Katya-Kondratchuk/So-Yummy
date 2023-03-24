@@ -8,7 +8,7 @@
   right: 60px;
   width: 161px;
   height: 130px;
-  background-color: var(--whiteColor);
+  background-color: var(--bgColorForModal);
   border: 1px solid var(--greenColor);
   border-radius: 8px;
   animation-name: slide-down;
@@ -69,10 +69,15 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
+  color: var(--textColorForModal);
   line-height: 1.6;
-  color: var(--secondaryTextColor);
   cursor: pointer;
 }
+
+.editBtn svg path {
+  stroke: var(--textColorForModal);
+}
+
 @media screen and (min-width: 768px) {
   .editBtn {
     margin-bottom: 32px;

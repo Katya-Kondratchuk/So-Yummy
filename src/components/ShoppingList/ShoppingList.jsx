@@ -46,10 +46,8 @@ const ShoppingList = () => {
       <BGDots />
       <Title text={'Shopping list'} />
       <TitleShoppingList />
-      {isLoading ? (
-        <div className="container">
-          <IngredientsLoader />
-        </div>
+      {!isLoading ? (
+        <IngredientsLoader />
       ) : list.length > 0 ? (
         <ul className={css.shoppingItemList}>
           {list.map(({ thumb, title, measure, productId }, index) => (

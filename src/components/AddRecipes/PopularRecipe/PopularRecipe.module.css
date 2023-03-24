@@ -9,6 +9,15 @@
 
 .item {
   position: relative;
+  border-radius: 8px;
+}
+
+.item:hover {
+  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000,
+    -9px -6px 27px -2px rgba(35, 196, 49, 0.339);
+  box-shadow: 5px 5px 5px 0px rgba(155, 191, 56, 0.253),
+    inset 4px 4px 15px 0px rgba(139, 170, 54, 0.678),
+    -9px -6px 27px -2px rgba(139, 170, 54, 0.018);
 }
 
 .itemLink {

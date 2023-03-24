@@ -3,7 +3,7 @@
 }
 
 .cardList {
-   margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .noRecipesImg {
@@ -24,6 +24,7 @@
   letter-spacing: -0.02em;
   margin-bottom: 101px;
   opacity: 0.5;
+  color: var(--secondaryTextColor);
 }
 
 @media screen and (min-width: 768px) {
@@ -31,25 +32,23 @@
     padding-bottom: 200px;
   }
 
-    .noRecipesImg {
-      width: 350px;
-      height: 225px;
-      margin-bottom: 33px;
-      margin-top: 125px;
-    }
-  
-    .noRecipesText {
-      font-size: 24px;
-      line-height: 24px;
-      letter-spacing: -0.02em;
-      margin-bottom: 200px;
-    }
+  .noRecipesImg {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 33px;
+    margin-top: 125px;
+  }
 
+  .noRecipesText {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    margin-bottom: 200px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .myRecipe {
     padding-bottom: 100px;
   }
-
 }

@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
-  background-color: var(--whiteColor);
+  background-color: var(--BgRecipeCard);
 }
 
 .dish:not(:last-child) {
@@ -89,6 +89,7 @@
   flex-direction: column;
   margin-left: 14px;
   position: relative;
+  color: var(--textColorForModal);
 }
 
 .bottomWrapper {
@@ -141,6 +142,7 @@
     overflow: hidden;
     line-height: 1.28;
     font-size: 14px;
+    color: var(--secondaryTextColorForText);
   }
   .dishDiscriptionSecond {
     display: none;

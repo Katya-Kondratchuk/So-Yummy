@@ -81,6 +81,8 @@ body.themeDark {
   --followUsSvg: #ffffff;
   --followUsSvgHover: #8baa36;
   --closeBtFill: #fff;
+  --second-image: url('../../../assets/images/SearchBackground/whiteMob-min.png');
+  --second-image2: url('../../../assets/images/SearchBackground/white2-min.png');
 }
 
 body {

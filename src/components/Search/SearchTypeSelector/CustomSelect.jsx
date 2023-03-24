@@ -68,9 +68,9 @@ const CustomSelect = () => {
           display: 'flex',
           flexDirection: 'column',
           paddingTop: '8px',
-          paddingLeft: '14px',
-          paddingBottom: '8px',
-          marginTop: '0',
+
+          marginBottom: '10px',
+          paddingBottom: '5px',
           font: '12px',
           lineHeight: '18px',
           color: '#rgba(0, 0, 0, 0.5)',
@@ -99,31 +99,32 @@ const CustomSelect = () => {
           },
 
           width: '146px',
-          height: '62px',
+
           '@media (min-width: 768px)': {
             width: '175px',
-            height: '74px',
+
             font: '14px',
             lineHeight: '21px',
           },
           '@media (min-width: 1440px)': {
             width: '198px',
-            height: '78px',
           },
         }),
         option: (provided, state) => ({
           border: 'none',
+          paddingLeft: '14px',
           color: '#000000',
           opacity: '0.5',
-          paddingBottom: '3px',
+          padding: '8px',
           cursor: 'pointer',
 
           '&:hover': {
             color: '#8baa36',
-            backgroundColor: '#ffffff', // remove the hover background color
+            opacity: '0.75',
+            backgroundColor: '#f2ecec', // remove the hover background color
           },
           '&:focus': {
-            backgroundColor: '#ffffff', // remove the focus background color
+            backgroundColor: 'transparent', // remove the focus background color
           },
         }),
       }}

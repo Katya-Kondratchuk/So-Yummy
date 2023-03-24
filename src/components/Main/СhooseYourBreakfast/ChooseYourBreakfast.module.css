@@ -32,6 +32,7 @@
   line-height: 1.2;
   letter-spacing: -0.24px;
   color: var(--textColorForModal);
+  stroke: var(--mainTextColor);
 }
 .linkWrapper:hover {
   color: var(--greenColor);

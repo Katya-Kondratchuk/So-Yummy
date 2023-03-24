@@ -1,5 +1,5 @@
 .activeItem {
-  color: var(--greenColor);
+  color: var(--followUsSvg);
 }
 
 .wrapperInfo {
@@ -15,7 +15,7 @@
   height: 40px;
   border: transparent;
   background-color: inherit;
-  border-bottom: 1px solid var(--lineColor);
+  border-bottom: 1px solid var(--lineColorDescription);
   padding-bottom: 18px;
   outline: transparent;
 
@@ -23,7 +23,12 @@
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: var(--blackColor);
+  color: var(--secondaryTextColor);
+}
+
+.descriptions input::placeholder {
+  opacity: 1;
+  color: var(--blackColorOpacity);
 }
 
 .nameRecipe::placeholder,
@@ -34,14 +39,20 @@
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: var(--blackColor);
-  opacity: 0.5;
+  color: inherit;
 }
 
 .wrapperErrMessDescr,
 .wrapperErrMessTitle,
 .wrapperCategory {
   margin-bottom: 24px;
+}
+
+.descriptions input::-webkit-input-placeholder {
+  color: var(--blackColorOpacity);
+}
+.wrapperOption {
+  color: var(--blackColor2);
 }
 
 .wrapperOption {
@@ -90,7 +101,7 @@
   line-height: 1.5;
   letter-spacing: -0.02em;
   color: var(--selectContentColor);
-  background: var(--whiteColor);
+  background: var(--whiteToGreenColor);
   box-shadow: 0px 6.51852px 7.82222px var(--boxShadow);
 }
 
@@ -174,7 +185,7 @@
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background-color: var(--whiteColor);
+  background-color: var(--whiteToGreenColor);
   border-radius: 12px;
 }
 

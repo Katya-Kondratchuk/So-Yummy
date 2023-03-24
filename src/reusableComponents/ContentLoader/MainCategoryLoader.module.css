@@ -1,0 +1,38 @@
+.mainLoaderWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.mainLoaderWrapper:first-child {
+  margin-top: 0px;
+}
+.mainButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  margin-top: -2px;
+}
+@media screen and (min-width: 768px) {
+  .mainLoaderWrapper {
+    margin-top: 55px;
+  }
+  .mainLoaderWrapper:first-child {
+    margin-top: 55px;
+  }
+  .mainButtonWrapper {
+    padding-right: 25px;
+    margin-top: 15px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .mainLoaderWrapper {
+    margin-top: 90px;
+  }
+  .mainLoaderWrapper:first-child {
+    margin-top: 90px;
+  }
+  .mainButtonWrapper {
+    padding-right: 15px;
+    margin-top: -15px;
+  }
+}

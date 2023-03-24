@@ -7,6 +7,7 @@
   justify-content: center;
   align-self: center;
 }
+
 .input {
   opacity: 0;
   position: absolute;
@@ -42,18 +43,44 @@
   filter: drop-shadow(2px 1px 6px rgba(0, 0, 0, 0.25));
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .input:checked ~ label span {
   transform: translateX(30px);
 }
 
 body.themeDark {
-  --bgColor: rgba(0, 0, 0, 0.8);
+  --bgColor: var(--linksHoverColor);
   --titleColor: #fafafa;
-  --secondaryBlackColor: #8aa936;
-}
-
-body.themeDark .downText {
-  --secondaryBlackColor: #fff;
+  --secondaryTextColor: var(--whiteColor);
+  --secondaryBlackColor: var(--greenColor);
+  --textColorForModal: var(--whiteColor);
+  --bgColorForModal: var(--bgColor);
+  --bgColoForFootrBtn: var(--linksHoverColor);
+  --BgRecipeCard: var(--modalBg);
+  --ingridientsBcg2: var(--modalBg);
+  --mainTextColor: var(--whiteColor);
+  --blackColor2: var(--whiteColor);
+  --whiteToGreenColor: var(--greenColor);
+  --countBorderToWhite: var(--whiteColor);
+  --inputBgWithOpacity: 'inherit';
+  --inheritToWhite: var(--whiteColor);
+  --WhiteToInherit: 'inherit';
+  --categoriesForDarkToWhite: rgba(255, 255, 255, 0.6);
+  --recipeText: var(--whiteColor);
+  --activeFooterLink: var(--blackColor);
+  --borderColorHalf: rgba(255, 255, 255, 0.5);
+  --borderInputBgWithOpacity: rgba(255, 255, 255, 0.2);
+  --countBorder: var(--whiteColor);
+  --secondaryGreyTextColorSix: rgba(255, 255, 255, 0.6);
+  --lineColorDescription: rgba(255, 255, 255, 0.3);
+  --blackColorOpacity: #fff;
+  --bgScrolbarColorPrimary: #000;
+  --selectContentColor: rgba(255, 255, 255, 0.5);
+  --activeGreenToBlack: #000;
+  --secondaryTextColorForText: rgba(255, 255, 255, 0.6);
+  --followUsSvg: #ffffff;
+  --followUsSvgHover: #8baa36;
+  --closeBtFill: #fff;
 }
 
 body {

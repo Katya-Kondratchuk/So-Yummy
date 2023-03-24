@@ -68,9 +68,9 @@ const CustomSelect = () => {
           display: 'flex',
           flexDirection: 'column',
           paddingTop: '8px',
-          paddingLeft: '14px',
-          paddingBottom: '8px',
-          marginTop: '0',
+
+          marginBottom: '10px',
+          paddingBottom: '5px',
           font: '12px',
           lineHeight: '18px',
           color: '#rgba(0, 0, 0, 0.5)',
@@ -82,7 +82,7 @@ const CustomSelect = () => {
           borderColor: 'none',
           boxShadow: 'none',
           '&:hover': {
-            backgroundColor: 'transparent', // remove the hover background color
+            backgroundColor: '#ffffff', // remove the hover background color
             borderStyle: 'none',
             borderColor: 'none',
             boxShadow: 'none',
@@ -90,7 +90,7 @@ const CustomSelect = () => {
             outline: 'none',
           },
           '&:focus': {
-            backgroundColor: 'transparent', // remove the focus background color
+            backgroundColor: '#ffffff', // remove the focus background color
             borderStyle: 'none',
             borderColor: 'none',
             boxShadow: 'none',
@@ -99,26 +99,29 @@ const CustomSelect = () => {
           },
 
           width: '146px',
-          height: '62px',
+
           '@media (min-width: 768px)': {
             width: '175px',
-            height: '74px',
+
             font: '14px',
             lineHeight: '21px',
           },
           '@media (min-width: 1440px)': {
             width: '198px',
-            height: '78px',
           },
         }),
         option: (provided, state) => ({
           border: 'none',
+          paddingLeft: '14px',
           color: '#000000',
           opacity: '0.5',
-          padding: '5px',
+          padding: '8px',
+          cursor: 'pointer',
 
           '&:hover': {
-            backgroundColor: 'transparent', // remove the hover background color
+            color: '#8baa36',
+            opacity: '0.75',
+            backgroundColor: '#f2ecec', // remove the hover background color
           },
           '&:focus': {
             backgroundColor: 'transparent', // remove the focus background color

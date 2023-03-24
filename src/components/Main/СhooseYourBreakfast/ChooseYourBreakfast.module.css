@@ -7,12 +7,13 @@
   margin-left: 85px;
   margin-bottom: 115px;
   margin-top: 155px;
-  background-color: var(--whiteColor);
+
+  background-color: var(--bgColorForModal);
   font-weight: 500;
   font-size: 12px;
   line-height: 1.6;
   letter-spacing: -0.24px;
-  color: var(--mainTextColor);
+  color: var(--textColorForModal);
 }
 
 .seeRecipeWrp {
@@ -30,6 +31,7 @@
   font-size: 10px;
   line-height: 1.2;
   letter-spacing: -0.24px;
+  color: var(--textColorForModal);
   stroke: var(--mainTextColor);
 }
 .linkWrapper:hover {

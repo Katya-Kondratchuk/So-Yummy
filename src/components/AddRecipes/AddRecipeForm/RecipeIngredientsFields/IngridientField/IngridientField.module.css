@@ -1,3 +1,4 @@
+/* border: 1px solid var(--borderInputBgWithOpacity); */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -8,8 +9,12 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.selectItem {
+  color: var(--selectContentColor);
+}
+
 .activeItem {
-  color: var(--greenColor);
+  color: var(--followUsSvg);
 }
 
 .itemList {
@@ -39,6 +44,8 @@ input[type='number'] {
   justify-content: baseline;
   min-width: 84px;
   height: 53px;
+  border: 1px solid var(--borderInputBgWithOpacity);
+  border-radius: 5px;
 }
 
 .closeBtn {
@@ -49,6 +56,15 @@ input[type='number'] {
   margin-right: 0;
   border: none;
   background-color: inherit;
+  transition: transform 250ms ease-in-out;
+}
+
+.closeBtn:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+
+.closeBtn svg path {
+  stroke: var(--closeBtFill);
 }
 
 .ingredient,
@@ -63,7 +79,7 @@ input[type='number'] {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: var(--blackColor);
+  color: var(--secondaryTextColor);
 }
 
 .amount {
@@ -78,6 +94,7 @@ input[type='number'] {
   width: 198px;
   border-radius: 6px;
   padding: 16px 32px 16px 16px;
+  border: 1px solid var(--borderInputBgWithOpacity);
 }
 
 .ingredient::placeholder,
@@ -86,7 +103,7 @@ input[type='number'] {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: var(--blackColor);
+  color: var(--secondaryTextColor);
   opacity: 0.5;
 }
 
@@ -125,6 +142,7 @@ input[type='number'] {
   display: block;
   text-align: center;
   width: 100%;
+  color: var(--secondaryTextColor);
 }
 
 .selectContentUnits,
@@ -141,7 +159,7 @@ input[type='number'] {
   line-height: 1.5;
   letter-spacing: -0.02em;
   color: var(--selectContentColor);
-  background: var(--whiteColor);
+  background: var(--whiteToGreenColor);
   box-shadow: 0px 6.51852px 7.82222px var(--boxShadow);
 }
 
@@ -199,7 +217,7 @@ input[type='number'] {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background-color: var(--whiteColor);
+  background-color: var(--whiteToGreenColor);
   border-radius: 12px;
 }
 
@@ -216,7 +234,7 @@ input[type='number'] {
 }
 
 .scrollbarIngredient::-webkit-scrollbar-track {
-  background-color: var(--whiteColor);
+  background-color: var(--whiteToGreenColor);
   border-radius: 12px;
 }
 

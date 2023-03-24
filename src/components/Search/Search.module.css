@@ -58,6 +58,7 @@
     line-height: 1;
     letter-spacing: -0.02em;
     margin-bottom: 200px;
+    color: var(--secondaryTextColor);
   }
 }
 .paginationWrp {

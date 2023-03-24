@@ -48,8 +48,18 @@
   background-color: var(--ingridientsBcg);
   stroke: var(--secondaryBlackColor);
 }
+.trashButton.lightBcg:hover,
+.trashButton.lightBcg:focus {
+  background-color: var(--greenColor);
+  stroke: var(--whiteColor);
+}
 
 .trashButton.darkBcg {
   background-color: var(--greenColor);
   stroke: var(--whiteColor);
+}
+.trashButton.darkBcg:hover,
+.trashButton.darkBcg:focus {
+  background-color: var(--ingridientsBcg);
+  stroke: var(--secondaryBlackColor);
 }

@@ -47,9 +47,7 @@ const ShoppingList = () => {
       <Title text={'Shopping list'} />
       <TitleShoppingList />
       {isLoading ? (
-        <div className="container">
-          <IngredientsLoader />
-        </div>
+        <IngredientsLoader />
       ) : list.length > 0 ? (
         <ul className={css.shoppingItemList}>
           {list.map(({ thumb, title, measure, productId }, index) => (

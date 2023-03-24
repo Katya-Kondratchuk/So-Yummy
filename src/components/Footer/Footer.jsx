@@ -1,4 +1,3 @@
-import React from 'react';
 import SocialLinks from 'reusableComponents/SocialLinks/SocialLinks';
 import FooterNavigation from './FooterNavigation/FooterNavigation';
 import css from './Footer.module.css';

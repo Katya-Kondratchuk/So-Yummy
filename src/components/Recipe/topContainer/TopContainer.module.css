@@ -60,7 +60,7 @@
   line-height: 16px;
   text-align: center;
   letter-spacing: -0.02em;
-  color: var(--secondaryTextColor);
+  color: var(--secondaryTextColorFull);
   margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
@@ -100,6 +100,11 @@
   font-size: 10px;
   line-height: 15px;
 }
+
+.btnTxt button {
+  color: var(--secondaryTextColorFull);
+}
+
 @media screen and (min-width: 768px) {
   .btnTxt {
     font-size: 16px;
@@ -137,7 +142,7 @@
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.24px;
-  color: var(--secondaryTextColor);
+  color: var(--secondaryTextColorFull);
 }
 @media screen and (min-width: 768px) {
   .time {

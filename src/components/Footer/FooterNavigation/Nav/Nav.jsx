@@ -4,13 +4,21 @@ import css from './Nav.module.css';
 const Nav = () => {
   return (
     <nav className={css.navCentre}>
-      <NavLink to="/search" state={{ ingredient: true }}>
+      <NavLink to="/search" className="linkFooter" state={{ ingredient: true }}>
         Ingredients
       </NavLink>
-      <NavLink to="/add">Add recipes</NavLink>
-      <NavLink to="/my">My recipes</NavLink>
-      <NavLink to="/favorite">Favorite</NavLink>
-      <NavLink to="/shopping-list">Shopping list</NavLink>
+      <NavLink to="/add" className="linkFooter">
+        Add recipes
+      </NavLink>
+      <NavLink to="/my" className="linkFooter">
+        My recipes
+      </NavLink>
+      <NavLink to="/favorite" className="linkFooter">
+        Favorite
+      </NavLink>
+      <NavLink to="/shopping-list" className="linkFooter">
+        Shopping list
+      </NavLink>
     </nav>
   );
 };

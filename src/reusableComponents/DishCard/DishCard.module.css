@@ -54,7 +54,7 @@
   height: auto;
 
   padding: 16px;
-  background-color: var(--whiteColor);
+  background-color: var(--BgRecipeCard);
   width: 307px;
   border-radius: 8px;
   border: 0;

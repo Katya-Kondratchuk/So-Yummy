@@ -14,7 +14,7 @@
 
 .navCentre a:hover {
   cursor: url('../../../../assets/images/Cursors/cursor.cur'), default;
-  color: var(--greenColor);
+  color: var(--activeFooterLink);
 }
 
 .navCentre > :not(:last-child) {

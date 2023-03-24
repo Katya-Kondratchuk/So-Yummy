@@ -203,6 +203,8 @@ body.openModal {
   --followUsSvg: #8baa36;
   --followUsSvgHover: #000;
   --closeBtFill: #333333;
+  --second-image: url('./assets/images/SearchBackground/image1black.png');
+  --second-image2: url('./assets/images/SearchBackground/image2black.png');
 }
 
 .container {

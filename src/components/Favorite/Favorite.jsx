@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
 import React from 'react';
-import BGDots from 'reusableComponents/BGDots/BGDots';
-import BasicPagination from 'reusableComponents/Pagination/Pagination';
-import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
-import Title from 'reusableComponents/Title/Title';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import {
   getAllFavorite,
   patchRecipeFavoriteById,
 } from 'services/api/recipesAPI';
 import { FavoriteLoader } from 'reusableComponents/ContentLoader/FavoriteLoader';
+import BasicPagination from 'reusableComponents/Pagination/Pagination';
+import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
 import NothingAdd from './NothingAdd/NothingAdd';
+import Title from 'reusableComponents/Title/Title';
+import BGDots from 'reusableComponents/BGDots/BGDots';
 import css from '../../reusableComponents/RecipeCard/RecipeCard.module.css';
-import { toast } from 'react-toastify';
 
 const Favorite = () => {
   const [allRecipes, setAllRecipes] = useState([]);

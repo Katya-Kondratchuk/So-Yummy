@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import css from './SearchInput.module.css';
 const searchQueryRegex = /^[a-z A-Z\-&,]+$/;
+const customId = 'customID';
 const SearchInput = ({ dark, name, searchQuery, lnk }) => {
   const [inputValue, setInputValue] = useState(searchQuery);
 
@@ -25,7 +26,10 @@ const SearchInput = ({ dark, name, searchQuery, lnk }) => {
               setInputValue('');
             }
           } catch (error) {
-            return toast.error('Only latin letters can be entered');
+            toast.error('Only latin letters can be entered!', {
+              toastId: customId,
+            });
+            return;
           }
         }}
         className={css.input}

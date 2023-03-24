@@ -9,8 +9,12 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.selectItem {
+  color: var(--selectContentColor);
+}
+
 .activeItem {
-  color: var(--activeGreenToBlack);
+  color: var(--followUsSvg);
 }
 
 .itemList {
@@ -90,7 +94,7 @@ input[type='number'] {
   width: 198px;
   border-radius: 6px;
   padding: 16px 32px 16px 16px;
-  border: 1px solid var(--inheritToWhite);
+  border: 1px solid var(--borderInputBgWithOpacity);
 }
 
 .ingredient::placeholder,

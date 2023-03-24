@@ -9,7 +9,7 @@ export const recipeShema = yup.object().shape({
     .test('fileType', 'Only picture files are allowed', value => {
       return (
         !value ||
-        (value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type))
+        (value && ['image/jpeg', 'image/jpg', 'image/png'].includes(value.type))
       );
     })
     .test('fileSize', 'Picture size is too large', value => {

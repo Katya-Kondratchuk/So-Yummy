@@ -33,8 +33,9 @@
   padding: 7px 14px 7px 10px;
 }
 
-.btnDecrease svg path {
+.btnDecrease svg > path {
   stroke: var(--countBorder);
+  stroke-opacity: 1;
 }
 
 .btnDecrease:disabled,
@@ -117,5 +118,5 @@
 }
 
 .textNotifyToDark {
-  color: var(--secondaryTextColor);
+  color: var(--secondaryGreyTextColor);
 }

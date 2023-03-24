@@ -75,7 +75,7 @@ body.themeDark {
   --lineColorDescription: rgba(255, 255, 255, 0.3);
   --blackColorOpacity: #fff;
   --bgScrolbarColorPrimary: #000;
-  --selectContentColor: #fff;
+  --selectContentColor: rgba(255, 255, 255, 0.5);
   --activeGreenToBlack: #000;
   --secondaryTextColorForText: rgba(255, 255, 255, 0.6);
   --followUsSvg: #ffffff;

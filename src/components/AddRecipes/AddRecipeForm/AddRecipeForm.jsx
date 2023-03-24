@@ -186,6 +186,7 @@ const AddRecipeForm = () => {
 
     const isValid = recipeShema.isValidSync(formData);
     if (!isValid) {
+      toast.error('Not all fields were validated, follow the prompts!!');
       setIsShowErrors(true);
       return;
     }

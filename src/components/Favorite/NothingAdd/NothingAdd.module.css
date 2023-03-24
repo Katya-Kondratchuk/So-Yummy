@@ -43,8 +43,8 @@
   background-image: url('../../../assets/images/FavoriteImg/default-min.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 0 0 18px 19px white inset,
-    -10px 10px 7px -5px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 18px 19px var(--bgColor) inset,
+    -10px 10px 7px -5px var(--bgColor);
 }
 .container p {
   color: white;
@@ -73,8 +73,8 @@
     margin-top: 29px;
     padding-bottom: 130px;
     margin-bottom: 105px;
-    box-shadow: 0 0 10px 10px white inset,
-      -10px 10px 10px -5px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px 10px var(--bgColor) inset,
+      -10px 10px 10px -5px var(--bgColor);
   }
   .container .alertPartTwo {
     margin-top: 20px;
@@ -98,7 +98,7 @@
     margin-bottom: 290px;
     width: 1241px;
     height: 404px;
-    box-shadow: 0 0 18px 19px white inset,
-      -10px 10px 7px -5px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 18px 19px var(--bgColor) inset,
+      -10px 10px 7px -5px var(--bgColor);
   }
 }

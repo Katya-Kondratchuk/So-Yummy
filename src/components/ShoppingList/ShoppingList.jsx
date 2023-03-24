@@ -46,7 +46,7 @@ const ShoppingList = () => {
       <BGDots />
       <Title text={'Shopping list'} />
       <TitleShoppingList />
-      {!isLoading ? (
+      {isLoading ? (
         <IngredientsLoader />
       ) : list.length > 0 ? (
         <ul className={css.shoppingItemList}>

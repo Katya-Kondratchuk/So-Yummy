@@ -22,8 +22,11 @@ export const registerUser = createAsyncThunk(
       );
       return data.user;
     } catch (error) {
-      if (error.response.status === 409 || error.response.status === 400) {
+      if (error.response.status === 400) {
         toast.error(`${error.response?.data?.message}!`);
+      }
+      if (error.response.status === 409) {
+        toast.error(`User with this email already register`);
       }
       return ThunkAPI.rejectWithValue(error.message);
     }

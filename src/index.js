@@ -15,7 +15,7 @@ root.render(
   <StrictMode>
     <PersistGate loading={<LoaderSuspense />} persistor={persistor}>
       <Provider store={store}>
-        <BrowserRouter basename="/So-Yummy">
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>

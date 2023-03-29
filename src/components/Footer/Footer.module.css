@@ -7,6 +7,10 @@ footer {
   background-color: var(--bgColoForFootrBtn);
 }
 
+.footer button:hover {
+  color: var(--whiteToGreenColor);
+}
+
 .footer {
   background-color: var(--secondaryBlackColor);
   position: relative;

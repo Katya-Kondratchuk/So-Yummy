@@ -14,7 +14,7 @@ const Nav = () => {
         My recipes
       </NavLink>
       <NavLink to="/favorite" className="linkFooter">
-        Favorite
+        Favorites
       </NavLink>
       <NavLink to="/shopping-list" className="linkFooter">
         Shopping list

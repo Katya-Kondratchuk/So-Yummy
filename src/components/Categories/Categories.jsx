@@ -100,6 +100,12 @@ const Categories = () => {
               '.MuiTabs-indicator': {
                 backgroundColor: '#8BAA36',
               },
+              '.MuiTabScrollButton-root svg': {
+                fill: 'var(--secondaryTextColor)',
+              },
+              '.MuiTabScrollButton-root svg:hover': {
+                fill: '#8BAA36',
+              },
             }}
           >
             {allCategories.map((title, index) => (

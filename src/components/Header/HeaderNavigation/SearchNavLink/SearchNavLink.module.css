@@ -4,7 +4,8 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1;
-  stroke: var(--secondaryBlackColor);
+  stroke: var(--secondaryTextColor);
+  color: var(--secondaryTextColor);
 }
 .navLink:hover {
   color: var(--greenColor);

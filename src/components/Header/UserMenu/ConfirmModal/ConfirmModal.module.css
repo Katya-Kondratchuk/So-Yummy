@@ -40,6 +40,7 @@
 
 .title {
   margin-bottom: 24px;
+  color: var(--textColorForModal);
 }
 
 .btnWrp {
@@ -62,7 +63,7 @@
 }
 
 .confirmBtn:hover {
-  color: var(--secondaryBlackColor);
+  color: var(--textColorForModal);
   background-color: var(--greenColor);
 }
 @media screen and (min-width: 768px) {
@@ -89,6 +90,12 @@
   font-size: 14px;
   line-height: 1.28;
 }
+
+.confirmBtnCurrent:hover {
+  color: var(--textColorForModal);
+  background-color: var(--blackColor);
+}
+
 @media screen and (min-width: 768px) {
   .confirmBtnCurrent {
     width: 192px;

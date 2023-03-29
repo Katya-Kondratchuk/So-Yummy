@@ -85,12 +85,12 @@ const AddRecipeForm = () => {
   const formData = useMemo(
     () => ({
       fullImage,
-      title,
-      description,
+      title: title.trim(),
+      description: description.trim(),
       category,
       time,
       ingredients,
-      instructions,
+      instructions: instructions.trim(),
     }),
     [category, description, fullImage, ingredients, instructions, time, title],
   );
@@ -186,6 +186,7 @@ const AddRecipeForm = () => {
 
     const isValid = recipeShema.isValidSync(formData);
     if (!isValid) {
+      toast.error('Not all fields were validated, follow the prompts!!');
       setIsShowErrors(true);
       return;
     }
@@ -193,8 +194,8 @@ const AddRecipeForm = () => {
 
     const dataForSend = {
       fullImage,
-      title,
-      description,
+      title: title.trim(),
+      description: description.trim(),
       category,
       time: time.slice(0, time.indexOf(' ')),
       ingredients: ingredients.map(({ amount, unit, title }) => ({
@@ -202,6 +203,7 @@ const AddRecipeForm = () => {
         id: title._id,
       })),
       instructions: instructions
+        .trim()
         .split('\n')
         .filter(el => el.length !== 0)
         .join('\r\n'),
